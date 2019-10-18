@@ -17,7 +17,6 @@ import states.State;
  * 
  * starts the thread
  * initializes the window
- * initializes all other parent classes
  */
 public class ControlCenter implements Runnable {
 
