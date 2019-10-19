@@ -45,6 +45,12 @@ public class DisintegratorRecipe {
 	public static DisintegratorRecipe XM2141 = new DisintegratorRecipe(27);
 	public static DisintegratorRecipe XM2142 = new DisintegratorRecipe(28);
 	public static DisintegratorRecipe XM2143 = new DisintegratorRecipe(29);
+	public static DisintegratorRecipe Bar1 = new DisintegratorRecipe(30);
+	public static DisintegratorRecipe Bar2 = new DisintegratorRecipe(31);
+	public static DisintegratorRecipe Bar3 = new DisintegratorRecipe(32);
+	public static DisintegratorRecipe Plate1 = new DisintegratorRecipe(33);
+	public static DisintegratorRecipe Plate2 = new DisintegratorRecipe(34);
+	public static DisintegratorRecipe Plate3 = new DisintegratorRecipe(35);
 	
 	private int amtGet = 1;
 
@@ -151,10 +157,28 @@ public class DisintegratorRecipe {
 		} else if (id == 29) {
 			recipeRequirements.put(Item.XM214BulletItem.getId(), 1);
 			recipeRequirements.put(Item.woodenPlankItem.getId(), 3);
+		} else if (id == 30) {
+			recipeRequirements.put(Item.ironBarItem.getId(), 1);
+			recipeRequirements.put(Item.coalChunkItem.getId(), 1);
+		} else if (id == 31) {
+			recipeRequirements.put(Item.ironBarItem.getId(), 1);
+			recipeRequirements.put(Item.woodItem.getId(), 1);
+		} else if (id == 32) {
+			recipeRequirements.put(Item.ironBarItem.getId(), 1);
+			recipeRequirements.put(Item.woodenPlankItem.getId(), 3);
+		} else if (id == 33) {
+			recipeRequirements.put(Item.metalPlateItem.getId(), 1);
+			recipeRequirements.put(Item.coalChunkItem.getId(), 1);
+		} else if (id == 34) {
+			recipeRequirements.put(Item.metalPlateItem.getId(), 1);
+			recipeRequirements.put(Item.woodItem.getId(), 1);
+		} else if (id == 35) {
+			recipeRequirements.put(Item.metalPlateItem.getId(), 1);
+			recipeRequirements.put(Item.woodenPlankItem.getId(), 3);
 		} 
 		
 		//fuel requirement (can be replaced with coal)
-		recipeRequirements.put(Item.woodenPlankItem.getId(), 1);
+		//recipeRequirements.put(Item.woodenPlankItem.getId(), 1);
 		
 	}
 
@@ -229,6 +253,24 @@ public class DisintegratorRecipe {
 			setItem(Item.zincIngotItem);
 		} else if (id == 29) {
 			setItem(Item.zincIngotItem);
+		} else if (id == 30) {
+			setItem(Item.ironIngotItem);
+			amtGet = 2;
+		} else if (id == 31) {
+			setItem(Item.ironIngotItem);
+			amtGet = 2;
+		} else if (id == 32) {
+			setItem(Item.ironIngotItem);
+			amtGet = 2;
+		} else if (id == 33) {
+			setItem(Item.ironIngotItem);
+			amtGet = 2;
+		} else if (id == 34) {
+			setItem(Item.ironIngotItem);
+			amtGet = 2;
+		} else if (id == 35) {
+			setItem(Item.ironIngotItem);
+			amtGet = 2;
 		} 
 		
 	}

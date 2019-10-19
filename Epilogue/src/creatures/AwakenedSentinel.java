@@ -400,6 +400,11 @@ public class AwakenedSentinel extends Creatures {
 			.addItem(Item.gearItem.createNew((int) x + bounds.x + CT.random(0, bounds.width),
 					(int) y + bounds.y + CT.random(0, bounds.height)));
 		}
+		for(int i = 0; i < CT.random(3, 8); i++) {
+			c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator().getItemManager()
+			.addItem(Item.metalPlateItem.createNew((int) x + bounds.x + CT.random(0, bounds.width),
+					(int) y + bounds.y + CT.random(0, bounds.height)));
+		}
 	}
 
 	@Override
