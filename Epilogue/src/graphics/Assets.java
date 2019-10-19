@@ -109,7 +109,7 @@ public class Assets {
 	
 	// tools
 	public static BufferedImage woodenAxe, stoneAxe, bronzeAxe, zincAxe, chainsaw, woodenPick, stonePick, bronzePick,
-		zincPick, drill;
+		zincPick, drill, shovel;
 
 	// ranged
 	public static BufferedImage megashakalaka, glock, flamethrower, woodenBow, desertEagle, bronzeBow, zincBow, ironBow, ravager;
@@ -1504,6 +1504,7 @@ public class Assets {
 		Spritesheet StoneClub = new Spritesheet(ImageLoader.LoadImage("/weaponItem/stoneClub.png"));
 		Spritesheet SpikeClub = new Spritesheet(ImageLoader.LoadImage("/weaponItem/spikeClub.png"));
 		Spritesheet Tools = new Spritesheet(ImageLoader.LoadImage("/weaponItem/tools.png"));
+		Spritesheet Shovel = new Spritesheet(ImageLoader.LoadImage("/weaponItem/shovel.png"));
 
 		katana = Katana.crop(0, 0, 64, 64);
 		bronzeBlade = BronzeBlade.crop(0, 0, 64, 64);
@@ -1548,6 +1549,8 @@ public class Assets {
 		drill = Tools.crop(512, 0, 64, 64);
 		chainsaw = Tools.crop(576, 0, 64, 64);
 
+		shovel = Shovel.crop(0, 0, 32, 32);
+		
 		// Food
 		// ----------------------------------------------------------------------------
 		Spritesheet BugMeat = new Spritesheet(ImageLoader.LoadImage("/food/bugMeat.png"));

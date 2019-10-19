@@ -31,7 +31,7 @@ public class Tool extends Item {
 	public static Tool zincPickaxeTool = new Tool(Assets.zincPick, "zinc pickaxe", "pickaxe", 907, 3.5, 65, 1200, 2, 30, 30, 7, 280, 280);
 	public static Tool drillTool = new Tool(Assets.drill, "drill", "pickaxe", 908, 5.9, 45, 350, 2, 1, 65, 8, 580, 580);
 	public static Tool chainsawTool = new Tool(Assets.chainsaw, "chainsaw", "axe", 909, 4.2, 58, 350, 2, 1, 65, 7, 580, 580);
-	public static Tool shovelTool = new Tool(Assets.beetleMembrane, "shovel", "shovel", 910, 1.8, 120, 1200, 2, 1, 60, 6, 100, 100);
+	public static Tool shovelTool = new Tool(Assets.shovel, "shovel", "shovel", 910, 1.8, 120, 1200, 2, 1, 60, 6, 100, 100);
 	
 	public Tool(BufferedImage texture, String name, String type, int id, double weight, int damage,
 			double aSpeed, int intimidation, double range, int volume, double power, int currentEndurance, int endurance) {
