@@ -49,6 +49,7 @@ public class Inventory {
 		}
 		addItem(Tool.shovelTool); 
 		addItem(Weapon.ironSword);
+		
 	}
 
 	public void tick() {

@@ -73,6 +73,9 @@ public class Recipe {
 	public static Recipe fNozzle = new Recipe(40);
 	public static Recipe fGrip = new Recipe(41);
 	public static Recipe fFuelTank = new Recipe(42);
+	public static Recipe fur = new Recipe(43);
+	public static Recipe rope3 = new Recipe(44);
+	public static Recipe shovel = new Recipe(45);
 	
 	public static Recipe spikeClub = new Recipe(100);
 	public static Recipe bronzeBlade = new Recipe(101);
@@ -173,7 +176,7 @@ public class Recipe {
 		
 		//setupXPRequirements();
 		
-		if((id >= 0 && id <= 14) || (id >= 106 && id <= 109) || id == 701 || id == 702 || id == 704 || id == 715) { //starting recipes
+		if((id >= 0 && id <= 14) || id == 43 || (id >= 106 && id <= 109) || id == 701 || id == 702 || id == 704 || id == 715) { //starting recipes
 			
 			boolean alreadyAdded = false;
 			for (Recipe i : Recipe.recipes){
@@ -342,6 +345,14 @@ public class Recipe {
 			recipeRequirements.put(Item.triggerItem.getId(), 1);
 		} else if (id == 42) {
 			recipeRequirements.put(Item.metalPlateItem.getId(), 3);
+		} else if (id == 43) {
+			recipeRequirements.put(Item.bearBearItem.getId(), 1);
+		} else if (id == 44) {
+			recipeRequirements.put(Item.furItem.getId(), 3);
+		} else if (id == 45) {
+			recipeRequirements.put(Item.metalPlateItem.getId(), 1);
+			recipeRequirements.put(Item.stickItem.getId(), 5);
+			recipeRequirements.put(Item.ropeItem.getId(), 1);
 		}
 		
 		else if (id == 100) {
@@ -711,6 +722,13 @@ public class Recipe {
 			setItem(Item.fThrowerGrip);
 		} else if (id == 42) {
 			setItem(Item.FuelTankItem);
+		} else if (id == 43) {
+			setItem(Item.furItem);
+			amtGet = 8;
+		} else if (id == 44) {
+			setItem(Item.ropeItem);
+		} else if (id == 45) {
+			setItem(Tool.shovelTool);
 		} 
 		
 		else if (id == 100) {
