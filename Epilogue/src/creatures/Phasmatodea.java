@@ -15,9 +15,10 @@ public class Phasmatodea extends Creatures {
 		super(x, y, Creatures.DEFAULT_CREATURE_WIDTH * 3, Creatures.DEFAULT_CREATURE_HEIGHT * 3, c);
 
 		health = 750;
-		speed = 3;
-		resistance = 10;
-		knockValue = 8;
+		speed = 3.5;
+		resistance = 80;
+		knockValue = 20;
+		damage = 220;
 		attackBoundSize = 300;
 		name = "phasmatodea";
 		type = "creatures";
