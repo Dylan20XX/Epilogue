@@ -74,10 +74,6 @@ public class Tent extends StaticEntity {
 		g.drawImage(Assets.tent, (int) (x - c.getGameCamera().getxOffset()),
 				(int) (y - c.getGameCamera().getyOffset()), width, height, null);
 
-		// drawing down the bounding box
-		Graphics2D g2d = (Graphics2D) g;
-		g.setColor(Color.BLUE);
-		g2d.draw(getBounds());
 	}
 
 	@Override

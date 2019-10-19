@@ -2648,60 +2648,94 @@ public class WorldGenerator {
 				if(canSpawn) {
 
 					if(biome == 1) { //natural biome
-						if(creatureType < 30) {
+						if(creatureType < 15) {
 							entityManager.addCreature(new Phasmatodea(spawnX, spawnY, c));
-						} else if(creatureType < 60) {
+						} else if(creatureType < 25) {
 							entityManager.addCreature(new Chicken(spawnX, spawnY, c));
-						} else if(creatureType < 100) {
+						} else if(creatureType < 35) {
 							entityManager.addCreature(new Boar(spawnX, spawnY, c));
+						} else if(creatureType < 45) {
+							entityManager.addCreature(new Deer(spawnX, spawnY, c));
+						} else if(creatureType < 55) {
+							entityManager.addCreature(new GiantBeetle(spawnX, spawnY, c));
+						} else if(creatureType < 58) {
+							entityManager.addCreature(new RedGiantBeetle(spawnX, spawnY, c));
+						} else if(creatureType < 68) {
+							entityManager.addCreature(new WonderingGhoul(spawnX, spawnY, c));
 						}
 					} else if(biome == 2) { //forest biome
-						if(creatureType < 30) {
-							entityManager.addCreature(new GiantBeetle(spawnX, spawnY, c));
-						} else if(creatureType < 60) {
+						if(creatureType < 2) {
 							entityManager.addCreature(new RedGiantBeetle(spawnX, spawnY, c));
-						} else if(creatureType >= 60) {
+						} else if(creatureType < 10) {
+							entityManager.addCreature(new GiantBeetle(spawnX, spawnY, c));
+						} else if(creatureType < 13) {
 							entityManager.addCreature(new Chicken(spawnX, spawnY, c));
+						} else if(creatureType < 25) {
+							entityManager.addCreature(new MutatedChicken(spawnX, spawnY, c));
+						} else if(creatureType < 40) {
+							entityManager.addCreature(new Boar(spawnX, spawnY, c));
+						} else if(creatureType < 55) {
+							entityManager.addCreature(new MutatedDeer(spawnX, spawnY, c));
+						} else if(creatureType < 70) {
+							entityManager.addCreature(new Scavenger(spawnX, spawnY, c));
+						} else if(creatureType < 80) {
+							entityManager.addCreature(new WonderingGhoul(spawnX, spawnY, c));
+						} else if(creatureType < 85) {
+							entityManager.addCreature(new DeerDeer(spawnX, spawnY, c));
+						} else if(creatureType < 90) {
+							entityManager.addCreature(new Sentry(spawnX, spawnY, c));
 						}
 					} else if(biome == 3) { //semi-desert biome	
-						if(creatureType < 20) {
+						if(creatureType < 8) {
 							entityManager.addCreature(new DesertScorpion(spawnX, spawnY, c));
-						} else if(creatureType < 40) {
+						} else if(creatureType < 25) {
+							entityManager.addCreature(new SandCreep(spawnX, spawnY, c)); 
+						} else if(creatureType < 35) {
 							entityManager.addCreature(new Boar(spawnX, spawnY, c)); 
-						} else if(creatureType < 90) {
+						} else if(creatureType < 45) {
 							entityManager.addCreature(new WonderingGhoul(spawnX, spawnY, c));
-						} else if(creatureType < 100){
+						} else if(creatureType < 55){
 							entityManager.addCreature(new CrazedGoat(spawnX, spawnY, c));
 						}
 					} else if(biome == 4) { //waste biome
-						if(creatureType < 50) {
+						if(creatureType < 40) {
 							entityManager.addCreature(new WonderingGhoul(spawnX, spawnY, c));
-						} else if(creatureType < 100) {
+						} else if(creatureType < 60) {
 							entityManager.addCreature(new Scavenger(spawnX, spawnY, c));
 						}
 					} else if(biome == 5) { //ruins biome
-						if(creatureType < 85) {
-							entityManager.addCreature(new WonderingGhoul(spawnX, spawnY, c));
-						} else if(creatureType < 100) {
-							entityManager.addCreature(new Scavenger(spawnX, spawnY, c));
-						}
-					} else if(biome == 6) { //infected biome
-						if(creatureType < 80) {
-							entityManager.addCreature(new Sentry(spawnX, spawnY, c));
-						} else if(creatureType < 100) {
-							entityManager.addCreature(new SentryMajor(spawnX, spawnY, c));
-						}
-					} else if(biome == 0) { //plains (default biome)
 						if(creatureType < 10) {
-							entityManager.addCreature(new DeerDeer(spawnX, spawnY, c));
-						} else if(creatureType < 50) {
-							entityManager.addCreature(new Boar(spawnX, spawnY, c)); 
-						} else if(creatureType < 80) {
-							entityManager.addCreature(new GiantBeetle(spawnX, spawnY, c));
-						} else if(creatureType < 90){
+							entityManager.addCreature(new Scavenger(spawnX, spawnY, c));
+						} else 
+							entityManager.addCreature(new WonderingGhoul(spawnX, spawnY, c));
+						
+					} else if(biome == 6) { //infected biome
+						if(creatureType < 85) {
 							entityManager.addCreature(new Sentry(spawnX, spawnY, c));
-						} else if(creatureType < 100){
+						} else 
+							entityManager.addCreature(new SentryMajor(spawnX, spawnY, c));
+						 
+					} else if(biome == 0) { //plains (default biome)
+						if(creatureType < 2) {
 							entityManager.addCreature(new RedGiantBeetle(spawnX, spawnY, c));
+						} else if(creatureType < 10) {
+							entityManager.addCreature(new GiantBeetle(spawnX, spawnY, c));
+						} else if(creatureType < 13) {
+							entityManager.addCreature(new Chicken(spawnX, spawnY, c));
+						} else if(creatureType < 25) {
+							entityManager.addCreature(new MutatedChicken(spawnX, spawnY, c));
+						} else if(creatureType < 40) {
+							entityManager.addCreature(new Boar(spawnX, spawnY, c));
+						} else if(creatureType < 55) {
+							entityManager.addCreature(new MutatedDeer(spawnX, spawnY, c));
+						} else if(creatureType < 70) {
+							entityManager.addCreature(new Scavenger(spawnX, spawnY, c));
+						} else if(creatureType < 80) {
+							entityManager.addCreature(new WonderingGhoul(spawnX, spawnY, c));
+						} else if(creatureType < 85) {
+							entityManager.addCreature(new DeerDeer(spawnX, spawnY, c));
+						} else if(creatureType < 90) {
+							entityManager.addCreature(new Sentry(spawnX, spawnY, c));
 						}
 					}
 					//System.out.println("spawn"); //test
@@ -3021,42 +3055,62 @@ public class WorldGenerator {
 			if(canSpawn) {
 
 				if(biome == 1) { //natural biome
-					if(creatureType < 20) {
-						entityManager.addCreature(new WoodenStick(spawnX, spawnY, c));
-					} else if(creatureType < 40) {
+					if(creatureType < 10) {
 						entityManager.addCreature(new ExtrafloralNectar(spawnX, spawnY, c));
-					} else if(creatureType < 60) {
+					} else if(creatureType < 15) {
 						entityManager.addCreature(new BrainFungui(spawnX, spawnY, c));
-					} else if(creatureType < 80) {
+					} else if(creatureType < 20) {
 						entityManager.addCreature(new PrettyShroom(spawnX, spawnY, c));
-					} else if(creatureType < 100) {
+					} else if(creatureType < 50) {
 						entityManager.addCreature(new ShroomPile(spawnX, spawnY, c));
+					} else if(creatureType < 80) {
+						entityManager.addCreature(new WoodenStick(spawnX, spawnY, c));
 					}
 				} else if(biome == 2) { //forest biome
-					if(creatureType < 100) {
+					if(creatureType < 3) {
+						entityManager.addCreature(new BrainFungui(spawnX, spawnY, c));
+					} else if(creatureType < 6) {
+						entityManager.addCreature(new PrettyShroom(spawnX, spawnY, c));
+					} else if(creatureType < 30) {
+						entityManager.addCreature(new ShroomPile(spawnX, spawnY, c));
+					} else if(creatureType < 60) {
 						entityManager.addCreature(new WoodenStick(spawnX, spawnY, c));
 					}
 				} else if(biome == 3) { //semi-desert biome	
-					
+					if(creatureType < 30) {
+						entityManager.addCreature(new WoodenStick(spawnX, spawnY, c));
+					}
 				} else if(biome == 4) { //waste biome
-					if(creatureType < 100) {
+					if(creatureType < 2) {
+						entityManager.addCreature(new BrainFungui(spawnX, spawnY, c));
+					} else if(creatureType < 4) {
+						entityManager.addCreature(new PrettyShroom(spawnX, spawnY, c));
+					} else if(creatureType < 10) {
+						entityManager.addCreature(new ShroomPile(spawnX, spawnY, c));
+					} else if(creatureType < 20) {
 						entityManager.addCreature(new WoodenStick(spawnX, spawnY, c));
 					}
 				} else if(biome == 5) { //ruins biome
-					if(creatureType < 100) {
+					if(creatureType < 2) {
+						entityManager.addCreature(new BrainFungui(spawnX, spawnY, c));
+					} else if(creatureType < 4) {
+						entityManager.addCreature(new PrettyShroom(spawnX, spawnY, c));
+					} else if(creatureType < 10) {
+						entityManager.addCreature(new ShroomPile(spawnX, spawnY, c));
+					} else if(creatureType < 20) {
 						entityManager.addCreature(new WoodenStick(spawnX, spawnY, c));
 					}
 				} else if(biome == 6) { //infected biome
 					
 				} else {
-					if(creatureType < 50) {
-						entityManager.addCreature(new WoodenStick(spawnX, spawnY, c));
-					} else if(creatureType < 80) {
-						entityManager.addCreature(new ShroomPile(spawnX, spawnY, c));
-					} else if(creatureType < 90) {
-						entityManager.addCreature(new PrettyShroom(spawnX, spawnY, c));
-					} else if(creatureType < 100) {
+					if(creatureType < 2) {
 						entityManager.addCreature(new BrainFungui(spawnX, spawnY, c));
+					} else if(creatureType < 4) {
+						entityManager.addCreature(new PrettyShroom(spawnX, spawnY, c));
+					} else if(creatureType < 10) {
+						entityManager.addCreature(new ShroomPile(spawnX, spawnY, c));
+					} else if(creatureType < 20) {
+						entityManager.addCreature(new WoodenStick(spawnX, spawnY, c));
 					}
 				}
 

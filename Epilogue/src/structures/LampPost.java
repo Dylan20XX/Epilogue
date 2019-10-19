@@ -72,8 +72,8 @@ public class LampPost extends StaticEntity {
 		g.drawImage(lamp, (int) (x - c.getGameCamera().getxOffset()), (int) (y - c.getGameCamera().getyOffset()), width,
 				height, null);
 
-		g.setColor(Color.BLUE);
-		g2d.draw(getBounds());
+		//g.setColor(Color.BLUE);
+		//g2d.draw(getBounds());
 
 	}
 
