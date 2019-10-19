@@ -113,7 +113,7 @@ public class Item {
 	public static Item fThrowerGrip = new Item(Assets.fGrip, "flame thrower grip", 90, false, "miscellaneous", 3, 0, 30);
 	public static Item repairKit = new Item(Assets.repairKit, "repair kit", 999, false, "miscellaneous", 28, 0, 250);
 	
-	// Suspicious Statue Sacrifices
+	// Suspicious Statue Sacrifices 
 	//public static Item orbOfMagnire = new Item(Assets.pan, "orb or magnire", 600, false, "sacrifice", 0.6, 0, 1000, 0, 0, 0, 25, 0, 0);
 	// structure 
 	public static Item sapItem = new Item(Assets.sap, "sap", 700, false, "structure", 0.01, 0, 1);

@@ -615,7 +615,7 @@ public class Assets {
 		parisIdle = ParisMove.crop(192, 0, 64, 64);
 
 		// Static Entities
-		// ----------------------------------------------------------------------------
+		// -----------------------------------------------------------------------------
 		Spritesheet BurntTree = new Spritesheet(ImageLoader.LoadImage("/staticEntity/burntTree.png"));
 		Spritesheet Hive = new Spritesheet(ImageLoader.LoadImage("/staticEntity/SentryHive.png"));
 		Spritesheet rockObstacle = new Spritesheet(ImageLoader.LoadImage("/staticEntity/rockObstacle.png"));

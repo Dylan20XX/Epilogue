@@ -47,7 +47,7 @@ public class Inventory {
 			addItem(Item.stickItem);
 			addItem(Item.woodenPlankItem);
 		}
-		addItem(Tool.shovelTool);
+		addItem(Tool.shovelTool); 
 		addItem(Weapon.ironSword);
 	}
 

@@ -1673,6 +1673,7 @@ public class Player extends Creatures {
 
 	}
 	
+	// checks food status
 	public void checkFood() {
         for(int i = 0; i < inventory.InventoryItems.size(); i++) {
                 if(inventory.InventoryItems.get(i).getType().equals("food")) {
