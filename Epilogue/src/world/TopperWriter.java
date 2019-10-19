@@ -510,7 +510,7 @@ public class TopperWriter {
 					} else if ((tiles[x][y] == 0 || tiles[x][y] == 1 || tiles[x][y] == 2 || tiles[x][y] == 3) &&
 							topper[x][y] == 0 && spawnChance == 0 && terrain[x][y] == 3) { 
 						
-						int rand = r.nextInt(7);
+						int rand = r.nextInt(9);
 						
 						if (rand == 1) { //spawn a rock
 							
@@ -531,7 +531,7 @@ public class TopperWriter {
 								}
 							}
 
-						} else if(rand == 1 || rand == 2) { //spawn agave
+						} else if(rand == 2 || rand == 3) { //spawn agave
 							
 							if(tiles[x-1][y] != 10 && tiles[x+1][y] != 10 &&
 									topper[x-1][y] == 0 && topper[x+1][y] == 0) {
@@ -540,11 +540,11 @@ public class TopperWriter {
 								topper[x+1][y] = 50;
 							}
 							
-						} else if(rand == 3 || rand == 4) {
+						} else if(rand == 4 || rand == 6) {
 							
 							topper[x][y] = 11;
 							
-						} else if(rand == 5 || rand == 6) {
+						} else if(rand == 5) {
 							
 							topper[x][y] = 12;
 							
@@ -554,7 +554,7 @@ public class TopperWriter {
 					} else if ((tiles[x][y] == 0 || tiles[x][y] == 1 || tiles[x][y] == 2 || tiles[x][y] == 3) &&
 							topper[x][y] == 0 && spawnChance == 0 && terrain[x][y] == 4) { 
 
-						int rand = r.nextInt(5);
+						int rand = r.nextInt(8);
 
 						if (rand == 1) { //spawn tree
 							topper[x][y] = 1;
@@ -631,19 +631,17 @@ public class TopperWriter {
 								topper[x][y] = 19;
 								topper[x+1][y] = 50;
 							}
-						} else if (rand == 13) { //spawn chest
+						} else if (rand == 13 || rand == 14) { //spawn chest
 							rand = r.nextInt(10);
 							if(rand == 0)
 								topper[x][y] = 20;
 						}
 						
-						
-						
 					//Spawn chances for all other biomes
 					} else if ((tiles[x][y] == 0 || tiles[x][y] == 1 || tiles[x][y] == 2 || tiles[x][y] == 3) &&
 							topper[x][y] == 0 && spawnChance == 0) {
 						
-						int rand = r.nextInt(2);
+						int rand = r.nextInt(5);
 						
 						if (rand == 0 || (rand == 15 && terrain[x][y] == 2)) { //spawn tree (higher spawn chance in a forest biome)
 							topper[x][y] = 1;
@@ -666,7 +664,13 @@ public class TopperWriter {
 								}
 							}
 
-						}  else { //no topper entity
+						}  else if(rand == 4) {
+							rand = r.nextInt(50);
+							if(rand == 0)
+								topper[x][y] = 20;
+						}
+						else { //no topper entity
+						
 							topper[x][y] = 0;
 						}
 					}
