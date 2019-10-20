@@ -6,7 +6,9 @@ import java.awt.Graphics2D;
 import java.util.Random;
 
 import alphaPackage.ControlCenter;
+import audio.AudioPlayer;
 import creatures.Player;
+import graphics.Assets;
 import items.Item;
 import tiles.Tile;
 import world.WorldGenerator;
@@ -20,8 +22,8 @@ public class PineSap extends StaticEntity {
 	private ControlCenter c;
 
 	// variables for reference
-	public static int width = StaticEntity.DEFAULT_STATICOBJECT_WIDTH * 3;
-	public static int height = StaticEntity.DEFAULT_STATICOBJECT_HEIGHT * 3;
+	public static int width = StaticEntity.DEFAULT_STATICOBJECT_WIDTH;
+	public static int height = StaticEntity.DEFAULT_STATICOBJECT_HEIGHT;
 
 	private int numDaysToGrow;
 	private int startDay;
@@ -41,6 +43,8 @@ public class PineSap extends StaticEntity {
 
 		numDaysToGrow = r.nextInt(5) + 3;
 		startDay = WorldGenerator.dayNum;
+		
+		AudioPlayer.playAudio("audio/plant.wav");
 
 	}
 
@@ -69,23 +73,15 @@ public class PineSap extends StaticEntity {
 	@Override
 	public void render(Graphics g) {
 
-		g.setColor(Color.yellow);
+		g.drawImage(Assets.sapling, (int) (x - c.getGameCamera().getxOffset()),
+				(int) (y - c.getGameCamera().getyOffset()), width, height, null);
+		g.setColor(Color.blue);
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.draw(getBounds());
-
 	}
 
 	@Override
 	public void Die() {
-		
-		int randDrop = r.nextInt(5) + 5;
-		for (int i = 0; i < randDrop; i++) {
-			// dropping items at a scaled random location
-			c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator()
-			.getItemManager()
-			.addItem(Item.woodItem.createNew((int) (((int) x + 50 + r.nextInt(50)) * c.getScaleValue()),
-					(int) (((int) y + 170 + r.nextInt(20)) * c.getScaleValue())));
-		}
 		
 	}
 

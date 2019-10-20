@@ -6,6 +6,7 @@ import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 
 import alphaPackage.ControlCenter;
+import audio.AudioPlayer;
 import creatures.Player;
 import graphics.Assets;
 import graphics.CustomTextWritter;
@@ -97,11 +98,21 @@ public class PlayerHands {
 
 			if (c.getKeyManager().keyJustPressed(KeyEvent.VK_1)) {
 
+				if(inventory.InventoryItems.get(inventory.selectedItem).getType().equals("weapon") || 
+						inventory.InventoryItems.get(inventory.selectedItem).getType().equals("axe") ||
+						inventory.InventoryItems.get(inventory.selectedItem).getType().equals("pickaxe") || 
+						inventory.InventoryItems.get(inventory.selectedItem).getType().equals("shovel")) {
+					AudioPlayer.playAudio("audio/swordUp.wav");
+				} else if(inventory.InventoryItems.get(inventory.selectedItem).getType().equals("ranged")) {
+					AudioPlayer.playAudio("audio/gunUp.wav");
+				}
+				
 				if (inventory.InventoryItems.get(inventory.selectedItem).equals(rightHand)) {
 					Item temp = rightHand;
 					rightHand = leftHand;
 					leftHand = temp;
 					leftHand.setItemEquipped(true);
+					
 				}
 				else if(inventory.InventoryItems.get(inventory.selectedItem).equals(leftHand)) {
 					leftHand = null;
@@ -116,6 +127,15 @@ public class PlayerHands {
 			}
 			if (c.getKeyManager().keyJustPressed(KeyEvent.VK_2)) {
 
+				if(inventory.InventoryItems.get(inventory.selectedItem).getType().equals("weapon") || 
+						inventory.InventoryItems.get(inventory.selectedItem).getType().equals("axe") ||
+						inventory.InventoryItems.get(inventory.selectedItem).getType().equals("pickaxe") || 
+						inventory.InventoryItems.get(inventory.selectedItem).getType().equals("shovel")) {
+					AudioPlayer.playAudio("audio/swordUp.wav");
+				} else if(inventory.InventoryItems.get(inventory.selectedItem).getType().equals("ranged")) {
+					AudioPlayer.playAudio("audio/gunUp.wav");
+				}
+				
 				if (inventory.InventoryItems.get(inventory.selectedItem).equals(leftHand)) {
 					Item temp = leftHand;
 					leftHand = rightHand;
@@ -137,15 +157,27 @@ public class PlayerHands {
 		} else {
 
 			if (c.getKeyManager().keyJustPressed(KeyEvent.VK_1)) {
-
+				
 				currentHand = "left";
+				if(getHand() != null && (getHand().getType().equals("weapon") || getHand().getType().equals("axe")
+						|| getHand().getType().equals("pickaxe") || getHand().getType().equals("shovel"))) {
+					AudioPlayer.playAudio("audio/swordUp.wav");
+				} else if(getHand() != null && getHand().getType().equals("ranged")) {
+					AudioPlayer.playAudio("audio/gunUp.wav");
+				}
 
 			}
 
 			else if (c.getKeyManager().keyJustPressed(KeyEvent.VK_2)) {
 
 				currentHand = "right";
-
+				if(getHand() != null && (getHand().getType().equals("weapon") || getHand().getType().equals("axe")
+						|| getHand().getType().equals("pickaxe") || getHand().getType().equals("shovel"))) {
+					AudioPlayer.playAudio("audio/swordUp.wav");
+				} else if(getHand() != null && getHand().getType().equals("ranged")) {
+					AudioPlayer.playAudio("audio/gunUp.wav");
+				}
+				
 			}
 
 			else if (c.getKeyManager().keyJustPressed(KeyEvent.VK_Q) && getHand() != null) {

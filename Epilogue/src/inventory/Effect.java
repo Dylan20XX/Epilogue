@@ -4,6 +4,7 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
+import audio.AudioPlayer;
 import creatures.Player;
 import graphics.Assets;
 import graphics.CT;
@@ -30,14 +31,29 @@ public class Effect {
 	public Effect(String effect, int length) {
 
 		if (effect.equals("poison")) { //done
+			if(Player.getPlayerData().getName().equals("Paris") || Player.getPlayerData().getName().equals("Ray")) {
+				AudioPlayer.playAudio("audio/femaleSick.wav");
+			} else {
+				AudioPlayer.playAudio("audio/maleSick.wav");
+			}
 			img = Assets.poison;
 		} else if (effect.equals("food poison")) { //done
+			if(Player.getPlayerData().getName().equals("Paris") || Player.getPlayerData().getName().equals("Ray")) {
+				AudioPlayer.playAudio("audio/femaleSick.wav");
+			} else {
+				AudioPlayer.playAudio("audio/maleSick.wav");
+			}
 			img = Assets.foodPoison;
 		} else if (effect.equals("invisibility")) { //done
 			img = Assets.invisibility;
 			MessageBox.addMessage("entering stealth mode...");
 			display = "stealth: ";
 		} else if (effect.equals("contamination")) { //done
+			if(Player.getPlayerData().getName().equals("Paris") || Player.getPlayerData().getName().equals("Ray")) {
+				AudioPlayer.playAudio("audio/femaleSick.wav");
+			} else {
+				AudioPlayer.playAudio("audio/maleSick.wav");
+			}
 			img = Assets.contamination;
 			display = "water contamination: ";
 		} else if (effect.equals("tired")) { //done

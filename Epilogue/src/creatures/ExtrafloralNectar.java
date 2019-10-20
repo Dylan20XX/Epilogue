@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 import alphaPackage.ControlCenter;
+import audio.AudioPlayer;
 import graphics.Animation;
 import graphics.Assets;
 import graphics.CT;
@@ -61,6 +62,7 @@ public class ExtrafloralNectar extends Creatures {
 	public void interact() {
 
 		if(Player.getPlayerData().getInventory().addItem(Food.extrafloralNectar)) {
+			AudioPlayer.playAudio("audio/pickup.wav");
 			active = false;
 		}
 

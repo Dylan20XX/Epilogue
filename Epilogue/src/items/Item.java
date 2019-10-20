@@ -7,6 +7,7 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import alphaPackage.ControlCenter;
+import audio.AudioPlayer;
 import graphics.Assets;
 import graphics.CT;
 import inventory.Inventory;
@@ -200,6 +201,7 @@ public class Item {
 				&& c.getKeyManager().keyJustPressed(KeyEvent.VK_P)) {
 			if(c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator().getEntityManager().getPlayer().getInventory().addItem(this))
 				pickedUp = true;
+			AudioPlayer.playAudio("audio/craft.wav");
 			
 		}
 

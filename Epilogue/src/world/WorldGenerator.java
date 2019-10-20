@@ -1437,7 +1437,6 @@ public class WorldGenerator {
 				Math.abs(buildY - (Player.getPlayerData().getYLoc() + Player.getPlayerData().getBounds().getHeight())) > Tile.TILEHEIGHT * 3 )
 			canBuild = false;
 
-
 		buildX = (int) ((c.getMouseManager().mouseBound().x -
 				(c.getGameCamera().getxOffset() % Tile.TILEWIDTH) -
 				c.getMouseManager().mouseBound().x % Tile.TILEWIDTH) + 
@@ -1475,6 +1474,8 @@ public class WorldGenerator {
 					wallType = getStructureRecipe().getWallType();
 				}
 
+				AudioPlayer.playAudio("audio/build.wav");
+				
 				if(structureNum == 1) {
 					entityManager.addEntity(new Workbench(buildX, buildY, c));
 				}else if(structureNum == 2) {

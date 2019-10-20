@@ -6,6 +6,7 @@ import java.awt.Graphics2D;
 import java.util.Random;
 
 import alphaPackage.ControlCenter;
+import audio.AudioPlayer;
 import graphics.Assets;
 import graphics.CT;
 import items.Food;
@@ -85,6 +86,7 @@ public class ShroomPile extends Creatures{
 			for(int i = 0; i < amount - 1; i++)
 				Player.getPlayerData().getInventory().addItem(Food.shroomItem);
 			
+			AudioPlayer.playAudio("audio/pickup.wav");
 			active = false;
 		}
 		

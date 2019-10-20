@@ -10,6 +10,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import alphaPackage.ControlCenter;
+import audio.AudioPlayer;
 import creatures.Player;
 import graphics.Assets;
 import graphics.CustomTextWritter;
@@ -215,9 +216,18 @@ public class HandCraft {
 							c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator().setStructureNum(selectedRecipe.getId() - 700);
 							c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator().setStructureRecipe(selectedRecipe);
 							resetHandCraft();
+							
+						} else {
 
-						}else {
-
+							AudioPlayer.playAudio("audio/craft.wav");
+							
+							new java.util.Timer().schedule(new java.util.TimerTask() {
+								@Override
+								public void run() {
+									AudioPlayer.playAudio("audio/craft.wav");
+								}
+							}, 900);
+							
 							currentlyCrafting = true;
 							lastCraftTimer = System.currentTimeMillis();
 

@@ -83,7 +83,7 @@ public class WorldSelectionState extends State {
 
 		MusicPlayer.StopMusic();
 
-		MusicPlayer.playMusic("audio/introAudio.wav");
+		//MusicPlayer.playMusic("audio/introAudio.wav");
 
 		// initializes the uiManager for UI accesses
 		setUiManager(new UIManager());

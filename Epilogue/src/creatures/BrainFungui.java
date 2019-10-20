@@ -6,6 +6,7 @@ import java.awt.Graphics2D;
 import java.util.Random;
 
 import alphaPackage.ControlCenter;
+import audio.AudioPlayer;
 import graphics.Assets;
 import items.Food;
 import items.Item;
@@ -65,6 +66,7 @@ public class BrainFungui extends Creatures {// java's random API
 	public void interact() {
 		
 		if(Player.getPlayerData().getInventory().addItem(Food.brainFungusItem)) {
+			AudioPlayer.playAudio("audio/pickup.wav");
 			active = false;
 		}
 		

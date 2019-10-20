@@ -581,6 +581,7 @@ public class Player extends Creatures {
 						|| c.getKeyManager().aright || c.getMouseManager().isLeftPressed()) {
 
 					hunger += food.getHunger();
+					AudioPlayer.playAudio("audio/eat.wav");
 
 					if (hunger > ogEndurance)
 						hunger = ogEndurance;

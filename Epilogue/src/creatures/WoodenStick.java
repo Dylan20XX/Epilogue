@@ -6,6 +6,7 @@ import java.awt.Graphics2D;
 import java.util.Random;
 
 import alphaPackage.ControlCenter;
+import audio.AudioPlayer;
 import graphics.Animation;
 import graphics.Assets;
 import graphics.CT;
@@ -62,13 +63,14 @@ public class WoodenStick extends Creatures {
 	@Override
 	public void interact() {
 		
-		int rand = r.nextInt(4) + 2; //get 2-5 items
+		int rand = r.nextInt(3) + 1; //get 2-5 items
 		
 		if(Player.getPlayerData().getInventory().addItem(Item.woodenStickItem)) {
 			
 			for(int i = 0; i < rand - 1; i++)
 				Player.getPlayerData().getInventory().addItem(Item.woodenStickItem);
 			
+			AudioPlayer.playAudio("audio/pickup.wav");
 			active = false;
 		}
 

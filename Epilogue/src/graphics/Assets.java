@@ -64,7 +64,7 @@ public class Assets {
 			metalCrate, vault, spaceShuttle, spaceShuttleBroken,
 			ruinPiece1, ruinPiece2, ruinPiece3, ruinPiece4, ruinPiece5, ruinPiece6, stoneWallHorizontal, stoneWallVertical, 
 			stoneGateHorizontalClosed, stoneGateHorizontalOpen, stoneGateVerticalClosed, stoneGateVerticalOpen, metalWallHorizontal, 
-			metalWallVertical, metalGateHorizontalClosed, metalGateHorizontalOpen, metalGateVerticalClosed, metalGateVerticalOpen;
+			metalWallVertical, metalGateHorizontalClosed, metalGateHorizontalOpen, metalGateVerticalClosed, metalGateVerticalOpen, sapling;
 	public static BufferedImage[] hive, trashBag, campfire, powerGenerator, lampPost, smoke, artileryBase, vileEmbryo, disintegrator;
 
 	// creatures
@@ -705,7 +705,9 @@ public class Assets {
 		Spritesheet MetalGateHorizontalOpen = new Spritesheet(ImageLoader.LoadImage("/staticEntity/metalGateOpen.png"));
 		Spritesheet MetalGateVerticalClosed = new Spritesheet(ImageLoader.LoadImage("/staticEntity/metalGateVerticalClosed.png"));
 		Spritesheet MetalGateVerticalOpen = new Spritesheet(ImageLoader.LoadImage("/staticEntity/metalGateVerticalOpen.png"));
+		Spritesheet Sapling = new Spritesheet(ImageLoader.LoadImage("/staticEntity/liveSap.png"));
 		
+		sapling = Sapling.crop(0, 0, 32, 32);
 		metalCrate = MetalCrate.crop(0, 0, 32, 32);
 		vault = Vault.crop(0, 0, 320, 320);
 		
