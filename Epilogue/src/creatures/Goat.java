@@ -58,7 +58,7 @@ public class Goat extends Creatures {
 				if (damageBound().intersects(Player.getPlayerData().getBounds())) 
 					knockbackPlayer(this);
 				
-				chase(2);
+				chase(3);
 				
 			}
 		} else if(health <= ogHealth/3) {
@@ -72,7 +72,7 @@ public class Goat extends Creatures {
 					if (damageBound().intersects(Player.getPlayerData().getBounds())) 
 						knockbackPlayer(this);
 					
-					chase(2);
+					chase(3);
 					
 				} else {
 					caution();
