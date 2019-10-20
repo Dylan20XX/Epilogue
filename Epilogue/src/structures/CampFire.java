@@ -62,9 +62,12 @@ public class CampFire extends StaticEntity {
 	@Override
 	public void tick() {
 		fire.tick();
-		curFuel -= 1;
-		if(curFuel <= 0)
+		
+		if(curFuel < 1)
 			health = 0;
+		else
+			curFuel -= 1;
+		
 		int fPrct = (int)((double) curFuel / fuel * 100);
 		if(fPrct < 33)
 			state = 3;
@@ -75,6 +78,7 @@ public class CampFire extends StaticEntity {
 		if(state != prevState)
 			updateLumen();
 		prevState = state;
+		
 		if(Player.getPlayerData().getCollisionBounds(0, 0).
 				intersects(new Rectangle((int)(x + bounds.x - 30), (int)(y + bounds.y - 30), 
 						60 + bounds.width , 60 + bounds.height))) {
@@ -132,7 +136,7 @@ public class CampFire extends StaticEntity {
 	}
 	
 	public void updateLumen() {
-		c.getGameState().getWorldGenerator().addLight(this, 5, placex, placey, state);
-		c.getGameState().getWorldGenerator().removeLight(5, placex, placey, prevState);
+		c.getGameState().getWorldGenerator().addLight(this, 5, this.placex, this.placey, state);
+		c.getGameState().getWorldGenerator().removeLight(5, this.placex, this.placey, prevState);
 	}
 }
