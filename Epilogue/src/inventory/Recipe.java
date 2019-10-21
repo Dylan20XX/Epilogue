@@ -174,7 +174,7 @@ public class Recipe {
 		setupRecipeRequirements();
 		setupItem();
 		
-		//setupXPRequirements();
+		setupXPRequirements();
 		
 		if((id >= 0 && id <= 14) || id == 43 || (id >= 106 && id <= 109) || id == 701 || id == 702 || id == 704 || id == 715) { //starting recipes
 			
@@ -210,7 +210,7 @@ public class Recipe {
 		setupRecipeRequirements();
 		setupItem();
 		
-		//setupXPRequirements();
+		setupXPRequirements();
 		
 		if(learned) {
 			

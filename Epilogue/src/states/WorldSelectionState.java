@@ -403,6 +403,63 @@ public class WorldSelectionState extends State {
 		cookingXP =  WorldInput.parseInt(tokens[20]);
 		buildingXP =  WorldInput.parseInt(tokens[21]);
 		
+		if (charName.equals("Rod")) {
+			charName = "Rod";
+			charHealth = 1000;
+			charRunSpeed = 2.3;
+			charEndurability = 500;
+			charIntimidation = 20;
+			charIntelligence = 6;
+			charDamageScale = 40;
+			charResistance = 12;
+		} else if (charName.equals("Ray")) {
+			charName = "Ray";
+			charHealth = 750;
+			charRunSpeed = 2.7;
+			charEndurability = 400;
+			charIntimidation = 10;
+			charIntelligence = 5;
+			charDamageScale = 65;
+			charResistance = 5;
+		} else if (charName.equals("Batash")) {
+			charName = "Batash";
+			charHealth = 1550;
+			charRunSpeed = 1.3;
+			charEndurability = 750;
+			charIntimidation = 30;
+			charIntelligence = 3;
+			charDamageScale = 85;
+			charResistance = 18;
+		} else if (charName.equals("Bharat_Sinai_Peddi")) {
+			charName = "Bharat_Sinai_Peddi";
+			charHealth = 850;
+			charRunSpeed = 1.8;
+			charEndurability = 550;
+			charIntimidation = 45;
+			charIntelligence = 10;
+			charDamageScale = 30;
+			charResistance = 20;
+		} else if (charName.equals("Paris")) {
+			charName = "Paris";
+			charHealth = 600;
+			charRunSpeed = 2;
+			charEndurability = 300;
+			charIntimidation = 10;
+			charIntelligence = 7;
+			charDamageScale = 20;
+			charResistance = 10;
+		} else if (charName.equals("Mr.F")) {
+			charName = "Mr.F";
+			charHealth = 9999;
+			charRunSpeed = 99.99;
+			charEndurability = 9999;
+			charIntimidation = 9999;
+			charIntelligence = 9999;
+			charDamageScale = 9999;
+			charResistance = 9999;
+		}
+		
+		/*
 		if (charName.equals("Shah")) {
 			charName = "Shah";
 			charHealth = 1000;
@@ -494,6 +551,7 @@ public class WorldSelectionState extends State {
 			charDamageScale = 9999;
 			charResistance = 9999;
 		}
+		*/
 
 	}
 

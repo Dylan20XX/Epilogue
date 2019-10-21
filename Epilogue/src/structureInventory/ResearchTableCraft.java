@@ -77,7 +77,7 @@ public class ResearchTableCraft {
 	private void findCraftableRecipes() {
 
 		for (Recipe i : Recipe.lockedRecipes) {
-			if(isRecipeLearnable(i))
+			if(!isRecipeLearned(i))
 				recipeList.add(i);
 		}
 			
@@ -146,12 +146,15 @@ public class ResearchTableCraft {
 		
 	}
 	
-	private boolean isRecipeLearnable(Recipe i) {
-		
+	private boolean isRecipeLearned(Recipe i) {
 		for(Recipe e : Recipe.unlockedRecipes) {
 			if(i.equals(e))
-				return false;
+				return true;
 		}
+		return false;
+	}
+	
+	private boolean isRecipeLearnable(Recipe i) {
 		
 		if(Player.getPlayerData().getBasicSurvivalXP() >= i.getBasicSurvivalXP() &&
 				Player.getPlayerData().getCombatXP() >= i.getCombatXP() &&
@@ -475,7 +478,7 @@ public class ResearchTableCraft {
 
 				if (craftableItem != null && !currentlyCrafting) {
 
-					if (isRecipeLearnable(selectedRecipe)) {
+					if (isRecipeLearnable(selectedRecipe) && !isRecipeLearned(selectedRecipe)) {
 
 							currentlyCrafting = true;
 							lastCraftTimer = System.currentTimeMillis();
@@ -792,29 +795,172 @@ public class ResearchTableCraft {
 
 				// Name of craftable item
 				CustomTextWritter.drawString(g, craftableItemName, (int) (870 * c.getScaleValue()),
-						(int) (400 * c.getScaleValue()), active, Color.WHITE, Assets.font16);
+						(int) (390 * c.getScaleValue()), active, Color.WHITE, Assets.font21);
 
+				// Type of craftable item
+				CustomTextWritter.drawString(g, "type: " + craftableItem.getType(), (int) (870 * c.getScaleValue()),
+						(int) (415 * c.getScaleValue()), active, Color.WHITE, Assets.font16);
 				// Weight of craftable item
-				CustomTextWritter.drawString(g, "Weight: " + craftableItem.getWeight() + " lb",
-						(int) (870 * c.getScaleValue()), (int) (440 * c.getScaleValue()), active, Color.WHITE,
-						Assets.font16);
+				CustomTextWritter.drawString(g, "weight: " + Math.round(craftableItem.getWeight()) + " lb",
+						(int) (870 * c.getScaleValue()), (int) (430 * c.getScaleValue()), active,
+						Color.WHITE, Assets.font16);
+				// Volume of craftable item
+				CustomTextWritter.drawString(g, "volume: " + Math.round(craftableItem.getVolume()) + " cm^3",
+						(int) (870 * c.getScaleValue()), (int) (445 * c.getScaleValue()), active,
+						Color.WHITE, Assets.font16);
+				
+				if (craftableItem.getType() == "weapon") {
+					
+					Weapon weapon = (Weapon)craftableItem;
+					
+					CustomTextWritter.drawString(g, "base damage: " + weapon.getDamage(),
+							(int) (870 * c.getScaleValue()), (int) (460 * c.getScaleValue()),
+							active, Color.WHITE, Assets.font16);
 
+					String aSpeed = "";
+					
+					if (weapon.getaSpeed() < 500)
+						aSpeed = "super fast";
+					else if (weapon.getaSpeed() < 1000)
+						aSpeed = "fast";
+					else if (weapon.getaSpeed() < 1500)
+						aSpeed = "average";
+					else if (weapon.getaSpeed() < 2000)
+						aSpeed = "slow";
+					else
+						aSpeed = "super slow";
+					
+					CustomTextWritter.drawString(g, "speed: " + aSpeed,
+							(int) (870 * c.getScaleValue()), (int) (475 * c.getScaleValue()),
+							active, Color.WHITE, Assets.font16);
+					
+					CustomTextWritter.drawString(g, weapon.getEnhancement(),
+							(int) (870 * c.getScaleValue()), (int) (490 * c.getScaleValue()),
+							active, Color.WHITE, Assets.font16);
+
+					
+				} else if (craftableItem.getType() == "ranged") {
+					
+					Ranged ranged = (Ranged)craftableItem;
+							
+					String aSpeed = "";
+					
+					if (ranged.getaSpeed() < 500)
+						aSpeed = "super fast";
+					else if (ranged.getaSpeed() < 1000)
+						aSpeed = "fast";
+					else if (ranged.getaSpeed() < 1500)
+						aSpeed = "average";
+					else if (ranged.getaSpeed() < 2000)
+						aSpeed = "slow";
+					else
+						aSpeed = "super slow";
+					
+					CustomTextWritter.drawString(g, "speed: " + aSpeed,
+							(int) (870 * c.getScaleValue()), (int) (460 * c.getScaleValue()),
+							active, Color.WHITE, Assets.font16);
+					
+					CustomTextWritter.drawString(g, "load speed: " + Math.round(ranged.reloadCooldown/1000) + "s",
+							(int) (870 * c.getScaleValue()), (int) (475 * c.getScaleValue()),
+							active, Color.WHITE, Assets.font16);
+					
+					CustomTextWritter.drawString(g, ranged.getEnhancement(),
+							(int) (870 * c.getScaleValue()), (int) (490 * c.getScaleValue()),
+							active, Color.WHITE, Assets.font16);
+					
+				} else if (craftableItem.getType() == "helmet" || craftableItem.getType() == "chest" || craftableItem.getType() == "leg"
+						|| craftableItem.getType() == "boots") {
+					
+					Armor armor = (Armor) craftableItem;
+					
+					CustomTextWritter.drawString(g, "resistance: " + armor.getResistance(),
+							(int) (870 * c.getScaleValue()), (int) (460 * c.getScaleValue()), active,
+							Color.WHITE, Assets.font16);
+					
+					if(armor.getHealthRegen() != 0)
+						CustomTextWritter.drawString(g, "health regen: " + armor.getHealthRegen(),
+								(int) (870 * c.getScaleValue()), (int) (475 * c.getScaleValue()), active,
+								Color.WHITE, Assets.font16);
+					
+					CustomTextWritter.drawString(g, armor.getEnhancement(),
+							(int) (870 * c.getScaleValue()), (int) (490 * c.getScaleValue()),
+							active, Color.WHITE, Assets.font16);
+					
+				} else if (craftableItem.getType() == "food") {
+					
+					Food food = (Food)(craftableItem);
+					
+					CustomTextWritter.drawString(g, "hunger restore: " + food.getHunger(),
+							(int) (870 * c.getScaleValue()), (int) (460 * c.getScaleValue()),
+							active, Color.WHITE, Assets.font21);
+					CustomTextWritter.drawString(g, "thirst restore: " + food.getThirst(),
+							(int) (870 * c.getScaleValue()), (int) (475 * c.getScaleValue()),
+							active, Color.WHITE, Assets.font16);
+					
+				} else if (craftableItem.getType() == "axe" || craftableItem.getType() == "pickaxe") {
+					
+					Tool tool = (Tool)craftableItem;
+					
+					CustomTextWritter.drawString(g, "base damage: " + tool.getDamage(),
+							(int) (870 * c.getScaleValue()), (int) (460 * c.getScaleValue()),
+							active, Color.WHITE, Assets.font16);
+					
+					if(tool.getType().equals("axe"))
+						CustomTextWritter.drawString(g, "axe power: x" + Math.round(tool.getPower()),
+								(int) (870 * c.getScaleValue()), (int) (4750 * c.getScaleValue()),
+								active, Color.WHITE, Assets.font16);
+					else
+						CustomTextWritter.drawString(g, "pickaxe power: x" + Math.round(tool.getPower()),
+								(int) (870 * c.getScaleValue()), (int) (475 * c.getScaleValue()),
+								active, Color.WHITE, Assets.font16);
+
+					String aSpeed = "";
+					
+					if (tool.getaSpeed() < 500)
+						aSpeed = "super fast";
+					else if (tool.getaSpeed() < 1000)
+						aSpeed = "fast";
+					else if (tool.getaSpeed() < 1500)
+						aSpeed = "average";
+					else if (tool.getaSpeed() < 2000)
+						aSpeed = "slow";
+					else
+						aSpeed = "super slow";
+					
+					CustomTextWritter.drawString(g, "speed: " + aSpeed,
+							(int) (870 * c.getScaleValue()), (int) (490 * c.getScaleValue()),
+							active, Color.WHITE, Assets.font16);
+					
+					CustomTextWritter.drawString(g, tool.getEnhancement(),
+							(int) (870 * c.getScaleValue()), (int) (505 * c.getScaleValue()),
+							active, Color.WHITE, Assets.font16);
+					
+				} else if (craftableItem.getType() == "food") {
+					Food food = (Food)craftableItem;
+					CustomTextWritter.drawString(g, "hunger restore: " + food.getHunger(),
+							(int) (870 * c.getScaleValue()), (int) (460 * c.getScaleValue()), active,
+							Color.WHITE, Assets.font16);
+					CustomTextWritter.drawString(g, "thirst restore: " + food.getThirst(),
+							(int) (870 * c.getScaleValue()), (int) (475 * c.getScaleValue()), active,
+							Color.WHITE, Assets.font16);
+				}
+				
 				// Requirements
 				CustomTextWritter.drawString(g, "Requirements:", (int) (870 * c.getScaleValue()),
-						(int) (480 * c.getScaleValue()), active, Color.WHITE, Assets.font16);
+						(int) (520 * c.getScaleValue()), active, Color.WHITE, Assets.font16);
 				
 				if(selectedRecipe.getBasicSurvivalXP() != 0)
 					CustomTextWritter.drawString(g, "Basic Survival XP: " + selectedRecipe.getBasicSurvivalXP(), (int) (870 * c.getScaleValue()),
-							(int) (505 * c.getScaleValue()), active, Color.WHITE, Assets.font16);
+							(int) (535 * c.getScaleValue()), active, Color.WHITE, Assets.font16);
 				if(selectedRecipe.getCombatXP() != 0)
 					CustomTextWritter.drawString(g, "Combat XP: " + selectedRecipe.getCombatXP(), (int) (870 * c.getScaleValue()),
-							(int) (525 * c.getScaleValue()), active, Color.WHITE, Assets.font16);
+							(int) (535 * c.getScaleValue()), active, Color.WHITE, Assets.font16);
 				if(selectedRecipe.getCookingXP() != 0)
 					CustomTextWritter.drawString(g, "Cooking XP: " + selectedRecipe.getCookingXP(), (int) (870 * c.getScaleValue()),
-							(int) (545 * c.getScaleValue()), active, Color.WHITE, Assets.font16);
-				if(selectedRecipe.getCookingXP() != 0)
-					CustomTextWritter.drawString(g, "Building XP: " + selectedRecipe.getCookingXP(), (int) (870 * c.getScaleValue()),
-							(int) (565 * c.getScaleValue()), active, Color.WHITE, Assets.font16);
+							(int) (535 * c.getScaleValue()), active, Color.WHITE, Assets.font16);
+				if(selectedRecipe.getBuildingXP() != 0)
+					CustomTextWritter.drawString(g, "Building XP: " + selectedRecipe.getBuildingXP(), (int) (870 * c.getScaleValue()),
+							(int) (535 * c.getScaleValue()), active, Color.WHITE, Assets.font16);
 
 			}
 

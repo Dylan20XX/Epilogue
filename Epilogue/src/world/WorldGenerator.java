@@ -1342,6 +1342,8 @@ public class WorldGenerator {
 					c.getGameCamera().getyOffset());
 			CustomTextWritter.drawString(g, String.format("Topper : %d", topper[buildX / 64][buildY / 64]), 100, 130, true,
 					Color.WHITE, Assets.font28);
+			CustomTextWritter.drawString(g, String.format("Floor : %d", floor[buildX / 64][buildY / 64]), 100, 160, true,
+					Color.WHITE, Assets.font28);
 		}
 
 	}
@@ -1766,7 +1768,6 @@ public class WorldGenerator {
 			temp--;
 		}
 	}
-
 
 	public void removeLight(int radius, int x, int y, int lumen) {
 		int additional = 0;
