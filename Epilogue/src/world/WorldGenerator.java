@@ -3124,11 +3124,9 @@ public class WorldGenerator {
 	}
 	
 	private void debugControls() {
-		if (c.getKeyManager().keyJustPressed(KeyEvent.VK_R)) {
-			entityManager.addEntity(new DesertScorpion(entityManager.getPlayer().getX() + 200, entityManager.getPlayer().getY() - 200, c));
-		}
+
 		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_T))
-			c.getGameCamera().shake(200);
+			entityManager.addEntity(new BurntTree(entityManager.getPlayer().getX(), entityManager.getPlayer().getY(), c));
 		if (c.getKeyManager().keyJustPressed(KeyEvent.VK_G))
 			Player.getPlayerData().energy+= 800;
 		if (c.getKeyManager().keyJustPressed(KeyEvent.VK_I))
