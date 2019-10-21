@@ -527,11 +527,11 @@ public class Player extends Creatures {
 							AudioPlayer.playAudio("audio/minigun.wav");
 							c.getGameState().getWorldGenerator().getEntityManager().addEntity(new XM214((int)x + 10, (int)y, 12, 4, (shootAngle - r.accuracy) + Math.random()*(r.accuracy*2), c));
 						} else if (item.getName().equals("glock")) {
-							c.getGameCamera().shake(1);
+							//c.getGameCamera().shake(1);
 							AudioPlayer.playAudio("audio/glock.wav");
 							c.getGameState().getWorldGenerator().getEntityManager().addEntity(new AMM1D((int)x + 10, (int)y - 30, 12, 4, (shootAngle - r.accuracy) + Math.random()*(r.accuracy*2), c));
 						} else if (item.getName().equals("desert eagle")) {
-							c.getGameCamera().shake(1);
+							//c.getGameCamera().shake(1);
 							AudioPlayer.playAudio("audio/desertEagle.wav");
 							c.getGameState().getWorldGenerator().getEntityManager().addEntity(new AMM1D((int)x + 10, (int)y - 30, 12, 4, (shootAngle - r.accuracy) + Math.random()*(r.accuracy*2), c));
 						} else if (item.getName().equals("wooden bow") || item.getName().equals("bronze bow") || item.getName().equals("zinc bow") || item.getName().equals("iron bow")) {
@@ -898,7 +898,8 @@ public class Player extends Creatures {
 									tool.setCurrentEndurance(tool.getCurrentEndurance()-1);
 									if(tool.getCurrentEndurance() <= 0) {
 										inventory.removeItem(tool);
-										hands.setHand(null);;
+										hands.setHand(null);
+										AudioPlayer.playAudio("audio/equipmentBreak.wav");
 									}
 								}
 							}else if(e.getRequiredTool().equals("axe") && item.getName().equals("wooden axe") || item.getName().equals("stone axe") || item.getName().equals("chainsaw")) {
@@ -907,7 +908,8 @@ public class Player extends Creatures {
 								tool.setCurrentEndurance(tool.getCurrentEndurance()-1);
 								if(tool.getCurrentEndurance() <= 0) {
 									inventory.removeItem(tool);
-									hands.setHand(null);;
+									hands.setHand(null);
+									AudioPlayer.playAudio("audio/equipmentBreak.wav");
 								}
 							}else if(e.getRequiredTool().equals("pickaxe") && item.getName().equals("wooden pickaxe") || item.getName().equals("stone pickaxe") || item.getName().equals("drill")) {
 								e.hurt(item.getDamage()); //use tool damage
@@ -915,7 +917,8 @@ public class Player extends Creatures {
 								tool.setCurrentEndurance(tool.getCurrentEndurance()-1);
 								if(tool.getCurrentEndurance() <= 0) {
 									inventory.removeItem(tool);
-									hands.setHand(null);;
+									hands.setHand(null);
+									AudioPlayer.playAudio("audio/equipmentBreak.wav");
 								}
 							}
 							
@@ -1123,6 +1126,7 @@ public class Player extends Creatures {
 							if (weapon.getCurrentEndurance() <= 0) {
 								inventory.removeItem(weapon);
 								hands.setHand(null);
+								AudioPlayer.playAudio("audio/equipmentBreak.wav");
 							}
 							
 							if (e.getType().equals("creatures")) {
@@ -1145,6 +1149,7 @@ public class Player extends Creatures {
 							if (tool.getCurrentEndurance() <= 0) {
 								inventory.removeItem(tool);
 								hands.setHand(null);
+								AudioPlayer.playAudio("audio/equipmentBreak.wav");
 							}
 							
 							if (e.getType().equals("creatures")) {

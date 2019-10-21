@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 import java.util.Random;
 
 import alphaPackage.ControlCenter;
+import audio.AudioPlayer;
 import entity.Entity;
 import graphics.Animation;
 import graphics.Assets;
@@ -260,6 +261,7 @@ public abstract class Creatures extends Entity {
                                 Player.getPlayerData().getEquipment().helmet.currentEndurance-=1;
                                 if(Player.getPlayerData().getEquipment().helmet.currentEndurance <= 0) {
                                         Player.getPlayerData().getInventory().removeItem(Player.getPlayerData().getEquipment().helmet);
+                                        AudioPlayer.playAudio("audio/equipmentBreak.wav");
                                 }
                         } else {
                                 damageArmor();
@@ -269,6 +271,7 @@ public abstract class Creatures extends Entity {
                                 Player.getPlayerData().getEquipment().chest.currentEndurance-=1;
                                 if(Player.getPlayerData().getEquipment().chest.currentEndurance <= 0) {
                                         Player.getPlayerData().getInventory().removeItem(Player.getPlayerData().getEquipment().chest);
+                                        AudioPlayer.playAudio("audio/equipmentBreak.wav");
                                 }
                         } else {
                                 damageArmor();
@@ -278,6 +281,7 @@ public abstract class Creatures extends Entity {
                                 Player.getPlayerData().getEquipment().leg.currentEndurance-=1;
                                 if(Player.getPlayerData().getEquipment().leg.currentEndurance <= 0) {
                                         Player.getPlayerData().getInventory().removeItem(Player.getPlayerData().getEquipment().leg);
+                                        AudioPlayer.playAudio("audio/equipmentBreak.wav");
                                 }
                         } else {
                                 damageArmor();
@@ -287,6 +291,7 @@ public abstract class Creatures extends Entity {
                                 Player.getPlayerData().getEquipment().boot.currentEndurance-=1;
                                 if(Player.getPlayerData().getEquipment().boot.currentEndurance <= 0) {
                                         Player.getPlayerData().getInventory().removeItem(Player.getPlayerData().getEquipment().boot);
+                                        AudioPlayer.playAudio("audio/equipmentBreak.wav");
                                 }
                         } else {
                                 damageArmor();
@@ -296,6 +301,7 @@ public abstract class Creatures extends Entity {
                                 Player.getPlayerData().getEquipment().gauntlet.currentEndurance-=1;
                                 if(Player.getPlayerData().getEquipment().gauntlet.currentEndurance <= 0) {
                                         Player.getPlayerData().getInventory().removeItem(Player.getPlayerData().getEquipment().gauntlet);
+                                        AudioPlayer.playAudio("audio/equipmentBreak.wav");
                                 }
                         } else {
                                 damageArmor();
