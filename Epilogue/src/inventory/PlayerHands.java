@@ -421,7 +421,7 @@ public class PlayerHands {
 					
 				g.fillRect(120, c.getHeight() - 45, (int) ranged.getAmmoPercentage()/2, 5);
 				
-			} else if(leftHand.getType().equals("torch")) {
+			} else if(rightHand.getType().equals("torch")) {
 				Torch torch = (Torch)leftHand;
 				g.setColor(Color.DARK_GRAY);
 				g.fillRect(50, c.getHeight() - 45, 50, 5);

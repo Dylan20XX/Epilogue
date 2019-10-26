@@ -201,7 +201,7 @@ public class Item {
 				&& c.getKeyManager().keyJustPressed(KeyEvent.VK_P)) {
 			if(c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator().getEntityManager().getPlayer().getInventory().addItem(this))
 				pickedUp = true;
-			AudioPlayer.playAudio("audio/craft.wav");
+			AudioPlayer.playAudio("audio/pickup.wav");
 			
 		}
 
