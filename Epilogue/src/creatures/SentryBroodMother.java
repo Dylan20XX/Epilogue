@@ -46,7 +46,7 @@ public class SentryBroodMother extends Creatures {
 		left = new Animation(200, Assets.sentryBroodMother, true);
 		right = new Animation(200, CT.flip(Assets.sentryBroodMother), true);
 
-		combatXPDropped = (int)(200 * (double)Player.getPlayerData().getIntelligence()/10);
+		combatXPDropped = (int)(500 + Math.random()*(Player.getPlayerData().getIntelligence()*2));
 
 	}
 

@@ -39,7 +39,7 @@ public class WonderingGhoul extends Creatures {
 		right = new Animation(animationSpeed, Assets.ghoul, true);
 		left = new Animation(animationSpeed, CT.flip(Assets.ghoul), true);
 
-		combatXPDropped = (int)(5 * (double)Player.getPlayerData().getIntelligence()/10);
+		combatXPDropped = (int)(Math.random()*(Player.getPlayerData().getIntelligence()*2))/2;
 		
 	}
 

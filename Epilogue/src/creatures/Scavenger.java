@@ -42,7 +42,7 @@ public class Scavenger extends Creatures {
 		scavengerWalkLeft = new Animation(200, Assets.scavenger, true);
 		scavengerWalkRight = new Animation(200, CT.flip(Assets.scavenger), true);
 		
-		combatXPDropped = (int)(10 * (double)Player.getPlayerData().getIntelligence()/10);
+		combatXPDropped = (int)(2 + Math.random()*(Player.getPlayerData().getIntelligence()*2));
 		
 	}
 	

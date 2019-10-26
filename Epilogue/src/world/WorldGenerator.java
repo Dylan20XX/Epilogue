@@ -2027,8 +2027,11 @@ public class WorldGenerator {
 			MusicPlayer.playMusic("audio/ScorchedEarth.wav");
 		}
 		
-		if(time == 255)
+		if(time == 255) {
 			dayNum++;
+			Player.getPlayerData().setBasicSurvivalXP(Player.getPlayerData().getBasicSurvivalXP() + 
+					Player.getPlayerData().getIntelligence() + CT.random(1, Player.getPlayerData().getIntelligence() + 1));
+		}
 		
 		//Have a chance of starting a blood moon after day 5
 		if(time == 90 && dayNum > 5) {
@@ -2080,6 +2083,8 @@ public class WorldGenerator {
 					Player.getPlayerData().hunger -= Player.getPlayerData().hunger/4;
 					Player.getPlayerData().thirst -= Player.getPlayerData().thirst/4;
 					time += 250;
+					Player.getPlayerData().setBasicSurvivalXP(Player.getPlayerData().getBasicSurvivalXP() + 
+							Player.getPlayerData().getIntelligence() + CT.random(1, Player.getPlayerData().getIntelligence() + 1));
 					BackgroundPlayer.playAudio("audio/ScorchedEarth.wav");
 					Player.getPlayerData().overnightFood();
 					Player.getPlayerData().setCanMove(true);
@@ -3363,6 +3368,8 @@ public class WorldGenerator {
 		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_F5)) { //move forward through time
 			time++;
 			dayNum++;
+			Player.getPlayerData().setBasicSurvivalXP(Player.getPlayerData().getBasicSurvivalXP() + 
+					Player.getPlayerData().getIntelligence() + CT.random(1, Player.getPlayerData().getIntelligence() + 1));
 		}
 		//test - press o while in inventory to show item to string method
 		if (c.getKeyManager().keyJustPressed(KeyEvent.VK_O)) {

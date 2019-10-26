@@ -45,6 +45,7 @@ public class Bush extends StaticEntity{
 		health = 200;
 		resistance = 50;
 
+		buildingXPGiven = (int)(Math.random()*(Player.getPlayerData().getIntelligence()*2));
 
 	}
 

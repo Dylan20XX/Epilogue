@@ -35,7 +35,7 @@ public class RedGiantBeetle extends Creatures{
 		left = new Animation(100, Assets.beetleRedLeft, true);
 		right = new Animation(100, Assets.beetleRedRight, true);
 
-		combatXPDropped = (int)(30 * (double)Player.getPlayerData().getIntelligence()/10);
+		combatXPDropped = (int)(20 + Math.random()*(Player.getPlayerData().getIntelligence()*2));
 		
 	}
 

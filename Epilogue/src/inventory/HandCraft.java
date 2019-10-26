@@ -262,8 +262,7 @@ public class HandCraft {
 
 		//Give cooking xp to player if food was made
 		if (craftableItem instanceof Food)
-			Player.getPlayerData().setCookingXP(Player.getPlayerData().getCookingXP() + ((Food)craftableItem).cookingXPGiven);
-
+			Player.getPlayerData().setCookingXP(Player.getPlayerData().getCookingXP() + (int)Math.random()*(Player.getPlayerData().getIntelligence()*2));
 
 		currentlyCrafting = false; 
 		craftTimer = 0; // cool down resets

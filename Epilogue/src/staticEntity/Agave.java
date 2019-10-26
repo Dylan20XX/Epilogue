@@ -7,6 +7,7 @@ import java.awt.image.BufferedImage;
 import java.util.Random;
 
 import alphaPackage.ControlCenter;
+import creatures.Player;
 import graphics.Assets;
 import graphics.CT;
 import items.Food;
@@ -52,6 +53,8 @@ public class Agave extends StaticEntity {
 		
 		deathImage = agave;
 		requiredTool = "axe";
+		
+		buildingXPGiven = (int)(Math.random()*(Player.getPlayerData().getIntelligence()*2));
 
 	}
 

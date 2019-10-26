@@ -37,7 +37,7 @@ public class SentryMajor extends Creatures {
 		left = new Animation(125, Assets.sentryMajor, true);
 		right = new Animation(125, CT.flip(Assets.sentryMajor), true);
 		
-		combatXPDropped = (int)(20 * (double)Player.getPlayerData().getIntelligence()/10);
+		combatXPDropped = (int)(5 + Math.random()*(Player.getPlayerData().getIntelligence()*2));
 
 	}
 

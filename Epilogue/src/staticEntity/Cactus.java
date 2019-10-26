@@ -55,6 +55,8 @@ public class Cactus extends StaticEntity {
 		
 		damage = 65;
 		knockValue = 10;
+		
+		buildingXPGiven = (int)(Math.random()*(Player.getPlayerData().getIntelligence()*2));
 
 	}
 

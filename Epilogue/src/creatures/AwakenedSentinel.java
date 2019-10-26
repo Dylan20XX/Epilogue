@@ -70,7 +70,7 @@ public class AwakenedSentinel extends Creatures {
 		left = new Animation(475, Assets.awakenedSentinel, true);
 		right = new Animation(475, CT.flip(Assets.awakenedSentinel), true);
 		
-		combatXPDropped = (int)(200 * (double)Player.getPlayerData().getIntelligence()/10);
+		combatXPDropped = (int)(500 + Math.random()*(Player.getPlayerData().getIntelligence()*2));
 
 	}
 

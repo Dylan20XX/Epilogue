@@ -7,6 +7,7 @@ import java.awt.image.BufferedImage;
 import java.util.Random;
 
 import alphaPackage.ControlCenter;
+import creatures.Player;
 import graphics.Assets;
 import graphics.CT;
 import items.Food;
@@ -96,6 +97,8 @@ public class TrashBag extends StaticEntity {
 
 		health = CT.random(1, 750);
 		resistance = 30;
+		
+		buildingXPGiven = 1;
 
 	}
 

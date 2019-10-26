@@ -34,7 +34,7 @@ public class Goat extends Creatures {
 		left = new Animation(125, Assets.goat, true);
 		right = new Animation(125, CT.flip(Assets.goat), true);
 		
-		combatXPDropped = (int)(10 * (double)Player.getPlayerData().getIntelligence()/10);
+		combatXPDropped = (int)(3 + Math.random()*(Player.getPlayerData().getIntelligence()*2));
 
 	}
 

@@ -41,7 +41,7 @@ public class SandCreep extends Creatures {
 		left = new Animation(200, Assets.sandCreepling, true);
 		right = new Animation(200, Assets.sandCreepling, true);
 
-		combatXPDropped = (int)(15 * (double)Player.getPlayerData().getIntelligence()/10);
+		combatXPDropped = (int)(5 + Math.random()*(Player.getPlayerData().getIntelligence()*2));
 		
 	}
 

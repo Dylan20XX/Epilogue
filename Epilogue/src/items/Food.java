@@ -14,7 +14,6 @@ public class Food extends Item {
         public int hunger, thirst;//14000
         public int currentFreshness, freshness;
         public String food;
-        public int cookingXPGiven = 1;
         
         // food
         public static Food rawChickenItem = new Food(Assets.rawChicken, "raw chicken", 800, 1.5, 10, 35, 50, 5, "raw", 140);

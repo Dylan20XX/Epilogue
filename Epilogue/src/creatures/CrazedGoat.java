@@ -33,7 +33,7 @@ public class CrazedGoat extends Creatures {
 		left = new Animation(125, Assets.crazedGoat, true);
 		right = new Animation(125, CT.flip(Assets.crazedGoat), true);
 		
-		combatXPDropped = (int)(10 * (double)Player.getPlayerData().getIntelligence()/10);
+		combatXPDropped = (int)(5 + Math.random()*(Player.getPlayerData().getIntelligence()*2));
 
 	}
 

@@ -38,7 +38,7 @@ public class Boar extends Creatures {
 		left = new Animation(300, Assets.boar, true);
 		right = new Animation(300, CT.flip(Assets.boar), true);
 		
-		combatXPDropped = (int)(10 * (double)Player.getPlayerData().getIntelligence()/10);
+		combatXPDropped = (int)(5 + Math.random()*(Player.getPlayerData().getIntelligence()*2));
 
 	}
 

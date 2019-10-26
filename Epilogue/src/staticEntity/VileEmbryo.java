@@ -7,6 +7,7 @@ import java.awt.image.BufferedImage;
 import java.util.Random;
 
 import alphaPackage.ControlCenter;
+import creatures.Player;
 import graphics.Animation;
 import graphics.Assets;
 import graphics.CT;
@@ -46,6 +47,8 @@ public class VileEmbryo extends StaticEntity {
 
 		health = 400;
 
+		buildingXPGiven = (int)(Math.random()*(Player.getPlayerData().getIntelligence()*3));
+		
 	}
 
 	@Override

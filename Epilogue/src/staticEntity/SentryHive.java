@@ -7,6 +7,7 @@ import java.awt.Rectangle;
 import java.util.Random;
 
 import alphaPackage.ControlCenter;
+import creatures.Player;
 import graphics.Animation;
 import graphics.Assets;
 import graphics.CT;
@@ -36,6 +37,9 @@ public class SentryHive extends StaticEntity {
 		health = 8000;
 		resistance = 30;
 		hive = new Animation(400, Assets.hive, true);
+		
+		buildingXPGiven = (int)(Math.random()*(Player.getPlayerData().getIntelligence()*2)*2);
+		
 	}
 
 	@Override

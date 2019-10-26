@@ -45,6 +45,8 @@ public class SpineBush extends StaticEntity{
 		damage = 50;
 		knockValue = 10;
 
+		buildingXPGiven = (int)(Math.random()*(Player.getPlayerData().getIntelligence()*2));
+		
 	}
 
 	@Override
