@@ -2015,6 +2015,7 @@ public class WorldGenerator {
 
 	}
 	
+	//
 	private void timeControl() {
 		timeTimer += System.currentTimeMillis() - lastChangeTimer;
 		lastChangeTimer = System.currentTimeMillis();
