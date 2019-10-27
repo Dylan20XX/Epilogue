@@ -121,6 +121,7 @@ public class CharacterSelectionState extends State {
 				State.setState(c.getMenuState().getWorldSelectState().gameState);
 				
 				c.getMenuState().getWorldSelectState().readDataFile(WorldCreationState.worldName);
+				c.getMenuState().getWorldSelectState().setSelectedWorldName(WorldCreationState.worldName);
 				c.getMenuState().getWorldSelectState().gameState.getWorldGenerator().createPlayer();
 
 				loading = false;

@@ -9,6 +9,7 @@ import java.awt.Shape;
 import java.awt.event.KeyEvent;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.util.Random;
 
 import alphaPackage.ControlCenter;
@@ -66,7 +67,7 @@ public class Player extends Creatures {
 	private HandCraft handCraft;
 
 	private double runSpeed;
-	public boolean running = false;;
+	public boolean running = false;
 
 	private long lastAttackTimer, attackCooldown = 800, attackTimer = 0; // attack speed every 0.5s
 	public long lastEatTimer, eatCooldown = 1000, drinkCooldown = 150, drinkAudioTimer = 0, lastdrinkAudioTimer,
@@ -2382,8 +2383,13 @@ public class Player extends Creatures {
 
 	@Override
 	public void Die() {
-		c.getGameState().getWorldGenerator().worldSaver.saveWorld();
-        c.getGameState().DeathScreen();
+		String worldData = String.format("worldData/%s", c.getMenuState().getWorldSelectState().getSelectedWorldName());
+		File worldDataFilepath = new File(worldData);
+		//Player Die() method is also called from effect manager when bleeding causing error if world is deleted
+		if(worldDataFilepath.exists()) { 
+			c.getGameState().getWorldGenerator().worldSaver.saveWorld();
+	        c.getGameState().DeathScreen();
+		}
 	}
 
 	@Override

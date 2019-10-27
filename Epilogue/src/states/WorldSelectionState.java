@@ -321,7 +321,7 @@ public class WorldSelectionState extends State {
 
 	}
 
-	private void deleteWorld() { //delete the world files
+	public void deleteWorld() { //delete the world files
 
 		String worldData = String.format("worldData/%s", selectedWorldName);
 		File worldDataFilepath = new File(worldData);
@@ -380,8 +380,9 @@ public class WorldSelectionState extends State {
 		String file = WorldInput.loadFileAsString(String.format("worldData/%s",selectedWorldName));
 		String[] tokens = file.split("\\s+"); // split up every number into the string tokens array
 
-		//gameMode = WorldInput.parseInt(tokens[0]);
-		//worldSize = WorldInput.parseInt(tokens[1]);
+		gameMode = WorldInput.parseInt(tokens[0]);
+		System.out.println("game mode = " + gameMode);
+		//worldSize = WorldInput.parseInt (tokens[1]);
 		//compeleted = WorldInput.parseInt(tokens[2]);
 		charName = tokens[3];
 		savedHealth = WorldInput.parseInt(tokens[4]);
@@ -932,6 +933,14 @@ public class WorldSelectionState extends State {
 
 	public void setBuildingXP(int buildingXP) {
 		this.buildingXP = buildingXP;
+	}
+
+	public int getGameMode() {
+		return gameMode;
+	}
+
+	public void setGameMode(int gameMode) {
+		this.gameMode = gameMode;
 	}
 
 }

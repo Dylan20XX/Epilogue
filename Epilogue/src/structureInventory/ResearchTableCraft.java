@@ -892,7 +892,7 @@ public class ResearchTableCraft {
 					
 					CustomTextWritter.drawString(g, "hunger restore: " + food.getHunger(),
 							(int) (870 * c.getScaleValue()), (int) (460 * c.getScaleValue()),
-							active, Color.WHITE, Assets.font21);
+							active, Color.WHITE, Assets.font16);
 					CustomTextWritter.drawString(g, "thirst restore: " + food.getThirst(),
 							(int) (870 * c.getScaleValue()), (int) (475 * c.getScaleValue()),
 							active, Color.WHITE, Assets.font16);
@@ -961,6 +961,10 @@ public class ResearchTableCraft {
 				if(selectedRecipe.getBuildingXP() != 0)
 					CustomTextWritter.drawString(g, "Building XP: " + selectedRecipe.getBuildingXP(), (int) (870 * c.getScaleValue()),
 							(int) (535 * c.getScaleValue()), active, Color.WHITE, Assets.font16);
+				
+				if(!isRecipeLearnable(selectedRecipe))
+					CustomTextWritter.drawString(g, "Not Enough XP", (int) (870 * c.getScaleValue()),
+							(int) (565 * c.getScaleValue()), active, Color.WHITE, Assets.font21);
 
 			}
 

@@ -68,6 +68,9 @@ public class GameState extends State{
                         g.fillRect(0, 0, c.width, c.height);
                         g.drawImage(Assets.gameMenu, 475, 125, 450, 525, null);
                     CustomTextWritter.drawString(g, "You Died", 550, 250, false, Color.white, Assets.font36);
+                    if(c.getMenuState().getWorldSelectState().getGameMode() == 1) {
+                    	CustomTextWritter.drawString(g, "World Deleted", 550, 350, false, Color.white, Assets.font36);
+                    }
                     uiManager.render(g);
                 }
                 g.dispose();
@@ -77,8 +80,8 @@ public class GameState extends State{
                 isDead = true;
                 uiManager = new UIManager();
                 c.getMouseManager().setUIManager(uiManager);
-                
-                //if(c.getGameState().getWorldGenerator().getGameMode() == 0) {
+                c.getMenuState().getWorldSelectState().readDataFile(c.getMenuState().getWorldSelectState().getSelectedWorldName());
+                if(c.getMenuState().getWorldSelectState().getGameMode() == 0) { //if game mode is normal, allow the player to continue
 	                uiManager.addObject(
 	                                new ImageButton(550, 400, 300, 50, Assets.resume, new ClickListener() {
 	
@@ -90,7 +93,10 @@ public class GameState extends State{
 	                                        }
 	
 	                                }));
-                //}
+	                System.out.println("Game mode = " + c.getMenuState().getWorldSelectState().getGameMode());
+                } else if(c.getMenuState().getWorldSelectState().getGameMode() == 1) { //if the game mode is hardcore, DELETE THE WORLD
+                	c.getMenuState().getWorldSelectState().deleteWorld();
+                }
                 uiManager.addObject(
                         new ImageButton(550, 500, 300, 50, Assets.exitToMenu, new ClickListener() {
 
@@ -212,7 +218,7 @@ public class GameState extends State{
         }
         
         public void exitToMenu() {
-                 c.getMouseManager().setUIManager(c.getMenuState().getUiManager());
+             c.getMouseManager().setUIManager(c.getMenuState().getUiManager());
              MusicPlayer.playMusic("audio/menu.wav");
              State.setState(c.getMenuState());
         }
