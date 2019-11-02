@@ -19,19 +19,19 @@ public class Tool extends Item {
 	protected int endurance;
 	
 	//Tools
-	//texture, name, id, weight, damage, aSpeed, intimidation, range, volume, power, currentEndurance, endurance
+	//texture, name, type, id, weight, damage, aSpeed, intimidation, range, volume, power, currentEndurance, endurance
 
-	public static Tool woodenAxeTool = new Tool(Assets.woodenAxe, "wooden axe", "axe", 900, 1.4, 35, 1200, 2, 30, 30, 3, 50, 50);
-	public static Tool woodenPickaxeTool = new Tool(Assets.woodenAxe, "wooden pickaxe", "pickaxe", 901, 1.4, 30, 1200, 2, 30, 30, 4, 50, 50);
-	public static Tool stoneAxeTool = new Tool(Assets.stoneAxe, "stone axe", "axe", 902, 1.8, 50, 1200, 2, 30, 30, 4, 100, 100);
-	public static Tool stonePickaxeTool = new Tool(Assets.stonePick, "stone pickaxe", "pickaxe", 903, 1.8, 35, 1200, 2, 30, 30, 5, 85, 85);
-	public static Tool bronzeAxeTool = new Tool(Assets.bronzeAxe, "bronze axe","axe",  904, 2.2, 60, 1200, 2, 30, 30, 5, 150, 150);
-	public static Tool bronzePickaxeTool = new Tool(Assets.bronzePick, "bronze pickaxe", "pickaxe", 905, 2.2, 50, 1200, 2, 30, 30, 6, 150, 150);
-	public static Tool zincAxeTool = new Tool(Assets.zincAxe, "zinc axe", "axe", 906, 3.5, 78, 1200, 2, 30, 30, 6, 280, 280);
-	public static Tool zincPickaxeTool = new Tool(Assets.zincPick, "zinc pickaxe", "pickaxe", 907, 3.5, 65, 1200, 2, 30, 30, 7, 280, 280);
-	public static Tool drillTool = new Tool(Assets.drill, "drill", "pickaxe", 908, 5.9, 45, 350, 2, 1, 65, 8, 580, 580);
-	public static Tool chainsawTool = new Tool(Assets.chainsaw, "chainsaw", "axe", 909, 4.2, 58, 350, 2, 1, 65, 7, 580, 580);
-	public static Tool shovelTool = new Tool(Assets.shovel, "shovel", "shovel", 910, 1.8, 120, 1200, 2, 1, 60, 6, 100, 100);
+	public static Tool woodenAxeTool = new Tool(Assets.woodenAxe, "wooden axe", "axe", 900, 1.4, 35, 1200, 2, 90, 30, 4, 50, 50);
+	public static Tool woodenPickaxeTool = new Tool(Assets.woodenAxe, "wooden pickaxe", "pickaxe", 901, 1.4, 30, 1200, 2, 90, 30, 4, 50, 50);
+	public static Tool stoneAxeTool = new Tool(Assets.stoneAxe, "stone axe", "axe", 902, 1.8, 50, 1200, 2, 90, 30, 5, 100, 100);
+	public static Tool stonePickaxeTool = new Tool(Assets.stonePick, "stone pickaxe", "pickaxe", 903, 1.8, 35, 1200, 2, 90, 30, 5, 85, 85);
+	public static Tool bronzeAxeTool = new Tool(Assets.bronzeAxe, "bronze axe","axe",  904, 2.2, 60, 1200, 2, 90, 30, 6, 150, 150);
+	public static Tool bronzePickaxeTool = new Tool(Assets.bronzePick, "bronze pickaxe", "pickaxe", 905, 2.2, 50, 1200, 2, 90, 30, 6, 150, 150);
+	public static Tool zincAxeTool = new Tool(Assets.zincAxe, "zinc axe", "axe", 906, 3.5, 78, 1200, 2, 90, 30, 7, 280, 280);
+	public static Tool zincPickaxeTool = new Tool(Assets.zincPick, "zinc pickaxe", "pickaxe", 907, 3.5, 65, 1200, 2, 90, 30, 7, 280, 280);
+	public static Tool drillTool = new Tool(Assets.drill, "drill", "pickaxe", 908, 5.9, 45, 350, 2, 25, 65, 8, 580, 580);
+	public static Tool chainsawTool = new Tool(Assets.chainsaw, "chainsaw", "axe", 909, 4.2, 58, 350, 2, 45, 65, 7, 580, 580);
+	public static Tool shovelTool = new Tool(Assets.shovel, "shovel", "shovel", 910, 1.8, 120, 1200, 2, 20, 60, 6, 100, 100);
 	
 	public Tool(BufferedImage texture, String name, String type, int id, double weight, int damage,
 			double aSpeed, int intimidation, double range, int volume, double power, int currentEndurance, int endurance) {

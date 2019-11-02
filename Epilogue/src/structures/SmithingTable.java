@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 import alphaPackage.ControlCenter;
+import audio.AudioPlayer;
 import creatures.Player;
 import graphics.Assets;
 import graphics.CT;
@@ -40,8 +41,9 @@ public class SmithingTable extends StaticEntity{
 		
 		deathImage = Assets.smithingTable;
 
-		health = 300;
+		health = 400;
 		resistance  = 10;
+		placed = true;
 		
 	}
 
@@ -60,6 +62,7 @@ public class SmithingTable extends StaticEntity{
 
 	@Override
 	public void Die() {
+		AudioPlayer.playAudio("audio/structureBreak.wav");
 		for(int i = 0; i < CT.random(6, 12); i++)
 			c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator()
 			.getItemManager().addItem(Item.woodenPlankItem.createNew((int) x + bounds.x + CT.random(0, bounds.width), (int) y + bounds.y + CT.random(0, bounds.height)));

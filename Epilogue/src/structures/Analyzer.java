@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 import alphaPackage.ControlCenter;
+import audio.AudioPlayer;
 import creatures.Player;
 import graphics.Assets;
 import staticEntity.StaticEntity;
@@ -42,6 +43,7 @@ public class Analyzer extends StaticEntity{
 		
 		health = 300;
 		resistance  = 10;
+		placed = true;
 
 		craft = new AnalyzerCraft(c);
 	}
@@ -68,6 +70,8 @@ public class Analyzer extends StaticEntity{
 	@Override
 	public void Die() {
 
+		AudioPlayer.playAudio("audio/structureBreak.wav");
+		
 	}
 
 	@Override

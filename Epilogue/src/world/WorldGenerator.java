@@ -2589,11 +2589,12 @@ public class WorldGenerator {
 
 			}
 			
-		}else {
+		} else {
 			
 			//Creature Spawning
-			int rand = r.nextInt(5);  //detremines chances of creature spawning
-			if(rand == 1 && entityManager.getNumCreatures() < EntityManager.MAX_CREATURES) { //if rand = 1 attept to spawn a creature
+			
+				
+			if(entityManager.getNumCreatures() < EntityManager.MAX_CREATURES) { //if rand = 1 attept to spawn a creature
 
 				//creatures spawn in 50 x 50 range around player - currently set to about a 40x40 range
 				//int x = r.nextInt(80) - 40;
@@ -2653,8 +2654,10 @@ public class WorldGenerator {
 						break;
 					}
 				}
-
-				if(canSpawn) {
+				int rand = r.nextInt(4);  //detremines chances of creature spawning
+				if(biome == 5)
+					rand = 1;
+				if(canSpawn && rand == 1) {
 
 					if(biome == 1) { //natural biome
 						if(creatureType < 15) {
@@ -2713,7 +2716,7 @@ public class WorldGenerator {
 							entityManager.addCreature(new Scavenger(spawnX, spawnY, c));
 						}
 					} else if(biome == 5) { //ruins biome
-						if(creatureType < 10) {
+						if(creatureType < 5) {
 							entityManager.addCreature(new Scavenger(spawnX, spawnY, c));
 						} else 
 							entityManager.addCreature(new WonderingGhoul(spawnX, spawnY, c));
@@ -2729,14 +2732,16 @@ public class WorldGenerator {
 							entityManager.addCreature(new RedGiantBeetle(spawnX, spawnY, c));
 						} else if(creatureType < 10) {
 							entityManager.addCreature(new GiantBeetle(spawnX, spawnY, c));
-						} else if(creatureType < 13) {
+						} else if(creatureType < 12) {
 							entityManager.addCreature(new Chicken(spawnX, spawnY, c));
 						} else if(creatureType < 25) {
 							entityManager.addCreature(new MutatedChicken(spawnX, spawnY, c));
-						} else if(creatureType < 40) {
+						} else if(creatureType < 35) {
 							entityManager.addCreature(new Boar(spawnX, spawnY, c));
 						} else if(creatureType < 55) {
 							entityManager.addCreature(new MutatedDeer(spawnX, spawnY, c));
+						} else if(creatureType < 58) {
+							entityManager.addCreature(new Deer(spawnX, spawnY, c));
 						} else if(creatureType < 70) {
 							entityManager.addCreature(new Scavenger(spawnX, spawnY, c));
 						} else if(creatureType < 80) {

@@ -27,6 +27,7 @@ public class DesertScorpion extends Creatures {
 		resistance = 40;
 		knockValue = 10;
 		attackBoundSize = 400;
+		attackCooldown = 1500;
 		name = "desertScorpion";
 		type = "creatures";
 		weight = 85;

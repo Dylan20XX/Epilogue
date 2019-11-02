@@ -23,6 +23,7 @@ public class RedGiantBeetle extends Creatures{
 		resistance = 95;
 		knockValue = 18;
 		attackBoundSize = 800;
+		attackCooldown = 1800;
 		name = "redGiantBeetle";
 		type = "creatures";
 		weight = 155;

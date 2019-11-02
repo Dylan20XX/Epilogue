@@ -25,6 +25,7 @@ public abstract class StaticEntity extends Entity {
 
 	protected BufferedImage deathImage;
 	protected int buildingXPGiven;
+	protected boolean placed = false;
 
 	// constructor takes in the properties of a static entity
 	public StaticEntity(double x, double y, int width, int height, ControlCenter c) {
@@ -34,6 +35,7 @@ public abstract class StaticEntity extends Entity {
 		deathImage = Assets.rock;
 		type = "static entity";
 		buildingXPGiven = 1;
+		
 	}
 
 	@Override
@@ -102,6 +104,78 @@ public abstract class StaticEntity extends Entity {
 
 		}
 
+	}
+
+	public long getLastAttackTimer() {
+		return lastAttackTimer;
+	}
+
+	public void setLastAttackTimer(long lastAttackTimer) {
+		this.lastAttackTimer = lastAttackTimer;
+	}
+
+	public long getAttackCooldown() {
+		return AttackCooldown;
+	}
+
+	public void setAttackCooldown(long attackCooldown) {
+		AttackCooldown = attackCooldown;
+	}
+
+	public long getAttackTimer() {
+		return AttackTimer;
+	}
+
+	public void setAttackTimer(long attackTimer) {
+		AttackTimer = attackTimer;
+	}
+
+	public int getDamage() {
+		return damage;
+	}
+
+	public void setDamage(int damage) {
+		this.damage = damage;
+	}
+
+	public int getPlacex() {
+		return placex;
+	}
+
+	public void setPlacex(int placex) {
+		this.placex = placex;
+	}
+
+	public int getPlacey() {
+		return placey;
+	}
+
+	public void setPlacey(int placey) {
+		this.placey = placey;
+	}
+
+	public BufferedImage getDeathImage() {
+		return deathImage;
+	}
+
+	public void setDeathImage(BufferedImage deathImage) {
+		this.deathImage = deathImage;
+	}
+
+	public int getBuildingXPGiven() {
+		return buildingXPGiven;
+	}
+
+	public void setBuildingXPGiven(int buildingXPGiven) {
+		this.buildingXPGiven = buildingXPGiven;
+	}
+
+	public boolean isPlaced() {
+		return placed;
+	}
+
+	public void setPlaced(boolean placed) {
+		this.placed = placed;
 	}
 
 }

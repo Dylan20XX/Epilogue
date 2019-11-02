@@ -13,6 +13,7 @@ import graphics.CT;
 import graphics.DeathAnimation;
 import inventory.Effect;
 import inventory.EffectManager;
+import staticEntity.StaticEntity;
 import tiles.Tile;
 
 /*
@@ -30,6 +31,7 @@ public abstract class Creatures extends Entity {
 			DEFAULT_CREATURE_HEIGHT = (int) (64 * ControlCenter.scaleValue), DEFAULT_CREATURE_DAMAGE = 100;
 	protected long lastMoveTimer, moveCooldown = 100, moveTimer = moveCooldown;
 	protected long lastAttackTimer, AttackCooldown = 800, AttackTimer = moveCooldown;
+	protected long lastattackTimer, attackCooldown = 1200, attackTimer = 0; //hostile creature attack timer
 	protected double velX, velY;
 
 	protected double speed;
@@ -345,11 +347,12 @@ public abstract class Creatures extends Entity {
 
 	}
 
-	public void chase(double factor) {
+	public void chase (double factor) {
 
 		chasing = true;
 
 		if (canMove) {
+			attackStructure();
 			if (c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator().getEntityManager().getPlayer()
 					.getBounds().intersects(attackBound())) {
 
@@ -445,6 +448,36 @@ public abstract class Creatures extends Entity {
 			}, 70);
 		}
 
+	}
+	
+	public void attackStructure() {
+		
+		attackTimer += System.currentTimeMillis() - lastAttackTimer;
+		lastAttackTimer = System.currentTimeMillis();
+
+		if (attackTimer < attackCooldown)
+			return;
+		
+		for(int i = 0; i < c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator().getEntityManager().getEntitiesInBound().size(); i++) {
+			
+			Entity e = c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator().getEntityManager().getEntitiesInBound().get(i);
+			if(e.equals(this)) {
+                continue;
+            }
+            if(e.getBounds().intersects(damageBound()) && e instanceof StaticEntity && chasing) {
+            	StaticEntity s = (StaticEntity)e;
+            	
+            	if(s.isPlaced()) {
+            		AudioPlayer.playAudio("audio/hitPlaced.wav");
+            		e.hurt(damage);
+            	}
+            	
+            	attackTimer = 0; // cool down resets
+            }
+            
+		}
+		//(e.getType().equals("wall") || e.getType().equals("gate")
+		
 	}
 
 	public void escape(Rectangle bound, boolean stop) {

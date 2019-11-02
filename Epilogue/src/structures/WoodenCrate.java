@@ -21,6 +21,7 @@ public class WoodenCrate extends Chest{
 		super(x, y, 300, 10, 500, Assets.woodenCrate, c);
 		
 		deathImage = Assets.woodenCrate;
+		health = 500;
 		
 	}
 
@@ -34,14 +35,6 @@ public class WoodenCrate extends Chest{
 
 		g.drawImage(Assets.woodenCrate, (int)(x - c.getGameCamera().getxOffset()), (int)(y - c.getGameCamera().getyOffset()),
 				width, height, null);
-
-		//drawing down the bounding box
-		Graphics2D g2d = (Graphics2D)g;
-		g.setColor(Color.BLUE);
-		g2d.draw(getBounds());
-
-		//inventory.render(g);
-
 
 	}
 

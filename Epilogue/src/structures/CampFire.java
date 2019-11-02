@@ -11,6 +11,7 @@ import java.awt.geom.Point2D;
 import java.util.Random;
 
 import alphaPackage.ControlCenter;
+import audio.AudioPlayer;
 import creatures.Player;
 import graphics.Animation;
 import graphics.Assets;
@@ -52,6 +53,7 @@ public class CampFire extends StaticEntity {
 		health = 200;
 		resistance = 10;
 		curFuel = fuel;
+		placed = true;
 		
 		fire = new Animation(200, Assets.campfire, true);
 		
@@ -102,6 +104,7 @@ public class CampFire extends StaticEntity {
 	@Override
 	public void Die() {
 
+		AudioPlayer.playAudio("audio/structureBreak.wav");
 		c.getGameState().getWorldGenerator().removeLight(5, placex, placey, 1);
 		
 		c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator().getItemManager()

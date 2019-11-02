@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 import alphaPackage.ControlCenter;
+import audio.AudioPlayer;
 import creatures.Player;
 import graphics.Assets;
 import graphics.CT;
@@ -34,6 +35,7 @@ public class AutoCooker extends StaticEntity {
 		health = 450;
 		resistance = 40;
 		deathImage = Assets.autoCooker;
+		placed = true;
 
 		craft = new AutoCookerCraft(c);
 	}
@@ -85,6 +87,7 @@ public class AutoCooker extends StaticEntity {
 
 	@Override
 	public void Die() {
+		AudioPlayer.playAudio("audio/structureBreak.wav");
 		for (int i = 0; i < CT.random(5, 20); i++)
 			c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator().getItemManager()
 					.addItem(Item.rockItem.createNew((int) x + bounds.x + CT.random(0, bounds.width),

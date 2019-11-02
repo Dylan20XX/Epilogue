@@ -7,6 +7,7 @@ import java.awt.image.BufferedImage;
 import java.util.Random;
 
 import alphaPackage.ControlCenter;
+import audio.AudioPlayer;
 import creatures.Player;
 import graphics.Assets;
 import graphics.CT;
@@ -44,7 +45,8 @@ public class Chest extends StaticEntity{
 		health = h;
 		resistance = r;
 		name = "chest";
-
+		placed = true;
+		
 		appearence = app;
 		inventory = new ChestInventory(c, v);
 
@@ -66,6 +68,7 @@ public class Chest extends StaticEntity{
 	@Override
 	public void Die() {
 		
+		AudioPlayer.playAudio("audio/structureBreak.wav");
 		for(int i = 0; i < inventory.InventoryItemsList.size(); i++) {
 			
 			if(inventory.InventoryItemsList.get(i).isStackable()) {

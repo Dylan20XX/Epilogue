@@ -29,8 +29,8 @@ public class EntityManager {
 	//dont need this cuz the only creatures that can exist are ones in the entitiesOnScreen ArrayList
 	//public ArrayList<Entity> creatures;
 	
-	public static final int MAX_CREATURES = 50;
-	public static final int MAX_MATERIALS = 50;
+	public static final int MAX_CREATURES = 100;
+	public static final int MAX_MATERIALS = 100;
 	public int numCreatures = 0;
 	public int numMaterials = 0;
 

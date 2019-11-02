@@ -551,10 +551,10 @@ public class Recipe {
 		} 
 		
 		else if (id == 701) {
-			recipeRequirements.put(Item.woodenPlankItem.getId(), 15);
+			recipeRequirements.put(Item.woodenPlankItem.getId(), 12);
 			recipeRequirements.put(Item.workbenchToolkitItem.getId(), 1);
 		} else if (id == 702) {
-			recipeRequirements.put(Item.woodenPlankItem.getId(), 12);
+			recipeRequirements.put(Item.woodenPlankItem.getId(), 10);
 			recipeRequirements.put(Item.rockItem.getId(), 25);
 			recipeRequirements.put(Item.smithingTableItem.getId(), 1);
 		} else if (id == 703) {

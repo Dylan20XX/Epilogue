@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 import alphaPackage.ControlCenter;
+import audio.AudioPlayer;
 import graphics.Assets;
 import staticEntity.StaticEntity;
 
@@ -57,6 +58,7 @@ public class WallDown extends StaticEntity{
 			health = 500;
 			resistance  = 10;
 		}
+		placed = true;
 
 	}
 
@@ -84,7 +86,7 @@ public class WallDown extends StaticEntity{
 
 	@Override
 	public void Die() {
-
+		AudioPlayer.playAudio("audio/structureBreak.wav");
 	}
 
 	@Override

@@ -83,7 +83,7 @@ public class Item {
 	public static Item diaperItem = new Item(Assets.diaper, "old diaper", 40, true, "miscellaneous", 0.02, 5, 3);
 	public static Item oldShoeItem = new Item(Assets.oldShoe, "old shoe", 41, true, "miscellaneous", 0.02, 30, 25);
 	public static Item gearItem = new Item(Assets.gear, "gear", 42, true, "miscellaneous", 0.05, 0, 1);
-	public static Item pipeHeadItem = new Item(Assets.AMM1D, "pipe head", 43, true, "miscellaneous", 2, 55, 30);
+	public static Item pipeHeadItem = new Item(Assets.pipeHead, "pipe head", 43, true, "miscellaneous", 2, 55, 30);
 	public static Item leatherItem = new Item(Assets.leather, "leather", 44, true, "miscellaneous", 0.2, 5, 5);
 	public static Item furItem = new Item(Assets.fur, "fur", 45, true, "miscellaneous", 0.1, 0, 1);
 	public static Item blueprintItem = new Item(Assets.blueprint, "blueprint", 46, true, "miscellaneous", 0.1, 0, 5);
