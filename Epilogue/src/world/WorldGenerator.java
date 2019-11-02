@@ -327,6 +327,7 @@ public class WorldGenerator {
 		messageBox = new MessageBox(c);
 		effects = new EffectManager(c);
 
+		/*
 		entityManager.addEntity(
 				new Goat(entityManager.getPlayer().getX()- 600, entityManager.getPlayer().getY() - 150, c));
 		
@@ -371,6 +372,7 @@ public class WorldGenerator {
 		entityManager.addEntity(
 				new SpaceShuttle(entityManager.getPlayer().getX() + 200, entityManager.getPlayer().getY() + 300, c));
 		// test mouse cursor - this is required for the mouse cursor to work
+		*/
 		cursor = new MouseCursor(c);
 		//entityManager.addEntity(sentryHive);
 		
@@ -1716,7 +1718,6 @@ public class WorldGenerator {
 					wallNum = 0;
 					structureNum = 0;
 					structureCrafted = false;
-					structureWorkbenchCrafted = false;
 					currentlyBuildingStructure = true;
 					Player.getPlayerData().setCanMove(false); //prevent player from moving
 					lastStructureTimer = System.currentTimeMillis();

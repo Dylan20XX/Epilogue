@@ -36,11 +36,11 @@ public class Bush extends StaticEntity{
 		this.c = c;
 
 		bounds.width = width / 4 * 3;
-		bounds.height = height / 4 * 3;
+		bounds.height = height / 4;
 		
 		//bounding box starting and ending location
 		bounds.x = width / 2 - bounds.width / 2;
-		bounds.y = height / 2 - height/2;
+		bounds.y = height / 2;
 
 		health = 200;
 		resistance = 50;
@@ -93,12 +93,12 @@ public class Bush extends StaticEntity{
 		
 		if(!harvested) {
 			
-			int rand = r.nextInt(4) + 2; //get 2-5 items
+			int rand = CT.random(1, 3);
 			
-			if(Player.getPlayerData().getInventory().addItem(Item.woodenStickItem)) {
+			if(Player.getPlayerData().getInventory().addItem(Item.stickItem)) {
 				
 				for(int i = 0; i < rand - 1; i++)
-					Player.getPlayerData().getInventory().addItem(Item.woodenStickItem);
+					Player.getPlayerData().getInventory().addItem(Item.stickItem);
 				
 				lastHarvestTimer = System.currentTimeMillis();
 				harvested = true;

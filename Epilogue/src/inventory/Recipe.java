@@ -422,7 +422,7 @@ public class Recipe {
 			recipeRequirements.put(Item.glockBarrelItem.getId(), 1);
 			recipeRequirements.put(Item.glockSideItem.getId(), 1);
 		} else if (id == 117) {
-			recipeRequirements.put(Item.woodenStickItem.getId(), 12);
+			recipeRequirements.put(Item.stickItem.getId(), 12);
 			recipeRequirements.put(Item.ropeItem.getId(), 3);
 		} else if (id == 118) {
 			recipeRequirements.put(Item.bronzeIngotItem.getId(), 4);

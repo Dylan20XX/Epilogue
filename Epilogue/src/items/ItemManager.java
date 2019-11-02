@@ -82,7 +82,7 @@ public class ItemManager {
 	public void fillTrash() {
 
 		trashList.add(Item.woodenPlankItem);
-		trashList.add(Item.woodenStickItem);
+		trashList.add(Item.stickItem);
 		trashList.add(Item.tinChunkItem);
 		trashList.add(Item.bronzeChunkItem);
 		trashList.add(Item.zincChunkItem);
@@ -101,7 +101,6 @@ public class ItemManager {
 		trashList.add(Item.furItem);
 		trashList.add(Item.XM214BulletItem);
 		trashList.add(Item.FuelTankItem);
-		trashList.add(Item.woodenStickItem);
 		trashList.add(Item.batteryItem);
 		trashList.add(Item.woodenPlankItem);
 		
