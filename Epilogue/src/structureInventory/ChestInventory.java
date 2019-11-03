@@ -201,12 +201,14 @@ public class ChestInventory {
 				int id = CT.random(0, max);
 				int amt = CT.random(0, 5);
 				
-				if(id == 17 || id == 18) {
-					int secondChance = CT.random(1, 2);
-					if(secondChance == 1 || secondChance == 2) {
-						id = 0;
-					}
-				} else if(id == 25)
+				if(id == 11)
+					break;
+				
+				else if(id == 30 || id == 31) {
+					Item.items[id].createNew(this, amt);
+					continue;
+				}
+				else if(id == 25)
 					amt = CT.random(5, 50);
 				else if(id == 24) 
 					amt = CT.random(3, 10);

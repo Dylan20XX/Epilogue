@@ -848,6 +848,7 @@ public class Player extends Creatures {
 				if (item.getType().equals("tool")) {
 					Tool tool = (Tool) item;
 					arSize = 40 + (int) tool.getRange(); // attack range, 25 pixels
+					
 				} else {
 					arSize = 40;
 				}

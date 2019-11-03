@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 import alphaPackage.ControlCenter;
+import audio.AudioPlayer;
 import creatures.Player;
 import graphics.Assets;
 import graphics.CT;
@@ -34,6 +35,7 @@ public class Disintegrator extends StaticEntity {
 
 		health = 300;
 		resistance = 10;
+		placed = true;
 
 		craft = new DisintegratorCraft(c);
 	}
@@ -87,6 +89,7 @@ public class Disintegrator extends StaticEntity {
 
 	@Override
 	public void Die() {
+		AudioPlayer.playAudio("audio/structureBreak.wav");
 		for(int i = 0; i < CT.random(10, 30); i++)
 			c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator()
 			.getItemManager().addItem(Item.rockItem.createNew((int) x + bounds.x + CT.random(0, bounds.width), (int) y + bounds.y + CT.random(0, bounds.height)));

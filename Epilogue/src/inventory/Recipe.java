@@ -422,7 +422,7 @@ public class Recipe {
 			recipeRequirements.put(Item.glockBarrelItem.getId(), 1);
 			recipeRequirements.put(Item.glockSideItem.getId(), 1);
 		} else if (id == 117) {
-			recipeRequirements.put(Item.woodenStickItem.getId(), 12);
+			recipeRequirements.put(Item.stickItem.getId(), 12);
 			recipeRequirements.put(Item.ropeItem.getId(), 3);
 		} else if (id == 118) {
 			recipeRequirements.put(Item.bronzeIngotItem.getId(), 4);
@@ -551,10 +551,10 @@ public class Recipe {
 		} 
 		
 		else if (id == 701) {
-			recipeRequirements.put(Item.woodenPlankItem.getId(), 15);
+			recipeRequirements.put(Item.woodenPlankItem.getId(), 12);
 			recipeRequirements.put(Item.workbenchToolkitItem.getId(), 1);
 		} else if (id == 702) {
-			recipeRequirements.put(Item.woodenPlankItem.getId(), 12);
+			recipeRequirements.put(Item.woodenPlankItem.getId(), 10);
 			recipeRequirements.put(Item.rockItem.getId(), 25);
 			recipeRequirements.put(Item.smithingTableItem.getId(), 1);
 		} else if (id == 703) {

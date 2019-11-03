@@ -6,6 +6,7 @@ import java.awt.Graphics2D;
 import java.util.Random;
 
 import alphaPackage.ControlCenter;
+import audio.AudioPlayer;
 import graphics.Assets;
 import inventory.MessageBox;
 import staticEntity.StaticEntity;
@@ -37,8 +38,9 @@ public class Tent extends StaticEntity {
 		
 		deathImage = Assets.tent;
 
-		health = 100;
+		health = 800;
 		resistance = 10;
+		placed = true;
 		
 	}
 
@@ -79,7 +81,7 @@ public class Tent extends StaticEntity {
 	@Override
 	public void Die() {
 
-		
+		AudioPlayer.playAudio("audio/structureBreak.wav");
 
 	}
 	@Override

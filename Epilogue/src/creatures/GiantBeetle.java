@@ -21,6 +21,7 @@ public class GiantBeetle extends Creatures{
 		resistance = 95;
 		knockValue = 18;
 		attackBoundSize = 800;
+		attackCooldown = 1800;
 		name = "giantBeetle";
 		type = "creatures";
 		weight = 155;

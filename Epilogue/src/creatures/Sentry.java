@@ -18,7 +18,7 @@ public class Sentry extends Creatures {
 
 		health = 200;
 		speed = 2.5;
-		damage = 50;
+		damage = 80;
 		knockValue = 6;
 		name = "sentry";
 		attackBoundSize = 1500;

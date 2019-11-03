@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 import alphaPackage.ControlCenter;
+import audio.AudioPlayer;
 import creatures.Player;
 import graphics.Assets;
 import graphics.CT;
@@ -45,8 +46,9 @@ public class MetallicOven extends StaticEntity {
 
 		deathImage = Assets.smelter;
 
-		health = 300;
+		health = 500;
 		resistance = 10;
+		placed = true;
 
 		inventory = new MetallicOvenInventory(c);
 	}
@@ -94,6 +96,7 @@ public class MetallicOven extends StaticEntity {
 
 	@Override
 	public void Die() {
+		AudioPlayer.playAudio("audio/structureBreak.wav");
 		for (int i = 0; i < CT.random(10, 25); i++)
 			c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator().getItemManager()
 					.addItem(Item.rockItem.createNew((int) x + bounds.x + CT.random(0, bounds.width),

@@ -510,7 +510,7 @@ public class TopperWriter {
 					} else if ((tiles[x][y] == 0 || tiles[x][y] == 1 || tiles[x][y] == 2 || tiles[x][y] == 3) &&
 							topper[x][y] == 0 && spawnChance == 0 && terrain[x][y] == 3) { 
 						
-						int rand = r.nextInt(9);
+						int rand = r.nextInt(15);
 						
 						if (rand == 1) { //spawn a rock
 							
@@ -595,7 +595,7 @@ public class TopperWriter {
 					} else if ((tiles[x][y] == 0 || tiles[x][y] == 1 || tiles[x][y] == 2 || tiles[x][y] == 3) &&
 							topper[x][y] == 0 && spawnChance == 0 && terrain[x][y] == 5) { 
 						
-						int rand = r.nextInt(14);
+						int rand = r.nextInt(24);
 						
 						if (rand == 0) { //spawn tree
 							topper[x][y] = 1;

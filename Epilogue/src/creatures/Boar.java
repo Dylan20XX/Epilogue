@@ -27,6 +27,7 @@ public class Boar extends Creatures {
 		knockValue = 13;
 		name = "boar";
 		attackBoundSize = 300;
+		attackCooldown = 1500;
 		type = "creatures";
 		weight = 60;
 		
