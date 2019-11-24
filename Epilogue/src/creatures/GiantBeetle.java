@@ -21,6 +21,7 @@ public class GiantBeetle extends Creatures{
 		resistance = 95;
 		knockValue = 18;
 		attackBoundSize = 800;
+		attackCooldown = 1800;
 		name = "giantBeetle";
 		type = "creatures";
 		weight = 155;
@@ -33,7 +34,7 @@ public class GiantBeetle extends Creatures{
 		left = new Animation(100, Assets.beetleleft, true);
 		right = new Animation(100, Assets.beetleright, true);
 		
-		combatXPDropped = (int)(30 * (double)Player.getPlayerData().getIntelligence()/10);
+		combatXPDropped = (int)(12 + Math.random()*(Player.getPlayerData().getIntelligence()*2));
 
 	}
 

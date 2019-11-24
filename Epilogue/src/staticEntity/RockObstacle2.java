@@ -6,6 +6,7 @@ import java.awt.Graphics2D;
 import java.util.Random;
 
 import alphaPackage.ControlCenter;
+import creatures.Player;
 import graphics.Assets;
 import items.Item;
 import tiles.Tile;
@@ -36,6 +37,8 @@ public class RockObstacle2 extends StaticEntity {// java's random API
 		health = 2000;
 		resistance = 30;
 		requiredTool = "pickaxe";
+		
+		buildingXPGiven = (int)(Math.random()*(Player.getPlayerData().getIntelligence()));
 
 	}
 

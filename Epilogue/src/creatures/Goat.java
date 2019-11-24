@@ -17,7 +17,7 @@ public class Goat extends Creatures {
 
 		health = 900;
 		damage = 140;
-		speed = 1;
+		speed = 2.2;
 		knockValue = 12;
 		attackBoundSize = 150;
 		resistance = 10;
@@ -34,7 +34,7 @@ public class Goat extends Creatures {
 		left = new Animation(125, Assets.goat, true);
 		right = new Animation(125, CT.flip(Assets.goat), true);
 		
-		combatXPDropped = (int)(10 * (double)Player.getPlayerData().getIntelligence()/10);
+		combatXPDropped = (int)(3 + Math.random()*(Player.getPlayerData().getIntelligence()*2));
 
 	}
 
@@ -58,7 +58,7 @@ public class Goat extends Creatures {
 				if (damageBound().intersects(Player.getPlayerData().getBounds())) 
 					knockbackPlayer(this);
 				
-				chase(3);
+				chase(2.2);
 				
 			}
 		} else if(health <= ogHealth/3) {
@@ -72,7 +72,7 @@ public class Goat extends Creatures {
 					if (damageBound().intersects(Player.getPlayerData().getBounds())) 
 						knockbackPlayer(this);
 					
-					chase(3);
+					chase(2.2);
 					
 				} else {
 					caution();

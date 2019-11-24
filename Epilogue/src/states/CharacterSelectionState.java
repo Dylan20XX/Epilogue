@@ -44,7 +44,7 @@ public class CharacterSelectionState extends State {
 	private int[][] terrain;
 
 	// character properties
-	private int charHealth = 1000, charDamageScale = 50, charIntelligence = 5, 
+	private int charHealth = 1000, charDamageScale = 50, charIntelligence = 6, 
 			charIntimidation = 20, charEndurability = 500, charResistance = 20;
 	private double charRunSpeed = 2.3;
 	private String charName = "Rod";
@@ -121,6 +121,7 @@ public class CharacterSelectionState extends State {
 				State.setState(c.getMenuState().getWorldSelectState().gameState);
 				
 				c.getMenuState().getWorldSelectState().readDataFile(WorldCreationState.worldName);
+				c.getMenuState().getWorldSelectState().setSelectedWorldName(WorldCreationState.worldName);
 				c.getMenuState().getWorldSelectState().gameState.getWorldGenerator().createPlayer();
 
 				loading = false;

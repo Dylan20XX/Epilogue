@@ -32,7 +32,7 @@ public class Phasmatodea extends Creatures {
 		left = new Animation(200, Assets.phasmatodea, true);
 		right = new Animation(200, CT.flip(Assets.phasmatodea), true);
 
-		combatXPDropped = (int)(20 * (double)Player.getPlayerData().getIntelligence()/10);
+		combatXPDropped = (int)(14 * (double)Player.getPlayerData().getIntelligence()/10);
 		
 	}
 

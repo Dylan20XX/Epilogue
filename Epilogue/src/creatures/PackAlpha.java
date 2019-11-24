@@ -35,7 +35,7 @@ public class PackAlpha extends Creatures {
 		right = new Animation(animationSpeed, Assets.packAlpha, true);
 		left = new Animation(animationSpeed, CT.flip(Assets.packAlpha), true);
 		
-		combatXPDropped = (int)(20 * (double)Player.getPlayerData().getIntelligence()/10);
+		combatXPDropped = (int)(8 + Math.random()*(Player.getPlayerData().getIntelligence()*2));
 
 	}
 

@@ -33,6 +33,8 @@ public class Chicken extends Creatures{
 		left = new Animation(200, Assets.chickenLeft, true);
 		right = new Animation(200, Assets.chickenRight, true);
 		
+		combatXPDropped = (int)(2 + Math.random()*(Player.getPlayerData().getIntelligence()*2))/2;
+		
 	}
 
 	@Override

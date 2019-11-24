@@ -32,7 +32,7 @@ public class MutatedChicken extends Creatures {
 		left = new Animation(200, Assets.mutatedChicken, true);
 		right = new Animation(200, CT.flip(Assets.mutatedChicken), true);
 		
-		combatXPDropped = (int)(5 * (double)Player.getPlayerData().getIntelligence()/10);
+		combatXPDropped = (int)(6 + Math.random()*(Player.getPlayerData().getIntelligence()*2))/2;
 
 	}
 

@@ -23,6 +23,7 @@ public class RedGiantBeetle extends Creatures{
 		resistance = 95;
 		knockValue = 18;
 		attackBoundSize = 800;
+		attackCooldown = 1800;
 		name = "redGiantBeetle";
 		type = "creatures";
 		weight = 155;
@@ -35,7 +36,7 @@ public class RedGiantBeetle extends Creatures{
 		left = new Animation(100, Assets.beetleRedLeft, true);
 		right = new Animation(100, Assets.beetleRedRight, true);
 
-		combatXPDropped = (int)(30 * (double)Player.getPlayerData().getIntelligence()/10);
+		combatXPDropped = (int)(20 + Math.random()*(Player.getPlayerData().getIntelligence()*2));
 		
 	}
 

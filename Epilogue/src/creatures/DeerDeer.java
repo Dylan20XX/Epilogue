@@ -32,7 +32,7 @@ public class DeerDeer extends Creatures{
 		left = new Animation(400, CT.flip(Assets.deerDeer), true);
 		right = new Animation(400, Assets.deerDeer, true);
 		
-		combatXPDropped = (int)(10 * (double)Player.getPlayerData().getIntelligence()/10);
+		combatXPDropped = (int)(8 + Math.random()*(Player.getPlayerData().getIntelligence()*2));
 	
 	}
 

@@ -327,6 +327,7 @@ public class WorldGenerator {
 		messageBox = new MessageBox(c);
 		effects = new EffectManager(c);
 
+		/*
 		entityManager.addEntity(
 				new Goat(entityManager.getPlayer().getX()- 600, entityManager.getPlayer().getY() - 150, c));
 		
@@ -371,6 +372,7 @@ public class WorldGenerator {
 		entityManager.addEntity(
 				new SpaceShuttle(entityManager.getPlayer().getX() + 200, entityManager.getPlayer().getY() + 300, c));
 		// test mouse cursor - this is required for the mouse cursor to work
+		*/
 		cursor = new MouseCursor(c);
 		//entityManager.addEntity(sentryHive);
 		
@@ -1342,6 +1344,8 @@ public class WorldGenerator {
 					c.getGameCamera().getyOffset());
 			CustomTextWritter.drawString(g, String.format("Topper : %d", topper[buildX / 64][buildY / 64]), 100, 130, true,
 					Color.WHITE, Assets.font28);
+			CustomTextWritter.drawString(g, String.format("Floor : %d", floor[buildX / 64][buildY / 64]), 100, 160, true,
+					Color.WHITE, Assets.font28);
 		}
 
 	}
@@ -1714,7 +1718,6 @@ public class WorldGenerator {
 					wallNum = 0;
 					structureNum = 0;
 					structureCrafted = false;
-					structureWorkbenchCrafted = false;
 					currentlyBuildingStructure = true;
 					Player.getPlayerData().setCanMove(false); //prevent player from moving
 					lastStructureTimer = System.currentTimeMillis();
@@ -1766,7 +1769,6 @@ public class WorldGenerator {
 			temp--;
 		}
 	}
-
 
 	public void removeLight(int radius, int x, int y, int lumen) {
 		int additional = 0;
@@ -2014,6 +2016,7 @@ public class WorldGenerator {
 
 	}
 	
+	//
 	private void timeControl() {
 		timeTimer += System.currentTimeMillis() - lastChangeTimer;
 		lastChangeTimer = System.currentTimeMillis();
@@ -2026,8 +2029,11 @@ public class WorldGenerator {
 			MusicPlayer.playMusic("audio/ScorchedEarth.wav");
 		}
 		
-		if(time == 255)
+		if(time == 255) {
 			dayNum++;
+			Player.getPlayerData().setBasicSurvivalXP(Player.getPlayerData().getBasicSurvivalXP() + 
+					Player.getPlayerData().getIntelligence() + CT.random(1, Player.getPlayerData().getIntelligence() + 1));
+		}
 		
 		//Have a chance of starting a blood moon after day 5
 		if(time == 90 && dayNum > 5) {
@@ -2079,6 +2085,8 @@ public class WorldGenerator {
 					Player.getPlayerData().hunger -= Player.getPlayerData().hunger/4;
 					Player.getPlayerData().thirst -= Player.getPlayerData().thirst/4;
 					time += 250;
+					Player.getPlayerData().setBasicSurvivalXP(Player.getPlayerData().getBasicSurvivalXP() + 
+							Player.getPlayerData().getIntelligence() + CT.random(1, Player.getPlayerData().getIntelligence() + 1));
 					BackgroundPlayer.playAudio("audio/ScorchedEarth.wav");
 					Player.getPlayerData().overnightFood();
 					Player.getPlayerData().setCanMove(true);
@@ -2581,11 +2589,12 @@ public class WorldGenerator {
 
 			}
 			
-		}else {
+		} else {
 			
 			//Creature Spawning
-			int rand = r.nextInt(5);  //detremines chances of creature spawning
-			if(rand == 1 && entityManager.getNumCreatures() < EntityManager.MAX_CREATURES) { //if rand = 1 attept to spawn a creature
+			
+				
+			if(entityManager.getNumCreatures() < EntityManager.MAX_CREATURES) { //if rand = 1 attept to spawn a creature
 
 				//creatures spawn in 50 x 50 range around player - currently set to about a 40x40 range
 				//int x = r.nextInt(80) - 40;
@@ -2645,8 +2654,10 @@ public class WorldGenerator {
 						break;
 					}
 				}
-
-				if(canSpawn) {
+				int rand = r.nextInt(4);  //detremines chances of creature spawning
+				if(biome == 5)
+					rand = 1;
+				if(canSpawn && rand == 1) {
 
 					if(biome == 1) { //natural biome
 						if(creatureType < 15) {
@@ -2705,7 +2716,7 @@ public class WorldGenerator {
 							entityManager.addCreature(new Scavenger(spawnX, spawnY, c));
 						}
 					} else if(biome == 5) { //ruins biome
-						if(creatureType < 10) {
+						if(creatureType < 5) {
 							entityManager.addCreature(new Scavenger(spawnX, spawnY, c));
 						} else 
 							entityManager.addCreature(new WonderingGhoul(spawnX, spawnY, c));
@@ -2721,14 +2732,16 @@ public class WorldGenerator {
 							entityManager.addCreature(new RedGiantBeetle(spawnX, spawnY, c));
 						} else if(creatureType < 10) {
 							entityManager.addCreature(new GiantBeetle(spawnX, spawnY, c));
-						} else if(creatureType < 13) {
+						} else if(creatureType < 12) {
 							entityManager.addCreature(new Chicken(spawnX, spawnY, c));
 						} else if(creatureType < 25) {
 							entityManager.addCreature(new MutatedChicken(spawnX, spawnY, c));
-						} else if(creatureType < 40) {
+						} else if(creatureType < 35) {
 							entityManager.addCreature(new Boar(spawnX, spawnY, c));
 						} else if(creatureType < 55) {
 							entityManager.addCreature(new MutatedDeer(spawnX, spawnY, c));
+						} else if(creatureType < 58) {
+							entityManager.addCreature(new Deer(spawnX, spawnY, c));
 						} else if(creatureType < 70) {
 							entityManager.addCreature(new Scavenger(spawnX, spawnY, c));
 						} else if(creatureType < 80) {
@@ -3124,11 +3137,9 @@ public class WorldGenerator {
 	}
 	
 	private void debugControls() {
-		if (c.getKeyManager().keyJustPressed(KeyEvent.VK_R)) {
-			entityManager.addEntity(new DesertScorpion(entityManager.getPlayer().getX() + 200, entityManager.getPlayer().getY() - 200, c));
-		}
+
 		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_T))
-			c.getGameCamera().shake(200);
+			entityManager.addEntity(new BurntTree(entityManager.getPlayer().getX(), entityManager.getPlayer().getY(), c));
 		if (c.getKeyManager().keyJustPressed(KeyEvent.VK_G))
 			Player.getPlayerData().energy+= 800;
 		if (c.getKeyManager().keyJustPressed(KeyEvent.VK_I))
@@ -3364,6 +3375,8 @@ public class WorldGenerator {
 		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_F5)) { //move forward through time
 			time++;
 			dayNum++;
+			Player.getPlayerData().setBasicSurvivalXP(Player.getPlayerData().getBasicSurvivalXP() + 
+					Player.getPlayerData().getIntelligence() + CT.random(1, Player.getPlayerData().getIntelligence() + 1));
 		}
 		//test - press o while in inventory to show item to string method
 		if (c.getKeyManager().keyJustPressed(KeyEvent.VK_O)) {

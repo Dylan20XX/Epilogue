@@ -83,7 +83,7 @@ public class Item {
 	public static Item diaperItem = new Item(Assets.diaper, "old diaper", 40, true, "miscellaneous", 0.02, 5, 3);
 	public static Item oldShoeItem = new Item(Assets.oldShoe, "old shoe", 41, true, "miscellaneous", 0.02, 30, 25);
 	public static Item gearItem = new Item(Assets.gear, "gear", 42, true, "miscellaneous", 0.05, 0, 1);
-	public static Item pipeHeadItem = new Item(Assets.AMM1D, "pipe head", 43, true, "miscellaneous", 2, 55, 30);
+	public static Item pipeHeadItem = new Item(Assets.pipeHead, "pipe head", 43, true, "miscellaneous", 2, 55, 30);
 	public static Item leatherItem = new Item(Assets.leather, "leather", 44, true, "miscellaneous", 0.2, 5, 5);
 	public static Item furItem = new Item(Assets.fur, "fur", 45, true, "miscellaneous", 0.1, 0, 1);
 	public static Item blueprintItem = new Item(Assets.blueprint, "blueprint", 46, true, "miscellaneous", 0.1, 0, 5);
@@ -91,10 +91,9 @@ public class Item {
 	public static Item FuelTankItem = new Item(Assets.fuel, "fuel tank", 48, true, "miscellaneous", 5, 5, 5);
 	public static Item researchKitItem = new Item(Assets.researchKit, "research kit", 49, true, "miscellaneous", 0.1, 20, 10);
 	public static Item ironBarItem = new Item(Assets.ironBar, "metal bar", 50, true, "miscellaneous", 1.5, 55, 5);
-	public static Item batteryItem = new Item(Assets.battery, "battery", 51, true, "miscellaneous", 0.5, 5, 5);;
-	public static Item woodenStickItem = new Item(Assets.woodenStick, "wooden stick", 52, true, "miscellaneous", 5, 5, 5);
-	public static Item woodenPlankItem = new Item(Assets.woodenPlank, "wooden board", 53, true, "miscellaneous", 0.1, 35, 25);
-	public static Item metalPlateItem = new Item(Assets.metalPlate, "metal plate", 54, true, "miscellaneous", 2, 35, 25);
+	public static Item batteryItem = new Item(Assets.battery, "battery", 51, true, "miscellaneous", 0.5, 5, 5);
+	public static Item woodenPlankItem = new Item(Assets.woodenPlank, "wooden board", 52, true, "miscellaneous", 0.1, 35, 25);
+	public static Item metalPlateItem = new Item(Assets.metalPlate, "metal plate", 53, true, "miscellaneous", 2, 35, 25);
 	
 	public static Item glockBarrelItem = new Item(Assets.glockBarrel, "glock barrow", 75, true, "miscellaneous", 0.3, 35, 10);
 	public static Item desertEagleBarrelItem = new Item(Assets.desertEagleBarrel, "desert eagle barrow", 76, true, "miscellaneous", 0.2, 35, 10);
@@ -201,7 +200,7 @@ public class Item {
 				&& c.getKeyManager().keyJustPressed(KeyEvent.VK_P)) {
 			if(c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator().getEntityManager().getPlayer().getInventory().addItem(this))
 				pickedUp = true;
-			AudioPlayer.playAudio("audio/craft.wav");
+			AudioPlayer.playAudio("audio/pickup.wav");
 			
 		}
 

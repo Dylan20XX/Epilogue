@@ -57,6 +57,8 @@ public class GiantStingerCactus extends StaticEntity{
         
 		damage = 150;
 		knockValue = 12;
+		
+		buildingXPGiven = (int)(Math.random()*(Player.getPlayerData().getIntelligence()*2));
         
     }
     

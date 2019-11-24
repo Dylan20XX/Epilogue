@@ -15,6 +15,7 @@ import items.Food;
 import items.Item;
 import items.Ranged;
 import items.Tool;
+import items.Torch;
 import items.WaterContainer;
 import items.Weapon;
 import structureInventory.AutoCookerV2Craft;
@@ -43,16 +44,12 @@ public class Inventory {
 		this.e = e;
 		InventoryItems = new ArrayList<Item>();
 		autoCookerV2 = new AutoCookerV2Craft(c);
-		for(int i = 0; i < 15; i++) {
-			addItem(Item.stickItem);
-			addItem(Item.woodenPlankItem);
-		}
-		addItem(Item.woodItem); 
-		addItem(Item.woodItem); 
-		addItem(Tool.shovelTool); 
-		addItem(Weapon.ironSword);
-		addItem(Ranged.glock);
-		addItem(Item.sapItem);
+		addItem(Item.torch);
+		addItem(Tool.woodenAxeTool);
+		addItem(Item.researchKitItem);
+		
+		//for(int i = 0; i < 20; i++)
+			//addItem(Item.woodenPlankItem);
 		
 	}
 
@@ -225,12 +222,25 @@ public class Inventory {
 				.getItemManager().addItem(r.createNew(r, (int) player.getX() + CT.random(0, player.getBounds().width),
 						(int) player.getY() + CT.random(0, player.getBounds().height)));
 			}
+		} else if(item.getType().equals("food")) {
+			if(condition) {
+				Food r = (Food)item;
+				c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator()
+				.getItemManager().addItem(r.createNew(r, (int) player.getX() + CT.random(0, player.getBounds().width),
+						(int) player.getY() + CT.random(0, player.getBounds().height)));
+			}
 		} 
 		else {
 			if(condition) {
-				c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator()
-						.getItemManager().addItem(item.createNewInventoryItem(item, (int) player.getX() + CT.random(0, player.getBounds().width),
-								(int) player.getY() + CT.random(0, player.getBounds().height)));
+				if(item instanceof Torch) {
+					Torch t = (Torch)item;
+					c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator()
+					.getItemManager().addItem(t.createNewInventoryItem(t, (int) player.getX() + CT.random(0, player.getBounds().width),
+							(int) player.getY() + CT.random(0, player.getBounds().height)));
+				} else
+					c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator()
+							.getItemManager().addItem(item.createNewInventoryItem(item, (int) player.getX() + CT.random(0, player.getBounds().width),
+									(int) player.getY() + CT.random(0, player.getBounds().height)));
 			}
 		}
 		

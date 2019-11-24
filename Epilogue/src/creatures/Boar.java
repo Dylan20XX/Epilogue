@@ -27,6 +27,7 @@ public class Boar extends Creatures {
 		knockValue = 13;
 		name = "boar";
 		attackBoundSize = 300;
+		attackCooldown = 1500;
 		type = "creatures";
 		weight = 60;
 		
@@ -38,7 +39,7 @@ public class Boar extends Creatures {
 		left = new Animation(300, Assets.boar, true);
 		right = new Animation(300, CT.flip(Assets.boar), true);
 		
-		combatXPDropped = (int)(10 * (double)Player.getPlayerData().getIntelligence()/10);
+		combatXPDropped = (int)(5 + Math.random()*(Player.getPlayerData().getIntelligence()*2));
 
 	}
 

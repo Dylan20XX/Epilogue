@@ -28,6 +28,8 @@ public class LivingSpike extends StaticEntity {
 
 		health = CT.random(300, 500);
 		resistance = 40;
+		
+		buildingXPGiven = (int)(Math.random()*(Player.getPlayerData().getIntelligence()*2))/2;
 
 	}
 

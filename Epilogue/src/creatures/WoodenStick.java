@@ -65,10 +65,10 @@ public class WoodenStick extends Creatures {
 		
 		int rand = r.nextInt(3) + 1; //get 2-5 items
 		
-		if(Player.getPlayerData().getInventory().addItem(Item.woodenStickItem)) {
+		if(Player.getPlayerData().getInventory().addItem(Item.stickItem)) {
 			
 			for(int i = 0; i < rand - 1; i++)
-				Player.getPlayerData().getInventory().addItem(Item.woodenStickItem);
+				Player.getPlayerData().getInventory().addItem(Item.stickItem);
 			
 			AudioPlayer.playAudio("audio/pickup.wav");
 			active = false;

@@ -7,6 +7,7 @@ import java.awt.image.BufferedImage;
 import java.util.Random;
 
 import alphaPackage.ControlCenter;
+import audio.AudioPlayer;
 import graphics.Assets;
 import staticEntity.StaticEntity;
 import tiles.Tile;
@@ -39,6 +40,7 @@ public class PowerAdaptor extends StaticEntity {
 		deathImage = Assets.powerAdaptorOff;
 		health = 500;
 		resistance = 10;
+		placed = true;
 
 	}
 
@@ -77,6 +79,7 @@ public class PowerAdaptor extends StaticEntity {
 
 	@Override
 	public void Die() {
+		AudioPlayer.playAudio("audio/structureBreak.wav");
 		if(preAddPower) 
 			c.getGameState().getWorldGenerator().removePower(7, placex, placey);
 

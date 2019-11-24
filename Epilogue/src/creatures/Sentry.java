@@ -18,7 +18,7 @@ public class Sentry extends Creatures {
 
 		health = 200;
 		speed = 2.5;
-		damage = 50;
+		damage = 80;
 		knockValue = 6;
 		name = "sentry";
 		attackBoundSize = 1500;
@@ -33,7 +33,7 @@ public class Sentry extends Creatures {
 		left = new Animation(125, Assets.sentryLeft, true);
 		right = new Animation(125, Assets.sentryRight, true);
 		
-		combatXPDropped = (int)(5 * (double)Player.getPlayerData().getIntelligence()/10);
+		combatXPDropped = (int)(Math.random()*(Player.getPlayerData().getIntelligence()*2))/4;
 
 	}
 

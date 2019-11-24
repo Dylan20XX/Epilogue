@@ -6,6 +6,7 @@ import java.awt.Graphics2D;
 import java.util.Random;
 
 import alphaPackage.ControlCenter;
+import audio.AudioPlayer;
 import graphics.Animation;
 import graphics.Assets;
 import staticEntity.StaticEntity;
@@ -38,6 +39,7 @@ public class PowerGenerator extends StaticEntity {
 
 		health = 1000;
 		resistance = 10;
+		placed = true;
 		
 		deathImage = Assets.powerGenerator[0];
 
@@ -66,6 +68,7 @@ public class PowerGenerator extends StaticEntity {
 	@Override
 	public void Die() {
 
+		AudioPlayer.playAudio("audio/structureBreak.wav");
 		c.getGameState().getWorldGenerator().removeLight(3, placex, placey, 3);
 		c.getGameState().getWorldGenerator().removePower(7, placex, placey);
 

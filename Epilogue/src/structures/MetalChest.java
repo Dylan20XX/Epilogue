@@ -20,8 +20,9 @@ public class MetalChest extends Chest{
 	public MetalChest(double x, double y, ControlCenter c) {
 		super(x, y, 900, 30, 2000, Assets.woodenCrate, c);
 		
-		health = 500;
+		health = 3000;
 		resistance = 60;
+		placed = true;
 		
 	}
 

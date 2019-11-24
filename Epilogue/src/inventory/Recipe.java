@@ -174,7 +174,7 @@ public class Recipe {
 		setupRecipeRequirements();
 		setupItem();
 		
-		//setupXPRequirements();
+		setupXPRequirements();
 		
 		if((id >= 0 && id <= 14) || id == 43 || (id >= 106 && id <= 109) || id == 701 || id == 702 || id == 704 || id == 715) { //starting recipes
 			
@@ -210,7 +210,7 @@ public class Recipe {
 		setupRecipeRequirements();
 		setupItem();
 		
-		//setupXPRequirements();
+		setupXPRequirements();
 		
 		if(learned) {
 			
@@ -422,7 +422,7 @@ public class Recipe {
 			recipeRequirements.put(Item.glockBarrelItem.getId(), 1);
 			recipeRequirements.put(Item.glockSideItem.getId(), 1);
 		} else if (id == 117) {
-			recipeRequirements.put(Item.woodenStickItem.getId(), 12);
+			recipeRequirements.put(Item.stickItem.getId(), 12);
 			recipeRequirements.put(Item.ropeItem.getId(), 3);
 		} else if (id == 118) {
 			recipeRequirements.put(Item.bronzeIngotItem.getId(), 4);
@@ -551,10 +551,10 @@ public class Recipe {
 		} 
 		
 		else if (id == 701) {
-			recipeRequirements.put(Item.woodenPlankItem.getId(), 15);
+			recipeRequirements.put(Item.woodenPlankItem.getId(), 12);
 			recipeRequirements.put(Item.workbenchToolkitItem.getId(), 1);
 		} else if (id == 702) {
-			recipeRequirements.put(Item.woodenPlankItem.getId(), 12);
+			recipeRequirements.put(Item.woodenPlankItem.getId(), 10);
 			recipeRequirements.put(Item.rockItem.getId(), 25);
 			recipeRequirements.put(Item.smithingTableItem.getId(), 1);
 		} else if (id == 703) {
@@ -982,14 +982,81 @@ public class Recipe {
 	private void setupXPRequirements() {
 		
 		//alternatively xp needed can be set up based on the recipe id
-		if(this.getItem() instanceof Weapon || this.getItem() instanceof Ranged || (this.getItem() instanceof Armor)) {
-			combatXP = 50;
+		if(this.getItem() instanceof Weapon) {
+			
+			Weapon i = (Weapon)this.getItem();
+			
+			if(i.getName().equals("tungsten mace"))
+				combatXP = 500;
+			else if(i.getName().equals("titanium claws"))
+				combatXP = 1;
+			else if(i.getName().equals("iron sword"))
+				combatXP = 250;
+			else if(i.getName().equals("zinc sword"))
+				combatXP = 150;
+			else
+				combatXP = 100;
+			
+		} else if(this.getItem() instanceof Ranged) {
+			
+			Ranged i = (Ranged)this.getItem();
+			
+			if(i.getName().equals("megashakalaka"))
+				combatXP = 750;
+			else if(i.getName().equals("flamethrower"))
+				combatXP = 600;
+			else if(i.getName().equals("iron bow"))
+				combatXP = 250;
+			else
+				combatXP = 200;
+			
+		} else if(this.getItem() instanceof Armor) {
+			
+			Armor i = (Armor)this.getItem();
+			
+			if(i.getName().equals("zinc helmet") || i.getName().equals("zinc leggings") ||  i.getName().equals("zinc chestplate") ||
+					i.getName().equals("zinc boots") || i.getName().equals("zinc gauntlets")) 
+				combatXP = 100;
+			else if(i.getName().equals("iron helmet") || i.getName().equals("iron leggings") ||  i.getName().equals("iron chestplate") ||
+					i.getName().equals("iron boots") || i.getName().equals("iron gauntlets"))
+				combatXP = 150;
+			else if(i.getName().equals("titanium helmet") || i.getName().equals("titanium leggings") ||  i.getName().equals("titanium chestplate") ||
+					i.getName().equals("titanium boots") || i.getName().equals("titanium gauntlets"))
+				combatXP = 250;
+			else if(i.getName().equals("tungsten helmet") || i.getName().equals("tungsten leggings") ||  i.getName().equals("tungsten chestplate") ||
+					i.getName().equals("tungsten boots") || i.getName().equals("tungsten gauntlets"))
+				combatXP = 250;
+			else
+				combatXP = 50;
+			
 		} else if(this.getItem() instanceof Food) {
-			cookingXP = 1;
+			
+			Food i = (Food)this.getItem();
+			
+			if(i.getName().equals("bossilicious meal") ) 
+				cookingXP = 1000;
+			else 
+				cookingXP = 200;
+			
 		} else if(this.isStructure()) {//i.getItem().getType().equals("structure") || i.getItem().getType().equals("platform")
-			buildingXP = 1;
+			
+			buildingXP = 250;
+			
+		} else if(this.getItem() instanceof Tool) {
+			
+			Tool i = (Tool)this.getItem();
+			
+			if(i.getName().equals("chainsaw")) 
+				basicSurvivalXP = 500;
+			if(i.getName().equals("drill")) 
+				basicSurvivalXP = 500;
+			else 
+				basicSurvivalXP = 100;
+			
 		} else { //else if(i.getItem().getType().equals("miscellaneous")) || this.getItem() instanceof Tool || this.getItem() instanceof WaterContainer
-			basicSurvivalXP = 1;
+		
+			basicSurvivalXP = 50;
+			
 		}
 		
 	}

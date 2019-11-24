@@ -27,6 +27,7 @@ public class DesertScorpion extends Creatures {
 		resistance = 40;
 		knockValue = 10;
 		attackBoundSize = 400;
+		attackCooldown = 1500;
 		name = "desertScorpion";
 		type = "creatures";
 		weight = 85;
@@ -39,7 +40,7 @@ public class DesertScorpion extends Creatures {
 		left = new Animation(200, Assets.scorpion, true);
 		right = new Animation(200, CT.flip(Assets.scorpion), true);
 		
-		combatXPDropped = (int)(10 * (double)Player.getPlayerData().getIntelligence()/10);
+		combatXPDropped = (int)(10 + Math.random()*(Player.getPlayerData().getIntelligence()*2));
 
 	}
 

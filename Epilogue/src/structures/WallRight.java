@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 import alphaPackage.ControlCenter;
+import audio.AudioPlayer;
 import graphics.Assets;
 import graphics.CT;
 import staticEntity.StaticEntity;
@@ -51,13 +52,14 @@ public class WallRight extends StaticEntity{
 		if(wallType == 1) {
 			health = 300;
 			resistance  = 10;
-		}else if(wallType == 2) {
+		} else if(wallType == 2) {
 			health = 400;
 			resistance  = 10;
-		}else if(wallType == 3) {
+		} else if(wallType == 3) {
 			health = 500;
 			resistance  = 10;
 		}
+		placed = true;
 
 	}
 
@@ -84,7 +86,7 @@ public class WallRight extends StaticEntity{
 
 	@Override
 	public void Die() {
-
+		AudioPlayer.playAudio("audio/structureBreak.wav");
 	}
 
 	@Override

@@ -6,6 +6,7 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
 import alphaPackage.ControlCenter;
+import audio.AudioPlayer;
 import creatures.Player;
 import graphics.Assets;
 import staticEntity.StaticEntity;
@@ -61,7 +62,7 @@ public class GateLeft extends StaticEntity{
 			health = 500;
 			resistance  = 10;
 		}
-
+		placed = true;
 	}
 
 	@Override
@@ -112,7 +113,7 @@ public class GateLeft extends StaticEntity{
 
 	@Override
 	public void Die() {
-
+		AudioPlayer.playAudio("audio/structureBreak.wav");
 	}
 
 	@Override

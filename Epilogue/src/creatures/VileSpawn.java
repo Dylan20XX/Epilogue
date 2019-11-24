@@ -65,7 +65,7 @@ public class VileSpawn extends Creatures {
 		BackgroundPlayer.StopAudio();
 		MusicPlayer.playMusic("audio/vileSpawnTheme.wav");
 		
-		combatXPDropped = (int)(200 * (double)Player.getPlayerData().getIntelligence()/10);
+		combatXPDropped = (int)(500 + Math.random()*(Player.getPlayerData().getIntelligence()*2));
 
 	}
 

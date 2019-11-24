@@ -7,6 +7,7 @@ import java.awt.image.BufferedImage;
 import java.util.Random;
 
 import alphaPackage.ControlCenter;
+import audio.AudioPlayer;
 import graphics.Assets;
 import staticEntity.StaticEntity;
 import tiles.Tile;
@@ -42,6 +43,7 @@ public class LampPost extends StaticEntity {
 
 		health = 400;
 		resistance = 35;
+		placed = true;
 
 	}
 
@@ -79,7 +81,7 @@ public class LampPost extends StaticEntity {
 
 	@Override
 	public void Die() {
-
+		AudioPlayer.playAudio("audio/structureBreak.wav");
 		if (preAddLight) {
 			c.getGameState().getWorldGenerator().removeLight(5, placex, placey, 3);
 		}

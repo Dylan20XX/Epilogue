@@ -114,7 +114,7 @@ public class TopperWriter {
 			
 			//Select locations for the vile embryos
 			int embryosSpawned = 0;
-			while(embryosSpawned < 5) {
+			while(embryosSpawned < 15) {
 				for (int y = 0; y < w; y++) {
 					for (int x = 0; x < h; x++) {
 						
@@ -182,12 +182,12 @@ public class TopperWriter {
 							
 						}
 						
-						if(embryosSpawned >= 5)
+						if(embryosSpawned >= 15)
 							break;
 						
 					}
 					
-					if(embryosSpawned >= 5)
+					if(embryosSpawned >= 15)
 						break;
 				}
 			}
@@ -281,9 +281,9 @@ public class TopperWriter {
 				}
 			}
 			
-			//Select locations for the vile embryos
-			boolean awakenedSentinelSpawned = false;
-			while(!awakenedSentinelSpawned) {
+			//Select locations for the awakened sentinels
+			int awakenedSentinelsSpawned = 0;
+			while(awakenedSentinelsSpawned < 5) {
 				for (int y = 0; y < w; y++) {
 					for (int x = 0; x < h; x++) {
 						
@@ -331,7 +331,7 @@ public class TopperWriter {
 								}
 							}
 							
-							if(validLocation) { //make sure that there's a 4x2 tile square to spawn the embryo
+							if(validLocation) { //make sure that there's a 4x2 tile square to spawn the sentinel
 								if(!(tiles[x+1][y] != 10 && tiles[x+2][y] != 10 && tiles[x+3][y] != 10 && 
 										tiles[x][y+1] != 10 && tiles[x+1][y+1] != 10 &&
 										tiles[x+2][y+1] != 10 && tiles[x+3][y+1] != 10 && 
@@ -352,18 +352,18 @@ public class TopperWriter {
 								topper[x+2][y+1] = 50;
 								topper[x+3][y+1] = 50;
 								
-								awakenedSentinelSpawned = true;
+								awakenedSentinelsSpawned++;
 								System.out.println("Awakened Sentinel at: x = " + x + " y = " + y);
 							}
 							
 						}
 						
-						if(awakenedSentinelSpawned)
+						if(awakenedSentinelsSpawned >= 5)
 							break;
 						
 					}
 					
-					if(awakenedSentinelSpawned)
+					if(awakenedSentinelsSpawned >= 5)
 						break;
 				}
 			}
@@ -510,7 +510,7 @@ public class TopperWriter {
 					} else if ((tiles[x][y] == 0 || tiles[x][y] == 1 || tiles[x][y] == 2 || tiles[x][y] == 3) &&
 							topper[x][y] == 0 && spawnChance == 0 && terrain[x][y] == 3) { 
 						
-						int rand = r.nextInt(9);
+						int rand = r.nextInt(15);
 						
 						if (rand == 1) { //spawn a rock
 							
@@ -595,7 +595,7 @@ public class TopperWriter {
 					} else if ((tiles[x][y] == 0 || tiles[x][y] == 1 || tiles[x][y] == 2 || tiles[x][y] == 3) &&
 							topper[x][y] == 0 && spawnChance == 0 && terrain[x][y] == 5) { 
 						
-						int rand = r.nextInt(14);
+						int rand = r.nextInt(24);
 						
 						if (rand == 0) { //spawn tree
 							topper[x][y] = 1;

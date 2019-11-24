@@ -7,6 +7,7 @@ import java.awt.geom.AffineTransform;
 import java.util.Random;
 
 import alphaPackage.ControlCenter;
+import creatures.Player;
 import graphics.Assets;
 import graphics.CT;
 import items.Armor;
@@ -37,6 +38,8 @@ public class InfectedTree extends StaticEntity{
         resistance  = 20;
         deathImage = Assets.infectedTree;
         requiredTool = "axe";
+        
+        buildingXPGiven = (int)(Math.random()*(Player.getPlayerData().getIntelligence()*2));
         
     }
     

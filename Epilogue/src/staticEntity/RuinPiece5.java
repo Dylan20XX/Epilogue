@@ -30,6 +30,7 @@ public class RuinPiece5 extends StaticEntity{
 		health = 1000;
 		resistance  = 10;
 
+		buildingXPGiven = (int)(Math.random()*(Player.getPlayerData().getIntelligence()));
 
 	}
 

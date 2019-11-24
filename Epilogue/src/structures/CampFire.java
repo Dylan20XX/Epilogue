@@ -11,10 +11,13 @@ import java.awt.geom.Point2D;
 import java.util.Random;
 
 import alphaPackage.ControlCenter;
+import audio.AudioPlayer;
 import creatures.Player;
 import graphics.Animation;
 import graphics.Assets;
 import graphics.CT;
+import inventory.Effect;
+import inventory.EffectManager;
 import items.Item;
 import staticEntity.StaticEntity;
 import tiles.Tile;
@@ -52,11 +55,13 @@ public class CampFire extends StaticEntity {
 		health = 200;
 		resistance = 10;
 		curFuel = fuel;
+		placed = true;
 		
 		fire = new Animation(200, Assets.campfire, true);
 		
 		damage = 65;
 		knockValue = 10;
+		
 	}
 
 	@Override
@@ -80,9 +85,11 @@ public class CampFire extends StaticEntity {
 		prevState = state;
 		
 		if(Player.getPlayerData().getCollisionBounds(0, 0).
-				intersects(new Rectangle((int)(x + bounds.x - 30), (int)(y + bounds.y - 30), 
-						60 + bounds.width , 60 + bounds.height))) {
-			knockbackPlayer(this);
+				intersects(new Rectangle((int)(x + bounds.x - 20), (int)(y + bounds.y - 15), 
+						40 + bounds.width , 30 + bounds.height))) {
+			
+			EffectManager.addEffect(new Effect("burning", 15));
+			//knockbackPlayer(this);
 		}
 	}
 
@@ -102,6 +109,7 @@ public class CampFire extends StaticEntity {
 	@Override
 	public void Die() {
 
+		AudioPlayer.playAudio("audio/structureBreak.wav");
 		c.getGameState().getWorldGenerator().removeLight(5, placex, placey, 1);
 		
 		c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator().getItemManager()

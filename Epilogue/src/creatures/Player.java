@@ -9,6 +9,7 @@ import java.awt.Shape;
 import java.awt.event.KeyEvent;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.util.Random;
 
 import alphaPackage.ControlCenter;
@@ -66,7 +67,7 @@ public class Player extends Creatures {
 	private HandCraft handCraft;
 
 	private double runSpeed;
-	public boolean running = false;;
+	public boolean running = false;
 
 	private long lastAttackTimer, attackCooldown = 800, attackTimer = 0; // attack speed every 0.5s
 	public long lastEatTimer, eatCooldown = 1000, drinkCooldown = 150, drinkAudioTimer = 0, lastdrinkAudioTimer,
@@ -527,11 +528,11 @@ public class Player extends Creatures {
 							AudioPlayer.playAudio("audio/minigun.wav");
 							c.getGameState().getWorldGenerator().getEntityManager().addEntity(new XM214((int)x + 10, (int)y, 12, 4, (shootAngle - r.accuracy) + Math.random()*(r.accuracy*2), c));
 						} else if (item.getName().equals("glock")) {
-							c.getGameCamera().shake(1);
+							//c.getGameCamera().shake(1);
 							AudioPlayer.playAudio("audio/glock.wav");
 							c.getGameState().getWorldGenerator().getEntityManager().addEntity(new AMM1D((int)x + 10, (int)y - 30, 12, 4, (shootAngle - r.accuracy) + Math.random()*(r.accuracy*2), c));
 						} else if (item.getName().equals("desert eagle")) {
-							c.getGameCamera().shake(1);
+							//c.getGameCamera().shake(1);
 							AudioPlayer.playAudio("audio/desertEagle.wav");
 							c.getGameState().getWorldGenerator().getEntityManager().addEntity(new AMM1D((int)x + 10, (int)y - 30, 12, 4, (shootAngle - r.accuracy) + Math.random()*(r.accuracy*2), c));
 						} else if (item.getName().equals("wooden bow") || item.getName().equals("bronze bow") || item.getName().equals("zinc bow") || item.getName().equals("iron bow")) {
@@ -742,36 +743,42 @@ public class Player extends Creatures {
 				if (inMenu()) // July 15
 					return;
 				
-				int playerTileX = (int) ((c.getMouseManager().mouseBound().getX() + c.getGameCamera().getxOffset()) -
-						(c.getMouseManager().mouseBound().getX() + c.getGameCamera().getxOffset()) % Tile.TILEWIDTH) / Tile.TILEWIDTH;
-				int playerTileY = (int) ((c.getMouseManager().mouseBound().getY() + c.getGameCamera().getyOffset()) -
-						(c.getMouseManager().mouseBound().getY() + c.getGameCamera().getyOffset()) % Tile.TILEWIDTH) / Tile.TILEHEIGHT;
+				//Uncomment this to select shovel tiles with mouse
+//				int playerTileX = (int) ((c.getMouseManager().mouseBound().x -
+//						(c.getGameCamera().getxOffset() % Tile.TILEWIDTH) -
+//						c.getMouseManager().mouseBound().x % Tile.TILEWIDTH) + 
+//						c.getGameCamera().getxOffset());
+//				int playerTileY = (int) ((c.getMouseManager().mouseBound().y - 
+//						(c.getGameCamera().getyOffset() % Tile.TILEHEIGHT) - 
+//						c.getMouseManager().mouseBound().y % Tile.TILEHEIGHT) + 
+//						c.getGameCamera().getyOffset());
+				
+				//This allows shovel tiles to be selected based on the block player is standing on
+				int playerTileX = (int) ((getBounds().x + 32 -
+						(c.getGameCamera().getxOffset() % Tile.TILEWIDTH) -
+						(getBounds().x + 32) % Tile.TILEWIDTH) + 
+						c.getGameCamera().getxOffset());
+				int playerTileY = (int) ((getBounds().y + 40 - 
+						(c.getGameCamera().getyOffset() % Tile.TILEHEIGHT) - 
+						(getBounds().y + 40) % Tile.TILEHEIGHT) + 
+						c.getGameCamera().getyOffset());
 				
 				if (c.getKeyManager().aup) {
 					AudioPlayer.playAudio("audio/swing.wav");
-					playerTileX = (int) (Player.getPlayerData().getX() + (getBounds().getWidth() / 2) -
-							(Player.getPlayerData().getX() + + (getBounds().getWidth() / 2)) % Tile.TILEWIDTH) / Tile.TILEWIDTH;
 					isAttacking = true;
 				} else if (c.getKeyManager().adown) {
 					AudioPlayer.playAudio("audio/swing.wav");
-					playerTileX = (int) (Player.getPlayerData().getX() + (getBounds().getWidth() / 2) -
-							(Player.getPlayerData().getX() + (getBounds().getWidth() / 2)) % Tile.TILEWIDTH) / Tile.TILEWIDTH;
-					playerTileY = (int) (Player.getPlayerData().getY() + getBounds().getHeight() -
-							(Player.getPlayerData().getY() + getBounds().getHeight()) % Tile.TILEWIDTH) / Tile.TILEHEIGHT;
 					isAttacking = true;
 				} else if (c.getKeyManager().aleft) {
 					AudioPlayer.playAudio("audio/swing.wav");
-					playerTileY = (int) (Player.getPlayerData().getY() + (getBounds().getHeight() / 2) -
-							(Player.getPlayerData().getY() + (getBounds().getHeight() / 2)) % Tile.TILEWIDTH) / Tile.TILEHEIGHT;
 					direction = 0;
 					isAttacking = true;
 				} else if (c.getKeyManager().aright) {
 					AudioPlayer.playAudio("audio/swing.wav");
-					playerTileX = (int) (Player.getPlayerData().getX() + getBounds().getWidth() -
-							(Player.getPlayerData().getX() + getBounds().getWidth()) % Tile.TILEWIDTH) / Tile.TILEWIDTH; ;
-					playerTileY = (int) (Player.getPlayerData().getY() + (getBounds().getHeight() / 2) -
-							(Player.getPlayerData().getY() + (getBounds().getHeight() / 2)) % Tile.TILEWIDTH) / Tile.TILEHEIGHT;
 					direction = 1;
+					isAttacking = true;
+				} else if (c.getMouseManager().isLeftPressed()) {
+					AudioPlayer.playAudio("audio/swing.wav");
 					isAttacking = true;
 				} else {
 					isAttacking = false;
@@ -792,24 +799,24 @@ public class Player extends Creatures {
 
 					numSwings++;
 
-					if(c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator().getFloor()[playerTileX][playerTileY] != 0 &&
+					if(c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator().getFloor()[playerTileX / Tile.TILEWIDTH][playerTileY / Tile.TILEHEIGHT] != 0 &&
 							numSwings >= numSwingsRequired) {
 						
 						//where the item will drop
-						int dropX = (int) ((int) c.getMouseManager().mouseBound().getX() + c.getGameCamera().getxOffset());
-						int dropY = (int) ((int) c.getMouseManager().mouseBound().getY() + c.getGameCamera().getyOffset());
+						int dropX = (int) ((int) getBounds().x + c.getGameCamera().getxOffset());
+						int dropY = (int) ((int) getBounds().y + c.getGameCamera().getyOffset());
 
 						//set what each type of platform will drop
-						if(c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator().getFloor()[playerTileX][playerTileY] == 1) { //wood floor
+						if(c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator().getFloor()[playerTileX / Tile.TILEWIDTH][playerTileY / Tile.TILEHEIGHT] == 1) { //wood floor
 							c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator().getItemManager().addItem(Item.woodItem.createNew((int)(((int)dropX)*c.getScaleValue()), (int)(((int)dropY)*c.getScaleValue())));
-						} else if(c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator().getFloor()[playerTileX][playerTileY] == 2) { //stone floor
+						} else if(c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator().getFloor()[playerTileX / Tile.TILEWIDTH][playerTileY / Tile.TILEHEIGHT] == 2) { //stone floor
 							c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator().getItemManager().addItem(Item.woodItem.createNew((int)(((int)dropX)*c.getScaleValue()), (int)(((int)dropY)*c.getScaleValue())));
-						} else if(c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator().getFloor()[playerTileX][playerTileY] == 3) { //metal floor
+						} else if(c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator().getFloor()[playerTileX / Tile.TILEWIDTH][playerTileY / Tile.TILEHEIGHT] == 3) { //metal floor
 							c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator().getItemManager().addItem(Item.woodItem.createNew((int)(((int)dropX)*c.getScaleValue()), (int)(((int)dropY)*c.getScaleValue())));
 						} 
 						
 						//destroy the platform
-						c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator().getFloor()[playerTileX][playerTileY] = 0;
+						c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator().getFloor()[playerTileX / Tile.TILEWIDTH][playerTileY / Tile.TILEHEIGHT] = 0;
 						
 						//if attacking lower the durability of the item  
 						Tool tool = (Tool) item;
@@ -841,6 +848,7 @@ public class Player extends Creatures {
 				if (item.getType().equals("tool")) {
 					Tool tool = (Tool) item;
 					arSize = 40 + (int) tool.getRange(); // attack range, 25 pixels
+					
 				} else {
 					arSize = 40;
 				}
@@ -898,7 +906,8 @@ public class Player extends Creatures {
 									tool.setCurrentEndurance(tool.getCurrentEndurance()-1);
 									if(tool.getCurrentEndurance() <= 0) {
 										inventory.removeItem(tool);
-										hands.setHand(null);;
+										hands.setHand(null);
+										AudioPlayer.playAudio("audio/equipmentBreak.wav");
 									}
 								}
 							}else if(e.getRequiredTool().equals("axe") && item.getName().equals("wooden axe") || item.getName().equals("stone axe") || item.getName().equals("chainsaw")) {
@@ -907,7 +916,8 @@ public class Player extends Creatures {
 								tool.setCurrentEndurance(tool.getCurrentEndurance()-1);
 								if(tool.getCurrentEndurance() <= 0) {
 									inventory.removeItem(tool);
-									hands.setHand(null);;
+									hands.setHand(null);
+									AudioPlayer.playAudio("audio/equipmentBreak.wav");
 								}
 							}else if(e.getRequiredTool().equals("pickaxe") && item.getName().equals("wooden pickaxe") || item.getName().equals("stone pickaxe") || item.getName().equals("drill")) {
 								e.hurt(item.getDamage()); //use tool damage
@@ -915,7 +925,8 @@ public class Player extends Creatures {
 								tool.setCurrentEndurance(tool.getCurrentEndurance()-1);
 								if(tool.getCurrentEndurance() <= 0) {
 									inventory.removeItem(tool);
-									hands.setHand(null);;
+									hands.setHand(null);
+									AudioPlayer.playAudio("audio/equipmentBreak.wav");
 								}
 							}
 							
@@ -1123,6 +1134,7 @@ public class Player extends Creatures {
 							if (weapon.getCurrentEndurance() <= 0) {
 								inventory.removeItem(weapon);
 								hands.setHand(null);
+								AudioPlayer.playAudio("audio/equipmentBreak.wav");
 							}
 							
 							if (e.getType().equals("creatures")) {
@@ -1145,6 +1157,7 @@ public class Player extends Creatures {
 							if (tool.getCurrentEndurance() <= 0) {
 								inventory.removeItem(tool);
 								hands.setHand(null);
+								AudioPlayer.playAudio("audio/equipmentBreak.wav");
 							}
 							
 							if (e.getType().equals("creatures")) {
@@ -1904,7 +1917,8 @@ public class Player extends Creatures {
 				}
 				
 			} else if (isAttacking && (hands.getHand() == null || hands.getHand().getType().equals("weapon") || 
-					hands.getHand().getType().equals("axe") || hands.getHand().getType().equals("pickaxe"))) {
+					hands.getHand().getType().equals("axe") || hands.getHand().getType().equals("pickaxe") ||
+					hands.getHand().getType().equals("shovel"))) {
 				swptAng += ((2 * Math.PI) / (attackCooldown / 1000.0 * 60));
 				// swptAng += 2*Math.PI/120.0;
 				swptAng = swptAng > 2 * Math.PI ? swptAng - 2 * Math.PI : swptAng;
@@ -1943,18 +1957,21 @@ public class Player extends Creatures {
 					}
 				}
 			} else if (hands.getHand() != null) {
-
+				
+				//Facing right
 				if (direction == 1) {
 					Point center = new Point(c.getWidth() / 2 - 75, c.getHeight() / 2 - 65);
 					at.translate(center.x, center.y);
 					at.rotate(-Math.PI/9, 82, 82);
 					g2d.setTransform(at);
 					if(hands.getHand().getType().equals("weapon") || hands.getHand().getType().equals("ranged") || 
-							hands.getHand().getType().equals("axe") || hands.getHand().getType().equals("pickaxe"))
+							hands.getHand().getType().equals("axe") || hands.getHand().getType().equals("pickaxe") ||
+							hands.getHand().getType().equals("shovel"))
 						g2d.drawImage(CT.rotateClockwise90(CT.flip(hands.getHand().getTexture())),
 								hands.getHand().getTexture().getWidth() / 2 + 55, hands.getHand().getTexture().getHeight() / 2 + 10,
 								100, 100, null);
-					
+				
+				//Facing left
 				} else {
 					Point center = new Point(c.getWidth() / 2 - 75, c.getHeight() / 2 - 65);
 					at.translate(center.x, center.y);
@@ -1966,6 +1983,12 @@ public class Player extends Creatures {
 								(CT.rotateClockwise90(
 										CT.rotateClockwise90(CT.rotateClockwise90(hands.getHand().getTexture())))),
 								hands.getHand().getTexture().getWidth() / 2 - 45, hands.getHand().getTexture().getHeight() / 2 + 10,
+								100, 100, null);
+					else if(hands.getHand().getType().equals("shovel"))
+						g2d.drawImage(
+								(CT.rotateClockwise90(
+										CT.rotateClockwise90(CT.rotateClockwise90(hands.getHand().getTexture())))),
+								hands.getHand().getTexture().getWidth() / 2 - 10, hands.getHand().getTexture().getHeight() / 2 + 10,
 								100, 100, null);
 					
 				}
@@ -2289,6 +2312,27 @@ public class Player extends Creatures {
 				}
 			}
 
+			//Show selected tile when holding a shovel
+			if(hands.getHand() != null && hands.getHand().getType().equals("shovel") && !inMenu()) {
+				//Shows mouse tile targeted if using mouse for shovel
+//				int buildX = (int) ((c.getMouseManager().mouseBound().x -
+//						(c.getGameCamera().getxOffset() % Tile.TILEWIDTH)) -
+//						c.getMouseManager().mouseBound().x % Tile.TILEWIDTH);
+//				int buildY = (int) ((c.getMouseManager().mouseBound().y - 
+//						(c.getGameCamera().getyOffset() % Tile.TILEHEIGHT)) - 
+//						c.getMouseManager().mouseBound().y % Tile.TILEHEIGHT);
+				//Shows tile targeted if using tile that player is standing on
+				int buildX = (int) ((getBounds().x + 32 -
+						(c.getGameCamera().getxOffset() % Tile.TILEWIDTH)) -
+						(getBounds().x + 32) % Tile.TILEWIDTH);
+				int buildY = (int) ((getBounds().y + 40 - 
+						(c.getGameCamera().getyOffset() % Tile.TILEHEIGHT)) - 
+						(getBounds().y + 40) % Tile.TILEHEIGHT);
+				Rectangle rect = new Rectangle(buildX, buildY, Tile.TILEWIDTH, Tile.TILEHEIGHT);
+				g.setColor(Color.WHITE);
+				g2d.draw(rect);
+			}
+			
 		}
 		//g.setColor(Color.red);
 		//g.drawRect((int) this.getBounds().getX(), (int) this.getBounds().getY(), (int) this.getBounds().getWidth(),
@@ -2340,8 +2384,13 @@ public class Player extends Creatures {
 
 	@Override
 	public void Die() {
-		c.getGameState().getWorldGenerator().worldSaver.saveWorld();
-        c.getGameState().DeathScreen();
+		String worldData = String.format("worldData/%s", c.getMenuState().getWorldSelectState().getSelectedWorldName());
+		File worldDataFilepath = new File(worldData);
+		//Player Die() method is also called from effect manager when bleeding causing error if world is deleted
+		if(worldDataFilepath.exists()) { 
+			c.getGameState().getWorldGenerator().worldSaver.saveWorld();
+	        c.getGameState().DeathScreen();
+		}
 	}
 
 	@Override

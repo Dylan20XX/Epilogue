@@ -36,7 +36,7 @@ public class MutatedDeer extends Creatures{
 		left = new Animation(200, Assets.chickenLeft, true);
 		right = new Animation(200, Assets.chickenRight, true);
 		
-		combatXPDropped = (int)(10 * (double)Player.getPlayerData().getIntelligence()/10);
+		combatXPDropped = (int)(6 + Math.random()*(Player.getPlayerData().getIntelligence()*2));
 		
 	}
 

@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 import alphaPackage.ControlCenter;
+import audio.AudioPlayer;
 import creatures.Player;
 import graphics.Assets;
 import graphics.CT;
@@ -34,6 +35,7 @@ public class ResearchTable extends StaticEntity {
 
 		health = 300;
 		resistance = 40;
+		placed = true;
 
 		craft = new ResearchTableCraft(c);
 
@@ -54,8 +56,8 @@ public class ResearchTable extends StaticEntity {
 
 	@Override
 	public void Die() {
-		
-		for (int i = 0; i < CT.random(5, 20); i++)
+		AudioPlayer.playAudio("audio/structureBreak.wav");
+		for (int i = 0; i < CT.random(2, 5); i++)
 			c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator().getItemManager()
 					.addItem(Item.woodenPlankItem.createNew((int) x + bounds.x + CT.random(0, bounds.width),
 							(int) y + bounds.y + CT.random(0, bounds.height)));

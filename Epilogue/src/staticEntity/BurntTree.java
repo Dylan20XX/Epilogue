@@ -8,6 +8,7 @@ import java.util.Random;
 
 import alphaPackage.ControlCenter;
 import audio.AudioPlayer;
+import creatures.Player;
 import graphics.Assets;
 import graphics.CT;
 import items.Armor;
@@ -41,6 +42,8 @@ public class BurntTree extends StaticEntity{
         resistance  = 10;
         deathImage = Assets.tree1;
         requiredTool = "axe";
+        
+        buildingXPGiven = (int)(Math.random()*(Player.getPlayerData().getIntelligence()*2));
         
     }
     

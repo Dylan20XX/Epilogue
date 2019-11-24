@@ -57,8 +57,9 @@ public class RapidPulseArtillery extends StaticEntity {
 
 		deathImage = Assets.artileryBase[0];
 		
-		health = 200;
+		health = 400;
 		resistance = 10;
+		placed = true;
 
 	}
 
@@ -164,7 +165,7 @@ public class RapidPulseArtillery extends StaticEntity {
 
 	@Override
 	public void Die() {
-
+		AudioPlayer.playAudio("audio/structureBreak.wav");
 	}
 
 	@Override

@@ -58,6 +58,7 @@ public class HeavyPulseArtillery extends StaticEntity {
 
 		health = 200;
 		resistance = 10;
+		placed = true;
 
 	}
 
@@ -156,7 +157,7 @@ public class HeavyPulseArtillery extends StaticEntity {
 
 	@Override
 	public void Die() {
-		
+		AudioPlayer.playAudio("audio/structureBreak.wav");
 	}
 
 	@Override

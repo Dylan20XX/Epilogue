@@ -3,6 +3,7 @@ package creatures;
 import java.awt.Graphics;
 
 import alphaPackage.ControlCenter;
+import audio.AudioPlayer;
 import entity.Entity;
 import graphics.Animation;
 import graphics.Assets;
@@ -11,20 +12,20 @@ import items.Food;
 import items.Item;
 import items.ItemManager;
 import items.Weapon;
+import staticEntity.StaticEntity;
 
 public class WonderingGhoul extends Creatures {
-	
-	private long lastAttackTimer, attackCooldown = 800, attackTimer = 0; // attack speed every 0.5s
 
 	public WonderingGhoul(double x, double y, ControlCenter c) {
 		super(x, y, Creatures.DEFAULT_CREATURE_WIDTH/6*5, Creatures.DEFAULT_CREATURE_HEIGHT/6*5, c);
 
-		health = (int)Math.random()*500 + 300;
-		damage = (int)(Math.random()*80) + 60;
+		health = (int)Math.random()*600 + 400;
+		damage = (int)(Math.random()*100) + 80;
 		speed = Math.random()*0.8 + 0.5;
 		knockValue = 4;
 		attackBoundSize = 1800;
 		resistance = (int)(Math.random()*20);
+		attackCooldown = 1200;
 		name = "wonderingGhoul";
 		type = "creatures";
 		weight = 55;
@@ -39,7 +40,7 @@ public class WonderingGhoul extends Creatures {
 		right = new Animation(animationSpeed, Assets.ghoul, true);
 		left = new Animation(animationSpeed, CT.flip(Assets.ghoul), true);
 
-		combatXPDropped = (int)(5 * (double)Player.getPlayerData().getIntelligence()/10);
+		combatXPDropped = (int)(Math.random()*(Player.getPlayerData().getIntelligence()+1))/2;
 		
 	}
 
@@ -50,7 +51,6 @@ public class WonderingGhoul extends Creatures {
 			move();
 		left.tick();
 		right.tick();
-		wallAttack();
 	}
 
 
@@ -70,30 +70,6 @@ public class WonderingGhoul extends Creatures {
 			
 			natural();
 
-	}
-	
-	public void wallAttack() {
-		
-		attackTimer += System.currentTimeMillis() - lastAttackTimer;
-		lastAttackTimer = System.currentTimeMillis();
-
-		if (attackTimer < attackCooldown)
-			return;
-		
-		for(int i = 0; i < c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator().getEntityManager().getEntitiesInBound().size(); i++) {
-			
-			Entity e = c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator().getEntityManager().getEntitiesInBound().get(i);
-			if(e.equals(this)) {
-                continue;
-            }	
-            if(e.getBounds().intersects(damageBound()) && (e.getType().equals("wall") || e.getType().equals("gate")) ) {
-            	e.hurt(damage);
-            	attackTimer = 0; // cool down resets
-            }
-			
-		}
-		
-		
 	}
 
 	@Override

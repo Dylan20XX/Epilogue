@@ -3,6 +3,7 @@ package structures;
 import java.awt.Graphics;
 
 import alphaPackage.ControlCenter;
+import audio.AudioPlayer;
 import creatures.Player;
 import graphics.Assets;
 import graphics.CT;
@@ -14,7 +15,7 @@ public class Workbench extends StaticEntity {
 
 	public static int width = StaticEntity.DEFAULT_STATICOBJECT_WIDTH + 10;
 	public static int height = StaticEntity.DEFAULT_STATICOBJECT_HEIGHT + 10;
-
+	
 	public Workbench(double x, double y, ControlCenter c) {
 		super(x, y, width, height, c);
 
@@ -26,6 +27,7 @@ public class Workbench extends StaticEntity {
 
 		// if(wallType == 1)
 		deathImage = Assets.workbench;
+		placed = true;
 
 		health = 350;
 		resistance = 40;
@@ -47,14 +49,16 @@ public class Workbench extends StaticEntity {
 
 	@Override
 	public void Die() {
-
-		for (int i = 0; i < CT.random(5, 15); i++)
+		
+		for (int i = 0; i < CT.random(2, 5); i++) {
 			c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator().getItemManager()
 					.addItem(Item.woodenPlankItem.createNew((int) x + bounds.x + CT.random(0, bounds.width),
 							(int) y + bounds.y + CT.random(0, bounds.height)));
+		}
 		c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator().getItemManager()
 		.addItem(Item.workbenchToolkitItem.createNew((int) x + bounds.x + CT.random(0, bounds.width),
 				(int) y + bounds.y + CT.random(0, bounds.height)));
+		AudioPlayer.playAudio("audio/structureBreak.wav");
 		
 	}
 
