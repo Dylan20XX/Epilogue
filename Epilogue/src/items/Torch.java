@@ -10,7 +10,7 @@ public class Torch extends Item{
 	private int curFuel;
 	private static final int fuel = 18000;
 	private static TorchLight tl;
-	private static int prevPTX = 0, prevPTY = 0, prevLumen = 0, PTX = 0, PTY = 0, Lumen = 0;
+	private static int prevPTX = 0, prevPTY = 0, prevLumen = 3, PTX = 0, PTY = 0, Lumen = 3;
 	private boolean ini = false;
 	
 	public Torch() {
@@ -38,6 +38,7 @@ public class Torch extends Item{
 			}
 		} else {
 			ini = false;
+			c.getGameState().getWorldGenerator().removeLight(5, PTX, PTY, Lumen);
 		}
 		
 		if(curFuel <= 0) {

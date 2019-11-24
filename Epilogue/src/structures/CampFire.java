@@ -30,7 +30,7 @@ public class CampFire extends StaticEntity {
 	
 	private static final int fuel = 36000;
 	private int curFuel;
-	private int state = 1, prevState = 1;
+	private int state = 3, prevState = 3;
 	
 	// variables for reference
 	public static int width = Tile.TILEWIDTH;
@@ -70,11 +70,11 @@ public class CampFire extends StaticEntity {
 		
 		int fPrct = (int)((double) curFuel / fuel * 100);
 		if(fPrct < 33)
-			state = 3;
+			state = 1;
 		else if(fPrct < 66)
 			state = 2;
 		else 
-			state = 1;
+			state = 3;
 		if(state != prevState)
 			updateLumen();
 		prevState = state;
