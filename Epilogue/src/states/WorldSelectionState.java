@@ -5,12 +5,6 @@ import java.awt.Graphics;
 import java.io.File;
 import java.util.ArrayList;
 
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-
 import alphaPackage.ControlCenter;
 import alphaPackage.Display;
 import audio.MusicPlayer;

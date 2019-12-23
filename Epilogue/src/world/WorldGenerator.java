@@ -3984,6 +3984,7 @@ public class WorldGenerator {
 					Player.getPlayerData().getHands().rightHand = x;
 			}
 		} else if(rightHandType == 7) { //weapon
+			
 			int id = WorldInput.parseInt(tokens[index]);
 			index++;
 			double weight = Double.parseDouble(tokens[index]);
@@ -4009,6 +4010,7 @@ public class WorldGenerator {
 				if(x.getId() == e.getId())
 					Player.getPlayerData().getHands().rightHand = x;
 			}
+			
 		} else if(rightHandType == 8) { //item
 			int id = WorldInput.parseInt(tokens[index]);
 			index++;
