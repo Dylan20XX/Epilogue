@@ -545,6 +545,12 @@ public abstract class Creatures extends Entity {
 	public void natural() {
 
 		chasing = false;
+		
+		if(health < ogHealth && !Player.getPlayerData().getBounds().intersects(getBounds())) {
+			
+			escape(cautionBound(800), true);
+			
+		}
 
 		if (canMove) {
 			moveCooldown = (int) (Math.random() * 100) * 1000;
@@ -603,6 +609,12 @@ public abstract class Creatures extends Entity {
 	public void caution() {
 
 		chasing = false;
+		
+		if(health < ogHealth && !Player.getPlayerData().getBounds().intersects(getBounds())) {
+			
+			escape(cautionBound(800), true);
+			
+		}
 
 		if (canMove) {
 

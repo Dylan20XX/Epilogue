@@ -18,6 +18,8 @@ import graphics.Assets;
 import graphics.CT;
 import items.Food;
 import items.Item;
+import items.Ranged;
+import items.Weapon;
 
 
 public class AwakenedSentinel extends Creatures {
@@ -229,7 +231,7 @@ public class AwakenedSentinel extends Creatures {
 			return;
 
 		//AudioPlayer.playAudio("audio/minigun.wav");
-		AudioPlayer.playAudio("audio/rapidPulse.wav");
+		AudioPlayer.playAudio("audio/laser_gun.wav");
 		c.getGameState().getWorldGenerator().getEntityManager().addEntity(new RapidPulseSentinel(bulletX, 
 				bulletY, 12, 4, (shootAngle - Math.PI/28) + Math.random()*(Math.PI/28*2), c));
 
@@ -395,6 +397,14 @@ public class AwakenedSentinel extends Creatures {
 	public void Die() {
 		AudioPlayer.playAudio("audio/explode.wav");
 		MusicPlayer.StopMusic();
+		c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator().getItemManager()
+		.addItem(Item.crankShaft.createNew((int) x + bounds.x + CT.random(0, bounds.width),
+				(int) y + bounds.y + CT.random(0, bounds.height)));
+		int rand = CT.random(1, 3);
+		if(rand == 1)
+			c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator().getItemManager()
+					.addItem(Ranged.pulseRifle.createNew((int) x + bounds.x + CT.random(0, bounds.width),
+							(int) y + bounds.y + CT.random(0, bounds.height)));
 		for(int i = 0; i < CT.random(15, 30); i++) {
 			c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator().getItemManager()
 			.addItem(Item.gearItem.createNew((int) x + bounds.x + CT.random(0, bounds.width),

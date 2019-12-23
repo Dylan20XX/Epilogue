@@ -11,6 +11,7 @@ import creatures.Player;
 import graphics.Animation;
 import graphics.Assets;
 import graphics.CT;
+import inventory.MessageBox;
 import items.Food;
 import tiles.Tile;
 import world.WorldGenerator;
@@ -68,6 +69,21 @@ public class VileEmbryo extends StaticEntity {
 
 	@Override
 	public void Die() {
+		
+		int rand = CT.random(1, 5);
+		if(rand == 1) {
+			MessageBox.addMessage("something is beneth...");
+		} else if(rand == 2) {
+			MessageBox.addMessage("the ground is shaking...");
+			c.getGameCamera().shake(20);
+		} else if(rand == 3) {
+			c.getGameCamera().shake(20);
+		} else if(rand == 4) {
+			MessageBox.addMessage("something is beneth...");
+			c.getGameCamera().shake(20);
+		} else if(rand == 5) {
+			MessageBox.addMessage("you feel uneasy...");
+		}
 		WorldGenerator.numVileEmbryo += 1;
 		int randDrop1 = CT.random(1, 3);
 		for (int i = 0; i < randDrop1; i++)

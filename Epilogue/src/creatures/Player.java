@@ -17,6 +17,7 @@ import ammo.AMM1D;
 import ammo.Arrow;
 import ammo.XM214;
 import ammo.Flame;
+import ammo.PulseRifle;
 import audio.AudioPlayer;
 import entity.Entity;
 import graphics.Animation;
@@ -527,6 +528,9 @@ public class Player extends Creatures {
 						if (item.getName().equals("megashakalaka")) {
 							AudioPlayer.playAudio("audio/minigun.wav");
 							c.getGameState().getWorldGenerator().getEntityManager().addEntity(new XM214((int)x + 10, (int)y, 12, 4, (shootAngle - r.accuracy) + Math.random()*(r.accuracy*2), c));
+						} else if (item.getName().equals("pulse rifle")) {
+							AudioPlayer.playAudio("audio/laser_gun.wav");
+							c.getGameState().getWorldGenerator().getEntityManager().addEntity(new PulseRifle((int)x + 10, (int)y, 12, 4, (shootAngle - r.accuracy) + Math.random()*(r.accuracy*2), c));
 						} else if (item.getName().equals("glock")) {
 							//c.getGameCamera().shake(1);
 							AudioPlayer.playAudio("audio/glock.wav");
@@ -1876,6 +1880,11 @@ public class Player extends Creatures {
 						at2.rotate(-shootAngle, 45, 55);
 						g2d.setTransform(at2);
 						g2d.drawImage(Assets.megashakalakaActive, Arm.getWidth() / 2 - 36, Arm.getHeight() / 2, 100, 100, null);
+					} else if(hands.getHand().getName().equals("pulse rifle")) {
+						at2.translate(c.getWidth() / 2 - 33, c.getHeight() / 2 - 55);
+						at2.rotate(-shootAngle, 45, 55);
+						g2d.setTransform(at2);
+						g2d.drawImage(Assets.pulseRifleActive, Arm.getWidth() / 2 - 36, Arm.getHeight() / 2, 100, 100, null);
 					} else if(hands.getHand().getName().equals("flamethrower")) {
 						at2.translate(c.getWidth() / 2 - 33, c.getHeight() / 2 - 55);
 						at2.rotate(-shootAngle, 45, 55);
@@ -1908,6 +1917,11 @@ public class Player extends Creatures {
 						at2.rotate(-shootAngle, 45, 57);
 						g2d.setTransform(at2);
 						g2d.drawImage(CT.flip(Assets.megashakalakaActive), Arm.getWidth() / 2 - 36, Arm.getHeight() / 2, 100, 100, null);
+					} else if(hands.getHand().getName().equals("pulse rifle")) {
+						at2.translate(c.getWidth() / 2 - 33, c.getHeight() / 2 - 55);
+						at2.rotate(-shootAngle, 45, 57);
+						g2d.setTransform(at2);
+						g2d.drawImage(CT.flip(Assets.pulseRifleActive), Arm.getWidth() / 2 - 36, Arm.getHeight() / 2, 100, 100, null);
 					} else if(hands.getHand().getName().equals("flamethrower")) {
 						at2.translate(c.getWidth() / 2 - 33, c.getHeight() / 2 - 55);
 						at2.rotate(-shootAngle, 45, 57);

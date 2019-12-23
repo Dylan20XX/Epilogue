@@ -80,7 +80,7 @@ public class Assets {
 			zincIngot, ironIngot, goldIngot, titaniumIngot, tungstenIngot, leather, fur, gear, blueprint, sac, waterContainer,
 			pipeHead, stick, researchKit, workbenchToolkit, smithingToolkit, sap, ashe, purificationSink, torch, battery, ironBar,
 			gunFrame, glockSide, glockBarrel, desertEagleSide, desertEagleBarrel, trigger, repairKit, motor, reciever, mGunGrip, 
-			mGunHandel, mGunBarrel, fNozzle, fFuelTank, fGrip, fTubing, fTorch;
+			mGunHandel, mGunBarrel, fNozzle, fFuelTank, fGrip, fTubing, fTorch, turboCharger, sparkPlug, compressorWheel, crankShaft;
 
 	// armor
 	public static BufferedImage pan, goldenPan;
@@ -105,16 +105,16 @@ public class Assets {
 
 	// weapons
 	public static BufferedImage bat, katana, bronzeBlade, zincBlade, ironSword, steelSword, titaniumClaws, tungstenMace,
-		giantSawBlade, woodenClub, stoneClub, spikeClub;
+		giantSawBlade, woodenClub, stoneClub, spikeClub, darkSaber;
 	
 	// tools
 	public static BufferedImage woodenAxe, stoneAxe, bronzeAxe, zincAxe, chainsaw, woodenPick, stonePick, bronzePick,
 		zincPick, drill, shovel;
 
 	// ranged
-	public static BufferedImage megashakalaka, glock, flamethrower, woodenBow, desertEagle, bronzeBow, zincBow, ironBow, ravager;
+	public static BufferedImage megashakalaka, glock, flamethrower, woodenBow, desertEagle, bronzeBow, zincBow, ironBow, ravager, pulseRifle;
 	public static BufferedImage glockActive, desertEagleActive, megashakalakaActive, flameThrowerActive, woodenBowActive, 
-		bronzeBowActive, zincBowActive, ironBowActive, ravagerActive;
+		bronzeBowActive, zincBowActive, ironBowActive, ravagerActive, pulseRifleActive;
 	public static BufferedImage AMM1D, fuel, XM214, bulletFire, flame, arrow, arrowItem, sandShotUp, sandShotDown;
 
 	//food
@@ -1131,6 +1131,10 @@ public class Assets {
 		Spritesheet FNozzle = new Spritesheet(ImageLoader.LoadImage("/materialItem/FThrowerNozzle.png"));
 		Spritesheet FGrip = new Spritesheet(ImageLoader.LoadImage("/materialItem/FThrowerGrip.png"));
 		Spritesheet FFuelTank = new Spritesheet(ImageLoader.LoadImage("/materialItem/FThrowerFuelTank.png"));
+		Spritesheet TurboCharger = new Spritesheet(ImageLoader.LoadImage("/materialItem/turbo_charger.png"));
+		Spritesheet SparkPlug = new Spritesheet(ImageLoader.LoadImage("/materialItem/spark_plug.png"));
+		Spritesheet CompressorWheel = new Spritesheet(ImageLoader.LoadImage("/materialItem/compressor_wheel.png"));
+		Spritesheet CrankShaft = new Spritesheet(ImageLoader.LoadImage("/materialItem/crank_shaft.png"));
 		
 		fTorch = FTorch.crop(0, 0, 32, 32);
 		fTubing = FTubing.crop(0, 0, 32, 32);
@@ -1151,6 +1155,10 @@ public class Assets {
 		desertEagleBarrel = DesertEagleBarrel.crop(0, 0, 32, 32);
 		trigger = Trigger.crop(0, 0, 32, 32);
 		repairKit = RepairKit.crop(0, 0, 64, 64);
+		turboCharger = TurboCharger.crop(0, 0, 64, 59);
+		sparkPlug = SparkPlug.crop(0, 0, 64, 64);
+		compressorWheel = CompressorWheel.crop(0, 0, 64, 54);
+		crankShaft = CrankShaft.crop(0, 0, 64, 64);;
 		
 		battery = Battery.crop(0, 0, 32, 32);
 		pipeHead = PipeHead.crop(0, 0, 32, 32);
@@ -1507,7 +1515,10 @@ public class Assets {
 		Spritesheet SpikeClub = new Spritesheet(ImageLoader.LoadImage("/weaponItem/spikeClub.png"));
 		Spritesheet Tools = new Spritesheet(ImageLoader.LoadImage("/weaponItem/tools.png"));
 		Spritesheet Shovel = new Spritesheet(ImageLoader.LoadImage("/weaponItem/shovel.png"));
-
+		Spritesheet DarkSaber = new Spritesheet(ImageLoader.LoadImage("/weaponItem/dark_saber.png"));
+		Spritesheet PulseRifle = new Spritesheet(ImageLoader.LoadImage("/weaponItem/pulse_rifle.png"));
+		Spritesheet PulseRifleActive = new Spritesheet(ImageLoader.LoadImage("/weaponItem/pulse_rifle_active.png"));
+		
 		katana = Katana.crop(0, 0, 64, 64);
 		bronzeBlade = BronzeBlade.crop(0, 0, 64, 64);
 		zincBlade = ZincBlade.crop(0, 0, 64, 64);
@@ -1520,6 +1531,7 @@ public class Assets {
 		woodenClub = WoodenClub.crop(0, 0, 64, 64);
 		stoneClub = StoneClub.crop(0, 0, 64, 64);
 		spikeClub = SpikeClub.crop(0, 0, 64, 64);
+		darkSaber = DarkSaber.crop(0, 0, 64, 64);
 		  
 		megashakalaka = Megashakalaka.crop(0, 0, 64, 64);
 		megashakalakaActive = MegashakalakaActive.crop(0, 0, 64, 64);
@@ -1539,6 +1551,8 @@ public class Assets {
 		glockActive = GlockActive.crop(0, 0, 64, 64);
 		desertEagle = DesertEagle.crop(0, 0, 32, 32);
 		desertEagleActive = DesertEagleActive.crop(0, 0, 64, 64);
+		pulseRifle = PulseRifle.crop(0, 0, 64, 64);
+		pulseRifleActive = PulseRifleActive.crop(0, 0, 64, 64);
 		
 		woodenAxe = Tools.crop(0, 0, 64, 64);
 		woodenPick = Tools.crop(64, 0, 64, 64);

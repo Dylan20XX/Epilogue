@@ -15,7 +15,9 @@ import graphics.Assets;
 import graphics.CT;
 import inventory.MessageBox;
 import items.Food;
+import items.Item;
 import items.Ranged;
+import items.Weapon;
 import world.WorldGenerator;
 
 public class VileSpawn extends Creatures {
@@ -303,9 +305,14 @@ public class VileSpawn extends Creatures {
 		}
 		active = false;
 		MusicPlayer.StopMusic();
+		int rand = CT.random(1, 3);
+		if(rand == 1)
+			c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator().getItemManager()
+					.addItem(Weapon.darkSaber.createNew((int) x + bounds.x + CT.random(0, bounds.width),
+							(int) y + bounds.y + CT.random(0, bounds.height)));
 		c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator().getItemManager()
-				.addItem(Ranged.ravager.createNew((int) x + bounds.x + CT.random(0, bounds.width),
-						(int) y + bounds.y + CT.random(0, bounds.height)));
+		.addItem(Item.compressorWheel.createNew((int) x + bounds.x + CT.random(0, bounds.width),
+				(int) y + bounds.y + CT.random(0, bounds.height)));
 		int randDrop = CT.random(5, 10);
 		for (int i = 0; i < randDrop; i++)
 			c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator().getItemManager()

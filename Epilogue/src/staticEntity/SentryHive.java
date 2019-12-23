@@ -87,6 +87,10 @@ public class SentryHive extends StaticEntity {
 		
 		MessageBox.addMessage("you have angered the Sentry Queen...");
 		
+		c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator().getItemManager()
+		.addItem(Item.turboCharger.createNew((int) x + bounds.x + CT.random(0, bounds.width),
+				(int) y + bounds.y + CT.random(0, bounds.height)));
+		
 		for(int i = 0; i < CT.random(6, 15); i++)
 			c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator()
 			.getItemManager().addItem(Item.silkItem.createNew((int) x + bounds.x + CT.random(0, bounds.width), (int) y + bounds.y + CT.random(0, bounds.height)));

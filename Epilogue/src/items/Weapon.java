@@ -29,11 +29,13 @@ public class Weapon extends Item {
 	public static Weapon titaniumClaws = new Weapon(Assets.titaniumClaws, "titanium claws", 106, 0.8, 80, 300, 5, 30, 20, 1650, 1650);
 	public static Weapon tungstenMace = new Weapon(Assets.tungstenMace, "tungsten mace", 107, 5.5, 225, 1750, 30, 100, 100, 1800, 1800);
 	public static Weapon giantSawBlade = new Weapon(Assets.giantSawBlade, "giant saw blade", 108, 7.2, 210, 2250, 25, 100, 95, 800, 800);
-		
+	
 	public static Weapon woodenClub = new Weapon(Assets.woodenClub, "wooden club", 109, 1.4, 50, 1000, 2, 30, 30, 80, 80);
 	public static Weapon stoneClub = new Weapon(Assets.stoneClub, "stone club", 110, 2, 75, 1200, 2, 30, 50, 210, 210);
 	public static Weapon spikeyClub = new Weapon(Assets.spikeClub, "spikey club", 111, 2, 105, 1000, 2, 30, 50, 175, 175);
-
+	
+	public static Weapon darkSaber = new Weapon(Assets.darkSaber, "dark saber", 112, 0.8, 160, 450, 50, 85, 25, 1000, 1000);
+	
 	public Weapon(BufferedImage texture, String name, int id, double weight, int damage, double aSpeed,
 			int intimidation, double range, int volume, int currentEndurance, int endurance) {
 

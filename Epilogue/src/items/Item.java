@@ -111,6 +111,11 @@ public class Item {
 	public static Item fThrowerNozzle = new Item(Assets.fNozzle, "flame thrower nozzle", 88, false, "miscellaneous", 2, 0, 20);
 	public static Item fThrowerFuelTank = new Item(Assets.fFuelTank, "fuel tank", 89, false, "miscellaneous", 5, 0, 30);
 	public static Item fThrowerGrip = new Item(Assets.fGrip, "flame thrower grip", 90, false, "miscellaneous", 3, 0, 30);
+	
+	public static Item turboCharger = new Item(Assets.turboCharger, "turbo charger", 995, false, "miscellaneous", 15, 0, 50);
+	public static Item compressorWheel = new Item(Assets.compressorWheel, "compressor wheel", 996, false, "miscellaneous", 10, 0, 50);
+	public static Item crankShaft = new Item(Assets.crankShaft, "crank shaft", 997, false, "miscellaneous", 5, 0, 50);
+	public static Item sparkPlug = new Item(Assets.sparkPlug, "spark plug", 998, false, "miscellaneous", 5, 0, 50);
 	public static Item repairKit = new Item(Assets.repairKit, "repair kit", 999, false, "miscellaneous", 28, 0, 250);
 	
 	// Suspicious Statue Sacrifices 

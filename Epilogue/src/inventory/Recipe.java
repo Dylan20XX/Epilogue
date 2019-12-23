@@ -76,6 +76,8 @@ public class Recipe {
 	public static Recipe fur = new Recipe(43);
 	public static Recipe rope3 = new Recipe(44);
 	public static Recipe shovel = new Recipe(45);
+	public static Recipe sparkPlug = new Recipe(46);
+	public static Recipe repairKit = new Recipe(47);
 	
 	public static Recipe spikeClub = new Recipe(100);
 	public static Recipe bronzeBlade = new Recipe(101);
@@ -353,6 +355,15 @@ public class Recipe {
 			recipeRequirements.put(Item.metalPlateItem.getId(), 1);
 			recipeRequirements.put(Item.stickItem.getId(), 5);
 			recipeRequirements.put(Item.ropeItem.getId(), 1);
+		} else if (id == 46) {
+			recipeRequirements.put(Item.tinIngotItem.getId(), 3);
+			recipeRequirements.put(Item.titaniumIngotItem.getId(), 4);
+			recipeRequirements.put(Item.tungstenIngotItem.getId(), 2);
+		} else if (id == 47) {
+			recipeRequirements.put(Item.turboCharger.getId(), 1);
+			recipeRequirements.put(Item.crankShaft.getId(), 1);
+			recipeRequirements.put(Item.compressorWheel.getId(), 1);
+			recipeRequirements.put(Item.sparkPlug.getId(), 1);
 		}
 		
 		else if (id == 100) {
@@ -729,6 +740,10 @@ public class Recipe {
 			setItem(Item.ropeItem);
 		} else if (id == 45) {
 			setItem(Tool.shovelTool);
+		} else if (id == 46) {
+			setItem(Item.sparkPlug);
+		} else if (id == 47) {
+			setItem(Item.repairKit);
 		} 
 		
 		else if (id == 100) {

@@ -13,6 +13,8 @@ import entity.Entity;
 import graphics.Animation;
 import graphics.Assets;
 import graphics.CT;
+import items.Ranged;
+import items.Weapon;
 import staticEntity.SentrySpike;
 import tiles.Tile;
 import world.WorldGenerator;
@@ -234,6 +236,12 @@ public class SentryBroodMother extends Creatures {
 	public void Die() {
 
 		c.getGameState().getWorldGenerator().broodMotherAlive = false;
+		
+		int rand = CT.random(1, 3);
+		if(rand == 1)
+			c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator().getItemManager()
+					.addItem(Ranged.ravager.createNew((int) x + bounds.x + CT.random(0, bounds.width),
+							(int) y + bounds.y + CT.random(0, bounds.height)));
 
 		AudioPlayer.playAudio("audio/broodMotherSpawn.wav");
 		MusicPlayer.StopMusic();
