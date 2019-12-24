@@ -45,9 +45,8 @@ public class Inventory {
 		InventoryItems = new ArrayList<Item>();
 		autoCookerV2 = new AutoCookerV2Craft(c);
 		addItem(Item.torch);
-		addItem(Tool.woodenAxeTool);
-		addItem(Weapon.darkSaber);
 		addItem(Ranged.pulseRifle);
+		addItem(Weapon.darkSaber);
 		//for(int i = 0; i< 20; i++)
 		//	addItem(Item.woodenPlankItem);
 		//addItem(Item.researchKitItem);

@@ -1929,7 +1929,7 @@ public class WorldGenerator {
 					cursor.interact();
 			}
 
-		} else if (c.getMouseManager().isLeftPressed()) { //allow player to drink from nearby water blocks
+		} else if (c.getMouseManager().isLeftPressed() && c.getKeyManager().shift) { //allow player to drink from nearby water blocks
 
 			int mouseTileX = (int) ((c.getMouseManager().mouseBound().getX() + c.getGameCamera().getxOffset()) -
 					(c.getMouseManager().mouseBound().getX() + c.getGameCamera().getxOffset()) % Tile.TILEWIDTH) / Tile.TILEWIDTH;
