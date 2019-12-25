@@ -1008,7 +1008,10 @@ public class Player extends Creatures {
 								&& c.getMouseManager().mouseBound().y + c.getGameCamera().getyOffset() < y - 50
 								&& c.getMouseManager().mouseBound().x + c.getGameCamera().getxOffset() < x + bounds.x
 										- 20)) {
-					AudioPlayer.playAudio("audio/swing.wav");
+					if(item.getName().equals("dark saber")) 
+						AudioPlayer.playAudio("audio/dark_saber.wav");
+					else 
+						AudioPlayer.playAudio("audio/swing.wav");
 					arSize -= arSizeChange;
 					ar.x = cb.x - arSize; // get center of collision bound when player attacks up
 					ar.y = cb.y - arSize;
@@ -1020,7 +1023,10 @@ public class Player extends Creatures {
 								&& c.getMouseManager().mouseBound().y + c.getGameCamera().getyOffset() < y - 50
 								&& c.getMouseManager().mouseBound().x + c.getGameCamera().getxOffset() > x + bounds.x
 										+ bounds.width + 20)) {
-					AudioPlayer.playAudio("audio/swing.wav");
+					if(item.getName().equals("dark saber")) 
+						AudioPlayer.playAudio("audio/dark_saber.wav");
+					else 
+						AudioPlayer.playAudio("audio/swing.wav");
 					arSize -= arSizeChange;
 					ar.x = cb.x + cb.width; // get center of collision bound when player attacks up
 					ar.y = cb.y - arSize;
@@ -1034,7 +1040,10 @@ public class Player extends Creatures {
 										+ bounds.width
 								&& c.getMouseManager().mouseBound().x + c.getGameCamera().getxOffset() < x + bounds.x
 										- 20)) {
-					AudioPlayer.playAudio("audio/swing.wav");
+					if(item.getName().equals("dark saber")) 
+						AudioPlayer.playAudio("audio/dark_saber.wav");
+					else 
+						AudioPlayer.playAudio("audio/swing.wav");
 					arSize -= arSizeChange;
 					ar.x = cb.x - arSize; // get center of collision bound when player attacks up
 					ar.y = cb.y + cb.height;
@@ -1047,7 +1056,10 @@ public class Player extends Creatures {
 										+ bounds.width
 								&& c.getMouseManager().mouseBound().x + c.getGameCamera().getxOffset() > x + bounds.x
 										+ bounds.width + 20)) {
-					AudioPlayer.playAudio("audio/swing.wav");
+					if(item.getName().equals("dark saber")) 
+						AudioPlayer.playAudio("audio/dark_saber.wav");
+					else 
+						AudioPlayer.playAudio("audio/swing.wav");
 					arSize -= arSizeChange;
 					ar.x = cb.x + cb.width; // get center of collision bound when player attacks up
 					ar.y = cb.y + cb.height;
@@ -1061,7 +1073,10 @@ public class Player extends Creatures {
 										- 20
 								&& c.getMouseManager().mouseBound().x + c.getGameCamera().getxOffset() < x + bounds.x
 										+ bounds.width + 20)) {
-					AudioPlayer.playAudio("audio/swing.wav");
+					if(item.getName().equals("dark saber")) 
+						AudioPlayer.playAudio("audio/dark_saber.wav");
+					else 
+						AudioPlayer.playAudio("audio/swing.wav");
 					ar.x = cb.x + cb.width / 2 - arSize / 2; // get center of collision bound when player attacks up
 					ar.y = cb.y - arSize;
 					isAttacking = true;
@@ -1073,7 +1088,10 @@ public class Player extends Creatures {
 										- 20
 								&& c.getMouseManager().mouseBound().x + c.getGameCamera().getxOffset() < x + bounds.x
 										+ bounds.width + 20)) {
-					AudioPlayer.playAudio("audio/swing.wav");
+					if(item.getName().equals("dark saber")) 
+						AudioPlayer.playAudio("audio/dark_saber.wav");
+					else 
+						AudioPlayer.playAudio("audio/swing.wav");
 					ar.x = cb.x + cb.width / 2 - arSize / 2;
 					ar.y = cb.y + cb.height;
 					isAttacking = true;
@@ -1085,7 +1103,10 @@ public class Player extends Creatures {
 										+ bounds.y
 								&& c.getMouseManager().mouseBound().y + c.getGameCamera().getyOffset() < y + bounds.y
 										+ bounds.height)) {
-					AudioPlayer.playAudio("audio/swing.wav");
+					if(item.getName().equals("dark saber")) 
+						AudioPlayer.playAudio("audio/dark_saber.wav");
+					else 
+						AudioPlayer.playAudio("audio/swing.wav");
 					ar.x = cb.x - arSize;
 					ar.y = cb.y + cb.height / 2 - arSize / 2;
 					direction = 0;
@@ -1098,7 +1119,10 @@ public class Player extends Creatures {
 										+ bounds.y
 								&& c.getMouseManager().mouseBound().y + c.getGameCamera().getyOffset() < y + bounds.y
 										+ bounds.height)) {
-					AudioPlayer.playAudio("audio/swing.wav");
+					if(item.getName().equals("dark saber")) 
+						AudioPlayer.playAudio("audio/dark_saber.wav");
+					else 
+						AudioPlayer.playAudio("audio/swing.wav");
 					ar.x = cb.x + cb.width;
 					ar.y = cb.y + cb.height / 2 - arSize / 2;
 					direction = 1;

@@ -102,7 +102,10 @@ public class PlayerHands {
 						inventory.InventoryItems.get(inventory.selectedItem).getType().equals("axe") ||
 						inventory.InventoryItems.get(inventory.selectedItem).getType().equals("pickaxe") || 
 						inventory.InventoryItems.get(inventory.selectedItem).getType().equals("shovel")) {
-					AudioPlayer.playAudio("audio/swordUp.wav");
+					if(inventory.InventoryItems.get(inventory.selectedItem).getName().equals("dark saber")) 
+						AudioPlayer.playAudio("audio/dark_saber_draw.wav");
+					else 
+						AudioPlayer.playAudio("audio/swordUp.wav");
 				} else if(inventory.InventoryItems.get(inventory.selectedItem).getType().equals("ranged")) {
 					AudioPlayer.playAudio("audio/gunUp.wav");
 				}
@@ -131,7 +134,10 @@ public class PlayerHands {
 						inventory.InventoryItems.get(inventory.selectedItem).getType().equals("axe") ||
 						inventory.InventoryItems.get(inventory.selectedItem).getType().equals("pickaxe") || 
 						inventory.InventoryItems.get(inventory.selectedItem).getType().equals("shovel")) {
-					AudioPlayer.playAudio("audio/swordUp.wav");
+					if(inventory.InventoryItems.get(inventory.selectedItem).getName().equals("dark saber")) 
+						AudioPlayer.playAudio("audio/dark_saber_draw.wav");
+					else 
+						AudioPlayer.playAudio("audio/swordUp.wav");
 				} else if(inventory.InventoryItems.get(inventory.selectedItem).getType().equals("ranged")) {
 					AudioPlayer.playAudio("audio/gunUp.wav");
 				}
@@ -161,7 +167,10 @@ public class PlayerHands {
 				currentHand = "left";
 				if(getHand() != null && (getHand().getType().equals("weapon") || getHand().getType().equals("axe")
 						|| getHand().getType().equals("pickaxe") || getHand().getType().equals("shovel"))) {
-					AudioPlayer.playAudio("audio/swordUp.wav");
+					if(inventory.InventoryItems.get(inventory.selectedItem).getName().equals("dark saber")) 
+						AudioPlayer.playAudio("audio/dark_saber_draw.wav");
+					else 
+						AudioPlayer.playAudio("audio/swordUp.wav");
 				} else if(getHand() != null && getHand().getType().equals("ranged")) {
 					AudioPlayer.playAudio("audio/gunUp.wav");
 				}
@@ -173,7 +182,10 @@ public class PlayerHands {
 				currentHand = "right";
 				if(getHand() != null && (getHand().getType().equals("weapon") || getHand().getType().equals("axe")
 						|| getHand().getType().equals("pickaxe") || getHand().getType().equals("shovel"))) {
-					AudioPlayer.playAudio("audio/swordUp.wav");
+					if(inventory.InventoryItems.get(inventory.selectedItem).getName().equals("dark saber")) 
+						AudioPlayer.playAudio("audio/dark_saber_draw.wav");
+					else 
+						AudioPlayer.playAudio("audio/swordUp.wav");
 				} else if(getHand() != null && getHand().getType().equals("ranged")) {
 					AudioPlayer.playAudio("audio/gunUp.wav");
 				}

@@ -22,6 +22,7 @@ import world.WorldGenerator;
 public class SentryBroodMother extends Creatures {
 
 	private long lastSpawnTimer, spawnCooldown = 2000, spawnTimer = spawnCooldown;
+	private long lastattackTimer, attackCooldown = 1000, attackTimer = attackCooldown;
 	private Random r = new Random();
 	private int selectedAction;
 	private boolean canAttack = true;
@@ -182,6 +183,18 @@ public class SentryBroodMother extends Creatures {
 
 	public void AI() {
 
+		if (damageBound().intersects(Player.getPlayerData().getBounds())) 
+			knockbackPlayer(this);
+
+		chase(1.2);
+
+		
+		attackTimer += System.currentTimeMillis() - lastattackTimer;
+		lastattackTimer = System.currentTimeMillis();
+
+		if (attackTimer < attackCooldown)
+			return;
+		
 		for(int i = 0; i < c.getGameState().getWorldGenerator().getEntityManager().getEntitiesInBound().size(); i++) {
 			if(c.getGameState().getWorldGenerator().getEntityManager().getEntitiesInBound().get(i).getBounds().intersects(damageBound())) {
 				if(!c.getGameState().getWorldGenerator().getEntityManager().getEntitiesInBound().get(i)
@@ -194,12 +207,9 @@ public class SentryBroodMother extends Creatures {
 				}
 			}
 		}
-
-		if (damageBound().intersects(Player.getPlayerData().getBounds())) 
-			knockbackPlayer(this);
-
-		chase(1);
-
+		
+		attackTimer = 0;
+		
 	}
 
 	public Rectangle closeBound() { 

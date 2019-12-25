@@ -17,7 +17,6 @@ public class PineSap extends StaticEntity {
 
 	// java's random API
 	private Random r = new Random();
-	private long lastMoveTimer = System.currentTimeMillis();
 
 	private ControlCenter c;
 
@@ -58,6 +57,8 @@ public class PineSap extends StaticEntity {
 			int sapTileX = (int) (x - x % Tile.TILEWIDTH) / Tile.TILEWIDTH;
 			int sapTileY = (int) (y - y % Tile.TILEWIDTH) / Tile.TILEHEIGHT;
 
+			c.getGameState().getWorldGenerator().getEntityManager().addEntity(new PineTree(x, y, c));
+			/*
 			if(c.getGameState().getWorldGenerator().getTerrain()[sapTileX][sapTileY] == 1) {
 				c.getGameState().getWorldGenerator().getEntityManager().addEntity(new PineTree(x, y, c));
 			} else if(c.getGameState().getWorldGenerator().getTerrain()[sapTileX][sapTileY] == 6) {
@@ -65,6 +66,7 @@ public class PineSap extends StaticEntity {
 			} else {
 				c.getGameState().getWorldGenerator().getEntityManager().addEntity(new BurntTree(x, y, c));
 			}
+			*/
 
 		}
 
@@ -75,9 +77,7 @@ public class PineSap extends StaticEntity {
 
 		g.drawImage(Assets.sapling, (int) (x - c.getGameCamera().getxOffset()),
 				(int) (y - c.getGameCamera().getyOffset()), width, height, null);
-		g.setColor(Color.blue);
-		Graphics2D g2d = (Graphics2D) g;
-		g2d.draw(getBounds());
+		
 	}
 
 	@Override
