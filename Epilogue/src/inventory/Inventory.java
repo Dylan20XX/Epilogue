@@ -48,6 +48,7 @@ public class Inventory {
 		addItem(Tool.woodenAxeTool);
 		addItem(Weapon.darkSaber);
 		addItem(Ranged.pulseRifle);
+		addItem(Torch.torch);
 		//for(int i = 0; i< 20; i++)
 		//	addItem(Item.woodenPlankItem);
 		//addItem(Item.researchKitItem);
@@ -173,7 +174,6 @@ public class Inventory {
 
 		if (inventoryWeight != 0) {
 			if (c.getKeyManager().keyJustPressed(KeyEvent.VK_Q) && !InventoryItems.isEmpty()) {
-				
 				dropItem(InventoryItems.get(selectedItem), true);
 				
 			}
@@ -230,18 +230,20 @@ public class Inventory {
 				.getItemManager().addItem(r.createNew(r, (int) player.getX() + CT.random(0, player.getBounds().width),
 						(int) player.getY() + CT.random(0, player.getBounds().height)));
 			}
-		} 
-		else {
+		} else if(item.getType().equals("torch")) {
 			if(condition) {
-				if(item instanceof Torch) {
-					Torch t = (Torch)item;
-					c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator()
-					.getItemManager().addItem(t.createNewInventoryItem(t, (int) player.getX() + CT.random(0, player.getBounds().width),
-							(int) player.getY() + CT.random(0, player.getBounds().height)));
-				} else
-					c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator()
-							.getItemManager().addItem(item.createNewInventoryItem(item, (int) player.getX() + CT.random(0, player.getBounds().width),
-									(int) player.getY() + CT.random(0, player.getBounds().height)));
+				Torch t = (Torch)item;
+				item.setItemEquipped(false);
+				item.tick();
+				c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator()
+				.getItemManager().addItem(t.createNew(t, (int) player.getX() + CT.random(0, player.getBounds().width),
+						(int) player.getY() + CT.random(0, player.getBounds().height)));
+			}
+		} else {
+			if(condition) {
+				c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator()
+				.getItemManager().addItem(item.createNewInventoryItem(item, (int) player.getX() + CT.random(0, player.getBounds().width),
+						(int) player.getY() + CT.random(0, player.getBounds().height)));
 			}
 		}
 		

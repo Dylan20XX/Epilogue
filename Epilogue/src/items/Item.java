@@ -48,7 +48,6 @@ public class Item {
 	public static Item titaniumChunkItem = new Item(Assets.titanium, "titanium chunk", 8, true, "miscellaneous", 0.3,35, 15);
 	public static Item tungstenChunkItem = new Item(Assets.tungsten, "tungsten chunk", 9, true, "miscellaneous", 0.8, 35, 15);
 	public static Item coalChunkItem = new Item(Assets.coal, "coal", 10, true, "miscellaneous", 0.3, 35, 15);
-	public static Item torch = new Torch();
 	public static Item tinIngotItem = new Item(Assets.tinIngot, "tin Ingot", 12, true, "miscellaneous", 0.08, 35, 20);
 	public static Item bronzeIngotItem = new Item(Assets.bronzeIngot, "bronze Ingot", 13, true, "miscellaneous", 0.1, 35, 20);
 	public static Item zincIngotItem = new Item(Assets.zincIngot, "zinc Ingot", 14, true, "miscellaneous", 0.2, 35, 20);

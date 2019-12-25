@@ -8,6 +8,7 @@ import items.Food;
 import items.Item;
 import items.Ranged;
 import items.Tool;
+import items.Torch;
 import items.Weapon;
 import structureInventory.SmithingTableRecipe;
 import structureInventory.WorkbenchRecipe;
@@ -668,7 +669,7 @@ public class Recipe {
 		} else if (id == 10) {
 			setItem(Item.waterSacItem);
 		} else if (id == 11) {
-			setItem(Item.torch);
+			setItem(Torch.torch);
 		} else if (id == 12) {
 			setItem(Item.workbenchToolkitItem);
 		} else if (id == 13) {

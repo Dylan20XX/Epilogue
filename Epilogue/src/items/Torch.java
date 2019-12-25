@@ -2,11 +2,13 @@ package items;
 
 import creatures.Player;
 import graphics.Assets;
+import structureInventory.ChestInventory;
 import structures.TorchLight;
 import tiles.Tile;
 
 public class Torch extends Item{
 
+	public static Torch torch = new Torch();
 	private int curFuel;
 	private static final int fuel = 18000;
 	private static TorchLight tl;
@@ -16,6 +18,36 @@ public class Torch extends Item{
 	public Torch() {
 		super(Assets.torch, "torch", 11, false, "torch", 0.1, 25, 20);
 		curFuel = fuel;
+	}
+	
+	public Item createNew(int x, int y) {
+        Item i = new Torch();
+        i.setPosition(x, y);
+        return i;
+	}
+	
+	public Item createNewInventoryItem(Torch item, int x, int y) {
+		item.setPosition(x, y);
+		return item;
+	}
+	
+	public Item createNew(Torch item, int x, int y) {
+		Torch i = new Torch();
+		
+		i.curFuel = item.curFuel;
+		
+		i.setPosition(x, y);
+		return (Item)i;
+		
+	}
+	
+	public void createNew(ChestInventory chest, int count) { // random generation
+		Item i = new Torch();
+		i.setPickedUp(true);
+		for(int a = 0; a < count; a++) {
+			if(chest.getInventoryVolume() + i.getVolume() < chest.getInventoryCapacity())
+				chest.addItem(i);
+		}
 	}
 	
 	@Override
@@ -37,8 +69,8 @@ public class Torch extends Item{
 				prevLumen = Lumen;
 			}
 		} else {
-			ini = false;
-			c.getGameState().getWorldGenerator().removeLight(5, PTX, PTY, Lumen);
+			if(ini)
+				c.getGameState().getWorldGenerator().removeLight(5, PTX, PTY, Lumen);
 		}
 		
 		if(curFuel <= 0) {
