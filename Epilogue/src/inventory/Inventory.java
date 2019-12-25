@@ -44,7 +44,7 @@ public class Inventory {
 		this.e = e;
 		InventoryItems = new ArrayList<Item>();
 		autoCookerV2 = new AutoCookerV2Craft(c);
-		addItem(Item.sapItem);
+		addItem(Item.torch);
 		addItem(Tool.woodenAxeTool);
 		addItem(Weapon.darkSaber);
 		addItem(Ranged.pulseRifle);
@@ -789,7 +789,6 @@ public class Inventory {
 	}
 	
 	// Inventory
-	
 	public boolean addItem(Item item) {
 		if(inventoryVolume + item.getVolume() > maxInventoryVolume) {
 			volumeExceed = true;

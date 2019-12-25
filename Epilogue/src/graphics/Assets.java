@@ -57,7 +57,8 @@ public class Assets {
 	// staticEntity
 	public static BufferedImage tree1, rock1, agave1, agave2, cactus1, cactus2, giantStingerCactus1,
 			giantStingerCactus2, woodenCrate, smelter, smelterActive, autoCooker, autoCookerActive, smithingTable, woodenTable, workbench
-			, shroomPile1, shroomPile2, prettyShroomPlant, brainFunguiPlant, cannon, woodenFenceHorizontal, woodenFenceVertical, 
+			, shroomPile1, shroomPile2, prettyShroomPlant, brainFunguiPlant,
+			grass1, grass2, grass3, grass4, grass5, cannon, woodenFenceHorizontal, woodenFenceVertical, 
 			woodenGateHorizontalClosed, woodenGateHorizontalOpen, woodenGateVerticalClosed, woodenGateVerticalOpen, powerAdaptorOn, powerAdaptorOff,
 			heavyPulse, rapidPulse, mine, tent, mattress, heavyPulseFire, rapidPulseFire, heavyPulseItem, rapidPulseItem, researchTable, cave, 
 			infectedTree, spineBush, sentrySpikeSprout, sentrySpike, purifier, pineTree, bush1, bush2, woodenStick,
@@ -706,6 +707,13 @@ public class Assets {
 		Spritesheet MetalGateVerticalClosed = new Spritesheet(ImageLoader.LoadImage("/staticEntity/metalGateVerticalClosed.png"));
 		Spritesheet MetalGateVerticalOpen = new Spritesheet(ImageLoader.LoadImage("/staticEntity/metalGateVerticalOpen.png"));
 		Spritesheet Sapling = new Spritesheet(ImageLoader.LoadImage("/staticEntity/liveSap.png"));
+		Spritesheet Grass = new Spritesheet(ImageLoader.LoadImage("/staticEntity/grass.png"));
+		
+		grass1 = Grass.crop(0, 0, 64, 64);
+		grass2 = Grass.crop(64, 0, 64, 64);
+		grass3 = Grass.crop(128, 0, 64, 64);
+		grass4 = Grass.crop(192, 0, 64, 64);
+		grass5 = Grass.crop(256, 0, 64, 64);
 		
 		sapling = Sapling.crop(0, 0, 32, 32);
 		metalCrate = MetalCrate.crop(0, 0, 32, 32);

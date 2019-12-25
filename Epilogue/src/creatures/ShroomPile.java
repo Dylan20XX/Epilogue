@@ -59,10 +59,20 @@ public class ShroomPile extends Creatures{
     @Override
     public void tick() {
         
+    	
+    	
     }
 
     @Override
     public void render(Graphics g) {
+    	
+    	if(Player.getPlayerData().steppingBound().intersects(getBounds())) {
+    		
+    		AudioPlayer.playAudio("audio/plant.wav");
+    		Die();
+    		active = false;
+    		
+    	}
     	
     	if(amount == 1)
 	        g.drawImage(Assets.shroomPile1, (int)(x - c.getGameCamera().getxOffset()), (int)(y - c.getGameCamera().getyOffset()),
@@ -76,6 +86,10 @@ public class ShroomPile extends Creatures{
 	@Override
 	public void Die() {
 		
+		for(int i = 0; i < amount; i++)
+			c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator()
+			.getItemManager().addItem(Food.shroomItem.createNew((int) x + bounds.x + CT.random(0, bounds.width), (int) y + bounds.y + CT.random(0, bounds.height)));
+		
 	}
 
 	@Override
@@ -83,7 +97,7 @@ public class ShroomPile extends Creatures{
 		
 		if(Player.getPlayerData().getInventory().addItem(Food.shroomItem)) {
 			
-			for(int i = 0; i < amount - 1; i++)
+			for(int i = 0; i < amount; i++)
 				Player.getPlayerData().getInventory().addItem(Food.shroomItem);
 			
 			AudioPlayer.playAudio("audio/pickup.wav");
