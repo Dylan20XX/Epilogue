@@ -328,7 +328,7 @@ public class WorldGenerator {
 		messageBox = new MessageBox(c);
 		effects = new EffectManager(c);
 
-		
+		/*
 		entityManager.addEntity(
 				new Goat(entityManager.getPlayer().getX()- 600, entityManager.getPlayer().getY() - 150, c));
 		
@@ -372,8 +372,9 @@ public class WorldGenerator {
 		//sentryHive = new SentryHive(entityManager.getPlayer().getX() + 700, entityManager.getPlayer().getY() + 300, c);
 		entityManager.addEntity(
 				new SpaceShuttle(entityManager.getPlayer().getX() + 200, entityManager.getPlayer().getY() + 300, c));
-		// test mouse cursor - this is required for the mouse cursor to work
+		*/
 		
+		// test mouse cursor - this is required for the mouse cursor to work
 		cursor = new MouseCursor(c);
 		//entityManager.addEntity(sentryHive);
 		
@@ -818,7 +819,7 @@ public class WorldGenerator {
 							c.getMouseManager().mouseBound().x % Tile.TILEWIDTH);
 					int buildY = (int) ((c.getMouseManager().mouseBound().y - 
 							(c.getGameCamera().getyOffset() % Tile.TILEHEIGHT)) - 
-							c.getMouseManager().mouseBound().y % Tile.TILEHEIGHT + Tile.TILEHEIGHT/4*3);
+							c.getMouseManager().mouseBound().y % Tile.TILEHEIGHT);
 					
 					Rectangle rect = new Rectangle(buildX, buildY, Tile.TILEWIDTH, Tile.TILEHEIGHT);
 
@@ -1398,8 +1399,8 @@ public class WorldGenerator {
 					
 					//add different entities for different items
 					if (hands.getHand().getId() == 700) { //pine sap
-						entityManager.addEntity(new PineSap(buildX - BurntTree.width / 2 + BurntTree.width / 5, 
-								buildY - BurntTree.height / 4 * 3, c));
+						entityManager.addEntity(new PineSap(buildX, 
+								buildY, c));
 						topper[buildX / 64][buildY / 64] = 51;
 					}
 
@@ -1752,20 +1753,20 @@ public class WorldGenerator {
 		else if(radius == 9)
 			additional = 6;
 
-		for(int i = y-temp-radius + additional; i <= y-temp+1; i++) {
-			for(int j = x - temp; j <= x + temp; j++) {
+		for(int i = Math.max(y-temp-radius+ additional, 0); i <= Math.min(y-temp+1, lightMap[0].length); i++) {
+			for(int j = Math.max(x - temp, 0); j <= Math.min(x + temp, lightMap.length); j++) {
 				lightMap[j][i] += lumen;
 			}
 			temp++;
 		}
-		for(int i = y-radius/2; i <= y+radius/2; i++) {
-			for(int j = x - temp; j <= x + temp; j++) {
+		for(int i = Math.max(y-radius/2, 0); i <= Math.min(y+radius/2, lightMap[0].length); i++) {
+			for(int j = Math.max(x - temp, 0); j <= Math.min(x + temp, lightMap.length); j++) {
 				lightMap[j][i] += lumen;
 			}
 		}
 		temp--;
-		for(int i = y+radius/2+1; i <= y+radius/2 + radius - additional; i++) {
-			for(int j = x - temp; j <= x + temp; j++) {
+		for(int i = Math.max(y+radius/2+1, 0); i <= Math.min(y+radius/2 + radius - additional, lightMap[0].length); i++) {
+			for(int j = Math.max(x - temp, 0); j <= Math.min(x + temp, lightMap.length); j++) {
 				lightMap[j][i] += lumen;
 			}
 			temp--;
@@ -1781,24 +1782,24 @@ public class WorldGenerator {
 		else if(radius == 9)
 			additional = 6;
 		int temp = radius/2;
-		for(int i = y-temp-radius+ additional; i <= y-temp+1; i++) {
-			for(int j = x - temp; j <= x + temp; j++) {
+		for(int i = Math.max(y-temp-radius+ additional, 0); i <= Math.min(y-temp+1, lightMap[0].length); i++) {
+			for(int j = Math.max(x - temp, 0); j <= Math.min(x + temp, lightMap.length); j++) {
 				lightMap[j][i] -= lumen;
 				if(lightMap[j][i] < 0)
 					lightMap[j][i] = 0;
 			}
 			temp++;
 		}
-		for(int i = y-radius/2; i <= y+radius/2; i++) {
-			for(int j = x - temp; j <= x + temp; j++) {
+		for(int i = Math.max(y-radius/2, 0); i <= Math.min(y+radius/2, lightMap[0].length); i++) {
+			for(int j = Math.max(x - temp, 0); j <= Math.min(x + temp, lightMap.length); j++) {
 				lightMap[j][i] -= lumen;
 				if(lightMap[j][i] < 0)
 					lightMap[j][i] = 0;
 			}
 		}
 		temp--;
-		for(int i = y+radius/2+1; i <= y+radius/2 + radius - additional; i++) {
-			for(int j = x - temp; j <= x + temp; j++) {
+		for(int i = Math.max(y+radius/2+1, 0); i <= Math.min(y+radius/2 + radius - additional, lightMap[0].length); i++) {
+			for(int j = Math.max(x - temp, 0); j <= Math.min(x + temp, lightMap.length); j++) {
 				lightMap[j][i] -= lumen;
 				if(lightMap[j][i] < 0)
 					lightMap[j][i] = 0;
@@ -1819,20 +1820,20 @@ public class WorldGenerator {
 			additional = 4;
 		else if(radius == 9)
 			additional = 6;
-		for(int i = y-temp-radius+additional; i <= y-temp+1; i++) {
-			for(int j = x - temp; j <= x + temp; j++) {
+		for(int i = Math.max(y-temp-radius+ additional, 0); i <= Math.min(y-temp+1, powerMap[0].length); i++) {
+			for(int j = Math.max(x - temp, 0); j <= Math.min(x + temp, powerMap.length); j++) {
 				powerMap[j][i]++;
 			}
 			temp++;
 		}
-		for(int i = y-radius/2; i <= y+radius/2; i++) {
-			for(int j = x - temp; j <= x + temp; j++) {
+		for(int i = Math.max(y-radius/2, 0); i <= Math.min(y+radius/2, powerMap[0].length); i++) {
+			for(int j = Math.max(x - temp, 0); j <= Math.min(x + temp, powerMap.length); j++) {
 				powerMap[j][i]++;
 			}
 		}
 		temp--;
-		for(int i = y+radius/2+1; i <= y+radius/2 + radius-additional; i++) {
-			for(int j = x - temp; j <= x + temp; j++) {
+		for(int i = Math.max(y+radius/2+1, 0); i <= Math.min(y+radius/2 + radius - additional, powerMap[0].length); i++) {
+			for(int j = Math.max(x - temp, 0); j <= Math.min(x + temp, powerMap.length); j++) {
 				powerMap[j][i]++;
 			}
 			temp--;
@@ -1848,20 +1849,20 @@ public class WorldGenerator {
 		else if(radius == 9)
 			additional = 6;
 		int temp = radius/2;
-		for(int i = y-temp-radius + additional; i <= y-temp+1; i++) {
-			for(int j = x - temp; j <= x + temp; j++) {
+		for(int i = Math.max(y-temp-radius+ additional, 0); i <= Math.min(y-temp+1, powerMap[0].length); i++) {
+			for(int j = Math.max(x - temp, 0); j <= Math.min(x + temp, powerMap.length); j++) {
 				powerMap[j][i]--;
 			}
 			temp++;
 		}
-		for(int i = y-radius/2; i <= y+radius/2; i++) {
-			for(int j = x - temp; j <= x + temp; j++) {
+		for(int i = Math.max(y-radius/2, 0); i <= Math.min(y+radius/2, powerMap[0].length); i++) {
+			for(int j = Math.max(x - temp, 0); j <= Math.min(x + temp, powerMap.length); j++) {
 				powerMap[j][i]--;
 			}
 		}
 		temp--;
-		for(int i = y+radius/2+1; i <= y+radius/2 + radius - additional; i++) {
-			for(int j = x - temp; j <= x + temp; j++) {
+		for(int i = Math.max(y+radius/2+1, 0); i <= Math.min(y+radius/2 + radius - additional, powerMap[0].length); i++) {
+			for(int j = Math.max(x - temp, 0); j <= Math.min(x + temp, powerMap.length); j++) {
 				powerMap[j][i]--;
 			}
 			temp--;

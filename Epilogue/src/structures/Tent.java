@@ -10,6 +10,7 @@ import audio.AudioPlayer;
 import graphics.Assets;
 import inventory.MessageBox;
 import staticEntity.StaticEntity;
+import tiles.Tile;
 import world.WorldGenerator;
 
 public class Tent extends StaticEntity {
@@ -73,8 +74,15 @@ public class Tent extends StaticEntity {
 	@Override
 	public void render(Graphics g) {
 
-		g.drawImage(Assets.tent, (int) (x - c.getGameCamera().getxOffset()),
-				(int) (y - c.getGameCamera().getyOffset()), width, height, null);
+		Graphics2D g2d = (Graphics2D) g;
+		
+		g.drawImage(Assets.tent, (int) (x - Tile.TILEWIDTH - c.getGameCamera().getxOffset()),
+				(int) (y - Tile.TILEHEIGHT - c.getGameCamera().getyOffset()), width, height, null);
+		
+		g.setColor(Color.BLUE);
+		if(c.getMouseManager().mouseBound().intersects(getBounds()))
+			g.setColor(Color.GREEN);
+		g2d.draw(getBounds());
 
 	}
 

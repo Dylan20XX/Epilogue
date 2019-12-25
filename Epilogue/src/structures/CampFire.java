@@ -102,7 +102,7 @@ public class CampFire extends StaticEntity {
 				(int) (y - c.getGameCamera().getyOffset()), width, height, null);
 
 		g.setColor(Color.BLUE);
-		g2d.draw(getBounds());
+		//g2d.draw(getBounds());
 
 	}
 
@@ -110,7 +110,7 @@ public class CampFire extends StaticEntity {
 	public void Die() {
 
 		AudioPlayer.playAudio("audio/structureBreak.wav");
-		c.getGameState().getWorldGenerator().removeLight(5, placex, placey, 1);
+		c.getGameState().getWorldGenerator().removeLight(5, placex, placey, state);
 		
 		c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator().getItemManager()
 		.addItem(Item.ashe.createNew((int) x + bounds.x + CT.random(0, bounds.width),
