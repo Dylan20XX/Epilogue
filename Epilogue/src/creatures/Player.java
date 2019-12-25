@@ -2407,6 +2407,13 @@ public class Player extends Creatures {
 				(int) (y - c.getGameCamera().getyOffset() - 300 / 2) + bounds.height / 2, 300, 300);
 
 	}
+	
+	public Rectangle steppingBound() {
+
+		return new Rectangle((int) (x - c.getGameCamera().getxOffset() - 5),
+				(int) (y - c.getGameCamera().getyOffset() - 5), bounds.width + 10, bounds.height + 10);
+
+	}
 
 	public void postRender(Graphics g) {
 		inventory.render(g);

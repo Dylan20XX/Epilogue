@@ -25,6 +25,7 @@ import creatures.DesertScorpion;
 import creatures.ExtrafloralNectar;
 import creatures.GiantBeetle;
 import creatures.Goat;
+import creatures.Grass;
 import creatures.MutatedChicken;
 import creatures.MutatedDeer;
 import creatures.Ostrich;
@@ -3069,16 +3070,18 @@ public class WorldGenerator {
 			if(canSpawn) {
 
 				if(biome == 1) { //natural biome
-					if(creatureType < 10) {
+					if(creatureType < 5) {
 						entityManager.addCreature(new ExtrafloralNectar(spawnX, spawnY, c));
-					} else if(creatureType < 15) {
+					} else if(creatureType < 10) {
 						entityManager.addCreature(new BrainFungui(spawnX, spawnY, c));
-					} else if(creatureType < 20) {
+					} else if(creatureType < 15) {
 						entityManager.addCreature(new PrettyShroom(spawnX, spawnY, c));
 					} else if(creatureType < 50) {
 						entityManager.addCreature(new ShroomPile(spawnX, spawnY, c));
-					} else if(creatureType < 80) {
+					} else if(creatureType < 60) {
 						entityManager.addCreature(new WoodenStick(spawnX, spawnY, c));
+					} else  {
+						entityManager.addCreature(new Grass(spawnX, spawnY, c));
 					}
 				} else if(biome == 2) { //forest biome
 					if(creatureType < 3) {
@@ -3089,6 +3092,8 @@ public class WorldGenerator {
 						entityManager.addCreature(new ShroomPile(spawnX, spawnY, c));
 					} else if(creatureType < 60) {
 						entityManager.addCreature(new WoodenStick(spawnX, spawnY, c));
+					} else {
+						entityManager.addCreature(new Grass(spawnX, spawnY, c));
 					}
 				} else if(biome == 3) { //semi-desert biome	
 					if(creatureType < 30) {
@@ -3125,6 +3130,8 @@ public class WorldGenerator {
 						entityManager.addCreature(new ShroomPile(spawnX, spawnY, c));
 					} else if(creatureType < 20) {
 						entityManager.addCreature(new WoodenStick(spawnX, spawnY, c));
+					} else {
+						entityManager.addCreature(new Grass(spawnX, spawnY, c));
 					}
 				}
 
@@ -3139,7 +3146,7 @@ public class WorldGenerator {
 	private void debugControls() {
 
 		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_T))
-			entityManager.addEntity(new DesertScorpion(entityManager.getPlayer().getX() + 200, entityManager.getPlayer().getY() + 200, c));
+			entityManager.addEntity(new Grass(entityManager.getPlayer().getX() + 200, entityManager.getPlayer().getY() + 200, c));
 		if (c.getKeyManager().keyJustPressed(KeyEvent.VK_G))
 			Player.getPlayerData().energy+= 800;
 		if (c.getKeyManager().keyJustPressed(KeyEvent.VK_I))

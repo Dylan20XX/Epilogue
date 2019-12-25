@@ -9,6 +9,7 @@ import alphaPackage.ControlCenter;
 import audio.AudioPlayer;
 import creatures.Player;
 import graphics.Assets;
+import graphics.CT;
 import items.Food;
 import items.Item;
 import tiles.Tile;
@@ -53,6 +54,14 @@ public class PrettyShroom extends Creatures {// java's random API
 	@Override
 	public void render(Graphics g) {
 
+		if(Player.getPlayerData().steppingBound().intersects(getBounds())) {
+    		
+    		AudioPlayer.playAudio("audio/plant.wav");
+    		Die();
+    		active = false;
+    		
+    	}
+
 		g.drawImage(Assets.prettyShroomPlant, (int) (x - c.getGameCamera().getxOffset()),
 				(int) (y - c.getGameCamera().getyOffset()), width, height, null);
 
@@ -61,6 +70,9 @@ public class PrettyShroom extends Creatures {// java's random API
 	@Override
 	public void Die() {
 		
+		c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator()
+		.getItemManager().addItem(Food.prettyShroomItem.createNew((int) x + bounds.x + CT.random(0, bounds.width), (int) y + bounds.y + CT.random(0, bounds.height)));
+	
 	}
 
 	@Override
