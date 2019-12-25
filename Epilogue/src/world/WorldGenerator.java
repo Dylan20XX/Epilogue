@@ -812,13 +812,14 @@ public class WorldGenerator {
 			if (hands.getHand() != null) {
 				if (hands.getHand().getType().equals("structure")) {
 
+					
 					int buildX = (int) ((c.getMouseManager().mouseBound().x -
 							(c.getGameCamera().getxOffset() % Tile.TILEWIDTH)) -
 							c.getMouseManager().mouseBound().x % Tile.TILEWIDTH);
 					int buildY = (int) ((c.getMouseManager().mouseBound().y - 
 							(c.getGameCamera().getyOffset() % Tile.TILEHEIGHT)) - 
-							c.getMouseManager().mouseBound().y % Tile.TILEHEIGHT);
-
+							c.getMouseManager().mouseBound().y % Tile.TILEHEIGHT + Tile.TILEHEIGHT/4*3);
+					
 					Rectangle rect = new Rectangle(buildX, buildY, Tile.TILEWIDTH, Tile.TILEHEIGHT);
 
 					Graphics2D g2d = (Graphics2D) g;

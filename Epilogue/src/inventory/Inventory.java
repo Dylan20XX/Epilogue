@@ -49,6 +49,7 @@ public class Inventory {
 		addItem(Weapon.darkSaber);
 		addItem(Ranged.pulseRifle);
 		addItem(Torch.torch);
+		addItem(Item.sapItem);
 		//for(int i = 0; i< 20; i++)
 		//	addItem(Item.woodenPlankItem);
 		//addItem(Item.researchKitItem);
