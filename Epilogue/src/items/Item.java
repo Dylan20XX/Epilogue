@@ -202,6 +202,7 @@ public class Item {
 		if (c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator()
 				.getEntityManager().getPlayer().getCollisionBounds(0, 0).intersects(bounds)
 				&& c.getKeyManager().keyJustPressed(KeyEvent.VK_P)) {
+			System.out.println("here");
 			if(c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator().getEntityManager().getPlayer().getInventory().addItem(this))
 				pickedUp = true;
 			AudioPlayer.playAudio("audio/pickup.wav");
