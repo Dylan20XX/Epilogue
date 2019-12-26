@@ -89,7 +89,7 @@ public class VileSpawn extends Creatures {
 						&& !c.getGameState().getWorldGenerator().getEntityManager().entitiesInBound.get(i).getName()
 								.equals("worm hole")) {
 					if (!c.getGameState().getWorldGenerator().getEntityManager().entitiesInBound.get(i)
-							.equals(Player.getPlayerData())) {
+							.equals(Player.getPlayerData()) && currentAnimation.getIndex() > 4) {
 						c.getGameState().getWorldGenerator().getEntityManager().entitiesInBound.get(i).setActive(false);
 					}
 				}

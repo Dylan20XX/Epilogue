@@ -1,5 +1,6 @@
 package items;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
@@ -217,7 +218,7 @@ public class Item {
 		}
 
 		render(g, (int) (x - c.getGameCamera().getxOffset()), (int) (y - c.getGameCamera().getyOffset()));
-
+		
 	}
 
 	public void render(Graphics g, int x, int y) { // for inventory

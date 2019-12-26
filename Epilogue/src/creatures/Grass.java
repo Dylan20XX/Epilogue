@@ -88,41 +88,40 @@ public class Grass extends Creatures {
 	@Override
 	public void Die() {
 		if(size == 1) {
-			int numString = CT.random(1, 3);
+			int numString = CT.random(1, 12);
 			if(numString == 1)
 				c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator()
 				.getItemManager().addItem(Item.silkItem.createNew((int) x + bounds.x + CT.random(0, bounds.width), (int) y + bounds.y + CT.random(0, bounds.height)));
 		
 		} else if(size == 2) { 
-			int numString = CT.random(0, 2);
+			int numString = CT.random(1, 8);
 			if(numString == 1)
 				c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator()
 				.getItemManager().addItem(Item.silkItem.createNew((int) x + bounds.x + CT.random(0, bounds.width), (int) y + bounds.y + CT.random(0, bounds.height)));
 		
 		} else if(size == 3) {
-    		int numString = CT.random(1, 3);
-			for(int i = 0; i < numString; i++) 
+    		int numString = CT.random(1, 5);
+    		if(numString == 1)
 				c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator()
 				.getItemManager().addItem(Item.silkItem.createNew((int) x + bounds.x + CT.random(0, bounds.width), (int) y + bounds.y + CT.random(0, bounds.height)));
     	
     	} else if(size == 4) {
-    		int numString = CT.random(2, 5);
-			for(int i = 0; i < numString; i++) 
+    		int numString = CT.random(1, 3);
+    		if(numString == 1)
 				c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator()
 				.getItemManager().addItem(Item.silkItem.createNew((int) x + bounds.x + CT.random(0, bounds.width), (int) y + bounds.y + CT.random(0, bounds.height)));
-			int numStick = CT.random(0, 1);
-    		for(int i = 0; i < numStick; i++) 
+			int numStick = CT.random(0, 5);
+			if(numStick == 1)
     			c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator()
     			.getItemManager().addItem(Item.stickItem.createNew((int) x + bounds.x + CT.random(0, bounds.width), (int) y + bounds.y + CT.random(0, bounds.height)));
     		
     	} else if(size == 5) {
-    		int numString = CT.random(3, 9);
-    		for(int i = 0; i < numString; i++) 
-    			c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator()
-    			.getItemManager().addItem(Item.silkItem.createNew((int) x + bounds.x + CT.random(0, bounds.width), (int) y + bounds.y + CT.random(0, bounds.height)));
-    		
+		
+			c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator()
+			.getItemManager().addItem(Item.silkItem.createNew((int) x + bounds.x + CT.random(0, bounds.width), (int) y + bounds.y + CT.random(0, bounds.height)));
+		
     		int numStick = CT.random(0, 3);
-    		for(int i = 0; i < numStick; i++) 
+    		if(numStick == 1)
     			c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator()
     			.getItemManager().addItem(Item.stickItem.createNew((int) x + bounds.x + CT.random(0, bounds.width), (int) y + bounds.y + CT.random(0, bounds.height)));
     		

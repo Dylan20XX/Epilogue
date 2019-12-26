@@ -54,11 +54,6 @@ public class Purifier extends StaticEntity {
 		g.drawImage(Assets.purifier, (int) (x - c.getGameCamera().getxOffset()),
 				(int) (y - c.getGameCamera().getyOffset()), width, height, null);
 
-		// drawing down the bounding box
-		Graphics2D g2d = (Graphics2D) g;
-		g.setColor(Color.BLUE);
-		g2d.draw(getBounds());
-
 		if (currentlyPurifying) {
 			CustomTextWritter.drawString(g, "Purifying Water", (int) (x - c.getGameCamera().getxOffset() + 32 - 80),
 					(int) (y - c.getGameCamera().getyOffset()) - 22, false, Color.WHITE, Assets.font16);
