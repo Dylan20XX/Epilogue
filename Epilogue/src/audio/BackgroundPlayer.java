@@ -26,7 +26,8 @@ public class BackgroundPlayer {
 		try {
 
 			// Make the method and pass the variables to the method
-			BufferedInputStream bufInput = new BufferedInputStream(BackgroundPlayer.class.getResourceAsStream(streamLocation));
+			BufferedInputStream bufInput = new BufferedInputStream(
+					BackgroundPlayer.class.getResourceAsStream(streamLocation));
 			AudioInputStream audioInput = AudioSystem.getAudioInputStream(bufInput);
 			clip = AudioSystem.getClip();
 			clip.open(audioInput);

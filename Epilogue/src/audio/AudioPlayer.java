@@ -27,6 +27,7 @@ public class AudioPlayer {
 
             // Make the method and pass the variables to the method
 			BufferedInputStream bufInput = new BufferedInputStream(AudioPlayer.class.getResourceAsStream(streamLocation));
+
 			AudioInputStream audioInput = AudioSystem.getAudioInputStream(bufInput);
 			clip = AudioSystem.getClip();
 			clip.open(audioInput);
