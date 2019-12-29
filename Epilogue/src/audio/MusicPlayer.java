@@ -1,5 +1,7 @@
 package audio;
 
+import java.io.BufferedInputStream;
+
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.BooleanControl;
@@ -17,7 +19,8 @@ public class MusicPlayer {
 
 		try {
 			// Make the method and pass the variables to the method
-			AudioInputStream audioInput = AudioSystem.getAudioInputStream(MusicPlayer.class.getResourceAsStream(musicLocation));
+			BufferedInputStream bufInput = new BufferedInputStream(MusicPlayer.class.getResourceAsStream(musicLocation));
+			AudioInputStream audioInput = AudioSystem.getAudioInputStream(bufInput);
 			clip = AudioSystem.getClip();
 			clip.open(audioInput);
 			clip.loop(Clip.LOOP_CONTINUOUSLY);
