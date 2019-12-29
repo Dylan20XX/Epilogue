@@ -2,6 +2,7 @@ package graphics;
 
 import java.awt.Font;
 import java.awt.FontFormatException;
+import java.awt.GraphicsEnvironment;
 import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -17,6 +18,7 @@ import alphaPackage.ControlCenter;
 public class Assets {
 
 	// Fonts
+	public static InputStream is;
 	public static Font font16;
 	public static Font font21;
 	public static Font font28;
@@ -140,13 +142,16 @@ public class Assets {
 
 		// Fonts
 		// ----------------------------------------------------------------------------
-		/*
+		
+		
 		try {
-			InputStream is = Assets.class.getResourceAsStream("fonts/Silkscreen.ttf");
-		    font16 = Font.createFont(Font.TRUETYPE_FONT, is).deriveFont(Font.PLAIN, 16);
-		    font21 = Font.createFont(Font.TRUETYPE_FONT, is).deriveFont(Font.PLAIN, 21);
-		    font28 = Font.createFont(Font.TRUETYPE_FONT, is).deriveFont(Font.PLAIN, 28);
-		    font36 = Font.createFont(Font.TRUETYPE_FONT, is).deriveFont(Font.PLAIN, 36);
+			is = Assets.class.getResourceAsStream("/fonts/Silkscreen.ttf");
+			Font baseFont = Font.createFont(Font.TRUETYPE_FONT, is);
+		    font16 = baseFont.deriveFont(Font.PLAIN, 16);
+		    font21 = baseFont.deriveFont(Font.PLAIN, 21);
+		    font28 = baseFont.deriveFont(Font.PLAIN, 28);
+		    font36 = baseFont.deriveFont(Font.PLAIN, 36);
+		    
 		} catch (FontFormatException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -154,12 +159,14 @@ public class Assets {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		*/
+		
+		/*
 		font16 = new Font("serif", Font.PLAIN, 16);
 		font21 = new Font("serif", Font.PLAIN, 21);
 		font28 = new Font("serif", Font.PLAIN, 28);
 		font36 = new Font("serif", Font.PLAIN, 36);
-
+		*/
+		
 		//Backgrounds
 		//-----------------------------------------------------------------------------
 		

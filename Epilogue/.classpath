@@ -10,7 +10,6 @@
 	<classpathentry kind="src" path="worlds"/>
 	<classpathentry kind="src" path="platform"/>
 	<classpathentry kind="src" path="worldData"/>
-	<classpathentry kind="src" path="fonts"/>
 	<classpathentry kind="src" path="res"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
 		<attributes>
