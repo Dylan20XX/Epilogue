@@ -1,5 +1,6 @@
 package audio;
 
+import java.io.BufferedInputStream;
 import java.io.File;
 
 import javax.sound.sampled.AudioInputStream;
@@ -20,8 +21,8 @@ public class BackgroundPlayer {
                 try {
 
                         // Make the method and pass the variables to the method
-                        File Sound = new File(audioLocation);
-                        AudioInputStream audioInput = AudioSystem.getAudioInputStream(Sound);
+                		BufferedInputStream bufInput = new BufferedInputStream(MusicPlayer.class.getResourceAsStream(audioLocation));
+                		AudioInputStream audioInput = AudioSystem.getAudioInputStream(bufInput);
                         clip = AudioSystem.getClip();
                         clip.open(audioInput);
 
