@@ -1,7 +1,5 @@
 package audio;
 
-import java.io.File;
-
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.BooleanControl;
@@ -13,15 +11,13 @@ public class MusicPlayer {
 	public static Clip clip;
 	public static boolean mute = false;
 	static BooleanControl muteMusic;
-
+	
 	// Methods that actually create the music
 	public static void playMusic(String musicLocation) {
 
 		try {
-
 			// Make the method and pass the variables to the method
-			File Sound = new File(MusicPlayer.class.getResource(musicLocation).toURI());
-			AudioInputStream audioInput = AudioSystem.getAudioInputStream(Sound);
+			AudioInputStream audioInput = AudioSystem.getAudioInputStream(MusicPlayer.class.getResourceAsStream(musicLocation));
 			clip = AudioSystem.getClip();
 			clip.open(audioInput);
 			clip.loop(Clip.LOOP_CONTINUOUSLY);

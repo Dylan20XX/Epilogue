@@ -35,7 +35,7 @@ public class MenuState extends State {
 	public MenuState(ControlCenter c) {
 		this.c = c;
 		// using the music player to play the background music
-		MusicPlayer.playMusic("audio/menu.wav");
+		MusicPlayer.playMusic("/audio/menu.wav");
 
 		// initializes the uiManager for UI accesses
 		setUiManager(new UIManager());
@@ -49,7 +49,7 @@ public class MenuState extends State {
 					@Override
 					public void onClick() {
 
-						AudioPlayer.playAudio("audio/next.wav");
+						AudioPlayer.playAudio("/audio/next.wav");
 						
 						worldSelectState = new WorldSelectionState(c);
 						

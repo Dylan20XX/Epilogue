@@ -6,7 +6,6 @@
 	<classpathentry kind="src" path="creatures"/>
 	<classpathentry kind="src" path="topper"/>
 	<classpathentry kind="src" path="chests"/>
-	<classpathentry kind="src" path="audio"/>
 	<classpathentry kind="src" path="recipe"/>
 	<classpathentry kind="src" path="worlds"/>
 	<classpathentry kind="src" path="platform"/>
