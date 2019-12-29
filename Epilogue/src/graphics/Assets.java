@@ -1,7 +1,10 @@
 package graphics;
 
 import java.awt.Font;
+import java.awt.FontFormatException;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
 
 import alphaPackage.ControlCenter;
 
@@ -134,10 +137,25 @@ public class Assets {
 
 		// Fonts
 		// ----------------------------------------------------------------------------
-		font16 = FontLoader.loadFont("fonts/Silkscreen.ttf", (int) (16 * ControlCenter.scaleValue));
-		font21 = FontLoader.loadFont("fonts/Silkscreen.ttf", (int) (21 * ControlCenter.scaleValue));
-		font28 = FontLoader.loadFont("fonts/Silkscreen.ttf", (int) (28 * ControlCenter.scaleValue));
-		font36 = FontLoader.loadFont("fonts/Silkscreen.ttf", (int) (36 * ControlCenter.scaleValue));
+		/*
+		try {
+			InputStream is = Assets.class.getResourceAsStream("fonts/Silkscreen.ttf");
+		    font16 = Font.createFont(Font.TRUETYPE_FONT, is).deriveFont(Font.PLAIN, 16);
+		    font21 = Font.createFont(Font.TRUETYPE_FONT, is).deriveFont(Font.PLAIN, 21);
+		    font28 = Font.createFont(Font.TRUETYPE_FONT, is).deriveFont(Font.PLAIN, 28);
+		    font36 = Font.createFont(Font.TRUETYPE_FONT, is).deriveFont(Font.PLAIN, 36);
+		} catch (FontFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		*/
+		font16 = new Font("serif", Font.PLAIN, 16);
+		font21 = new Font("serif", Font.PLAIN, 21);
+		font28 = new Font("serif", Font.PLAIN, 28);
+		font36 = new Font("serif", Font.PLAIN, 36);
 
 		//Backgrounds
 		//-----------------------------------------------------------------------------

@@ -11,12 +11,12 @@ import java.io.IOException;
 public class FontLoader {
 
 	// method that loads the font from directory and takes in a font variable
-	public static Font loadFont(String path, float size) { // the deriveFont must be a float not double
+	public Font loadFont(String path, float size) { // the deriveFont must be a float not double
 
 		// try and catch to see if font exist, if not then print stack trace
 		try {
 
-			return Font.createFont(Font.TRUETYPE_FONT, new File(path)).deriveFont(Font.PLAIN, size);
+			return Font.createFont(Font.TRUETYPE_FONT, getClass().getClassLoader().getResourceAsStream(path)).deriveFont(Font.PLAIN, size);
 
 		} catch (FontFormatException | IOException e) {
 

@@ -79,7 +79,6 @@ public class ControlCenter implements Runnable {
 
 		// initializes the game assets, such as buffered images
 		Assets.init();
-
 		// set the state of the game, in the future, a menu state will be implemented
 		menuState = new MenuState(this);
 		State.setState(menuState);
