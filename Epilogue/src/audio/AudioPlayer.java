@@ -20,7 +20,7 @@ public class AudioPlayer {
                 try {
 
                         // Make the method and pass the variables to the method
-                        File Sound = new File(audioLocation);
+                        File Sound = new File(AudioPlayer.class.getResource(audioLocation).toURI());
                         AudioInputStream audioInput = AudioSystem.getAudioInputStream(Sound);
                         clip = AudioSystem.getClip();
                         clip.open(audioInput);

@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="terrain"/>
+	<classpathentry kind="src" path="timedCraftingStructures"/>
+	<classpathentry kind="src" path="creatures"/>
+	<classpathentry kind="src" path="topper"/>
+	<classpathentry kind="src" path="chests"/>
+	<classpathentry kind="src" path="audio"/>
+	<classpathentry kind="src" path="recipe"/>
+	<classpathentry kind="src" path="worlds"/>
+	<classpathentry kind="src" path="platform"/>
+	<classpathentry kind="src" path="worldData"/>
 	<classpathentry kind="src" path="fonts"/>
 	<classpathentry kind="src" path="res"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">

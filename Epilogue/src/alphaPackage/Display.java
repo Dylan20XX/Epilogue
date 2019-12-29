@@ -9,13 +9,17 @@ import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import graphics.Assets;
 import states.CharacterSelectionState;
 import states.State;
 import states.WorldSelectionState;
@@ -82,7 +86,13 @@ public class Display{
 	//method that creates a custom cursor
 	public void customCursor() {
         Toolkit toolkit = Toolkit.getDefaultToolkit();
-        Image mouse = toolkit.getImage("res/UI/cursor1.png");
+        Image mouse = null;
+		try {
+			mouse = ImageIO.read(Assets.class.getResource("/UI/cursor1.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     
         frame.setCursor(toolkit.createCustomCursor(mouse, new Point(0, 0), "Cursor"));
     }
