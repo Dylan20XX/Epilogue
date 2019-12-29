@@ -17,11 +17,17 @@ public class AudioPlayer {
 
 	// Methods that actually create the music
 	public static void playAudio(String audioLocation) {
-
+		String streamLocation = "";
+		if(audioLocation.charAt(0) == '/')
+			streamLocation = audioLocation;
+		else
+			streamLocation = "/" + audioLocation;		
+		
 		try {
 
-			// Make the method and pass the variables to the method
-			BufferedInputStream bufInput = new BufferedInputStream(AudioPlayer.class.getResourceAsStream(audioLocation));
+            // Make the method and pass the variables to the method
+			BufferedInputStream bufInput = new BufferedInputStream(AudioPlayer.class.getResourceAsStream(streamLocation));
+
 			AudioInputStream audioInput = AudioSystem.getAudioInputStream(bufInput);
 			clip = AudioSystem.getClip();
 			clip.open(audioInput);

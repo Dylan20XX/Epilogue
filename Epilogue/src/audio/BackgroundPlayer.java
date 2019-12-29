@@ -10,44 +10,50 @@ import javax.sound.sampled.Clip;
 
 public class BackgroundPlayer {
 
-        // Variables for the music
-		public static Clip clip;
-        public static boolean mute = false;
-        static BooleanControl muteBGM;
+	// Variables for the music
+	public static Clip clip;
+	public static boolean mute = false;
+	static BooleanControl muteBGM;
 
-        // Methods that actually create the music
-        public static void playAudio(String audioLocation) {
+	// Methods that actually create the music
+	public static void playAudio(String audioLocation) {
+		String streamLocation;
+		if (audioLocation.charAt(0) == '/')
+			streamLocation = audioLocation;
+		else
+			streamLocation = "/" + audioLocation;
 
-                try {
+		try {
 
-                        // Make the method and pass the variables to the method
-                		BufferedInputStream bufInput = new BufferedInputStream(BackgroundPlayer.class.getResourceAsStream(audioLocation));
-                		AudioInputStream audioInput = AudioSystem.getAudioInputStream(bufInput);
-                        clip = AudioSystem.getClip();
-                        clip.open(audioInput);
+			// Make the method and pass the variables to the method
+			BufferedInputStream bufInput = new BufferedInputStream(
+					BackgroundPlayer.class.getResourceAsStream(streamLocation));
+			AudioInputStream audioInput = AudioSystem.getAudioInputStream(bufInput);
+			clip = AudioSystem.getClip();
+			clip.open(audioInput);
 
-                        muteBGM = (BooleanControl) clip.getControl(BooleanControl.Type.MUTE);
-                        muteBGM.setValue(mute);
+			muteBGM = (BooleanControl) clip.getControl(BooleanControl.Type.MUTE);
+			muteBGM.setValue(mute);
 
-                        clip.start();// start the music
+			clip.start();// start the music
 
-                } catch (Exception ex) {
-                        ex.printStackTrace();
-                }
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
 
-        }
+	}
 
-        // Method to stop the music
-        public static void StopAudio() {
-                // Stop the music
-        	if(clip!=null)
-                clip.stop();
+	// Method to stop the music
+	public static void StopAudio() {
+		// Stop the music
+		if (clip != null)
+			clip.stop();
 
-        }
+	}
 
-        public static void changeMute() {
-                mute = !mute;
-                muteBGM.setValue(mute);
-        }
+	public static void changeMute() {
+		mute = !mute;
+		muteBGM.setValue(mute);
+	}
 
 }
