@@ -2433,7 +2433,8 @@ public class Player extends Creatures {
 		File worldDataFilepath = new File(worldData);
 		//Player Die() method is also called from effect manager when bleeding causing error if world is deleted
 		if(worldDataFilepath.exists()) { 
-			c.getGameState().getWorldGenerator().worldSaver.saveWorld();
+			c.getMenuState().getWorldSelectState().readDataFile(c.getMenuState().getWorldSelectState().getSelectedWorldName()); //Read the file data at last save
+			c.getGameState().getWorldGenerator().worldSaver.saveWorldAfterDeath();
 	        c.getGameState().DeathScreen();
 		}
 	}

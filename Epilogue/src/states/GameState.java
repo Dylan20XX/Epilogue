@@ -89,7 +89,11 @@ public class GameState extends State{
 	                                        public void onClick() {
 	
 	                                                AudioPlayer.playAudio("audio/next.wav");
+	                                                
+	                                                world = new WorldGenerator(String.format("worlds/%s", c.getMenuState().getWorldSelectState().getSelectedWorldName()), c);
+	                                                c.getGameState().getWorldGenerator().createPlayer();
 	                                                isDead = false;
+	                                                
 	                                        }
 	
 	                                }));

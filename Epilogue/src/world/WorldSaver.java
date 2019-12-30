@@ -57,6 +57,19 @@ public class WorldSaver {
 		
 	}
 	
+	//This method saves the world after a player has died
+	public void saveWorldAfterDeath() {
+		
+		saveTopper();
+		saveCreatures();
+		savePlayerAfterDeath();
+		savePlatforms();
+		saveChests();
+		saveTimedCraftingStructures();
+		saveRecipes();
+		
+	}
+	
 	//This method saves the topper
 	public void saveTopper() {
 		
@@ -953,6 +966,411 @@ public class WorldSaver {
 			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
+		}
+		
+	}
+	
+	//This method saves the player's position, inventory, hands, armor, vitals, and the dayNum after a death
+	public void savePlayerAfterDeath() {
+		
+		//gameMode (normal/harcore) worldSize gameCompleted(0 = not finished, 1 = player beat game)
+		//player stats and vitals
+		//dayNum and time
+		//
+		//playerX playerY
+		//
+		//basic survival xp
+		//combat xp
+		//cooking xp
+		//building xp
+		//
+		//armor item list size
+		//constructor values
+		//
+		//food item list size
+		//constructor values
+		
+		String worldDataFile = WorldInput.loadFileAsString(String.format("worldData/%s", c.getMenuState().getWorldSelectState().getSelectedWorldName()));
+		String[] tokens = worldDataFile.split("\\s+"); // split up every number into the string tokens array
+
+		int gameMode =  WorldInput.parseInt(tokens[0]);
+		int worldSize = WorldInput.parseInt(tokens[1]);
+		int gameCompleted = 0;
+		
+		if(c.getGameState().getWorldGenerator().isGameCompleted()) {
+			gameCompleted = 1;
+		}
+		
+		
+		String file = String.format("worldData/%s", c.getMenuState().getWorldSelectState().getSelectedWorldName());
+		File filepath = new File(file);
+		
+		if(filepath.exists() && !filepath.isDirectory()) {
+			
+			try {
+				
+				PrintWriter pr = new PrintWriter(file);
+				
+				//save player stats
+				pr.print(gameMode + " " + worldSize + " " + gameCompleted);
+				pr.println();
+				pr.print(Player.getPlayerData().getName() + " " + c.getMenuState().getWorldSelectState().getSavedHealth() + " " + 
+						Player.getPlayerData().getRunSpeed() + " " + c.getMenuState().getWorldSelectState().getSavedEndurability() + " " + 
+						Player.getPlayerData().getDamage() + " " + Player.getPlayerData().getIntimidation() + " " + 
+						Player.getPlayerData().getIntelligence() + " " + Player.getPlayerData().getResistance() + " " + 
+						c.getMenuState().getWorldSelectState().getHunger() + " " + c.getMenuState().getWorldSelectState().getThirst() + " " + 
+						c.getMenuState().getWorldSelectState().getEnergy());
+				pr.println();
+				pr.print(WorldGenerator.dayNum + " " + WorldGenerator.time);
+				pr.println();
+				pr.println();
+				
+				//Respawn at the location of your last save
+//				int x = (int) Player.getPlayerData().getX();
+//				int y = (int) Player.getPlayerData().getY();
+				int x = c.getMenuState().getWorldSelectState().getPlayerX();
+				int y = c.getMenuState().getWorldSelectState().getPlayerY();
+				pr.println(x + " " + y);
+				pr.println();
+				
+				//Save player xp values
+				pr.println(Player.getPlayerData().getBasicSurvivalXP());
+				pr.println(Player.getPlayerData().getCombatXP());
+				pr.println(Player.getPlayerData().getCookingXP());
+				pr.println(Player.getPlayerData().getBuildingXP());
+				pr.println();
+				
+				//Save inventory items
+//				ArrayList<Item> itemList = new ArrayList<Item>(); //list of items that don't fall into a sub category
+//				ArrayList<Armor> armorList = new ArrayList<Armor>();
+//				ArrayList<Food> foodList = new ArrayList<Food>();
+//				ArrayList<Ranged> rangedList = new ArrayList<Ranged>();
+//				ArrayList<Tool> toolList = new ArrayList<Tool>();
+//				ArrayList<Torch> torchList = new ArrayList<Torch>();
+//				ArrayList<WaterContainer> waterContainerList = new ArrayList<WaterContainer>();
+//				ArrayList<Weapon> weaponList = new ArrayList<Weapon>();
+//				
+//				ArrayList<Item> inventoryItems = Player.getPlayerData().getInventory().InventoryItems;
+//				
+//				for(int i = 0; i < Player.getPlayerData().getInventory().InventoryItems.size(); i++) {
+//					
+//					if(inventoryItems.get(i) instanceof Armor) {
+//						armorList.add((Armor) inventoryItems.get(i));
+//					} else if(inventoryItems.get(i) instanceof Food) {
+//						foodList.add((Food) inventoryItems.get(i));
+//					} else if(inventoryItems.get(i) instanceof Ranged) {
+//						rangedList.add((Ranged) inventoryItems.get(i));
+//					} else if(inventoryItems.get(i) instanceof Tool) {
+//						toolList.add((Tool) inventoryItems.get(i));
+//					} else if(inventoryItems.get(i) instanceof Torch) {
+//						torchList.add((Torch) inventoryItems.get(i));
+//					} else if(inventoryItems.get(i) instanceof WaterContainer) {
+//						waterContainerList.add((WaterContainer) inventoryItems.get(i));
+//					} else if(inventoryItems.get(i) instanceof Weapon) {
+//						weaponList.add((Weapon) inventoryItems.get(i));
+//					} else {
+//						itemList.add(inventoryItems.get(i));
+//					}
+//					
+//				}
+				
+				
+				//Write the inventory items
+				//NOTE: item textures are the only constructor variables that are not saved,
+				//however textures can be accessed using Item.items[id].getTexture()
+				//string data such as names can be stored because it may be multiple words
+				
+//				pr.print(armorList.size());
+//				pr.println();
+//				for(Armor e : armorList) {
+//					pr.print(e.getId() + " " + e.getWeight() + " " + e.getDamage() + " " + e.getVolume() + " " + e.intimidation + " " + 
+//							e.resistance + " " + e.healthRegen + " " + e.currentEndurance + " " + e.endurance); 
+//					pr.println();
+//				}
+				pr.println(0);
+				
+//				pr.print(foodList.size());
+//				pr.println();
+//				for(Food e : foodList) {
+//					pr.print(e.getId() + " " + e.getWeight() + " " + e.getDamage() + " " + 
+//							e.getVolume() + " " + e.hunger + " " + e.thirst + " " + 
+//							+ e.freshness); 
+//					pr.println();
+//				}
+				pr.println(0);
+				
+//				pr.print(rangedList.size());
+//				pr.println();
+//				for(Ranged e : rangedList) {
+//					pr.print(e.getId() + " " + e.getWeight() + " " + 
+//							e.getDamage() + " " + e.aSpeed + " " + e.intimidation + " " + e.ammoMax + " " + 
+//							e.reloadCooldown + " " + e.accuracy + " " + e.getVolume() + " " + 
+//							e.ammoCurrent); //ammo current isnt used in constructor
+//					pr.println();
+//				}
+				pr.println(0);
+				
+//				pr.print(toolList.size());
+//				pr.println();
+//				for(Tool e : toolList) {
+//					pr.print(e.getId() + " " + 
+//							e.getWeight() + " " + e.getDamage() + " " + e.getaSpeed() + " " + e.getIntimidation() + " " + 
+//							e.getRange() + " " + e.getVolume() + " " + e.getPower() + " " + e.getCurrentEndurance() +  " " + 
+//							e.getEndurance()); 
+//					pr.println();
+//				}
+				pr.println(0);
+				
+//				pr.print(torchList.size()); //nothing in torch constructor
+//				pr.println();
+				pr.println(0);
+
+//				pr.print(waterContainerList.size());
+//				pr.println();
+//				for(WaterContainer e : waterContainerList) {
+//					pr.print(e.getId() + " " + e.getWeight() + " " + 
+//							e.getVolume() + " " + e.getCurrentCapacity() +  " " + e.getCapacity()); 
+//					pr.println();
+//				}
+				pr.println(0);
+				
+//				pr.print(weaponList.size());
+//				pr.println();
+//				for(Weapon e : weaponList) {
+//					pr.print(e.getId() + " " + e.getWeight() + " " + 
+//							e.getDamage() + " " + e.getaSpeed() + " " + e.getIntimidation() + " " + 
+//							e.getRange() + " " + e.getVolume() + " " + e.getCurrentEndurance() +  " " + 
+//							e.getEndurance()); 
+//					pr.println();
+//				}
+				pr.println(0);
+				
+//				pr.print(itemList.size());
+//				pr.println();
+//				for(Item e : itemList) {
+//					pr.print(e.getId() + " " + e.getWeight() + " " + e.getDamage() + " " + e.getVolume() + " " + e.getCount()); 
+//					pr.println();
+//				}
+				pr.println(0);
+				
+				//Save hand items
+//				Item rightHand = Player.getPlayerData().getHands().rightHand;
+//				Item leftHand = Player.getPlayerData().getHands().leftHand;
+//				
+//				if(leftHand instanceof Armor) {
+//					pr.print(1);
+//					pr.println();
+//					Armor e = (Armor) leftHand;
+//					pr.print(e.getId() + " " + e.getWeight() + " " + e.getDamage() + " " + e.getVolume() + " " + e.intimidation + " " + 
+//							e.resistance + " " + e.healthRegen + " " + e.currentEndurance + " " + e.endurance); 
+//					pr.println();
+//				} else if(leftHand instanceof Food) {
+//					pr.print(2);
+//					pr.println();
+//					Food e = (Food) leftHand;
+//					pr.print(e.getId() + " " + e.getWeight() + " " + e.getDamage() + " " + 
+//							e.getVolume() + " " + e.hunger + " " + e.thirst + " " + 
+//							+ e.freshness); 
+//					pr.println();
+//				} else if(leftHand instanceof Ranged) {
+//					pr.print(3);
+//					pr.println();
+//					Ranged e = (Ranged) leftHand;
+//					pr.print(e.getId() + " " + e.getWeight() + " " + 
+//							e.getDamage() + " " + e.aSpeed + " " + e.intimidation + " " + e.ammoMax + " " + 
+//							e.reloadCooldown + " " + e.accuracy + " " + e.getVolume() + " " + 
+//							e.ammoCurrent); //ammo current isnt used in constructor
+//					pr.println();
+//				} else if(leftHand instanceof Tool) {
+//					pr.print(4);
+//					pr.println();
+//					Tool e = (Tool) leftHand;
+//					pr.print(e.getId() + " " + 
+//							e.getWeight() + " " + e.getDamage() + " " + e.getaSpeed() + " " + e.getIntimidation() + " " + 
+//							e.getRange() + " " + e.getVolume() + " " + e.getPower() + " " + e.getCurrentEndurance() +  " " + 
+//							e.getEndurance()); 
+//					pr.println();
+//				} else if(leftHand instanceof Torch) {
+//					pr.print(5);
+//					pr.println();
+//				} else if(leftHand instanceof WaterContainer) {
+//					pr.print(6);
+//					pr.println();
+//					WaterContainer e = (WaterContainer) leftHand;
+//					pr.print(e.getId() + " " + e.getWeight() + " " + 
+//							e.getVolume() + " " + e.getCurrentCapacity() +  " " + e.getCapacity()); 
+//					pr.println();
+//				} else if(leftHand instanceof Weapon) {
+//					pr.print(7);
+//					pr.println();
+//					Weapon e = (Weapon) leftHand;
+//					pr.print(e.getId() + " " + e.getWeight() + " " + 
+//							e.getDamage() + " " + e.getaSpeed() + " " + e.getIntimidation() + " " + 
+//							e.getRange() + " " + e.getVolume() + " " + e.getCurrentEndurance() +  " " + 
+//							e.getEndurance()); 
+//					pr.println();
+//				} else if(leftHand != null){
+//					pr.print(8);
+//					pr.println();
+//					Item e = leftHand;
+//					pr.print(e.getId() + " " + e.getWeight() + " " + e.getDamage() + " " + e.getVolume() + " " + e.getCount()); 
+//					pr.println();
+//				} else { //no item
+//					pr.print(0);
+//					pr.println();
+//				}
+				
+				//no item
+				pr.print(0);
+				pr.println();
+				pr.println();
+				
+				//save right hand
+//				if(rightHand instanceof Armor) {
+//					pr.print(1);
+//					pr.println();
+//					Armor e = (Armor) rightHand;
+//					pr.print(e.getId() + " " + e.getWeight() + " " + e.getDamage() + " " + e.getVolume() + " " + e.intimidation + " " + 
+//							e.resistance + " " + e.healthRegen + " " + e.currentEndurance + " " + e.endurance); 
+//					pr.println();
+//				} else if(rightHand instanceof Food) {
+//					pr.print(2);
+//					pr.println();
+//					Food e = (Food) rightHand;
+//					pr.print(e.getId() + " " + e.getWeight() + " " + e.getDamage() + " " + 
+//							e.getVolume() + " " + e.hunger + " " + e.thirst + " " + 
+//							+ e.freshness); 
+//					pr.println();
+//				} else if(rightHand instanceof Ranged) {
+//					pr.print(3);
+//					pr.println();
+//					Ranged e = (Ranged) rightHand;
+//					pr.print(e.getId() + " " + e.getWeight() + " " + 
+//							e.getDamage() + " " + e.aSpeed + " " + e.intimidation + " " + e.ammoMax + " " + 
+//							e.reloadCooldown + " " + e.accuracy + " " + e.getVolume() + " " + 
+//							e.ammoCurrent); //ammo current isnt used in constructor
+//					pr.println();
+//				} else if(rightHand instanceof Tool) {
+//					pr.print(4);
+//					pr.println();
+//					Tool e = (Tool) rightHand;
+//					pr.print(e.getId() + " " + 
+//							e.getWeight() + " " + e.getDamage() + " " + e.getaSpeed() + " " + e.getIntimidation() + " " + 
+//							e.getRange() + " " + e.getVolume() + " " + e.getPower() + " " + e.getCurrentEndurance() +  " " + 
+//							e.getEndurance()); 
+//					pr.println();
+//				} else if(rightHand instanceof Torch) {
+//					pr.print(5);
+//					pr.println();
+//				} else if(rightHand instanceof WaterContainer) {
+//					pr.print(6);
+//					pr.println();
+//					WaterContainer e = (WaterContainer) rightHand;
+//					pr.print(e.getId() + " " + e.getWeight() + " " + 
+//							e.getVolume() + " " + e.getCurrentCapacity() +  " " + e.getCapacity()); 
+//					pr.println();
+//				} else if(rightHand instanceof Weapon) {
+//					pr.print(7);
+//					pr.println();
+//					Weapon e = (Weapon) rightHand;
+//					pr.print(e.getId() + " " + e.getWeight() + " " + 
+//							e.getDamage() + " " + e.getaSpeed() + " " + e.getIntimidation() + " " + 
+//							e.getRange() + " " + e.getVolume() + " " + e.getCurrentEndurance() +  " " + 
+//							e.getEndurance()); 
+//					pr.println();
+//				} else if(rightHand != null){
+//					pr.print(8);
+//					pr.println();
+//					Item e = rightHand;
+//					pr.print(e.getId() + " " + e.getWeight() + " " + e.getDamage() + " " + e.getVolume() + " " + e.getCount()); 
+//					pr.println();
+//				} else { //no item
+//					pr.print(0);
+//					pr.println();
+//				}
+				
+				//no item
+				pr.print(0);
+				pr.println();
+				pr.println();
+				
+				//Save armor
+//				Armor helmet = Player.getPlayerData().getEquipment().helmet;
+//				Armor chest = Player.getPlayerData().getEquipment().chest;
+//				Armor leg = Player.getPlayerData().getEquipment().leg;
+//				Armor boot = Player.getPlayerData().getEquipment().boot;
+//				Armor gauntlet = Player.getPlayerData().getEquipment().gauntlet;
+//				
+//				if(helmet != null) {
+//					pr.print(1);
+//					pr.println();
+//					Armor e = (Armor) helmet;
+//					pr.print(e.getId() + " " + e.getWeight() + " " + e.getDamage() + " " + e.getVolume() + " " + e.intimidation + " " + 
+//							e.resistance + " " + e.healthRegen + " " + e.currentEndurance + " " + e.endurance); 
+//					pr.println();
+//				} else {
+//					pr.print(0);
+//					pr.println();
+//				}
+//				
+//				if(chest != null) {
+//					pr.print(1);
+//					pr.println();
+//					Armor e = (Armor) chest;
+//					pr.print(e.getId() + " " + e.getWeight() + " " + e.getDamage() + " " + e.getVolume() + " " + e.intimidation + " " + 
+//							e.resistance + " " + e.healthRegen + " " + e.currentEndurance + " " + e.endurance); 
+//					pr.println();
+//				} else {
+//					pr.print(0);
+//					pr.println();
+//				}
+//				
+//				if(leg != null) {
+//					pr.print(1);
+//					pr.println();
+//					Armor e = (Armor) leg;
+//					pr.print(e.getId() + " " + e.getWeight() + " " + e.getDamage() + " " + e.getVolume() + " " + e.intimidation + " " + 
+//							e.resistance + " " + e.healthRegen + " " + e.currentEndurance + " " + e.endurance); 
+//					pr.println();
+//				} else {
+//					pr.print(0);
+//					pr.println();
+//				}
+//				
+//				if(boot != null) {
+//					pr.print(1);
+//					pr.println();
+//					Armor e = (Armor) boot;
+//					pr.print(e.getId() + " " + e.getWeight() + " " + e.getDamage() + " " + e.getVolume() + " " + e.intimidation + " " + 
+//							e.resistance + " " + e.healthRegen + " " + e.currentEndurance + " " + e.endurance); 
+//					pr.println();
+//				} else {
+//					pr.print(0);
+//					pr.println();
+//				}
+//				
+//				if(gauntlet != null) {
+//					pr.print(1);
+//					pr.println();
+//					Armor e = (Armor) gauntlet;
+//					pr.print(e.getId() + " " + e.getWeight() + " " + e.getDamage() + " " + e.getVolume() + " " + e.intimidation + " " + 
+//							e.resistance + " " + e.healthRegen + " " + e.currentEndurance + " " + e.endurance); 
+//					pr.println();
+//				} else {
+//					pr.print(0);
+//					pr.println();
+//				}
+				
+				//all armor is lost upon death
+				for(int i = 0; i < 5; i++)
+					pr.println(0);
+				
+				pr.close();
+				
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
+			
 		}
 		
 	}
