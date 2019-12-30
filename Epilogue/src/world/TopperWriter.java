@@ -19,6 +19,10 @@ public class TopperWriter {
 	//18 = ruin piece 5, 19 = ruin piece 6, 20 = chest, 21 = space shuttle, 22 = sleeping sentinel
 	//50 = placeholder value for tiles covered by objects
 	
+	private int numHives = 5;
+	private int numAwakenedSentinels = 8;
+	private int numVileEmbryo;
+	
 	public TopperWriter(int[][] tiles, int[][] terrain, int worldSize) {
 
 		String file = String.format("topper/%s", WorldCreationState.worldName);
@@ -38,8 +42,9 @@ public class TopperWriter {
 			topper = new int[w][h];
 			
 			//select a location for the hive
-			boolean hiveSpawned = false;
-			while(!hiveSpawned) {
+			//boolean hiveSpawned = false;
+			int hivesSpawned = 0;
+			while(hivesSpawned < numHives) {
 				for (int y = 0; y < w; y++) {
 					for (int x = 0; x < h; x++) {
 						
@@ -81,8 +86,9 @@ public class TopperWriter {
 										break;
 									}
 
-									//if(the area around the attempted spawn area is not in infected biome, dont select the location
-									if(tiles[c][v] == 10) 
+									//if the area around the attempted spawn area is not in infected biome, don't select the location
+									//if there is another hive within a 10 block area, don't select the location
+									if(tiles[c][v] == 10 || topper[c][v] == 7) 
 										validLocation = false;
 									
 								}
@@ -96,25 +102,27 @@ public class TopperWriter {
 									}
 								}
 								topper[x][y] = 7;
-								hiveSpawned = true;
+								hivesSpawned++;
+								//hiveSpawned = true;
 								System.out.println("Hive at: x = " + x + " y = " + y);
 							}
 							
 						}
 						
-						if(hiveSpawned)
+						if(hivesSpawned >= numHives)
 							break;
 						
 					}
 					
-					if(hiveSpawned)
+					if(hivesSpawned >= numHives)
 						break;
 				}
 			}
 			
 			//Select locations for the vile embryos
 			int embryosSpawned = 0;
-			while(embryosSpawned < 15) {
+			numVileEmbryo = r.nextInt(8) + 28;
+			while(embryosSpawned < numVileEmbryo) {
 				for (int y = 0; y < w; y++) {
 					for (int x = 0; x < h; x++) {
 						
@@ -177,29 +185,29 @@ public class TopperWriter {
 								topper[x+1][y-1] = 50;
 								topper[x+1][y] = 50;
 								embryosSpawned++;
-								System.out.println("Embryo at: x = " + x + " y = " + y);
+								System.out.println("Embryo #" + embryosSpawned + " at: x = " + x + " y = " + y);
 							}
 							
 						}
 						
-						if(embryosSpawned >= 15)
+						if(embryosSpawned >= numVileEmbryo)
 							break;
 						
 					}
 					
-					if(embryosSpawned >= 15)
+					if(embryosSpawned >= numVileEmbryo)
 						break;
 				}
 			}
 			
-			//Select locations for the vile embryos
+			//Select locations for the shuttles
 			int shuttlesSpawned = 0;
 			while(shuttlesSpawned < 2) {
 				for (int y = 0; y < w; y++) {
 					for (int x = 0; x < h; x++) {
 						
 						int rand = r.nextInt(1000);
-						if(rand == 1) { //try to spawn an embryo
+						if(rand == 1) { //try to spawn a shuttle
 							boolean validLocation = true;
 							
 							for (int v = y-250; v < y+250; v++) {
@@ -283,7 +291,7 @@ public class TopperWriter {
 			
 			//Select locations for the awakened sentinels
 			int awakenedSentinelsSpawned = 0;
-			while(awakenedSentinelsSpawned < 5) {
+			while(awakenedSentinelsSpawned < numAwakenedSentinels) {
 				for (int y = 0; y < w; y++) {
 					for (int x = 0; x < h; x++) {
 						
@@ -311,7 +319,8 @@ public class TopperWriter {
 								}
 							}
 							
-							//make sure that theres no water in a 10x10 area around the awakened sentinel
+							//make sure that there's no water in a 10x10 area around the awakened sentinel
+							//also make sure that there's not another awakened sentinel in a 10x10 area
 							for (int v = y-10; v < y+10; v++) {
 								if(v < 0 || v >= h || !validLocation) {
 									validLocation = false;
@@ -325,7 +334,7 @@ public class TopperWriter {
 										break;
 									}
 
-									if(tiles[c][v] == 10) 
+									if(tiles[c][v] == 10 || topper[c][v] == 22) 
 										validLocation = false;
 									
 								}
@@ -358,12 +367,12 @@ public class TopperWriter {
 							
 						}
 						
-						if(awakenedSentinelsSpawned >= 5)
+						if(awakenedSentinelsSpawned >= numAwakenedSentinels)
 							break;
 						
 					}
 					
-					if(awakenedSentinelsSpawned >= 5)
+					if(awakenedSentinelsSpawned >= numAwakenedSentinels)
 						break;
 				}
 			}
