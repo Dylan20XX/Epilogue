@@ -228,7 +228,7 @@ public class WorldGenerator {
 	private AutoCookerV2Craft autoCookerV2;
 	private boolean researchTableActive = false;
 	private ResearchTable researchTable;
-	private MouseCursor cursor;
+	public static MouseCursor cursor;
 	
 	private boolean fullMoon = false;
 	//a full moon causes wandering ghouls to spawn at a high rate throughout the night
@@ -443,7 +443,7 @@ public class WorldGenerator {
 		
 		loadTopperEntities();
 		timeControl();
-		System.out.println("Time: " + time);
+		//System.out.println("Time: " + time);
 
 		// tick the cursor
 		if (cursor != null)

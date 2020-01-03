@@ -41,8 +41,6 @@ public class MouseCursor{
 
 		//drawing down the bounding box
 		Graphics2D g2d = (Graphics2D)g;
-		g.setColor(Color.BLUE);
-		g2d.draw(bounds.getBounds());
 
 	}
 	

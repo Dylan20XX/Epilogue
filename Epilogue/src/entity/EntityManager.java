@@ -18,6 +18,7 @@ import staticEntity.PineTree;
 import staticEntity.RockObstacle;
 import staticEntity.StaticEntity;
 import tiles.Tile;
+import world.WorldGenerator;
 
 /*
  * this class stores all the entities in the game and manages them
@@ -128,8 +129,8 @@ public class EntityManager {
 				if(entitiesInBound.get(i).getType().equals("material"))
 					numMaterials--;
 				/*
-				if(player.getControlCenter().getMouseManager().mouseBound().intersects(entitiesInBound.get(i).getBounds())) {
-					System.out.println("here");
+				if(WorldGenerator.cursor.getBounds().intersects(entitiesInBound.get(i).getBounds())) {
+					
 					Display.customCursor("/UI/pointer_interact.png");
 					
 				} else {

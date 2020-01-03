@@ -9,6 +9,7 @@ import graphics.GameCamera;
 import inputs.KeyManager;
 import inputs.MouseManager;
 import states.GameState;
+import states.LaunchState;
 import states.MenuState;
 import states.State;
 
@@ -44,6 +45,7 @@ public class ControlCenter implements Runnable {
 
 	// States
 	public MenuState menuState;
+	public LaunchState launchState;
 
 	// constructor of the ControlCenter class initializes the properties of the
 	public ControlCenter(String title, int width, int height) {
@@ -80,8 +82,9 @@ public class ControlCenter implements Runnable {
 		// initializes the game assets, such as buffered images
 		Assets.init();
 		// set the state of the game, in the future, a menu state will be implemented
-		menuState = new MenuState(this);
-		State.setState(menuState);
+		//menuState = new MenuState(this);
+		launchState = new LaunchState(this);
+		State.setState(launchState);
 
 	}
 

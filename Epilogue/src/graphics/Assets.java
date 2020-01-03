@@ -39,7 +39,7 @@ public class Assets {
 	
 	// UIs
 	public static BufferedImage[] selectButton, sLeft, sRight, inventoryButton, equipmentButton, menuBackground, begin,
-			help, options, credit, exit, blank;
+			help, options, credit, exit, blank, cyclone;
 	public static BufferedImage bar, inventory, handCraft, mainHand, offHand, craft, selectedCraft, playerVitals,
 			chestInterface;
 	public static BufferedImage healthIcon, hungerIcon, armorIcon, thirstIcon, energyIcon, globe, epilogue, worldSelectionInterface,
@@ -394,7 +394,13 @@ public class Assets {
 	        Spritesheet ResumeExit = new Spritesheet(ImageIO.read(Assets.class.getResource("/UI/resumeExit.png")));
 	        Spritesheet DisableButton = new Spritesheet(ImageIO.read(Assets.class.getResource("/UI/disableButton.png")));
 	        Spritesheet GameOver = new Spritesheet(ImageIO.read(Assets.class.getResource("/UI/gameOver.png")));
+	        Spritesheet Cyclone = new Spritesheet(ImageIO.read(Assets.class.getResource("/UI/cyclone.png")));
 			
+	        cyclone = new BufferedImage[70];
+	        for(int i = 0; i < 70; i++) {
+	        	cyclone[i] = Cyclone.crop(i*600, 0, 600, 338);
+	        }
+	        
 			blank = new BufferedImage[2];
 			blank[0] = Blank.crop(0, 0, 1, 1);
 			blank[1] = Blank.crop(0, 0, 1, 1);
