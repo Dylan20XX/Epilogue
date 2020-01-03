@@ -32,10 +32,10 @@ public class Tent extends StaticEntity {
 		this.c = c;
 
 		// bounding box starting and ending location
-		bounds.x = width / 6;
-		bounds.y = height/2;
-		bounds.width = width / 6*4;
-		bounds.height = height / 2;
+		bounds.x = width / 6 - 30;
+		bounds.y = height/2 - 40;
+		bounds.width = Tile.TILEWIDTH;
+		bounds.height = Tile.TILEHEIGHT;
 		
 		deathImage = Assets.tent;
 
@@ -56,7 +56,7 @@ public class Tent extends StaticEntity {
 		
 		if(c.getMouseManager().mouseBound().intersects(getBounds())) {
 			if(c.getMouseManager().isRightClicked() || c.getMouseManager().isRightPressed()) {
-				if(WorldGenerator.time < 280 && WorldGenerator.time > 50) {
+				if(WorldGenerator.time < 310 && WorldGenerator.time > 40) {
 					MessageBox.addMessage("sleeping...");
 					c.getGameState().getWorldGenerator().worldSaver.saveWorld();
 					c.getGameState().getWorldGenerator().sleep();

@@ -146,9 +146,8 @@ public class WorldGenerator {
 	// day/night effect
 	private double radius;
 
-	// Time, day starts at time = 255
-	public static double time = 100;
-	public static int maxTimeVar;
+	// Time, day starts at time = 310
+	public static double time = 310;
 	public static int dayNum = 1;
 	private long lastChangeTimer, timeCooldown = 3529, timeTimer = timeCooldown;
 	private long lastsleepTimer, sleepCooldown = 25, sleepTimer = sleepCooldown;
@@ -274,15 +273,13 @@ public class WorldGenerator {
 		time = c.getMenuState().getWorldSelectState().getTime();
 		dayNum = c.getMenuState().getWorldSelectState().getDayNum();
 		
-		maxTimeVar = 255;
-		
 		if(time > 255) {
-			dayBrightness = 255 - (time - 255)*2;
+			dayBrightness = 255 - (time - 255)*3;
 			if(dayBrightness < 0)
 				dayBrightness = 0;
 		}
 		else {
-			dayBrightness = (time)*2;
+			dayBrightness = (time)*3;
 			if(dayBrightness > 255)
 				dayBrightness = 255;
 		}
@@ -446,6 +443,7 @@ public class WorldGenerator {
 		
 		loadTopperEntities();
 		timeControl();
+		System.out.println("Time: " + time);
 
 		// tick the cursor
 		if (cursor != null)
@@ -2029,42 +2027,46 @@ public class WorldGenerator {
 		if (timeTimer < timeCooldown)
 			return;
 
-		if (time >= maxTimeVar*2) {
+		if (time >= 255*2) {
 			time = 0;
-			MusicPlayer.playMusic("audio/ScorchedEarth.wav");
 		}
-		
-		if(time == 255) {
+		//daytime is 310 to 40, pitch black 90 to 260
+		if(time == 310) {
 			dayNum++;
 			Player.getPlayerData().setBasicSurvivalXP(Player.getPlayerData().getBasicSurvivalXP() + 
 					Player.getPlayerData().getIntelligence() + CT.random(1, Player.getPlayerData().getIntelligence() + 1));
+			MusicPlayer.playMusic("audio/ScorchedEarth.wav");
+			MessageBox.addMessage("A new day has begun");
 		}
 		
+		if(time == 40) {
+			MessageBox.addMessage("The day is getting dark");
+		}
 		//Have a chance of starting a blood moon after day 5
 		if(time == 90 && dayNum > 5) {
 			int rand = r.nextInt(15);
 			
 			if(rand == 0) {
 				fullMoon = true;
-				MessageBox.addMessage("the moon is full tonight");
+				MessageBox.addMessage("The moon is full tonight");
 			}
 		}
 		
 		//Full Moon ends at 305
-		if(time == 305 && fullMoon)
+		if(time == 260 && fullMoon)
 			fullMoon = false;
 		
 		time++;
 
-		if (time < maxTimeVar) 
+		if (time < 255) 
 			dayBrightness+=3;
 		else
 			dayBrightness-=3;
 
 		if(dayBrightness < 0)
 			dayBrightness = 0;
-		if(dayBrightness > maxTimeVar)
-			dayBrightness = maxTimeVar;
+		if(dayBrightness > 255)
+			dayBrightness = 255;
 
 		timeTimer = 0;
 
@@ -2089,16 +2091,20 @@ public class WorldGenerator {
 					Player.getPlayerData().energy = Player.getPlayerData().ogEndurance;
 					Player.getPlayerData().hunger -= Player.getPlayerData().hunger/4;
 					Player.getPlayerData().thirst -= Player.getPlayerData().thirst/4;
-					time += 250;
+					time = 310;
 					Player.getPlayerData().setBasicSurvivalXP(Player.getPlayerData().getBasicSurvivalXP() + 
 							Player.getPlayerData().getIntelligence() + CT.random(1, Player.getPlayerData().getIntelligence() + 1));
 					BackgroundPlayer.playAudio("audio/ScorchedEarth.wav");
+					if(Player.getPlayerData().getThirst() < Player.getPlayerData().ogEndurance/3 || Player.getPlayerData().getHunger() < Player.getPlayerData().ogEndurance/3)
+						MessageBox.addMessage("You had a rough sleep");
+					else
+						MessageBox.addMessage("You had a good sleep");
 					Player.getPlayerData().overnightFood();
 					Player.getPlayerData().setCanMove(true);
-					if(time <= 50 || time >= 280)
+					if(time <= 40 || time >= 310)
 						dayNum++;
 					if(time > 255) {
-						dayBrightness = 255 - (time - 255)*2;
+						dayBrightness = 255 - (time - 255)*3;
 						if(dayBrightness < 0)
 							dayBrightness = 0;
 					}

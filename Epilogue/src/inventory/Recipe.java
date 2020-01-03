@@ -1056,7 +1056,7 @@ public class Recipe {
 			
 		} else if(this.isStructure()) {//i.getItem().getType().equals("structure") || i.getItem().getType().equals("platform")
 			
-			buildingXP = 250;
+			buildingXP = 0; //250
 			
 		} else if(this.getItem() instanceof Tool) {
 			
