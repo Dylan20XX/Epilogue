@@ -118,6 +118,9 @@ public class PlayerHands {
 					
 				}
 				else if(inventory.InventoryItems.get(inventory.selectedItem).equals(leftHand)) {
+					if(leftHand.getType().equals("torch"))
+						leftHand.setItemEquipped(false);
+						leftHand.tick();
 					leftHand = null;
 				}
 				else {
@@ -149,6 +152,9 @@ public class PlayerHands {
 					rightHand.setItemEquipped(true);
 				}
 				else if(inventory.InventoryItems.get(inventory.selectedItem).equals(rightHand)) {
+					if(rightHand.getType().equals("torch"))
+						rightHand.setItemEquipped(false);
+						rightHand.tick();
 					rightHand = null;
 				}
 				else {
