@@ -88,7 +88,7 @@ public class MenuState extends State {
 						
 						AudioPlayer.playAudio("audio/next.wav");
 						
-						openWebPage("https://epilogue9.cms.webnode.com/discography");
+						openWebPage("https://www.project-epilogue.com/controls/");
 
 					}
 
@@ -103,7 +103,7 @@ public class MenuState extends State {
 						
 						AudioPlayer.playAudio("audio/next.wav");
 						
-						openWebPage("https://www.project-epilogue.com/credits");
+						openWebPage("https://www.project-epilogue.com/credits/");
 						
 					}
 

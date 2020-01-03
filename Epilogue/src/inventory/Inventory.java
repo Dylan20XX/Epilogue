@@ -44,9 +44,12 @@ public class Inventory {
 		this.e = e;
 		InventoryItems = new ArrayList<Item>();
 		autoCookerV2 = new AutoCookerV2Craft(c);
-		for(int i = 0; i < 5; i++)
-			addItem(Item.zincChunkItem);
-		addItem(Item.coalChunkItem);
+		addItem(Armor.tungstenHelmet);
+		addItem(Armor.tungstenChest);
+		addItem(Armor.tungstenLegging);
+		addItem(Armor.tungstenBoots);
+		addItem(Armor.tungstenGauntlets);
+		addItem(Weapon.tungstenMace);
 		
 	}
 
@@ -127,7 +130,7 @@ public class Inventory {
 				if (e.gauntlet != null) {
 					player.setResistance(player.getResistance() - player.getEquipment().gauntlet.getResistance());
 					player.setIntimidation(player.getIntimidation() - player.getEquipment().gauntlet.getIntimidation());
-					e.boot = null;
+					e.gauntlet = null;
 				} else {
 					e.gauntlet = (Armor)item;
 					player.setResistance(player.getResistance() + player.getEquipment().gauntlet.getResistance());

@@ -3162,318 +3162,324 @@ public class WorldGenerator {
 		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_F3)) { //enter debug mode
 			debugMode = !debugMode;
 		}
-//		if(debugMode) {
-//			Player.getPlayerData().setHealth(Player.getDefaultHealth());
-//			Player.getPlayerData().energy = 800;
-//			allDay = true;
-//			effects.addEffect(new Effect("swiftness", 10000));
-//		}
-//		
-//		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_T))
-//			entityManager.addEntity(new WonderingGhoul(entityManager.getPlayer().getX() + 200, entityManager.getPlayer().getY() + 200, c));
-//		if (c.getKeyManager().keyJustPressed(KeyEvent.VK_G))
-//			Player.getPlayerData().energy+= 800;
-//		if (c.getKeyManager().keyJustPressed(KeyEvent.VK_I))
-//			allDay = !allDay;
-//		if (c.getKeyManager().keyJustPressed(KeyEvent.VK_V)) {
-//			entityManager.addCreature(
-//					new WonderingGhoul(entityManager.getPlayer().getX() - 800, entityManager.getPlayer().getY() + 350, c));
-//			entityManager.addCreature(
-//					new WonderingGhoul(entityManager.getPlayer().getX() - 900, entityManager.getPlayer().getY() + 350, c));
-//			entityManager.addCreature(
-//					new WonderingGhoul(entityManager.getPlayer().getX() - 800, entityManager.getPlayer().getY() + 150, c));
-//			entityManager.addCreature(
-//					new WonderingGhoul(entityManager.getPlayer().getX() - 1000, entityManager.getPlayer().getY() + 150, c));
-//			entityManager.addCreature(
-//					new WonderingGhoul(entityManager.getPlayer().getX() - 1000, entityManager.getPlayer().getY() + 350, c));
-//			
-//		}
-//		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_B)) {
-//			time += 10;
-//		}
-//		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_H)) {
-//			effects.addEffect(new Effect("swiftness", 10000));
-//		}
-//		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_L)) {
-//			effects.addEffect(new Effect("heavily armed", 10000));
-//		}
-//		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_N)) {
-//			Player.getPlayerData().thirst-=20;
-//		}
-//		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_M)) {
-//			
-//			AudioPlayer.playAudio("audio/groundShake.wav");
-//			
-//			MessageBox.addMessage("you have angered the Vilespawn...");
-//			
-//			new java.util.Timer().schedule(new java.util.TimerTask() {
-//				@Override
-//				public void run() {
-//					c.getGameCamera().shake(20);
-//	
-//				}
-//			}, 1000);
-//			
-//			new java.util.Timer().schedule(new java.util.TimerTask() {
-//				@Override
-//				public void run() {
-//					c.getGameCamera().shake(50);
-//	
-//				}
-//			}, 2000);
-//			
-//			new java.util.Timer().schedule(new java.util.TimerTask() {
-//				@Override
-//				public void run() {
-//					c.getGameCamera().shake(20);
-//	
-//				}
-//			}, 4000);
-//			
-//			new java.util.Timer().schedule(new java.util.TimerTask() {
-//				@Override
-//				public void run() {
-//					entityManager.addEntity(
-//							new VileSpawn(c));
-//	
-//				}
-//			}, 6000);
-//			
-//		}
-//		
-//		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_R)) {
-//			if(Player.getPlayerData().getHands().getHand() != null && Player.getPlayerData().getHands().getHand().getType().equals("ranged")) {
-//				Ranged r = (Ranged)Player.getPlayerData().getHands().getHand();
-//					r.reload();
-//			}
-//		}
-//		
-//		//Biome tp test
-//		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_4)) { //natural biome
-//			for (int y = 0; y < height; y++) {
-//				for (int x = 0; x < width; x++) {
-//					if(terrain[x][y] == 1) {
-//						Player.getPlayerData().setX(x * Tile.TILEWIDTH);
-//						Player.getPlayerData().setY(y * Tile.TILEHEIGHT);
-//					}	
-//				}
-//			}
-//		}
-//		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_5)) { //forest biome
-//			for (int y = 0; y < height; y++) {
-//				for (int x = 0; x < width; x++) {
-//					if(terrain[x][y] == 2) {
-//						Player.getPlayerData().setX(x * Tile.TILEWIDTH);
-//						Player.getPlayerData().setY(y * Tile.TILEHEIGHT);
-//					}	
-//				}
-//			}
-//		}
-//		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_6)) { //semi-desert biome
-//			for (int y = 0; y < height; y++) {
-//				for (int x = 0; x < width; x++) {
-//					if(terrain[x][y] == 3) {
-//						Player.getPlayerData().setX(x * Tile.TILEWIDTH);
-//						Player.getPlayerData().setY(y * Tile.TILEHEIGHT);
-//					}	
-//				}
-//			}
-//		}
-//		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_7)) { //waste biome
-//			for (int y = 0; y < height; y++) {
-//				for (int x = 0; x < width; x++) {
-//					if(terrain[x][y] == 4) {
-//						Player.getPlayerData().setX(x * Tile.TILEWIDTH);
-//						Player.getPlayerData().setY(y * Tile.TILEHEIGHT);
-//					}	
-//				}
-//			}
-//		}
-//		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_8)) { //ruins biome
-//			for (int y = 0; y < height; y++) {
-//				for (int x = 0; x < width; x++) {
-//					if(terrain[x][y] == 5) {
-//						Player.getPlayerData().setX(x * Tile.TILEWIDTH);
-//						Player.getPlayerData().setY(y * Tile.TILEHEIGHT);
-//					}	
-//				}
-//			}
-//		}
-//		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_9)) { //infected biome
-//			for (int y = 0; y < height; y++) {
-//				for (int x = 0; x < width; x++) {
-//					if(terrain[x][y] == 6) {
-//						Player.getPlayerData().setX(x * Tile.TILEWIDTH);
-//						Player.getPlayerData().setY(y * Tile.TILEHEIGHT);
-//					}	
-//				}
-//			}
-//		}
-//		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_0)) { //water
-//			for (int y = 0; y < height; y++) {
-//				for (int x = 0; x < width; x++) {
-//					if(tiles[x][y] == 10) {
-//						Player.getPlayerData().setX(x * Tile.TILEWIDTH);
-//						Player.getPlayerData().setY(y * Tile.TILEHEIGHT);
-//					}	
-//				}
-//			}
-//		}
-//		
-//		if(numVileEmbryo >= 5 && !vileSpawned) {
-//			vileSpawned = true;
-//			
-//			AudioPlayer.playAudio("audio/groundShake.wav");
-//			
-//			MessageBox.addMessage("you have angered the Vilespawn...");
-//			
-//			new java.util.Timer().schedule(new java.util.TimerTask() {
-//				@Override
-//				public void run() {
-//					c.getGameCamera().shake(20);
-//	
-//				}
-//			}, 1000);
-//			
-//			new java.util.Timer().schedule(new java.util.TimerTask() {
-//				@Override
-//				public void run() {
-//					c.getGameCamera().shake(50);
-//	
-//				}
-//			}, 2000);
-//			
-//			new java.util.Timer().schedule(new java.util.TimerTask() {
-//				@Override
-//				public void run() {
-//					c.getGameCamera().shake(20);
-//	
-//				}
-//			}, 4000);
-//			
-//			new java.util.Timer().schedule(new java.util.TimerTask() {
-//				@Override
-//				public void run() {
-//					entityManager.addEntity(
-//							new VileSpawn(c));
-//	
-//				}
-//			}, 6000);
-//			
-//		}
-//		
-//		//testing movement
-//		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_HOME)) { //up
-//			Player.getPlayerData().setY(Player.getPlayerData().getY() - Tile.TILEHEIGHT);
-//		}
-//		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_END)) { //down
-//			Player.getPlayerData().setY(Player.getPlayerData().getY() + Tile.TILEHEIGHT);
-//		}
-//		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_DELETE)) { //left
-//			Player.getPlayerData().setX(Player.getPlayerData().getX() - Tile.TILEWIDTH);
-//		}
-//		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_PAGE_DOWN)) { //right
-//			Player.getPlayerData().setX(Player.getPlayerData().getX() + Tile.TILEWIDTH);
-//		}
-//		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_INSERT)) { //move 100 left
-//			Player.getPlayerData().setX(Player.getPlayerData().getX() - 100 * Tile.TILEWIDTH);
-//		}
-//		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_PAGE_UP)) { //move 100 right
-//			Player.getPlayerData().setX(Player.getPlayerData().getX() +  100 * Tile.TILEWIDTH);
-//		}
-//		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_F1)) { //move 100 up
-//			Player.getPlayerData().setY(Player.getPlayerData().getY() - 100 * Tile.TILEHEIGHT);
-//		}
-//		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_F2)) { //move 100 down
-//			Player.getPlayerData().setY(Player.getPlayerData().getY() + 100 * Tile.TILEHEIGHT);
-//		}
-//		
-//		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_F4)) { //activate full moon
-//			fullMoon = true;			
-//			MessageBox.addMessage("the moon is full tonight");
-//		}
-//		
-//		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_F5)) { //move forward through time
-//			time++;
-//			dayNum++;
-//			Player.getPlayerData().setBasicSurvivalXP(Player.getPlayerData().getBasicSurvivalXP() + 
-//					Player.getPlayerData().getIntelligence() + CT.random(1, Player.getPlayerData().getIntelligence() + 1));
-//		}
-//		//test - press o while in inventory to show item to string method
-//		if (c.getKeyManager().keyJustPressed(KeyEvent.VK_O)) {
-//			for(int i = 0; i < inventory.InventoryItems.size(); i++) {
-//				System.out.println(inventory.InventoryItems.get(i).toString());
-//			}
-//		}
-//		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_F6)) { //entity test spawning
-//			//entityManager.addEntity(new RuinPiece1(Player.getPlayerData().getX(),
-//			//		Player.getPlayerData().getY(), c));
-//			//entityManager.addEntity(new RuinPiece2(Player.getPlayerData().getX(),
-//			//		Player.getPlayerData().getY(), c));
-//			//entityManager.addEntity(new RuinPiece3(Player.getPlayerData().getX(),
-//			//		Player.getPlayerData().getY(), c));
-//			//entityManager.addEntity(new RuinPiece4(Player.getPlayerData().getX(),
-//			//		Player.getPlayerData().getY(), c));
-//			//entityManager.addEntity(new RuinPiece5(Player.getPlayerData().getX(),
-//			//		Player.getPlayerData().getY(), c));
-//			//entityManager.addEntity(new RuinPiece6(Player.getPlayerData().getX(),
-//			//		Player.getPlayerData().getY(), c));
-//			//entityManager.addEntity(new SpaceShuttle(Player.getPlayerData().getX(),
-//			//		Player.getPlayerData().getY(), c));
-//			entityManager.addEntity(new SleepingSentinel(Player.getPlayerData().getX(),
-//					Player.getPlayerData().getY(), c));
-//			//System.out.println(AwakenedSentinel.class.getSimpleName());
-//		}
-//		
-//		//test saving features
-//		if (c.getKeyManager().keyJustPressed(KeyEvent.VK_MINUS)) { //save topper
-//			//worldSaver.saveTopper();
-//			//System.out.println("topper saved");
-//			//worldSaver.saveChests();
-//			//System.out.println("chests saved");
-//			
-//			//worldSaver.saveTimedCraftingStructures();
-//			//System.out.println("timed crafting structures saved");
-//			
-//			//worldSaver.saveCreatures();
-//			//System.out.println("creatures saved");
-//			
-//			worldSaver.saveWorld();
-//			System.out.println("world saved");
-//		}
-//		if (c.getKeyManager().keyJustPressed(KeyEvent.VK_EQUALS)) {
-//			worldSaver.savePlayer();
-//			System.out.println("player data saved");
-//		}
-//		if (c.getKeyManager().keyJustPressed(KeyEvent.VK_COMMA)) { //save platform
-//			//worldSaver.savePlatforms();
-//			//System.out.println("platforms saved");
-//			//System.out.println(Item.items[500].getName());
-//			//worldSaver.saveChests();
-//			//System.out.println("chests saved");
-//			
-//			//worldSaver.saveTimedCraftingStructures();
-//			//System.out.println("timed crafting structures saved");
-//			
-//			//entityManager.addEntity(
-//			//		new AwakenedSentinel(entityManager.getPlayer().getX() - Tile.TILEWIDTH, 
-//			//				entityManager.getPlayer().getY() - 4 * Tile.TILEHEIGHT, c));
-//							
-//			//loadPlayerInventory();
-//			//System.out.println("inventory loaded");
-//			
-//			//loadTimedCraftingStructures();
-//			//System.out.println("timed crafting structures loaded");
-//			
-//			//loadCreatures();
-//			//System.out.println("creatures loaded");
-//		}
-//		if (c.getKeyManager().keyJustPressed(KeyEvent.VK_PERIOD)) {
-//			Player.getPlayerData().setX(48000);
-//			Player.getPlayerData().setY(48000);
-//			//worldSaver.saveCreatures();
-//			//System.out.println("creatures saved");
-//		}
+		if(debugMode) {
+			Player.getPlayerData().setHealth(Player.getDefaultHealth());
+			Player.getPlayerData().energy = 800;
+			allDay = true;
+			effects.addEffect(new Effect("swiftness", 10000));
+		}
+		
+		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_T))
+			entityManager.addEntity(new Phasmatodea(entityManager.getPlayer().getX() + 200, entityManager.getPlayer().getY() - 300, c));
+		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_U))
+			entityManager.addEntity(new SandCreep(entityManager.getPlayer().getX() + 200, entityManager.getPlayer().getY() - 300, c));
+		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_O))
+			entityManager.addEntity(new Boar(entityManager.getPlayer().getX() + 200, entityManager.getPlayer().getY() - 300, c));
+		if (c.getKeyManager().keyJustPressed(KeyEvent.VK_G))
+			Player.getPlayerData().energy+= 800;
+		if (c.getKeyManager().keyJustPressed(KeyEvent.VK_I))
+			allDay = !allDay;
+		if (c.getKeyManager().keyJustPressed(KeyEvent.VK_N))
+			System.out.println(Player.getPlayerData().getCurrentSpeed());
+		if (c.getKeyManager().keyJustPressed(KeyEvent.VK_V)) {
+			entityManager.addCreature(
+					new WonderingGhoul(entityManager.getPlayer().getX() - 800, entityManager.getPlayer().getY() + 350, c));
+			entityManager.addCreature(
+					new WonderingGhoul(entityManager.getPlayer().getX() - 900, entityManager.getPlayer().getY() + 350, c));
+			entityManager.addCreature(
+					new WonderingGhoul(entityManager.getPlayer().getX() - 800, entityManager.getPlayer().getY() + 150, c));
+			entityManager.addCreature(
+					new WonderingGhoul(entityManager.getPlayer().getX() - 1000, entityManager.getPlayer().getY() + 150, c));
+			entityManager.addCreature(
+					new WonderingGhoul(entityManager.getPlayer().getX() - 1000, entityManager.getPlayer().getY() + 350, c));
+			
+		}
+		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_B)) {
+			time += 10;
+		}
+		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_H)) {
+			effects.addEffect(new Effect("swiftness", 10000));
+		}
+		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_L)) {
+			effects.addEffect(new Effect("heavily armed", 10000));
+		}
+		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_N)) {
+			Player.getPlayerData().thirst-=20;
+		}
+		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_M)) {
+			
+			AudioPlayer.playAudio("audio/groundShake.wav");
+			
+			MessageBox.addMessage("you have angered the Vilespawn...");
+			
+			new java.util.Timer().schedule(new java.util.TimerTask() {
+				@Override
+				public void run() {
+					c.getGameCamera().shake(20);
+	
+				}
+			}, 1000);
+			
+			new java.util.Timer().schedule(new java.util.TimerTask() {
+				@Override
+				public void run() {
+					c.getGameCamera().shake(50);
+	
+				}
+			}, 2000);
+			
+			new java.util.Timer().schedule(new java.util.TimerTask() {
+				@Override
+				public void run() {
+					c.getGameCamera().shake(20);
+	
+				}
+			}, 4000);
+			
+			new java.util.Timer().schedule(new java.util.TimerTask() {
+				@Override
+				public void run() {
+					entityManager.addEntity(
+							new VileSpawn(c));
+	
+				}
+			}, 6000);
+			
+		}
+		
+		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_R)) {
+			if(Player.getPlayerData().getHands().getHand() != null && Player.getPlayerData().getHands().getHand().getType().equals("ranged")) {
+				Ranged r = (Ranged)Player.getPlayerData().getHands().getHand();
+					r.reload();
+			}
+		}
+		
+		//Biome tp test
+		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_4)) { //natural biome
+			for (int y = 0; y < height; y++) {
+				for (int x = 0; x < width; x++) {
+					if(terrain[x][y] == 1) {
+						Player.getPlayerData().setX(x * Tile.TILEWIDTH);
+						Player.getPlayerData().setY(y * Tile.TILEHEIGHT);
+					}	
+				}
+			}
+		}
+		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_5)) { //forest biome
+			for (int y = 0; y < height; y++) {
+				for (int x = 0; x < width; x++) {
+					if(terrain[x][y] == 2) {
+						Player.getPlayerData().setX(x * Tile.TILEWIDTH);
+						Player.getPlayerData().setY(y * Tile.TILEHEIGHT);
+					}	
+				}
+			}
+		}
+		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_6)) { //semi-desert biome
+			for (int y = 0; y < height; y++) {
+				for (int x = 0; x < width; x++) {
+					if(terrain[x][y] == 3) {
+						Player.getPlayerData().setX(x * Tile.TILEWIDTH);
+						Player.getPlayerData().setY(y * Tile.TILEHEIGHT);
+					}	
+				}
+			}
+		}
+		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_7)) { //waste biome
+			for (int y = 0; y < height; y++) {
+				for (int x = 0; x < width; x++) {
+					if(terrain[x][y] == 4) {
+						Player.getPlayerData().setX(x * Tile.TILEWIDTH);
+						Player.getPlayerData().setY(y * Tile.TILEHEIGHT);
+					}	
+				}
+			}
+		}
+		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_8)) { //ruins biome
+			for (int y = 0; y < height; y++) {
+				for (int x = 0; x < width; x++) {
+					if(terrain[x][y] == 5) {
+						Player.getPlayerData().setX(x * Tile.TILEWIDTH);
+						Player.getPlayerData().setY(y * Tile.TILEHEIGHT);
+					}	
+				}
+			}
+		}
+		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_9)) { //infected biome
+			for (int y = 0; y < height; y++) {
+				for (int x = 0; x < width; x++) {
+					if(terrain[x][y] == 6) {
+						Player.getPlayerData().setX(x * Tile.TILEWIDTH);
+						Player.getPlayerData().setY(y * Tile.TILEHEIGHT);
+					}	
+				}
+			}
+		}
+		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_0)) { //water
+			for (int y = 0; y < height; y++) {
+				for (int x = 0; x < width; x++) {
+					if(tiles[x][y] == 10) {
+						Player.getPlayerData().setX(x * Tile.TILEWIDTH);
+						Player.getPlayerData().setY(y * Tile.TILEHEIGHT);
+					}	
+				}
+			}
+		}
+		
+		if(numVileEmbryo >= 5 && !vileSpawned) {
+			vileSpawned = true;
+			
+			AudioPlayer.playAudio("audio/groundShake.wav");
+			
+			MessageBox.addMessage("you have angered the Vilespawn...");
+			
+			new java.util.Timer().schedule(new java.util.TimerTask() {
+				@Override
+				public void run() {
+					c.getGameCamera().shake(20);
+	
+				}
+			}, 1000);
+			
+			new java.util.Timer().schedule(new java.util.TimerTask() {
+				@Override
+				public void run() {
+					c.getGameCamera().shake(50);
+	
+				}
+			}, 2000);
+			
+			new java.util.Timer().schedule(new java.util.TimerTask() {
+				@Override
+				public void run() {
+					c.getGameCamera().shake(20);
+	
+				}
+			}, 4000);
+			
+			new java.util.Timer().schedule(new java.util.TimerTask() {
+				@Override
+				public void run() {
+					entityManager.addEntity(
+							new VileSpawn(c));
+	
+				}
+			}, 6000);
+			
+		}
+		
+		//testing movement
+		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_HOME)) { //up
+			Player.getPlayerData().setY(Player.getPlayerData().getY() - Tile.TILEHEIGHT);
+		}
+		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_END)) { //down
+			Player.getPlayerData().setY(Player.getPlayerData().getY() + Tile.TILEHEIGHT);
+		}
+		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_DELETE)) { //left
+			Player.getPlayerData().setX(Player.getPlayerData().getX() - Tile.TILEWIDTH);
+		}
+		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_PAGE_DOWN)) { //right
+			Player.getPlayerData().setX(Player.getPlayerData().getX() + Tile.TILEWIDTH);
+		}
+		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_INSERT)) { //move 100 left
+			Player.getPlayerData().setX(Player.getPlayerData().getX() - 100 * Tile.TILEWIDTH);
+		}
+		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_PAGE_UP)) { //move 100 right
+			Player.getPlayerData().setX(Player.getPlayerData().getX() +  100 * Tile.TILEWIDTH);
+		}
+		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_F1)) { //move 100 up
+			Player.getPlayerData().setY(Player.getPlayerData().getY() - 100 * Tile.TILEHEIGHT);
+		}
+		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_F2)) { //move 100 down
+			Player.getPlayerData().setY(Player.getPlayerData().getY() + 100 * Tile.TILEHEIGHT);
+		}
+		
+		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_F4)) { //activate full moon
+			fullMoon = true;			
+			MessageBox.addMessage("the moon is full tonight");
+		}
+		
+		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_F5)) { //move forward through time
+			time++;
+			dayNum++;
+			Player.getPlayerData().setBasicSurvivalXP(Player.getPlayerData().getBasicSurvivalXP() + 
+					Player.getPlayerData().getIntelligence() + CT.random(1, Player.getPlayerData().getIntelligence() + 1));
+		}
+		//test - press o while in inventory to show item to string method
+		if (c.getKeyManager().keyJustPressed(KeyEvent.VK_O)) {
+			for(int i = 0; i < inventory.InventoryItems.size(); i++) {
+				System.out.println(inventory.InventoryItems.get(i).toString());
+			}
+		}
+		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_F6)) { //entity test spawning
+			//entityManager.addEntity(new RuinPiece1(Player.getPlayerData().getX(),
+			//		Player.getPlayerData().getY(), c));
+			//entityManager.addEntity(new RuinPiece2(Player.getPlayerData().getX(),
+			//		Player.getPlayerData().getY(), c));
+			//entityManager.addEntity(new RuinPiece3(Player.getPlayerData().getX(),
+			//		Player.getPlayerData().getY(), c));
+			//entityManager.addEntity(new RuinPiece4(Player.getPlayerData().getX(),
+			//		Player.getPlayerData().getY(), c));
+			//entityManager.addEntity(new RuinPiece5(Player.getPlayerData().getX(),
+			//		Player.getPlayerData().getY(), c));
+			//entityManager.addEntity(new RuinPiece6(Player.getPlayerData().getX(),
+			//		Player.getPlayerData().getY(), c));
+			//entityManager.addEntity(new SpaceShuttle(Player.getPlayerData().getX(),
+			//		Player.getPlayerData().getY(), c));
+			entityManager.addEntity(new SleepingSentinel(Player.getPlayerData().getX(),
+					Player.getPlayerData().getY(), c));
+			//System.out.println(AwakenedSentinel.class.getSimpleName());
+		}
+		
+		//test saving features
+		if (c.getKeyManager().keyJustPressed(KeyEvent.VK_MINUS)) { //save topper
+			//worldSaver.saveTopper();
+			//System.out.println("topper saved");
+			//worldSaver.saveChests();
+			//System.out.println("chests saved");
+			
+			//worldSaver.saveTimedCraftingStructures();
+			//System.out.println("timed crafting structures saved");
+			
+			//worldSaver.saveCreatures();
+			//System.out.println("creatures saved");
+			
+			worldSaver.saveWorld();
+			System.out.println("world saved");
+		}
+		if (c.getKeyManager().keyJustPressed(KeyEvent.VK_EQUALS)) {
+			worldSaver.savePlayer();
+			System.out.println("player data saved");
+		}
+		if (c.getKeyManager().keyJustPressed(KeyEvent.VK_COMMA)) { //save platform
+			//worldSaver.savePlatforms();
+			//System.out.println("platforms saved");
+			//System.out.println(Item.items[500].getName());
+			//worldSaver.saveChests();
+			//System.out.println("chests saved");
+			
+			//worldSaver.saveTimedCraftingStructures();
+			//System.out.println("timed crafting structures saved");
+			
+			//entityManager.addEntity(
+			//		new AwakenedSentinel(entityManager.getPlayer().getX() - Tile.TILEWIDTH, 
+			//				entityManager.getPlayer().getY() - 4 * Tile.TILEHEIGHT, c));
+							
+			//loadPlayerInventory();
+			//System.out.println("inventory loaded");
+			
+			//loadTimedCraftingStructures();
+			//System.out.println("timed crafting structures loaded");
+			
+			//loadCreatures();
+			//System.out.println("creatures loaded");
+		}
+		if (c.getKeyManager().keyJustPressed(KeyEvent.VK_PERIOD)) {
+			Player.getPlayerData().setX(48000);
+			Player.getPlayerData().setY(48000);
+			//worldSaver.saveCreatures();
+			//System.out.println("creatures saved");
+		}
 		
 	}
 	

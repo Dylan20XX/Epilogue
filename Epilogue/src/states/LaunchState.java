@@ -1,5 +1,6 @@
 package states;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
 import alphaPackage.ControlCenter;
@@ -52,6 +53,7 @@ public class LaunchState extends State {
 
 	@Override
 	public void render(Graphics g) {
+		g.setColor(Color.black);
 		g.fillRect(0, 0, 1280, 800);
 		g.drawImage(cyclone.getCurrentFrame(), (1280-600/2*3)/2, (800-338/2*3)/2, 600/2*3, 338/2*3, null);
 	
