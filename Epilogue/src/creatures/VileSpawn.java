@@ -79,6 +79,7 @@ public class VileSpawn extends Creatures {
 
 	public void AI() {
 
+		WorldGenerator.bossActive = true;
 		if (!swallowed) {
 
 			for (int i = 0; i < c.getGameState().getWorldGenerator().getEntityManager().entitiesInBound.size(); i++) {
@@ -87,7 +88,10 @@ public class VileSpawn extends Creatures {
 						c.getGameState().getWorldGenerator().getEntityManager().entitiesInBound.get(i).getBounds())
 						&& c.getGameState().getWorldGenerator().getEntityManager().entitiesInBound.get(i) != this
 						&& !c.getGameState().getWorldGenerator().getEntityManager().entitiesInBound.get(i).getName()
-								.equals("worm hole")) {
+								.equals("worm hole")
+								&& !(c.getGameState().getWorldGenerator().getEntityManager().getEntitiesInBound().get(i) instanceof AwakenedSentinel)
+								&& !(c.getGameState().getWorldGenerator().getEntityManager().getEntitiesInBound().get(i) instanceof SentryBroodMother)
+								&& !(c.getGameState().getWorldGenerator().getEntityManager().getEntitiesInBound().get(i) instanceof VileSpawn)) {
 					if (!c.getGameState().getWorldGenerator().getEntityManager().entitiesInBound.get(i)
 							.equals(Player.getPlayerData()) && currentAnimation.getIndex() > 4) {
 						c.getGameState().getWorldGenerator().getEntityManager().entitiesInBound.get(i).setActive(false);
@@ -291,6 +295,7 @@ public class VileSpawn extends Creatures {
 	@Override
 	public void Die() {
 		
+		WorldGenerator.bossActive = false;
 		AudioPlayer.playAudio("audio/vileSpawnOut.wav");
 		MessageBox.addMessage("the Vilespawn has been defeated...");
 		

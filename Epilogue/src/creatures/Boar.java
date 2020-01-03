@@ -24,7 +24,7 @@ public class Boar extends Creatures {
 		health = 1200;
 		speed = 2;
 		damage = 210;
-		knockValue = 13;
+		knockValue = 18;
 		name = "boar";
 		attackBoundSize = 300;
 		attackCooldown = 1500;

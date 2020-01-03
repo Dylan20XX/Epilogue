@@ -20,6 +20,7 @@ import items.Food;
 import items.Item;
 import items.Ranged;
 import items.Weapon;
+import world.WorldGenerator;
 
 
 public class AwakenedSentinel extends Creatures {
@@ -80,10 +81,12 @@ public class AwakenedSentinel extends Creatures {
 	public void tick() {
 
 		if(awakened) {
-
+			
+			WorldGenerator.bossActive = true;
+			
 			trackTimer += System.currentTimeMillis() - lastTrackTimer;
 			lastTrackTimer = System.currentTimeMillis();
-
+			
 			if (trackTimer > trackCooldown) {
 				previousOriginX[index] = originX;
 				previousOriginY[index] = originY;
@@ -248,7 +251,10 @@ public class AwakenedSentinel extends Creatures {
 				if(c.getGameState().getWorldGenerator().getEntityManager().getEntitiesInBound().get(i).getBounds().intersects(breakBound())) {
 					if(!c.getGameState().getWorldGenerator().getEntityManager().getEntitiesInBound().get(i)
 							.equals(c.getGameState().getWorldGenerator().getEntityManager().getPlayer()) && 
-							!c.getGameState().getWorldGenerator().getEntityManager().getEntitiesInBound().get(i).equals(this)) {
+							!c.getGameState().getWorldGenerator().getEntityManager().getEntitiesInBound().get(i).equals(this)
+							&& !(c.getGameState().getWorldGenerator().getEntityManager().getEntitiesInBound().get(i) instanceof AwakenedSentinel)
+							&& !(c.getGameState().getWorldGenerator().getEntityManager().getEntitiesInBound().get(i) instanceof SentryBroodMother)
+							&& !(c.getGameState().getWorldGenerator().getEntityManager().getEntitiesInBound().get(i) instanceof VileSpawn)) {
 						c.getGameState().getWorldGenerator().getEntityManager().getEntitiesInBound().get(i).hurt(10000);
 					}
 				}
@@ -395,6 +401,7 @@ public class AwakenedSentinel extends Creatures {
 
 	@Override
 	public void Die() {
+		WorldGenerator.bossActive = false;
 		AudioPlayer.playAudio("audio/explode.wav");
 		MusicPlayer.StopMusic();
 		c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator().getItemManager()

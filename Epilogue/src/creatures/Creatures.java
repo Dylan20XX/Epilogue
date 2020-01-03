@@ -15,6 +15,7 @@ import inventory.Effect;
 import inventory.EffectManager;
 import staticEntity.StaticEntity;
 import tiles.Tile;
+import world.WorldGenerator;
 
 /*
  * abstract parent class for all creatures
@@ -349,6 +350,14 @@ public abstract class Creatures extends Entity {
 
 	public void chase (double factor) {
 
+		if(WorldGenerator.bossActive 
+				 && !(this instanceof VileSpawn) && !(this instanceof SentryBroodMother) && !(this instanceof AwakenedSentinel)
+				 && !(this instanceof WonderingGhoul) && !(this instanceof Sentry) && !(this instanceof SentryMajor)) {
+			chasing = false;
+			escape(cautionBound(1280), false);
+			
+		} else {
+		
 		chasing = true;
 
 		if (canMove) {
@@ -447,6 +456,7 @@ public abstract class Creatures extends Entity {
 				}
 			}, 70);
 		}
+		}
 
 	}
 	
@@ -543,16 +553,23 @@ public abstract class Creatures extends Entity {
 	}
 
 	public void natural() {
-
+		
 		chasing = false;
 		
-		if(health < ogHealth && !Player.getPlayerData().getBounds().intersects(getBounds())) {
+		if(WorldGenerator.bossActive 
+				 && !(this instanceof VileSpawn) && !(this instanceof SentryBroodMother) && !(this instanceof AwakenedSentinel)
+				 && !(this instanceof WonderingGhoul) && !(this instanceof Sentry) && !(this instanceof SentryMajor)) {
+			escape(cautionBound(1280), false);
+			
+		}
+		
+		else if(health < ogHealth && !Player.getPlayerData().getBounds().intersects(getBounds())) {
 			
 			escape(cautionBound(800), true);
 			
 		}
 
-		if (canMove) {
+		else if (canMove) {
 			moveCooldown = (int) (Math.random() * 100) * 1000;
 			moveTimer += System.currentTimeMillis() - lastMoveTimer;
 			lastMoveTimer = System.currentTimeMillis();
@@ -610,13 +627,20 @@ public abstract class Creatures extends Entity {
 
 		chasing = false;
 		
-		if(health < ogHealth && !Player.getPlayerData().getBounds().intersects(getBounds())) {
+		if(WorldGenerator.bossActive 
+				 && !(this instanceof VileSpawn) && !(this instanceof SentryBroodMother) && !(this instanceof AwakenedSentinel)
+				 && !(this instanceof WonderingGhoul) && !(this instanceof Sentry) && !(this instanceof SentryMajor)) {
+			escape(cautionBound(1280), false);
+			
+		}
+		
+		else if(health < ogHealth && !Player.getPlayerData().getBounds().intersects(getBounds())) {
 			
 			escape(cautionBound(800), true);
 			
 		}
 
-		if (canMove) {
+		else if (canMove) {
 
 			if (Player.getPlayerData().getX() < x)
 				direction = 2;

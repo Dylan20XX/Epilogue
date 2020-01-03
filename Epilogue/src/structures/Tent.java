@@ -18,7 +18,7 @@ public class Tent extends StaticEntity {
 	// java's random API
 	private Random r = new Random();
 	
-	private long lastsleepTimer, sleepCooldown = 2000, sleepTimer = sleepCooldown;
+	private long lastsleepTimer, sleepCooldown = 1000, sleepTimer = sleepCooldown;
 
 	private ControlCenter c;
 
@@ -62,7 +62,7 @@ public class Tent extends StaticEntity {
 					c.getGameState().getWorldGenerator().sleep();
 					WorldGenerator.isSleeping = true;
 				} else {
-					MessageBox.addMessage("not tired enough to sleep...");
+					MessageBox.addMessage("its too early to sleep...");
 				}
 			}
 		}

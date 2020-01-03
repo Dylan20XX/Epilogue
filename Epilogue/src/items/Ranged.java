@@ -36,7 +36,7 @@ public class Ranged extends Item{
 	//public static Item rustyAssultRifle = new Ranged(Assets.woodenBow, "rusty assult rifle", 154, 6.5, 55, 85, 5, 35, 85);
 	public static Ranged desertEagle = new Ranged(Assets.desertEagle, "desert eagle", 158, 2.5, 120, 800, 3, 12, 1500, "AMM1D ammo", Math.PI/42, 23);
 	public static Ranged AWP = new Ranged(Assets.woodenBow, "AWP", 159, 15, 350, 3500, 10, 4, 8000, "AMM1D ammo", 0, 140);
-	public static Ranged pulseRifle = new Ranged(Assets.pulseRifle, "pulse rifle", 160, 10, 100, 220, 10, 30, 1500, "none", Math.PI/80, 115);
+	public static Ranged pulseRifle = new Ranged(Assets.pulseRifle, "pulse rifle", 160, 10, 100, 205, 10, 30, 1500, "none", Math.PI/80, 115);
 
 	public Ranged(BufferedImage texture, String name, int id, double weight, int damage,
 			double aSpeed, int intimidation, int ammoMax, int loadSpeed, String refillMaterial, double accuracy, int volume) {

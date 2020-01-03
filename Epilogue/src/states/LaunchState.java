@@ -3,6 +3,7 @@ package states;
 import java.awt.Graphics;
 
 import alphaPackage.ControlCenter;
+import alphaPackage.Display;
 import graphics.Animation;
 import graphics.Assets;
 import utils.UIManager;
@@ -25,6 +26,7 @@ public class LaunchState extends State {
 	public LaunchState(ControlCenter c) {
 		this.c = c;
 		
+		Display.customCursor("/UI/cursor1.png");
 		// initializes the uiManager for UI accesses
 		uiManager = new UIManager();
 		c.getMouseManager().setUIManager(uiManager);

@@ -253,6 +253,8 @@ public class WorldGenerator {
 	private WorkbenchRecipe structureWorkbenchRecipe;
 
 	public static ArrayList<Creatures> entityRanged = new ArrayList<Creatures>();
+	
+	public static boolean bossActive = false;
 
 	private boolean gameCompleted = false;
 	
@@ -2709,7 +2711,9 @@ public class WorldGenerator {
 							entityManager.addCreature(new Sentry(spawnX, spawnY, c));
 						}
 					} else if(biome == 3) { //semi-desert biome	
-						if(creatureType < 8) {
+						if(creatureType == 1) {
+							entityManager.addCreature(new VileEmbryo(spawnX, spawnY, c));
+						}else if(creatureType < 5) {
 							entityManager.addCreature(new DesertScorpion(spawnX, spawnY, c));
 						} else if(creatureType < 25) {
 							entityManager.addCreature(new SandCreep(spawnX, spawnY, c)); 

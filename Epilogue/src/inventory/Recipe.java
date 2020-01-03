@@ -179,7 +179,7 @@ public class Recipe {
 		
 		setupXPRequirements();
 		
-		if((id >= 0 && id <= 14) || id == 43 || (id >= 106 && id <= 109) || id == 701 || id == 702 || id == 704 || id == 715) { //starting recipes
+		if((id >= 0 && id <= 14) || id == 43 || (id >= 106 && id <= 109) || id == 701 || id == 702 || id == 704 || id == 715 || id == 724) { //starting recipes
 			
 			boolean alreadyAdded = false;
 			for (Recipe i : Recipe.recipes){
@@ -632,9 +632,9 @@ public class Recipe {
 		} else if (id == 723) {
 			recipeRequirements.put(Item.tungstenIngotItem.getId(), 4);
 		} else if (id == 724) {
-			recipeRequirements.put(Item.leatherItem.getId(), 14);
-			recipeRequirements.put(Item.ironBarItem.getId(), 2);
-			recipeRequirements.put(Item.tinIngotItem.getId(), 5);
+			//recipeRequirements.put(Item.leatherItem.getId(), 14);
+			//recipeRequirements.put(Item.ironBarItem.getId(), 2);
+			//recipeRequirements.put(Item.tinIngotItem.getId(), 5);
 		} 
 		
 		else if (id == 751) {

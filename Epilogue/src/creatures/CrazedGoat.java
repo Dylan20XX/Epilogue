@@ -69,12 +69,6 @@ public class CrazedGoat extends Creatures {
 		g.drawImage(getCurrentAnimation(), (int) (x - c.getGameCamera().getxOffset()),
 				(int) (y - c.getGameCamera().getyOffset()), width + 32, height + 32, null);
 
-		g.setColor(Color.blue);
-		Graphics2D g2d = (Graphics2D) g;
-		g2d.draw(getBounds());
-		g.setColor(Color.GREEN);
-		g2d.draw(attackBound());
-
 	}
 
 	@Override

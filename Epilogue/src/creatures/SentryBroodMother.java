@@ -34,7 +34,7 @@ public class SentryBroodMother extends Creatures {
 		health = 5000;
 		speed = 3.3;
 		resistance = 40;
-		knockValue = 20;
+		knockValue = 30;
 		attackBoundSize = 8000;
 		weight = 350;
 
@@ -55,7 +55,7 @@ public class SentryBroodMother extends Creatures {
 
 	@Override
 	public void tick() {
-		
+		WorldGenerator.bossActive = true;
 		if(selectedAction == 0) { //chase player
 			AI();
 			if (move)
@@ -202,7 +202,10 @@ public class SentryBroodMother extends Creatures {
 						!c.getGameState().getWorldGenerator().getEntityManager().getEntitiesInBound().get(i).equals(this) &&
 						!(c.getGameState().getWorldGenerator().getEntityManager().getEntitiesInBound().get(i) instanceof Sentry) &&
 						!(c.getGameState().getWorldGenerator().getEntityManager().getEntitiesInBound().get(i) instanceof SentryMajor) &&
-						!(c.getGameState().getWorldGenerator().getEntityManager().getEntitiesInBound().get(i) instanceof SentrySpike)) {
+						!(c.getGameState().getWorldGenerator().getEntityManager().getEntitiesInBound().get(i) instanceof SentrySpike)
+						&& !(c.getGameState().getWorldGenerator().getEntityManager().getEntitiesInBound().get(i) instanceof AwakenedSentinel)
+						&& !(c.getGameState().getWorldGenerator().getEntityManager().getEntitiesInBound().get(i) instanceof SentryBroodMother)
+						&& !(c.getGameState().getWorldGenerator().getEntityManager().getEntitiesInBound().get(i) instanceof VileSpawn)) {
 					c.getGameState().getWorldGenerator().getEntityManager().getEntitiesInBound().get(i).hurt(10000);
 				}
 			}
@@ -245,6 +248,7 @@ public class SentryBroodMother extends Creatures {
 	@Override
 	public void Die() {
 
+		WorldGenerator.bossActive = false;
 		c.getGameState().getWorldGenerator().broodMotherAlive = false;
 		
 		int rand = CT.random(1, 3);
