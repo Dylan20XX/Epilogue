@@ -167,6 +167,10 @@ public class TopperWriter {
 									if(tiles[c][v] == 10) 
 										validLocation = false;
 									
+									//also make sure that there's not another embryo within a 10x10 area
+									if(topper[c][v] == 13) 
+										validLocation = false;
+									
 								}
 							}
 							

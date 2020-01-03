@@ -84,6 +84,8 @@ public class SpaceShuttle extends StaticEntity {
 	public void interact() {
 		if (Player.getPlayerData().getHands() != null && Player.getPlayerData().getHands().getHand() != null
 				&& Player.getPlayerData().getHands().getHand().getName().equals("repair kit")) {
+			c.getGameState().getWorldGenerator().setGameCompleted(true);
+			c.getGameState().getWorldGenerator().getWorldSaver().saveWorld();
 			isRepaired = true;
 			shuttleAppearence = Assets.spaceShuttle;
 			Player.getPlayerData().stealth = true;

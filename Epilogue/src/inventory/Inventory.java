@@ -49,6 +49,7 @@ public class Inventory {
 		addItem(Weapon.darkSaber);
 		addItem(Ranged.pulseRifle);
 		addItem(Item.waterSacItem);
+		addItem(Item.repairKit);
 		
 	}
 

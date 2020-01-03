@@ -4993,4 +4993,12 @@ public class WorldGenerator {
 		this.gameCompleted = gameCompleted;
 	}
 	
+	public WorldSaver getWorldSaver() {
+		return worldSaver;
+	}
+
+	public void setWorldSaver(WorldSaver worldSaver) {
+		this.worldSaver = worldSaver;
+	}
+	
 }
