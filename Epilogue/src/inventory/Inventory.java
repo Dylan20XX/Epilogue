@@ -127,7 +127,7 @@ public class Inventory {
 				if (e.gauntlet != null) {
 					player.setResistance(player.getResistance() - player.getEquipment().gauntlet.getResistance());
 					player.setIntimidation(player.getIntimidation() - player.getEquipment().gauntlet.getIntimidation());
-					e.boot = null;
+					e.gauntlet = null;
 				} else {
 					e.gauntlet = (Armor)item;
 					player.setResistance(player.getResistance() + player.getEquipment().gauntlet.getResistance());
