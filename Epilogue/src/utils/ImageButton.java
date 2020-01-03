@@ -3,6 +3,7 @@ package utils;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
+import alphaPackage.Display;
 import audio.AudioPlayer;
 import graphics.Assets;
 
@@ -60,12 +61,14 @@ public class ImageButton extends UIObject {
 				btnAudio = false;
 				
 				g.drawImage(images[1], (int) x, (int) y, width, height, null);
+				Display.customCursor("/UI/cursor1.png");
 			}
 			else {
 
 				btnAudio = true;
 				
 				g.drawImage(images[0], (int) x, (int) y, width, height, null);
+				Display.customCursor("/UI/cursor1.png");
 			}
 		
 		else if(type == 1) {
@@ -73,10 +76,12 @@ public class ImageButton extends UIObject {
 			if (hovering) {
 				g.drawImage(Assets.selectedCraft, (int)x, (int)y, 100, 100, null);
 				g.drawImage(image, (int) x + 13, (int) y + 13, width, height, null);
+				Display.customCursor("/UI/cursor1.png");
 			}
 			else {
 				g.drawImage(Assets.craft, (int)x, (int)y , 100, 100, null);
 				g.drawImage(image, (int) x + 13, (int) y + 13, width, height, null);
+				Display.customCursor("/UI/cursor1.png");
 			}
 			
 		}

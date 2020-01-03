@@ -48,10 +48,7 @@ public class Inventory {
 		addItem(Tool.woodenAxeTool);
 		addItem(Weapon.darkSaber);
 		addItem(Ranged.pulseRifle);
-		addItem(Item.sapItem);
-		addItem(Item.leatherItem);
-		addItem(Item.ironBarItem);
-		addItem(Item.tinIngotItem);
+		addItem(Item.waterSacItem);
 		
 	}
 
@@ -232,12 +229,17 @@ public class Inventory {
 			}
 		} else if(item.getType().equals("torch")) {
 			if(condition) {
+				c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator()
+				.getItemManager().addItem(Item.ashe.createNew((int) player.getX() + CT.random(0, player.getBounds().width),
+						(int) player.getY() + CT.random(0, player.getBounds().height)));
+				/*
 				Torch t = (Torch)item;
 				item.setItemEquipped(false);
 				item.tick();
 				c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator()
 				.getItemManager().addItem(t.createNew(t, (int) player.getX() + CT.random(0, player.getBounds().width),
 						(int) player.getY() + CT.random(0, player.getBounds().height)));
+				*/
 			}
 		} else {
 			if(condition) {

@@ -632,9 +632,9 @@ public class Recipe {
 		} else if (id == 723) {
 			recipeRequirements.put(Item.tungstenIngotItem.getId(), 4);
 		} else if (id == 724) {
-			recipeRequirements.put(Item.leatherItem.getId(), 20);
+			recipeRequirements.put(Item.leatherItem.getId(), 14);
 			recipeRequirements.put(Item.ironBarItem.getId(), 2);
-			recipeRequirements.put(Item.tinIngotItem.getId(), 8);
+			recipeRequirements.put(Item.tinIngotItem.getId(), 5);
 		} 
 		
 		else if (id == 751) {

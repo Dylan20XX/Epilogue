@@ -16,7 +16,7 @@ public class MutatedChicken extends Creatures {
 		super(x, y, Creatures.DEFAULT_CREATURE_WIDTH, Creatures.DEFAULT_CREATURE_HEIGHT, c);
 
 		health = 100;
-		speed = 1.8;
+		speed = 2;
 		resistance = 0;
 		intimidation = 10;
 		attackBoundSize = 800;

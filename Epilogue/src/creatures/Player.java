@@ -689,7 +689,7 @@ public class Player extends Creatures {
 					return;
 				
 				if (c.getKeyManager().aup || c.getKeyManager().adown || c.getKeyManager().aleft
-						|| c.getKeyManager().aright || c.getMouseManager().isLeftPressed()) {
+						|| c.getKeyManager().aright || (c.getMouseManager().isLeftPressed() && c.getKeyManager().shift)) {
 
 					if (item instanceof WaterContainer) {
 						

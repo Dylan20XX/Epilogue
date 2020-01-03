@@ -47,7 +47,7 @@ public class Display{
 		this.height = height;
 		
 		createDisplay();
-		customCursor();
+		customCursor("/UI/cursor1.png");
 	}
 	
 	//customizes frame/canvas settings
@@ -84,11 +84,11 @@ public class Display{
 	}
 	
 	//method that creates a custom cursor
-	public void customCursor() {
+	public static void customCursor(String image) {
         Toolkit toolkit = Toolkit.getDefaultToolkit();
         Image mouse = null;
 		try {
-			mouse = ImageIO.read(Assets.class.getResource("/UI/cursor1.png"));
+			mouse = ImageIO.read(Assets.class.getResource(image));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -257,6 +257,8 @@ public class WorldGenerator {
 
 	private boolean gameCompleted = false;
 	
+	private long lastTickTimer, TickCooldown = 10, TickTimer = 0;
+	
 	// TESTING VARIABLES
 	// --------------------
 	private boolean allDay = false;
@@ -3148,7 +3150,7 @@ public class WorldGenerator {
 	private void debugControls() {
 
 		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_T))
-			entityManager.addEntity(new Grass(entityManager.getPlayer().getX() + 200, entityManager.getPlayer().getY() + 200, c));
+			entityManager.addEntity(new WonderingGhoul(entityManager.getPlayer().getX() + 200, entityManager.getPlayer().getY() + 200, c));
 		if (c.getKeyManager().keyJustPressed(KeyEvent.VK_G))
 			Player.getPlayerData().energy+= 800;
 		if (c.getKeyManager().keyJustPressed(KeyEvent.VK_I))

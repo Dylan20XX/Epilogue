@@ -2,6 +2,8 @@ package states;
 
 import java.awt.Graphics;
 
+import javax.swing.JOptionPane;
+
 import alphaPackage.ControlCenter;
 import audio.AudioPlayer;
 import audio.BackgroundPlayer;
@@ -44,7 +46,7 @@ public class MenuState extends State {
 		// adding the buttons
 		// world select button
 		getUiManager().addObject(
-				new ImageButton(50, 500, 236/2, 44/2, Assets.begin, new ClickListener() {
+				new ImageButton(50, 550, 236/2, 44/2, Assets.begin, new ClickListener() {
 
 					@Override
 					public void onClick() {
@@ -59,6 +61,7 @@ public class MenuState extends State {
 
 				}));
 
+		/*
 		// options button
 		getUiManager().addObject(
 				new ImageButton(50, 550, 332/2, 44/2, Assets.options, new ClickListener() {
@@ -75,7 +78,7 @@ public class MenuState extends State {
 					}
 
 				}));
-		
+		*/
 		// controls button
 		getUiManager().addObject(
 				new ImageButton(50, 600, 188/2, 44/2, Assets.help, new ClickListener() {
@@ -85,9 +88,7 @@ public class MenuState extends State {
 						
 						AudioPlayer.playAudio("audio/next.wav");
 						
-						controlState = new ControlState(c);
-						
-						State.setState(controlState);
+						openWebPage("https://epilogue9.cms.webnode.com/discography");
 
 					}
 
@@ -102,9 +103,7 @@ public class MenuState extends State {
 						
 						AudioPlayer.playAudio("audio/next.wav");
 						
-						creditState = new CreditState(c);
-						
-						State.setState(creditState);
+						openWebPage("https://www.project-epilogue.com/credits");
 						
 					}
 
@@ -149,6 +148,25 @@ public class MenuState extends State {
 		//renders the UIObjects
 		getUiManager().render(g);
 
+	}
+	
+	// method opens the URL from the parameter
+	public void openWebPage(String url) {
+	
+		try {
+			// using the java.awt library to open the URL on a browser
+			java.awt.Desktop.getDesktop().browse(java.net.URI.create(url));
+	
+		} catch (java.io.IOException e) {
+	
+			// display message dialogue for invalid input
+			JOptionPane.showMessageDialog(null,
+					"Invalid URL\n\n"
+							+ "click 'ok' to continue...",
+					"INVALID INPUT", JOptionPane.WARNING_MESSAGE);
+			
+		}
+	
 	}
 
 	// getters and setters

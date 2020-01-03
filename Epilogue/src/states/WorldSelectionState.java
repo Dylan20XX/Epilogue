@@ -60,6 +60,8 @@ public class WorldSelectionState extends State {
 	private int playerX, playerY; 
 	private int basicSurvivalXP, combatXP, cookingXP, buildingXP; 
 
+	private long lastTickTimer, TickCooldown = 1, TickTimer = 0;
+	
 	private Animation background;
 	private boolean deleteMenu = false;
 	

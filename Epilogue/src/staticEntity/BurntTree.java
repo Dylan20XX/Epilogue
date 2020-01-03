@@ -42,6 +42,7 @@ public class BurntTree extends StaticEntity{
         resistance  = 10;
         deathImage = Assets.tree1;
         requiredTool = "axe";
+        type = "structure";
         
         buildingXPGiven = (int)(Math.random()*(Player.getPlayerData().getIntelligence()*2));
         

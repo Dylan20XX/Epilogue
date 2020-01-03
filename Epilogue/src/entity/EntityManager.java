@@ -1,10 +1,12 @@
 package entity;
 
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
+import alphaPackage.Display;
 import creatures.AwakenedSentinel;
 import creatures.Player;
 import creatures.SentryBroodMother;
@@ -33,6 +35,8 @@ public class EntityManager {
 	public static final int MAX_MATERIALS = 100;
 	public int numCreatures = 0;
 	public int numMaterials = 0;
+	
+	protected long lastTickTimer, TickCooldown = 10, TickTimer = 0;
 
 	private Player player;
 
@@ -66,7 +70,6 @@ public class EntityManager {
 	}
 
 	public void tick() {
-		
 		for (int i = 0; i < entities.size(); i++) {
 			if(entities.get(i).getBounds().intersects(Player.getPlayerData().entityBound())) {
 				
@@ -124,9 +127,21 @@ public class EntityManager {
 				
 				if(entitiesInBound.get(i).getType().equals("material"))
 					numMaterials--;
+				/*
+				if(player.getControlCenter().getMouseManager().mouseBound().intersects(entitiesInBound.get(i).getBounds())) {
+					System.out.println("here");
+					Display.customCursor("/UI/pointer_interact.png");
+					
+				} else {
+					
+					Display.customCursor("/UI/cursor1.png");
+					
+				}
+				*/
 				
 				//update topper==================
 				if(entitiesInBound.get(i) instanceof StaticEntity) {
+
 					StaticEntity e = (StaticEntity) entitiesInBound.get(i);
 					
 					int eTileX = (int) (e.getX() -
@@ -182,6 +197,17 @@ public class EntityManager {
 		}
 
 	}
+	
+    public Rectangle actualMouseBound() {
+
+		return new Rectangle((int) (player.getControlCenter().getMouseManager().getMouseX() - player.getControlCenter().getGameCamera().getxOffset() - 2) 
+				+ 2,
+				(int) (player.getControlCenter().getMouseManager().getMouseY() - player.getControlCenter().getGameCamera().getyOffset() - 2)
+				+ 2, 
+				4, 4);
+
+	}
+	
 
 	public void addCreature(Entity e) {
 		numCreatures++;

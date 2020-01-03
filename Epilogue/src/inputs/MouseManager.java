@@ -95,7 +95,7 @@ public class MouseManager implements MouseListener, MouseMotionListener {
         }
 
         public Rectangle mouseBound() {
-                return new Rectangle(mouseX, mouseY, 5, 5);
+                return new Rectangle(mouseX, mouseY, 4, 4);
         }
 
         public boolean isLeftPressed() {

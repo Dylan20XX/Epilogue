@@ -1,8 +1,10 @@
 package staticEntity;
 
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
 import alphaPackage.ControlCenter;
+import alphaPackage.Display;
 import creatures.Player;
 import entity.Entity;
 import graphics.Assets;
@@ -16,6 +18,7 @@ import inventory.Effect;
 public abstract class StaticEntity extends Entity {
 
 	protected long lastAttackTimer, AttackCooldown = 1000, AttackTimer = 0;
+	private long lastPointerTimer, PointerCooldown = 500, PointerTimer = 0;
 	protected int damage = 0;
 
 	public static final int DEFAULT_STATICOBJECT_WIDTH = (int) (64 * ControlCenter.scaleValue),
@@ -104,6 +107,28 @@ public abstract class StaticEntity extends Entity {
 
 		}
 
+	}
+	
+	@Override
+	public void render(Graphics g) {
+		
+		PointerTimer += System.currentTimeMillis() - lastPointerTimer;
+		lastPointerTimer = System.currentTimeMillis();
+		if (PointerTimer > PointerCooldown)
+			return;
+
+		PointerTimer = 0;
+		
+		if(c.getMouseManager().mouseBound().intersects(getBounds())) {
+			
+			Display.customCursor("/UI/pointer_interact.png");
+			
+		} else {
+			
+			Display.customCursor("/UI/cursor1.png");
+			
+		}
+		
 	}
 
 	public long getLastAttackTimer() {

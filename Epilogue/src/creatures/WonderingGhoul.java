@@ -20,9 +20,9 @@ public class WonderingGhoul extends Creatures {
 		super(x, y, Creatures.DEFAULT_CREATURE_WIDTH/6*5, Creatures.DEFAULT_CREATURE_HEIGHT/6*5, c);
 
 		health = (int)Math.random()*600 + 400;
-		damage = (int)(Math.random()*100) + 80;
+		damage = (int)(Math.random()*100) + 100;
 		speed = Math.random()*0.8 + 0.5;
-		knockValue = 4;
+		knockValue = 12;
 		attackBoundSize = 1800;
 		resistance = (int)(Math.random()*20);
 		attackCooldown = 1200;
