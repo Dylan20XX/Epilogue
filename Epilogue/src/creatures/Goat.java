@@ -17,8 +17,8 @@ public class Goat extends Creatures {
 
 		health = 900;
 		damage = 140;
-		speed = 2.2;
-		knockValue = 12;
+		speed = 2.8;
+		knockValue = 15;
 		attackBoundSize = 150;
 		resistance = 10;
 		name = "goat";

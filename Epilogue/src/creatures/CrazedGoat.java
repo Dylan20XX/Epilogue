@@ -19,7 +19,7 @@ public class CrazedGoat extends Creatures {
 		health = 800;
 		speed = 2.7;
 		damage = 120;
-		knockValue = 12;
+		knockValue = 20;
 		name = "crazedGoat";
 		attackBoundSize = 800;
 		type = "creatures";

@@ -17,7 +17,7 @@ public class Sentry extends Creatures {
 		super(x, y, Creatures.DEFAULT_CREATURE_WIDTH / 2, Creatures.DEFAULT_CREATURE_HEIGHT / 2, c);
 
 		health = 200;
-		speed = 2.5;
+		speed = 3.5;
 		damage = 80;
 		knockValue = 8;
 		name = "sentry";

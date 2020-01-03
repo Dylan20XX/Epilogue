@@ -179,7 +179,7 @@ public class Recipe {
 		
 		setupXPRequirements();
 		
-		if((id >= 0 && id <= 14) || id == 43 || (id >= 106 && id <= 109) || id == 701 || id == 702 || id == 704 || id == 715 || id == 724) { //starting recipes
+		if((id >= 0 && id <= 14) || id == 43 || (id >= 106 && id <= 109) || id == 701 || id == 702 || id == 704 || id == 715 || id == 724 || id == 705) { //starting recipes
 			
 			boolean alreadyAdded = false;
 			for (Recipe i : Recipe.recipes){
@@ -576,7 +576,7 @@ public class Recipe {
 			recipeRequirements.put(Item.woodenPlankItem.getId(), 20);
 			recipeRequirements.put(Item.researchKitItem.getId(), 1);
 		} else if (id == 705) {
-			recipeRequirements.put(Item.rockItem.getId(), 25);
+			//recipeRequirements.put(Item.rockItem.getId(), 25);
 		} else if (id == 706) {
 			recipeRequirements.put(Item.rockItem.getId(), 25);
 		} else if (id == 707) {
