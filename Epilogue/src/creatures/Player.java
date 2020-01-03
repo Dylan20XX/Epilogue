@@ -1429,6 +1429,9 @@ public class Player extends Creatures {
 
 		if (canMove) {
 
+			if (inMenu()) 
+				return;
+			
 			if (!destinationReached && !filling) {
 				eX = x + bounds.x + bounds.width / 2;
 				eY = y + bounds.y + bounds.height / 2;
@@ -1474,9 +1477,6 @@ public class Player extends Creatures {
 					direction = 0;
 
 			}
-
-			if (inMenu()) 
-				return;
 
 			// key detection
 			if (c.getKeyManager().up) {

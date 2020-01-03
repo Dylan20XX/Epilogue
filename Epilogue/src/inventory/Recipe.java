@@ -632,9 +632,9 @@ public class Recipe {
 		} else if (id == 723) {
 			recipeRequirements.put(Item.tungstenIngotItem.getId(), 4);
 		} else if (id == 724) {
-			recipeRequirements.put(Item.leatherItem.getId(), 20);
-			recipeRequirements.put(Item.ironBarItem.getId(), 2);
-			recipeRequirements.put(Item.tinIngotItem.getId(), 8);
+			//recipeRequirements.put(Item.leatherItem.getId(), 20);
+			recipeRequirements.put(Item.ironBarItem.getId(), 1); //replace to 1
+			//recipeRequirements.put(Item.tinIngotItem.getId(), 8);
 		} 
 		
 		else if (id == 751) {
@@ -1056,7 +1056,7 @@ public class Recipe {
 			
 		} else if(this.isStructure()) {//i.getItem().getType().equals("structure") || i.getItem().getType().equals("platform")
 			
-			buildingXP = 250;
+			buildingXP = 0; //250
 			
 		} else if(this.getItem() instanceof Tool) {
 			
