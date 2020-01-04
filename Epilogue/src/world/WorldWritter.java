@@ -19,6 +19,8 @@ public class WorldWritter {
 	private static Random r = new Random();
 	
 	int[][] tiles;
+	int[][] lightMap;
+	int[][] powerMap;
 	
 	private static ArrayList<Point> lake1 = new ArrayList<Point>();
 	private static ArrayList<Point> lake2 = new ArrayList<Point>();
@@ -87,6 +89,54 @@ public class WorldWritter {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
+		
+		
+		String lightMapFile = String.format("lightMap/%s",WorldCreationState.worldName);
+		
+		try {
+			PrintWriter pr = new PrintWriter(lightMapFile);
+			lightMap  = new int[w][h];
+			
+			for(int x = 0; x < worldSize; x++)
+				Arrays.fill(lightMap[x], 0);
+			
+			//Print tiles array to a file at the end
+			for (int y = 0; y < worldSize; y++) {
+				for (int x = 0; x < worldSize; x++) {
+					pr.print(lightMap[x][y] + " ");
+					
+				}
+				pr.println();
+			}
+			pr.close();
+			
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		String powerMapFile = String.format("powerMap/%s",WorldCreationState.worldName);
+		
+		try {
+			PrintWriter pr = new PrintWriter(powerMapFile);
+			powerMap  = new int[w][h];
+			
+			for(int x = 0; x < worldSize; x++)
+				Arrays.fill(powerMap[x], 0);
+			
+			//Print tiles array to a file at the end
+			for (int y = 0; y < worldSize; y++) {
+				for (int x = 0; x < worldSize; x++) {
+					pr.print(powerMap[x][y] + " ");
+					
+				}
+				pr.println();
+			}
+			pr.close();
+			
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
 	}
 	
 	private void addWater(int worldSize) {
@@ -139,6 +189,8 @@ public class WorldWritter {
 						break;
 					
 				}
+				
+				//Check that lakes don't spawn too close to world centre
 				
 			} while(validCoords == false);
 			

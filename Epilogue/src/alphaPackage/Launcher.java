@@ -64,6 +64,14 @@ public class Launcher {
 		if(!worldData.exists() || !worldData.isDirectory()) 
 			worldData.mkdir();
 		
+		File lightMap = new File(String.format("lightMap"));
+		if(!lightMap.exists() || !lightMap.isDirectory()) 
+			lightMap.mkdir();
+		
+		File powerMap = new File(String.format("powerMap"));
+		if(!powerMap.exists() || !powerMap.isDirectory()) 
+			powerMap.mkdir();
+		
 	}
 	
 }

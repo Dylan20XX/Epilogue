@@ -41,7 +41,7 @@ public class GameState extends State{
 
         @Override
         public void tick() {
-                if(c.getKeyManager().keyJustPressed(KeyEvent.VK_ESCAPE)) {
+                if(c.getKeyManager().keyJustPressed(KeyEvent.VK_ESCAPE) && !world.isStructureCrafted() && !world.isStructureWorkbenchCrafted()) {
                         if(Options) 
                                 Options = false;
                         else {

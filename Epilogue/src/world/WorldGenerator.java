@@ -1019,6 +1019,10 @@ public class WorldGenerator {
 			
 			g2d.draw(rect);
 			
+			if(structureNum == 9 || structureNum == 11|| structureNum == 13 || structureNum == 10 || structureNum == 12 || structureNum == 14) { //walls
+				CustomTextWritter.drawString(g, "PRESS R TO ROTATE", 200, 100, true, Color.YELLOW, Assets.font28);
+			}
+			
 			//PRESS ESC TO CANCEL
 			CustomTextWritter.drawString(g, "PRESS ESC TO CANCEL", 200, 70, true, Color.YELLOW, Assets.font28);
 		}
@@ -1306,6 +1310,10 @@ public class WorldGenerator {
 					Color.WHITE, Assets.font28);
 			CustomTextWritter.drawString(g, String.format("Floor : %d", floor[buildX / 64][buildY / 64]), 100, 160, true,
 					Color.WHITE, Assets.font28);
+			CustomTextWritter.drawString(g, String.format("Current Spd : %.2f", Player.getPlayerData().getCurrentSpeed()), 100, 220, true,
+					Color.WHITE, Assets.font28);
+			CustomTextWritter.drawString(g, String.format("Extra Spd : %.2f", Player.getPlayerData().extraSpeed), 100, 250, true,
+					Color.WHITE, Assets.font28);
 		}
 
 	}
@@ -1413,7 +1421,7 @@ public class WorldGenerator {
 		if(tiles[buildX / 64][buildY / 64] == 10)
 			canBuild = false;
 
-		if (c.getKeyManager().keyJustPressed(KeyEvent.VK_UP) || c.getMouseManager().isRightPressed()) { //for rotating walls
+		if (c.getKeyManager().keyJustPressed(KeyEvent.VK_UP) || c.getKeyManager().keyJustPressed(KeyEvent.VK_R)) { //for rotating walls
 
 			wallRotateTimer += System.currentTimeMillis() - lastWallRotateTimer;
 			lastWallRotateTimer = System.currentTimeMillis();
@@ -2165,12 +2173,22 @@ public class WorldGenerator {
 
 		topper = new int[width][height];
 		
+		String lightMapFile = WorldInput
+				.loadFileAsString(String.format("lightMap/%s", c.getMenuState().getWorldSelectState().getSelectedWorldName()));
+		String[] lightTokens = lightMapFile.split("\\s+"); // split up every number into the string tokens array
+		
+		String powerMapFile = WorldInput
+				.loadFileAsString(String.format("powerMap/%s", c.getMenuState().getWorldSelectState().getSelectedWorldName()));
+		String[] powerTokens = powerMapFile.split("\\s+"); // split up every number into the string tokens array
+		
 		lightMap = new int[width][height];
 		powerMap = new int[width][height];
 
 		for (int y = 0; y < height; y++) {
 			for (int x = 0; x < width; x++) {
 				topper[x][y] = WorldInput.parseInt(tokens[(x + y * width)]);
+				lightMap[x][y] = WorldInput.parseInt(lightTokens[(x + y * width)]);
+				powerMap[x][y] = WorldInput.parseInt(powerTokens[(x + y * width)]);
 				amountLoaded++;
 			}
 		}
@@ -3384,6 +3402,10 @@ public class WorldGenerator {
 			entityManager.addEntity(new SleepingSentinel(Player.getPlayerData().getX(),
 					Player.getPlayerData().getY(), c));
 			//System.out.println(AwakenedSentinel.class.getSimpleName());
+		}
+		
+		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_F7)) {
+			Recipe.unlockAllRecipes();
 		}
 		
 		//test saving features

@@ -54,6 +54,8 @@ public class WorldSaver {
 		saveChests();
 		saveTimedCraftingStructures();
 		saveRecipes();
+		saveLightMap();
+		savePowerMap();
 		
 	}
 	
@@ -67,6 +69,8 @@ public class WorldSaver {
 		saveChests();
 		saveTimedCraftingStructures();
 		saveRecipes();
+		saveLightMap();
+		savePowerMap();
 		
 	}
 	
@@ -1364,6 +1368,70 @@ public class WorldSaver {
 				//all armor is lost upon death
 				for(int i = 0; i < 5; i++)
 					pr.println(0);
+				
+				pr.close();
+				
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
+			
+		}
+		
+	}
+	
+	//This method saves the light map
+	public void saveLightMap() {
+		
+		String file = String.format("lightMap/%s", c.getMenuState().getWorldSelectState().getSelectedWorldName());
+		File filepath = new File(file);
+		
+		if(filepath.exists() && !filepath.isDirectory()) {
+			
+			try {
+				
+				int width =	c.getGameState().getWorldGenerator().getWidth();
+				int height = c.getGameState().getWorldGenerator().getHeight();
+				
+				PrintWriter pr = new PrintWriter(file);
+				
+				for (int y = 0; y < height; y++) {
+					for (int x = 0; x < width; x++) {
+						pr.print(WorldGenerator.lightMap[x][y] + " ");
+					}
+					pr.println();
+				}
+				
+				pr.close();
+				
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
+			
+		}
+		
+	}
+	
+	//This method saves the power map
+	public void savePowerMap() {
+		
+		String file = String.format("powerMap/%s", c.getMenuState().getWorldSelectState().getSelectedWorldName());
+		File filepath = new File(file);
+		
+		if(filepath.exists() && !filepath.isDirectory()) {
+			
+			try {
+				
+				int width =	c.getGameState().getWorldGenerator().getWidth();
+				int height = c.getGameState().getWorldGenerator().getHeight();
+				
+				PrintWriter pr = new PrintWriter(file);
+				
+				for (int y = 0; y < height; y++) {
+					for (int x = 0; x < width; x++) {
+						pr.print(WorldGenerator.powerMap[x][y] + " ");
+					}
+					pr.println();
+				}
 				
 				pr.close();
 				

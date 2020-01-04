@@ -37,7 +37,7 @@ public class WorldDataWriter {
 						+ " " + charResistance + " " + charEndurability + " " + charEndurability + " " + charEndurability); 
 				//last 3 variables are hunger, thirst, and energy
 				pr.println();
-				pr.print(0 + " " + 0); //dayNum and time
+				pr.print(0 + " " + 310); //dayNum and time
 				pr.println();
 				pr.println();
 				

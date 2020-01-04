@@ -1076,7 +1076,16 @@ public class Recipe {
 		}
 		
 	}
-
+	
+	public static void unlockAllRecipes() {
+		
+		int x = lockedRecipes.size();
+		for(int i = 0; i < x; i++) {
+			unlockedRecipes.add(lockedRecipes.remove(0));
+		}
+		
+	}
+	
 	// Getters and setters
 	public int getId() {
 		return id;

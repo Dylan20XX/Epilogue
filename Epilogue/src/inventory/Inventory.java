@@ -51,6 +51,21 @@ public class Inventory {
 		addItem(Ranged.flamethrower);
 		addItem(Item.FuelTankItem);
 		addItem(Item.FuelTankItem);
+		addItem(Ranged.megashakalaka);
+		addItem(Item.XM214BulletItem);	
+		addItem(Item.workbenchToolkitItem);
+		addItem(Item.woodenPlankItem);
+		addItem(Item.woodenPlankItem);
+		addItem(Item.woodenPlankItem);
+		addItem(Item.woodenPlankItem);
+		addItem(Item.woodenPlankItem);
+		addItem(Item.woodenPlankItem);
+		addItem(Item.woodenPlankItem);
+		addItem(Item.woodenPlankItem);
+		addItem(Item.woodenPlankItem);
+		addItem(Item.woodenPlankItem);
+		addItem(Item.woodenPlankItem);
+		addItem(Item.woodenPlankItem);
 		
 	}
 
