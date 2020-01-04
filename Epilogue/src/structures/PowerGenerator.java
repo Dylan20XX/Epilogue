@@ -60,9 +60,6 @@ public class PowerGenerator extends StaticEntity {
 		g.drawImage(powerGen.getCurrentFrame(), (int) (x - c.getGameCamera().getxOffset()),
 				(int) (y - c.getGameCamera().getyOffset()), width, height, null);
 
-		g.setColor(Color.BLUE);
-		g2d.draw(getBounds());
-
 	}
 
 	@Override

@@ -150,10 +150,6 @@ public class RapidPulseArtillery extends StaticEntity {
 		g2d.drawImage(head, (int) (x - c.getGameCamera().getxOffset()), (int) (y - c.getGameCamera().getyOffset() - 10),
 				width, height, null);
 		g2d.setTransform(backup);
-		g.setColor(Color.BLUE);
-		g2d.draw(getBounds());
-		g.setColor(Color.green);
-		g2d.draw(range());
 
 	}
 

@@ -7,6 +7,7 @@ import java.awt.Rectangle;
 import java.util.Random;
 
 import alphaPackage.ControlCenter;
+import audio.AudioPlayer;
 import creatures.Parasite;
 import creatures.Player;
 import creatures.Sentry;
@@ -119,6 +120,8 @@ public class SentryHive extends StaticEntity {
 		
 		MessageBox.addMessage("you have awakened the Sentry Queen...");
 
+		AudioPlayer.playAudio("audio/broodMotherSpawn.wav");
+		
     	c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator()
         .getEntityManager().addEntity(new SentryBroodMother(x, y, c));
     	

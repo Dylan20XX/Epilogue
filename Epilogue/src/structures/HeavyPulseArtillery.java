@@ -64,7 +64,7 @@ public class HeavyPulseArtillery extends StaticEntity {
 
 	@Override
 	public void tick() {
-		
+		System.out.println("j");
 		if (c.getGameState().getWorldGenerator().powerMap[placex][placey] > 0) {
 			base = Assets.artileryBase[1];
 			on = true;

@@ -79,10 +79,10 @@ public class Tent extends StaticEntity {
 		g.drawImage(Assets.tent, (int) (x - Tile.TILEWIDTH - c.getGameCamera().getxOffset()),
 				(int) (y - 2*Tile.TILEHEIGHT - c.getGameCamera().getyOffset()), width, height, null);
 		
-		g.setColor(Color.BLUE);
-		if(c.getMouseManager().mouseBound().intersects(getBounds()))
-			g.setColor(Color.GREEN);
-		g2d.draw(getBounds());
+		//g.setColor(Color.BLUE);
+		//if(c.getMouseManager().mouseBound().intersects(getBounds()))
+		//	g.setColor(Color.GREEN);
+		//g2d.draw(getBounds());
 
 	}
 

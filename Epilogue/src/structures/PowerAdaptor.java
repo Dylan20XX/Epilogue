@@ -72,9 +72,6 @@ public class PowerAdaptor extends StaticEntity {
 		g.drawImage(adaptor, (int) (x - c.getGameCamera().getxOffset()),
 				(int) (y - c.getGameCamera().getyOffset()), width, height, null);
 
-		g.setColor(Color.BLUE);
-		g2d.draw(getBounds());
-
 	}
 
 	@Override
