@@ -72,8 +72,10 @@ public class Torch extends Item {
 				prevLumen = Lumen;
 			}
 		} else {
-			if(ini)
+			if(ini) {
 				c.getGameState().getWorldGenerator().removeLight(5, PTX, PTY, Lumen);
+				ini = false;
+			}
 		}
 		
 		if(curFuel <= 0) {

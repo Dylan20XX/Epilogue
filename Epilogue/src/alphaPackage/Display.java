@@ -64,7 +64,7 @@ public class Display{
 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 		panel.setBounds(900, 250 ,220, 500);
 		panel.setVisible(false);
-		panel.setBackground(Color.DARK_GRAY);
+		panel.setBackground(Color.BLACK);
 		
 		//Add the scroll pane for the world select
 		sp = new JScrollPane(panel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);

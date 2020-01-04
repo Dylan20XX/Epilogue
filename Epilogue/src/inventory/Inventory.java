@@ -47,6 +47,8 @@ public class Inventory {
 		for(int i = 0; i < 5; i++)
 			addItem(Item.zincChunkItem);
 		addItem(Item.coalChunkItem);
+		addItem(Weapon.darkSaber);
+		addItem(Torch.torch);
 		
 	}
 
@@ -776,6 +778,17 @@ public class Inventory {
 							(int) (c.getWidth() / 2 * c.getScaleValue()), (int) (590 * c.getScaleValue()), active,
 							Color.WHITE, Assets.font21);
 				}
+			} else if (item.getType() == "torch") {
+				Torch torch = (Torch) item;
+				g.setColor(Color.DARK_GRAY);
+				g.fillRect(590, 320, 100, 8);
+				if(torch.getFuelPercentage() < 33) 
+					g.setColor(Color.red);
+				else if(torch.getFuelPercentage() < 66) 
+					g.setColor(Color.orange);
+				else 
+					g.setColor(Color.green);
+				g.fillRect(590, 320, torch.getFuelPercentage(), 8);
 			}
 
 			CustomTextWritter.drawString(g, "Total Weight: " + Math.round(inventoryWeight * 10) / 10 + " kg",

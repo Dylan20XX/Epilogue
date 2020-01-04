@@ -35,10 +35,10 @@ public class LampPost extends StaticEntity {
 
 		// bounding box starting and ending location
 
-		bounds.x = width / 5 * 2;
-		bounds.y = height - height / 5;
-		bounds.width = width / 6 + 4;
-		bounds.height = height / 5;
+		bounds.x = width / 8 - 25;
+		bounds.y = height - height;
+		bounds.width = width / 3;
+		bounds.height = height / 3;
 		deathImage = Assets.lampPost[0];
 
 		health = 400;
@@ -71,11 +71,11 @@ public class LampPost extends StaticEntity {
 		// drawing down the bounding box
 		Graphics2D g2d = (Graphics2D) g;
 
-		g.drawImage(lamp, (int) (x - c.getGameCamera().getxOffset()), (int) (y - c.getGameCamera().getyOffset()), width,
+		g.drawImage(lamp, (int) (x - Tile.TILEWIDTH - c.getGameCamera().getxOffset()), (int) (y - 2*Tile.TILEHEIGHT - c.getGameCamera().getyOffset()), width,
 				height, null);
 
-		//g.setColor(Color.BLUE);
-		//g2d.draw(getBounds());
+		g.setColor(Color.BLUE);
+		g2d.draw(getBounds());
 
 	}
 

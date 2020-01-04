@@ -33,7 +33,7 @@ public class Tent extends StaticEntity {
 
 		// bounding box starting and ending location
 		bounds.x = width / 6 - 30;
-		bounds.y = height/2 - 40;
+		bounds.y = height / 4 - 50;
 		bounds.width = Tile.TILEWIDTH;
 		bounds.height = Tile.TILEHEIGHT;
 		
@@ -77,7 +77,7 @@ public class Tent extends StaticEntity {
 		Graphics2D g2d = (Graphics2D) g;
 		
 		g.drawImage(Assets.tent, (int) (x - Tile.TILEWIDTH - c.getGameCamera().getxOffset()),
-				(int) (y - Tile.TILEHEIGHT - c.getGameCamera().getyOffset()), width, height, null);
+				(int) (y - 2*Tile.TILEHEIGHT - c.getGameCamera().getyOffset()), width, height, null);
 		
 		g.setColor(Color.BLUE);
 		if(c.getMouseManager().mouseBound().intersects(getBounds()))
