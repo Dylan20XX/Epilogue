@@ -351,7 +351,7 @@ public abstract class Creatures extends Entity {
 	public void chase (double factor) {
 
 		if(WorldGenerator.bossActive 
-				 && !(this instanceof VileSpawn) && !(this instanceof SentryBroodMother) && !(this instanceof AwakenedSentinel)
+				 && !(this instanceof VileSpawn) && !(this instanceof SentryBroodMother) && !(this instanceof AwakenedSentinel) && !(this instanceof Parasite)
 				 && !(this instanceof WonderingGhoul) && !(this instanceof Sentry) && !(this instanceof SentryMajor)) {
 			chasing = false;
 			escape(cautionBound(1280), false);
@@ -557,7 +557,7 @@ public abstract class Creatures extends Entity {
 		chasing = false;
 		
 		if(WorldGenerator.bossActive 
-				 && !(this instanceof VileSpawn) && !(this instanceof SentryBroodMother) && !(this instanceof AwakenedSentinel)
+				 && !(this instanceof VileSpawn) && !(this instanceof SentryBroodMother) && !(this instanceof AwakenedSentinel) && !(this instanceof Parasite)
 				 && !(this instanceof WonderingGhoul) && !(this instanceof Sentry) && !(this instanceof SentryMajor)) {
 			escape(cautionBound(1280), false);
 			
@@ -628,7 +628,7 @@ public abstract class Creatures extends Entity {
 		chasing = false;
 		
 		if(WorldGenerator.bossActive 
-				 && !(this instanceof VileSpawn) && !(this instanceof SentryBroodMother) && !(this instanceof AwakenedSentinel)
+				 && !(this instanceof VileSpawn) && !(this instanceof SentryBroodMother) && !(this instanceof AwakenedSentinel) && !(this instanceof Parasite)
 				 && !(this instanceof WonderingGhoul) && !(this instanceof Sentry) && !(this instanceof SentryMajor)) {
 			escape(cautionBound(1280), false);
 			

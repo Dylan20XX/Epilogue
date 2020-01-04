@@ -54,7 +54,7 @@ public class AwakenedSentinel extends Creatures {
 	public AwakenedSentinel(double x, double y, ControlCenter c) {
 		super(x, y, Creatures.DEFAULT_CREATURE_WIDTH * 6, Creatures.DEFAULT_CREATURE_HEIGHT * 6, c);
 
-		health = 8500;
+		health = 9500;
 		speed = 0.7;
 		knockValue = 10;
 		attackBoundSize = 8000;
@@ -220,7 +220,7 @@ public class AwakenedSentinel extends Creatures {
 		//shootAngle = Math.atan2(playerX - originX, playerY - originY); //change to origin to track player (secondary index follows behind player movement)
 		shootAngle = Math.atan2(playerX - previousOriginX[index], playerY - previousOriginY[index]);
 		int bulletX = (int) (originX + c.getGameCamera().getxOffset()); //+ bounds.width/3*2 or + bounds.width/3
-		int bulletY = (int) (originY + c.getGameCamera().getyOffset()); //+ bounds.height/3*2 or + bounds.height/3
+		int bulletY = (int) (originY + c.getGameCamera().getyOffset()) + 100; //+ bounds.height/3*2 or + bounds.height/3
 
 		if(playerX > originX) {
 			direction = 1;
@@ -253,6 +253,7 @@ public class AwakenedSentinel extends Creatures {
 							.equals(c.getGameState().getWorldGenerator().getEntityManager().getPlayer()) && 
 							!c.getGameState().getWorldGenerator().getEntityManager().getEntitiesInBound().get(i).equals(this)
 							&& !(c.getGameState().getWorldGenerator().getEntityManager().getEntitiesInBound().get(i) instanceof AwakenedSentinel)
+							&& !(c.getGameState().getWorldGenerator().getEntityManager().getEntitiesInBound().get(i) instanceof SleepingSentinel)
 							&& !(c.getGameState().getWorldGenerator().getEntityManager().getEntitiesInBound().get(i) instanceof SentryBroodMother)
 							&& !(c.getGameState().getWorldGenerator().getEntityManager().getEntitiesInBound().get(i) instanceof VileSpawn)) {
 						c.getGameState().getWorldGenerator().getEntityManager().getEntitiesInBound().get(i).hurt(10000);
@@ -432,7 +433,7 @@ public class AwakenedSentinel extends Creatures {
 			Player.getPlayerData().getInventory().removeItem(Player.getPlayerData().getHands().getHand());
 			MusicPlayer.StopMusic();
 			BackgroundPlayer.StopAudio();
-			MusicPlayer.playMusic("audio/awakenedSentinelTheme.wav");
+			//MusicPlayer.playMusic("audio/awakenedSentinelTheme.wav");
 			AudioPlayer.playAudio("audio/powerUp.wav");
 			lastAwakenTimer = System.currentTimeMillis();
 			awakening = true;

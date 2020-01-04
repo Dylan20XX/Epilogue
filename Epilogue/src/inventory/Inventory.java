@@ -45,11 +45,12 @@ public class Inventory {
 		InventoryItems = new ArrayList<Item>();
 		autoCookerV2 = new AutoCookerV2Craft(c);
 		addItem(Armor.tungstenHelmet);
-		addItem(Armor.tungstenChest);
-		addItem(Armor.tungstenLegging);
-		addItem(Armor.tungstenBoots);
-		addItem(Armor.tungstenGauntlets);
-		addItem(Weapon.tungstenMace);
+		addItem(Armor.titaniumChest);
+		addItem(Armor.titaniumBoots);
+		addItem(Armor.titaniumGauntlets);
+		addItem(Ranged.flamethrower);
+		addItem(Item.FuelTankItem);
+		addItem(Item.FuelTankItem);
 		
 	}
 

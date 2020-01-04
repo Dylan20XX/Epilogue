@@ -5,6 +5,7 @@ import java.awt.Rectangle;
 
 import alphaPackage.ControlCenter;
 import audio.AudioPlayer;
+import creatures.Parasite;
 import creatures.Sentry;
 import creatures.SentryBroodMother;
 import creatures.SentryMajor;
@@ -73,12 +74,12 @@ public abstract class Entity {
 	
 	public boolean checkEntityCollision(double velX, double velY) { //collision test
 
-		if(this instanceof Sentry || this instanceof SentryMajor) {
+		if(this instanceof Sentry || this instanceof SentryMajor || this instanceof Parasite) {
 			
 			for(int i = 0; i < c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator().getEntityManager().getEntitiesInBound().size(); i++) {
 				
 				Entity e = c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator().getEntityManager().getEntitiesInBound().get(i);
-				if(e.equals(this) || e instanceof Sentry || e instanceof SentryHive || e instanceof SentryBroodMother 
+				if(e.equals(this) || e instanceof Sentry || e instanceof Parasite || e instanceof SentryHive || e instanceof SentryBroodMother 
 						|| e instanceof SentryMajor || e instanceof SentrySpike || e instanceof Cave) {
 	                continue;
 	            }

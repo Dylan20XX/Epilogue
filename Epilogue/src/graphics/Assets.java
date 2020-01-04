@@ -78,7 +78,7 @@ public class Assets {
 
 	// creatures
 	public static BufferedImage[] beetleleft, beetleright, sentryLeft, sentryRight, chickenLeft, chickenRight,
-			beetleRedLeft, beetleRedRight, phasmatodea, sentryBroodMother, ghoul, scorpion, sentinel, ostrich,
+			beetleRedLeft, beetleRedRight, phasmatodea, sentryBroodMother, parasite, ghoul, scorpion, sentinel, ostrich,
 			deerDeer, deer, mutatedDeer, mutatedChicken, goat, crazedGoat, boar, sandCreepling, scavenger, probe, scavenging, 
 			sentryMajor, sentryReplete, sandCreepIn, sandCreepOut, sandCreepActive, sandCreepGround, sandCreepUnderground, awakenedSentinel, 
 			awakenedSentinelGun, sleepingSentinel, packAlpha, packMember, scorpionDiveIn;
@@ -944,6 +944,11 @@ public class Assets {
 			Spritesheet SandCreepGround = new Spritesheet(ImageIO.read(Assets.class.getResource("/creature/sandCreepGround.png")));
 			Spritesheet PackAlpha = new Spritesheet(ImageIO.read(Assets.class.getResource("/creature/packAlpha.png")));
 			Spritesheet PackMember = new Spritesheet(ImageIO.read(Assets.class.getResource("/creature/packMember.png")));
+			Spritesheet Parasite = new Spritesheet(ImageIO.read(Assets.class.getResource("/creature/parasite.png")));
+			
+			parasite = new BufferedImage[2];
+			parasite[0] = Parasite.crop(0, 0, 64, 64);
+			parasite[1] = Parasite.crop(0, 64, 64, 64);
 			
 			packAlpha = new BufferedImage[4];
 			packAlpha[0] = PackAlpha.crop(0, 0, 64, 32);

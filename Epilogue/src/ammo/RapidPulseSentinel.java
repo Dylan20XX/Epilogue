@@ -6,8 +6,10 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 
 import alphaPackage.ControlCenter;
+import creatures.AwakenedSentinel;
 import creatures.Creatures;
 import creatures.Player;
+import creatures.SleepingSentinel;
 import entity.Entity;
 import graphics.Animation;
 import graphics.Assets;
@@ -68,7 +70,7 @@ public class RapidPulseSentinel extends Creatures {
 			Entity e = c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator().getEntityManager().getEntitiesInBound().get(i);
 			
 			if(e.getBounds().intersects(getBounds()) && !e.getName().equals("artilery") && !e.getName().equals("awakened sentinel") && !e.equals(this)) {
-				if(e.getType().equals("creatures")) {
+				if(e.getType().equals("creatures") && !(e instanceof AwakenedSentinel) && !(e instanceof SleepingSentinel)) {
 					knockbackTarget((Creatures)e, this, true, angle);
 					if(Player.getPlayerData().getResistance() > damage)
 						if(CT.random(1, 4) == 1)

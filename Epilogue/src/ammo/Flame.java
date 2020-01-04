@@ -26,7 +26,7 @@ public class Flame extends Creatures {
 		knockValue = 1;
 		weight = 1;
 		type = "pulse";
-		damage = 10;
+		damage = 20;
 		lit = true;
 		
 		bounds.x = 0;
@@ -68,8 +68,10 @@ public class Flame extends Creatures {
 				if(e.getType().equals("creatures")) {
 					Creatures cre = (Creatures)e;
 					cre.setHealth(cre.getHealth()-damage);
-					if(cre.getHealth() <= 0)
+					if(cre.getHealth() <= 0) {
 						cre.setActive(false);
+						cre.Die();
+					}
 				} else {
 					e.hurt(damage);
 				}

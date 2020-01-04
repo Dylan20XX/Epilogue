@@ -29,11 +29,13 @@ public class SleepingSentinel extends Creatures {
 	private Animation smoke = new Animation(50, CT.flip(Assets.bossSmoke), true);
 
 	private boolean smokeOn = false, soundPlayed = false, sound2Played = false;
+	
+	private boolean spawned = false;
 
 	public SleepingSentinel(double x, double y, ControlCenter c) {
 		super(x, y, Creatures.DEFAULT_CREATURE_WIDTH * 6, Creatures.DEFAULT_CREATURE_HEIGHT * 6, c);
 
-		health = 8500;
+		health = 9500;
 		speed = 0.7;
 		knockValue = 10;
 		attackBoundSize = 8000;
@@ -63,7 +65,10 @@ public class SleepingSentinel extends Creatures {
 			awaken();
 		} else if(awakened) {
 			setActive(false);
-			c.getGameState().getWorldGenerator().getEntityManager().addEntity(new AwakenedSentinel(x, y, c));
+			if(!spawned) {
+				c.getGameState().getWorldGenerator().getEntityManager().addEntity(new AwakenedSentinel(x, y, c));
+				spawned = true;
+			}
 		}
 
 	}

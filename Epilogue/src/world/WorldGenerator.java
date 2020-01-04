@@ -204,7 +204,6 @@ public class WorldGenerator {
 	public static boolean swallowed = false;
 
 	// main entities
-	private SentryHive sentryHive;
 	public static boolean nextSentry = false;
 	private boolean broodMotherSpawned = false;
 	public boolean broodMotherAlive = false;
@@ -259,6 +258,8 @@ public class WorldGenerator {
 	private boolean gameCompleted = false;
 	
 	private long lastTickTimer, TickCooldown = 10, TickTimer = 0;
+	
+	public static int numParasite = 0;
 	
 	// TESTING VARIABLES
 	// --------------------
@@ -1210,59 +1211,10 @@ public class WorldGenerator {
                 researchTable.getCraft().render(g);
             }
 			
-			if (sentryHive != null) {
-
-				if (!sentryHive.isActive() && !broodMotherSpawned) {
-
-					if(sentryQueenSpawnTimer < sentryQueenSpawnCooldown) {
-						sentryQueenSpawnTimer += System.currentTimeMillis() - lastSentryQueenSpawnTimer;
-						lastSentryQueenSpawnTimer = System.currentTimeMillis();
-					}
-
-					bossSmoke.tick();
-					g.drawImage(bossSmoke.getCurrentFrame(), 
-							(int) sentryHive.getBounds().x - Tile.TILEWIDTH, 
-							(int) sentryHive.getBounds().y - Tile.TILEHEIGHT, 
-							sentryHive.getBounds().width + Tile.TILEWIDTH * 2, 
-							sentryHive.getBounds().height + Tile.TILEHEIGHT * 2, null);
-					g.drawImage(bossSmoke.getCurrentFrame(), 
-							(int) sentryHive.getBounds().x - Tile.TILEWIDTH - 64, 
-							(int) sentryHive.getBounds().y - Tile.TILEHEIGHT, 
-							sentryHive.getBounds().width + Tile.TILEWIDTH * 2, 
-							sentryHive.getBounds().height + Tile.TILEHEIGHT * 2, null);
-					g.drawImage(bossSmoke.getCurrentFrame(), 
-							(int) sentryHive.getBounds().x - Tile.TILEWIDTH + 64, 
-							(int) sentryHive.getBounds().y - Tile.TILEHEIGHT, 
-							sentryHive.getBounds().width + Tile.TILEWIDTH * 2, 
-							sentryHive.getBounds().height + Tile.TILEHEIGHT * 2, null);
-					g.drawImage(bossSmoke.getCurrentFrame(), 
-							(int) sentryHive.getBounds().x - Tile.TILEWIDTH - 32, 
-							(int) sentryHive.getBounds().y - Tile.TILEHEIGHT + 32, 
-							sentryHive.getBounds().width + Tile.TILEWIDTH * 2, 
-							sentryHive.getBounds().height + Tile.TILEHEIGHT * 2, null);
-					g.drawImage(bossSmoke.getCurrentFrame(), 
-							(int) sentryHive.getBounds().x - Tile.TILEWIDTH + 32, 
-							(int) sentryHive.getBounds().y - Tile.TILEHEIGHT + 32, 
-							sentryHive.getBounds().width + Tile.TILEWIDTH * 2, 
-							sentryHive.getBounds().height + Tile.TILEHEIGHT * 2, null);
-
-					if (!(sentryQueenSpawnTimer < sentryQueenSpawnCooldown)) {
-						//Spawn the queen
-						entityManager.addEntity(new SentryBroodMother(sentryHive.getX(), sentryHive.getY(), c));
-
-						AudioPlayer.playAudio("audio/broodMotherSpawn.wav");
-						MusicPlayer.playMusic("audio/broodMotherFight.wav");
-
-						broodMotherSpawned = true;
-						broodMotherAlive = true;
-					}
-
-				}
-			}
 			
 			if (nextSentry) {
 				nextSentry = false;
-				spawnSentry();
+				//spawnSentry();
 			}
 
 			// render mouse cursor
@@ -1994,7 +1946,7 @@ public class WorldGenerator {
 
 		interactTimer = 0; // cool down resets
 	}
-	
+	/*
 	public void spawnSentry() {
 
 		int temp = r.nextInt(3);
@@ -2020,7 +1972,7 @@ public class WorldGenerator {
 		}
 
 	}
-	
+	*/
 	//
 	private void timeControl() {
 		timeTimer += System.currentTimeMillis() - lastChangeTimer;
@@ -2281,8 +2233,8 @@ public class WorldGenerator {
 					checkedEntities[x][y] = 6;
 					//System.out.println("Added living spike");
 				} else if (topper[x][y] == 7 && checkedEntities[x][y] == 0) { //hive
-					sentryHive = new SentryHive(x * Tile.TILEWIDTH, y * Tile.TILEHEIGHT, c);
-					entityManager.addEntity(sentryHive);
+					entityManager.addEntity(
+							new SentryHive(x * Tile.TILEWIDTH, y * Tile.TILEHEIGHT, c));
 					checkedEntities[x][y] = 7;
 					//System.out.println("Added hive at: x = " + x + " y = " + y);
 				} else if (topper[x][y] == 8 && checkedEntities[x][y] == 0) { //trash bag
@@ -3170,9 +3122,9 @@ public class WorldGenerator {
 		}
 		
 		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_T))
-			entityManager.addEntity(new Phasmatodea(entityManager.getPlayer().getX() + 200, entityManager.getPlayer().getY() - 300, c));
+			entityManager.addEntity(new SentryHive(entityManager.getPlayer().getX() + 200, entityManager.getPlayer().getY() - 300, c));
 		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_U))
-			entityManager.addEntity(new SandCreep(entityManager.getPlayer().getX() + 200, entityManager.getPlayer().getY() - 300, c));
+			entityManager.addEntity(new SentryBroodMother(entityManager.getPlayer().getX() + 200, entityManager.getPlayer().getY() - 300, c));
 		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_O))
 			entityManager.addEntity(new Boar(entityManager.getPlayer().getX() + 200, entityManager.getPlayer().getY() - 300, c));
 		if (c.getKeyManager().keyJustPressed(KeyEvent.VK_G))
