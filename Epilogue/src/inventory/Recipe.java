@@ -179,7 +179,7 @@ public class Recipe {
 		
 		setupXPRequirements();
 		
-		if((id >= 0 && id <= 14) || id == 43 || (id >= 106 && id <= 109) || id == 701 || id == 702 || id == 704 || id == 715 || id == 724 || id == 705) { //starting recipes
+		if((id >= 0 && id <= 14) || id == 43 || (id >= 106 && id <= 109) || id == 701 || id == 702 || id == 704 || id == 715 || id == 724 || id == 705 || id != 999) { //starting recipes
 			
 			boolean alreadyAdded = false;
 			for (Recipe i : Recipe.recipes){
@@ -561,7 +561,7 @@ public class Recipe {
 		} else if (id == 305) {
 			recipeRequirements.put(Food.extrafloralNectar.getId(), 1);
 		} 
-		
+		/*
 		else if (id == 701) {
 			recipeRequirements.put(Item.woodenPlankItem.getId(), 12);
 			recipeRequirements.put(Item.workbenchToolkitItem.getId(), 1);
@@ -646,7 +646,7 @@ public class Recipe {
 		} else if (id == 754) {
 			recipeRequirements.put(Item.sapItem.getId(), 8);
 		} 
-		
+		*/
 		
 	}
 

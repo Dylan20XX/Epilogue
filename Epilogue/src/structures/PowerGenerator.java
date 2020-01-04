@@ -60,17 +60,14 @@ public class PowerGenerator extends StaticEntity {
 		g.drawImage(powerGen.getCurrentFrame(), (int) (x - c.getGameCamera().getxOffset()),
 				(int) (y - c.getGameCamera().getyOffset()), width, height, null);
 
-		g.setColor(Color.BLUE);
-		g2d.draw(getBounds());
-
 	}
 
 	@Override
 	public void Die() {
 
 		AudioPlayer.playAudio("audio/structureBreak.wav");
-		c.getGameState().getWorldGenerator().removeLight(3, placex, placey, 3);
-		c.getGameState().getWorldGenerator().removePower(7, placex, placey);
+		c.getGameState().getWorldGenerator().removeLight(3, (int) (x/64), (int) (y/64), 3);
+		c.getGameState().getWorldGenerator().removePower(7, (int) (x/64), (int) (y/64));
 
 	}
 

@@ -1584,7 +1584,11 @@ public class Player extends Creatures {
 				running = false;
 
 			}
-
+			
+			if(currentSpeed >= 9) {
+				currentSpeed = speed;
+			}
+			
 		} else if (!c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator().isStructureCrafted()
 				&& !c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator()
 						.isStructureWorkbenchCrafted()

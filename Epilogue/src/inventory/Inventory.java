@@ -44,29 +44,13 @@ public class Inventory {
 		this.e = e;
 		InventoryItems = new ArrayList<Item>();
 		autoCookerV2 = new AutoCookerV2Craft(c);
-		addItem(Armor.tungstenHelmet);
-		addItem(Armor.titaniumChest);
-		addItem(Armor.titaniumBoots);
-		addItem(Armor.titaniumGauntlets);
-		addItem(Ranged.flamethrower);
-		addItem(Item.FuelTankItem);
-		addItem(Item.FuelTankItem);
-		addItem(Ranged.megashakalaka);
-		addItem(Item.XM214BulletItem);	
-		addItem(Item.workbenchToolkitItem);
-		addItem(Item.woodenPlankItem);
-		addItem(Item.woodenPlankItem);
-		addItem(Item.woodenPlankItem);
-		addItem(Item.woodenPlankItem);
-		addItem(Item.woodenPlankItem);
-		addItem(Item.woodenPlankItem);
-		addItem(Item.woodenPlankItem);
-		addItem(Item.woodenPlankItem);
-		addItem(Item.woodenPlankItem);
-		addItem(Item.woodenPlankItem);
-		addItem(Item.woodenPlankItem);
-		addItem(Item.woodenPlankItem);
-		addItem(Tool.stoneAxeTool);
+		addItem(Ranged.glock);
+		addItem(Weapon.darkSaber);
+
+		addItem(Ranged.AMM1DBulletItem);
+		addItem(Ranged.AMM1DBulletItem);
+		addItem(Ranged.AMM1DBulletItem);
+		addItem(Ranged.AMM1DBulletItem);
 		
 	}
 

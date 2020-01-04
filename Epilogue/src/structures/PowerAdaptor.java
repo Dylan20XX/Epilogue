@@ -47,17 +47,17 @@ public class PowerAdaptor extends StaticEntity {
 	@Override
 	public void tick() {
 		
-		if (c.getGameState().getWorldGenerator().powerMap[placex][placey] > 0) {
+		if (c.getGameState().getWorldGenerator().powerMap[(int) (x/64)][(int) (y/64)] > 0) {
 			adaptor = Assets.powerAdaptorOn;
 			if(!preAddPower) {
-				c.getGameState().getWorldGenerator().addPower(this, 7, placex, placey);
+				c.getGameState().getWorldGenerator().addPower(this, 7, (int) (x/64), (int) (y/64));
 				preAddPower = true;
 			}
 		}
 		else {
 			adaptor = Assets.powerAdaptorOff;
 			if(preAddPower) {
-				c.getGameState().getWorldGenerator().removePower(7, placex, placey);
+				c.getGameState().getWorldGenerator().removePower(7, (int) (x/64), (int) (y/64));
 				preAddPower = false;
 			}
 		}
@@ -72,16 +72,13 @@ public class PowerAdaptor extends StaticEntity {
 		g.drawImage(adaptor, (int) (x - c.getGameCamera().getxOffset()),
 				(int) (y - c.getGameCamera().getyOffset()), width, height, null);
 
-		g.setColor(Color.BLUE);
-		g2d.draw(getBounds());
-
 	}
 
 	@Override
 	public void Die() {
 		AudioPlayer.playAudio("audio/structureBreak.wav");
 		if(preAddPower) 
-			c.getGameState().getWorldGenerator().removePower(7, placex, placey);
+			c.getGameState().getWorldGenerator().removePower(7, (int) (x/64), (int) (y/64));
 
 	}
 

@@ -66,7 +66,7 @@ public class RapidPulseArtillery extends StaticEntity {
 	@Override
 	public void tick() {
 		
-		if (c.getGameState().getWorldGenerator().powerMap[placex][placey] > 0) {
+		if (c.getGameState().getWorldGenerator().powerMap[(int) (x/64)][(int) (y/64)] > 0) {
 			base = Assets.artileryBase[1];
 			on = true;
 		}
@@ -150,10 +150,6 @@ public class RapidPulseArtillery extends StaticEntity {
 		g2d.drawImage(head, (int) (x - c.getGameCamera().getxOffset()), (int) (y - c.getGameCamera().getyOffset() - 10),
 				width, height, null);
 		g2d.setTransform(backup);
-		g.setColor(Color.BLUE);
-		g2d.draw(getBounds());
-		g.setColor(Color.green);
-		g2d.draw(range());
 
 	}
 

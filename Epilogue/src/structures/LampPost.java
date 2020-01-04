@@ -49,17 +49,19 @@ public class LampPost extends StaticEntity {
 
 	@Override
 	public void tick() {
-
-		if (c.getGameState().getWorldGenerator().powerMap[placex][placey] > 0) {
+		
+		System.out.println("lamp lightmap: " + c.getGameState().getWorldGenerator().powerMap[(int) (x/64)][(int) (y/64)]);
+		
+		if (c.getGameState().getWorldGenerator().powerMap[(int) (x/64)][(int) (y/64)] > 0) {
 			lamp = Assets.lampPost[0];
 			if (!preAddLight) {
-				c.getGameState().getWorldGenerator().addLight(this, 5, placex, placey, 3);
+				c.getGameState().getWorldGenerator().addLight(this, 5, (int) (x/64), (int) (y/64), 3);
 				preAddLight = true;
 			}
 		} else {
 			lamp = Assets.lampPost[1];
 			if (preAddLight) {
-				c.getGameState().getWorldGenerator().removeLight(5, placex, placey, 3);
+				c.getGameState().getWorldGenerator().removeLight(5, (int) (x/64), (int) (y/64), 3);
 				preAddLight = false;
 			}
 		}
@@ -74,16 +76,13 @@ public class LampPost extends StaticEntity {
 		g.drawImage(lamp, (int) (x - Tile.TILEWIDTH - c.getGameCamera().getxOffset()), (int) (y - 2*Tile.TILEHEIGHT - c.getGameCamera().getyOffset()), width,
 				height, null);
 
-		g.setColor(Color.BLUE);
-		g2d.draw(getBounds());
-
 	}
 
 	@Override
 	public void Die() {
 		AudioPlayer.playAudio("audio/structureBreak.wav");
 		if (preAddLight) {
-			c.getGameState().getWorldGenerator().removeLight(5, placex, placey, 3);
+			c.getGameState().getWorldGenerator().removeLight(5, (int) (x/64), (int) (y/64), 3);
 		}
 
 	}

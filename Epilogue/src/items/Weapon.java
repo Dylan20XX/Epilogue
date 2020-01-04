@@ -34,7 +34,7 @@ public class Weapon extends Item {
 	public static Weapon stoneClub = new Weapon(Assets.stoneClub, "stone club", 110, 2, 75, 1200, 2, 30, 50, 210, 210);
 	public static Weapon spikeyClub = new Weapon(Assets.spikeClub, "spikey club", 111, 2, 105, 1000, 2, 30, 50, 175, 175);
 	
-	public static Weapon darkSaber = new Weapon(Assets.darkSaber, "dark saber", 112, 0.8, 160, 450, 50, 85, 25, 1000, 1000);
+	public static Weapon darkSaber = new Weapon(Assets.darkSaber, "dark saber", 112, 0.8, 160, 430, 50, 85, 25, 1000, 1000);
 	
 	public Weapon(BufferedImage texture, String name, int id, double weight, int damage, double aSpeed,
 			int intimidation, double range, int volume, int currentEndurance, int endurance) {

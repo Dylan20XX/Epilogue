@@ -394,6 +394,8 @@ public class WorldGenerator {
 		loadCreatures();
 		loadRecipes();
 		
+		loadTopperEntities();
+		
 	}
 	
 	public void tick() {
@@ -444,7 +446,6 @@ public class WorldGenerator {
 			interactTimer();
 		}
 		
-		loadTopperEntities();
 		timeControl();
 		//System.out.println("Time: " + time);
 
@@ -1566,26 +1567,18 @@ public class WorldGenerator {
 
 				} else if(structureNum == 17) {
 					LampPost lamp = new LampPost(buildX, buildY, c);
-					lamp.placex = buildX/64;
-					lamp.placey = buildY/64;
 					entityManager.addEntity(lamp);
 
 				} else if(structureNum == 18) {
 					PowerAdaptor adaptor = new PowerAdaptor(buildX, buildY, c);
-					adaptor.placex = buildX/64;
-					adaptor.placey = buildY/64;
 					entityManager.addEntity(adaptor);
 
 				} else if(structureNum == 19) {
 					HeavyPulseArtillery adaptor = new HeavyPulseArtillery(buildX, buildY, c);
-					adaptor.placex = buildX/64;
-					adaptor.placey = buildY/64;
 					entityManager.addEntity(adaptor);
 
 				} else if(structureNum == 20) {
 					RapidPulseArtillery adaptor = new RapidPulseArtillery(buildX, buildY, c);
-					adaptor.placex = buildX/64;
-					adaptor.placey = buildY/64;
 					entityManager.addEntity(adaptor);
 
 				}  else if(structureNum == 21) {
@@ -1612,7 +1605,6 @@ public class WorldGenerator {
 					adaptor.placey = buildY/64;
 					entityManager.addEntity(adaptor);
 					
-					System.out.println("building a tent");
 				} else if(structureNum == 51) {
 					floor[buildX / 64][buildY / 64] = 1;
 				} else if(structureNum == 52) {
@@ -3141,6 +3133,8 @@ public class WorldGenerator {
 			Player.getPlayerData().energy = 800;
 			allDay = true;
 			effects.addEffect(new Effect("swiftness", 10000));
+		} else {
+			allDay = false;
 		}
 		
 		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_T))
@@ -3400,9 +3394,12 @@ public class WorldGenerator {
 			//		Player.getPlayerData().getY(), c));
 			//entityManager.addEntity(new SpaceShuttle(Player.getPlayerData().getX(),
 			//		Player.getPlayerData().getY(), c));
-			entityManager.addEntity(new SleepingSentinel(Player.getPlayerData().getX(),
-					Player.getPlayerData().getY(), c));
+//			entityManager.addEntity(new SleepingSentinel(Player.getPlayerData().getX(),
+//					Player.getPlayerData().getY(), c));
 			//System.out.println(AwakenedSentinel.class.getSimpleName());
+			
+			time = 180;
+			
 		}
 		
 		if(c.getKeyManager().keyJustPressed(KeyEvent.VK_F7)) {
