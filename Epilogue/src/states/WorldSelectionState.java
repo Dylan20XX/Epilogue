@@ -337,6 +337,10 @@ public class WorldSelectionState extends State {
 		File platformFilepath = new File(platform);
 		String recipe = String.format("recipe/%s", selectedWorldName);
 		File recipeFilepath = new File(recipe);
+		String lightMap = String.format("lightMap/%s", selectedWorldName);
+		File lightMapFilepath = new File(lightMap);
+		String powerMap = String.format("powerMap/%s", selectedWorldName);
+		File powerMapFilepath = new File(powerMap);
 
 		if(worldDataFilepath.exists()) {
 			worldDataFilepath.delete();
@@ -364,6 +368,12 @@ public class WorldSelectionState extends State {
 		}
 		if(recipeFilepath.exists()) {
 			recipeFilepath.delete();
+		}
+		if(lightMapFilepath.exists()) {
+			lightMapFilepath.delete();
+		}
+		if(powerMapFilepath.exists()) {
+			powerMapFilepath.delete();
 		}
 		
 		worldSelectButtonPressed = false;
