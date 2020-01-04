@@ -6,6 +6,7 @@ import java.util.Random;
 
 import alphaPackage.ControlCenter;
 import audio.AudioPlayer;
+import audio.BackgroundPlayer;
 import audio.MusicPlayer;
 import graphics.Animation;
 import graphics.Assets;
@@ -44,7 +45,10 @@ public class SentryBroodMother extends Creatures {
                 right = new Animation(200, CT.flip(Assets.sentryBroodMother), true);
 
                 combatXPDropped = (int)(200 * (double)Player.getPlayerData().getIntelligence()/10);
-
+                
+        		BackgroundPlayer.StopAudio();
+        		MusicPlayer.playMusic("audio/sentryQueenTheme.wav");
+                
         }
 
         @Override
