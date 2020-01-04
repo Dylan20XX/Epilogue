@@ -1445,7 +1445,7 @@ public class WorldGenerator {
 				if (structureCrafted){
 					wallType = getStructureRecipe().getWallType();
 				}
-
+				
 				AudioPlayer.playAudio("audio/build.wav");
 				
 				if(structureNum == 1) {
@@ -1611,7 +1611,8 @@ public class WorldGenerator {
 					adaptor.placex = buildX/64;
 					adaptor.placey = buildY/64;
 					entityManager.addEntity(adaptor);
-
+					
+					System.out.println("building a tent");
 				} else if(structureNum == 51) {
 					floor[buildX / 64][buildY / 64] = 1;
 				} else if(structureNum == 52) {

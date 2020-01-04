@@ -66,6 +66,7 @@ public class Inventory {
 		addItem(Item.woodenPlankItem);
 		addItem(Item.woodenPlankItem);
 		addItem(Item.woodenPlankItem);
+		addItem(Tool.stoneAxeTool);
 		
 	}
 
