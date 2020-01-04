@@ -1268,6 +1268,9 @@ public class WorldGenerator {
 					Color.WHITE, Assets.font28);
 			CustomTextWritter.drawString(g, String.format("Tile Y : %d", playerTileY), 100, 100, true,
 					Color.WHITE, Assets.font28);
+			
+			CustomTextWritter.drawString(g, String.format("Time : %d", (int)time), 100, 190, true, Color.WHITE, Assets.font28);
+			
 			/*
 			//test coords of mouse tile
 			int mouseTileX = (int) ((c.getMouseManager().mouseBound().getX() + c.getGameCamera().getxOffset()) -
