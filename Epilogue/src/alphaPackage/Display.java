@@ -55,6 +55,7 @@ public class Display{
 		
 		frame = new JFrame(title);
 		frame.setSize(width,  height);
+		customIcon("/UI/icon.png");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //close frame when click close
 		frame.setResizable(false);
 		frame.setLocationRelativeTo(null); //center the frame
@@ -97,6 +98,18 @@ public class Display{
         frame.setCursor(toolkit.createCustomCursor(mouse, new Point(0, 0), "Cursor"));
     }
 	
+	public static void customIcon(String image) {
+		Toolkit toolkit = Toolkit.getDefaultToolkit();
+        Image icon = null;
+		try {
+			icon = ImageIO.read(Assets.class.getResource(image));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    
+        frame.setIconImage(icon);
+	}
 	//getters and setters
 	public Canvas getCanvas() {
 		return canvas;
