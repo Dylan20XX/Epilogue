@@ -11,6 +11,7 @@ import creatures.Player;
 import entity.Entity;
 import graphics.Animation;
 import graphics.Assets;
+import staticEntity.StaticEntity;
 
 public class HeavyPulse extends Creatures {
 
@@ -53,8 +54,11 @@ public class HeavyPulse extends Creatures {
 		for(int i = 0; i < c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator().getEntityManager().getEntitiesInBound().size(); i++) {
 			
 			Entity e = c.getMenuState().getWorldSelectState().getGameState().getWorldGenerator().getEntityManager().getEntitiesInBound().get(i);
+			StaticEntity s = null;
+			if(e instanceof StaticEntity)
+				s = (StaticEntity) e;
 			
-			if(e.getBounds().intersects(getBounds()) && !e.getType().equals("wall") && !e.getName().equals("artilery") && !e.equals(Player.getPlayerData()) && !e.equals(this)) {
+			if(e.getBounds().intersects(getBounds()) && !e.getType().equals("wall") && !e.getName().equals("artilery") && !e.equals(Player.getPlayerData()) && !e.equals(this) && (s == null || !s.isPlaced())) {
 				if(e.getType().equals("creatures")) {
 					knockbackTarget((Creatures)e, this, true, angle);
 				}

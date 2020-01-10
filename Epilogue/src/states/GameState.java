@@ -58,7 +58,11 @@ public class GameState extends State{
         @Override
         public void render(Graphics g) {
                 g.drawImage(Assets.nightBlack, 0, 0, c.width, c.height, null);
-                world.render(g);
+                try {
+                	world.render(g);
+                }catch(NullPointerException e) {
+                	System.out.println("NULL");
+                }
                 if(Options) {
                         g.drawImage(Assets.gameMenu, 475, 125, 450, 525, null);
                         uiManager.render(g);

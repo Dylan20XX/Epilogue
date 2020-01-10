@@ -31,7 +31,7 @@ public class RapidPulseSentinel extends Creatures {
 		knockValue = 2;
 		weight = 3;
 		type = "pulse";
-		damage = 180;
+		damage = 220;
 		lit = true;
 		
 		bounds.x = 0;

@@ -63,7 +63,7 @@ public class WorldSaver {
 	public void saveWorldAfterDeath() {
 		
 		saveTopper();
-		saveCreatures();
+		saveCreaturesAfterDeath();
 		savePlayerAfterDeath();
 		savePlatforms();
 		saveChests();
@@ -1375,6 +1375,71 @@ public class WorldSaver {
 				e.printStackTrace();
 			}
 			
+		}
+		
+	}
+	
+	//This method saves positions of all boss creatures after the player dies
+	public void saveCreaturesAfterDeath() { 
+		
+		//numCreatures
+		//
+		//creature name, creatureX, creatureY
+		
+		EntityManager entityManager = c.getGameState().getWorldGenerator().getEntityManager();
+		
+		ArrayList<Entity> creatures = new ArrayList<Entity>(); //change type to creature arraylist
+		
+		//Add creatures in entities in bound list to array list
+		for(int i = 0; i < entityManager.getEntitiesInBound().size(); i++) {
+			if(entityManager.getEntitiesInBound().get(i) instanceof Creatures 
+					&& !(entityManager.getEntitiesInBound().get(i) instanceof Player) &&
+					(entityManager.getEntitiesInBound().get(i) instanceof VileSpawn || 
+							entityManager.getEntitiesInBound().get(i) instanceof SentryBroodMother || 
+							entityManager.getEntitiesInBound().get(i) instanceof AwakenedSentinel || 
+							entityManager.getEntitiesInBound().get(i) instanceof SleepingSentinel)) {
+				
+				creatures.add(entityManager.getEntitiesInBound().get(i));
+				
+			}
+		}
+		
+		//add bosses in entities to array list
+		for(int i = 0; i < entityManager.getEntities().size(); i++) {
+			
+			Entity e = entityManager.getEntities().get(i);
+			
+			if(e instanceof VileSpawn || e instanceof SentryBroodMother || e instanceof AwakenedSentinel || e instanceof SleepingSentinel) {
+				
+				creatures.add(entityManager.getEntities().get(i));
+				
+			}
+		}
+		
+		//Start writing creature data to a file
+		String file = String.format("creatures/%s", c.getMenuState().getWorldSelectState().getSelectedWorldName());
+		//File filepath = new File(file);
+		
+		try {
+			
+			int numCreatures =	creatures.size();
+			PrintWriter pr = new PrintWriter(file);
+			
+			pr.print(numCreatures); //print number of creatures on first line of file
+			pr.println();
+			
+			for (int i = 0; i < numCreatures; i++) {
+				
+				//print creature name, x, and y
+				pr.print(String.format("%s %d %d", creatures.get(i).getName(), (int) creatures.get(i).getX(), (int) creatures.get(i).getY()));
+				pr.println();
+				
+			}
+			
+			pr.close();
+			
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
 		}
 		
 	}

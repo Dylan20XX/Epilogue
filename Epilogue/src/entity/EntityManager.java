@@ -190,7 +190,9 @@ public class EntityManager {
 	}
 	
 	public void render(Graphics g) {
-
+		
+		if(player == null)
+			return;
 
 		for(int i = 0; i < entitiesInBound.size(); i++) {
 			if(entitiesInBound.get(i).getBounds().intersects(Player.getPlayerData().renderBound()))

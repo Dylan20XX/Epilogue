@@ -49,15 +49,15 @@ public class WallDown extends StaticEntity{
 		bounds.y = StaticEntity.DEFAULT_STATICOBJECT_HEIGHT - height;
 
 		if(wallType == 1) {
-			health = 300;
-			resistance  = 10;
-		}else if(wallType == 2) {
-			health = 400;
-			resistance  = 10;
-		}else if(wallType == 3) {
-			health = 500;
-			resistance  = 10;
-		}
+            health = 1500;
+            resistance  = 25;
+        }else if(wallType == 2) {
+           health = 2000;
+            resistance  = 40;
+        }else if(wallType == 3) {
+            health = 50000;
+            resistance  = 1000;
+        }
 		placed = true;
 
 	}
