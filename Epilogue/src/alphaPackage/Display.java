@@ -101,12 +101,15 @@ public class Display{
 	public static void customIcon(String image) {
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
         Image icon = null;
+        
+        /*    
 		try {
 			icon = ImageIO.read(Assets.class.getResource(image));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		*/
     
         frame.setIconImage(icon);
 	}
