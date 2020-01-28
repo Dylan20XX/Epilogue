@@ -77,6 +77,7 @@ public class KeyManager implements KeyListener {
 		return isPressed[keyCode];
 	}
 
+	@Override
 	public void keyTyped(KeyEvent e) {
 
 	}
