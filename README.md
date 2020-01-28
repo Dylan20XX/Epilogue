@@ -4,5 +4,8 @@ Epilogue is a game with multiple survival challenges, simulating a future nuclea
 # Youtube Trailer
 https://www.youtube.com/watch?v=kvCcecXtYjM
 
+# Trailer Images
+![](res/trailerImages/trailerImage1)
+
 # Download and Official Website
 https://www.project-epilogue.com
